@@ -1,11 +1,11 @@
-const SerialPort  = require("serialport");
+const SerialPort = require("serialport");
 
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
 
 var motor = {
   family: "Motor",
-  name: "Electric Yacht 180 Motor",
+  name: "Electric Yacht 10kW Motor",
   id: 9,
   soc: null,
   ttd: null,

@@ -1,18 +1,16 @@
-const net = require("net");
 const http = require('http');
 const WebSocket = require('ws');
 const mongo = require("../models/mongo.js");
 
 const automation = require("./automation");
-const gps = require("gps");
-const motor = require("motor");
-const wireless = require("wireless");
+const gps = require("./gps");
+const motor = require("./motor");
+const sensors = require("./wireless");
 
 var telemetry = {};
 const realTimeInterval = 3000;
 
 //log to db
-
 //send to relay via WebSocket
 
 module.exports = function(app) {
@@ -20,8 +18,6 @@ module.exports = function(app) {
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });
   const relayUrl  = url.format('http://www.rednightsky.com');;
-  var connectExternal = true;
-
 
   wss.on('connection', (ws) => {
     console.log('Websocket client connected...');
@@ -41,7 +37,6 @@ module.exports = function(app) {
 
 
   var connectExternalServer = function () {
-
     const relayWs = new WebSocket(relayUrl);
 
     relayWs.on('open', function() {
@@ -72,12 +67,13 @@ module.exports = function(app) {
       };
     });
 
-    if(connectExternal) {
       if (relayWs.readyState === WebSocket.OPEN) {
         relayWs.send( JSON.stringify( telemetry ) );
       };
-    };
+
 
   }, realTimeInterval);
+
+  connectExternalServer();
 
 }
