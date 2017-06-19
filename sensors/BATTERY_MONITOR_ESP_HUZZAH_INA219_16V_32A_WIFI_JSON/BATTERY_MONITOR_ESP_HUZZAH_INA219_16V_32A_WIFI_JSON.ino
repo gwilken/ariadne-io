@@ -1,45 +1,42 @@
-// Libraries
+#include <WiFiClientPrint.h>
+
+
 #include <ESP8266WiFi.h>
 #include <SPI.h>
 #include <Wire.h>
 #include <Adafruit_INA219.h>
 #include <ArduinoJson.h>
+#include <WiFiClientPrint.h>
 
 
 WiFiClient client;
 
 
+
+
 const char* ssid     = "ARI_NET";
 const char* password = "raspberry";
  
-
 Adafruit_INA219 ina219;
 
-
 String family = "Battery";
-String name = "House Battery Bank Monitor";
-int id = 1;
+String name = "Motor Battery #4";
+int id = 7;
 float shuntvoltage;
 float busvoltage;
 float current;
 float loadvoltage;
-  
- StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& root = jsonBuffer.createObject();
+
+
 
 void setup()   {     
-             
+  //client.setNoDelay(1);
+
   Serial.begin(115200);
 
-  //JSON set up
-
-
-  // Init INA219
   ina219.begin();
-  //ina219.setCalibration_16V_400mA();
-  ina219.setCalibration_16V_32A();
+  ina219.setCalibration_16V_400mA();
 
-  // We start by connecting to a WiFi network
   Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
@@ -57,33 +54,64 @@ void setup()   {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  const int httpPort = 8080;
-  if (!client.connect("192.168.10.1", httpPort)) {
-    Serial.println("connection to node failed");
-    return;
-  }
+
+  while ( !client.connected() ) {
+      Serial.print("Connecting to hub");
+      connectToHub();
+      delay(2000);
+      Serial.print(".");
+    }
+
+  Serial.println("Hub connected"); 
+
   
 }
 
 
 void loop() {
 
-  measureCurrent();
+   if (client.connected()) {
+    Serial.println("connected");
+    Serial.println("");
 
-  delay(1000);
+    measureCurrent();
 
-  root["family"] = family;
-  root["name"] = name;
-  root["shuntvoltage"] = shuntvoltage;
-  root["busvoltage"] = busvoltage;
-  root["current"] = current;
-  root["loadvoltage"] = loadvoltage;
+    delay(1000);
 
-  root.printTo(client);
+  
+    StaticJsonBuffer<200> jsonBuffer;
+    JsonObject& root = jsonBuffer.createObject();
 
 
-  delay(1000);
+    root["family"] = family;
+    root["name"] = name;
+    root["shuntvoltage"] = shuntvoltage;
+    root["busvoltage"] = busvoltage;
+    root["current"] = current;
+    root["loadvoltage"] = loadvoltage;
  
+    WiFiClientPrint<200> p(client);
+
+    root.printTo(p);
+    p.stop();
+   
+    } else {
+        Serial.println("Attempting reconnect to hub");
+        connectToHub();
+        delay(2000);
+    }
+   
+}
+
+void connectToHub() {
+
+  if (!client.connect("192.168.10.1", 3215)) {
+  //  Serial.println("connection to hub failed");
+    return;
+    
+  } else {
+    return;
+    }
 }
 
 // Function to measure current
@@ -108,4 +136,5 @@ float measureCurrent() {
  
   return current;
 }
+
 
