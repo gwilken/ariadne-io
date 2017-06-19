@@ -8,11 +8,10 @@ const gps = require("gps");
 const motor = require("motor");
 const wireless = require("wireless");
 
-
+var telemetry = {};
+const realTimeInterval = 3000;
 
 //log to db
-
-
 
 //send to relay via WebSocket
 
@@ -63,5 +62,22 @@ module.exports = function(app) {
 
     };
   };
+
+
+  setInterval(function() {
+
+    wss.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send( JSON.stringify( telemetry ) );
+      };
+    });
+
+    if(connectExternal) {
+      if (relayWs.readyState === WebSocket.OPEN) {
+        relayWs.send( JSON.stringify( telemetry ) );
+      };
+    };
+
+  }, realTimeInterval);
 
 }
