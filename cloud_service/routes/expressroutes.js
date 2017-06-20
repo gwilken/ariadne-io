@@ -14,8 +14,6 @@ router.get('/history/:name/:field', function(req, res) {
     res.json(doc);
   })
 
-  res.send('ok');
-
 });
 
 
