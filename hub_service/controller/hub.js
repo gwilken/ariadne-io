@@ -51,9 +51,8 @@ var reconnect = function () {
       })
   } else
 
-      if (ws.readyState !== WebSocket.OPEN) {
+      if (ws.readyState === WebSocket.OPEN) {
         console.log('Reconnected.');
-        break;
       }
 };
 
