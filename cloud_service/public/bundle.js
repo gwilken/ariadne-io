@@ -21155,7 +21155,7 @@
 	        labels: _this.props.data.name,
 	        datasets: [{
 	          label: 'Current In',
-	          data: _this.props.data.current,
+	          data: [_this.props.data.current],
 	          backgroundColor: 'cyan',
 	          borderWidth: 1
 	        }]

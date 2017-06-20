@@ -100,7 +100,7 @@ class Test extends React.Component {
         datasets: [
           {
             label: 'Current In',
-            data: this.props.data.current,
+            data: [this.props.data.current],
             backgroundColor: 'cyan',
             borderWidth: 1
           }
