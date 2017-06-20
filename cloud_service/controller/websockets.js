@@ -11,7 +11,7 @@ wss.on('connection', function connection(ws) {
 
     if(mongo.collection) {
 
-        var obj = telemetry {}
+        var telemetry = {};
 
         if(data.name) {
           telemetry[data.name] = data;
