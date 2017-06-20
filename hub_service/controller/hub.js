@@ -49,9 +49,12 @@ var reconnect = function () {
       console.log('Server not found.');
       setTimeout(reconnect, 3000);
       })
+  } else
 
-  }  else return
-
+      if (ws.readyState !== WebSocket.OPEN) {
+        console.log('Reconnected.');
+        sendData();
+      }
 };
 
   // wss.on('connection', (ws) => {
@@ -85,7 +88,7 @@ var reconnect = function () {
   //
   // }, realTimeInterval);
 
-
+sendData = function() {
 
   setInterval(function() {
     if (ws.readyState === WebSocket.OPEN) {
@@ -105,5 +108,6 @@ var reconnect = function () {
 
     })
   });
+};
 
   sensorServer.listen(3215, '192.168.10.1');
