@@ -26,13 +26,15 @@ wss.on('connection', function connection(ws) {
 
         if(count > 400) {
 
+          console.log(telemetry);
+
           db.collection.insertOne(telemetry, function(err, res) {
             if(err) console.log(err);
           });
 
-        }
+          count = 0;
 
-        console.log(telemetry);
+        }
     }
 
 
