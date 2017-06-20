@@ -46,6 +46,10 @@
 
 	"use strict";
 
+	var _react = __webpack_require__(170);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactDom = __webpack_require__(1);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
