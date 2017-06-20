@@ -1,12 +1,19 @@
-
 const WebSocket = require('ws');
+const mongo = require("../model/mongo.js");
 
 const wss = new WebSocket.Server({ port: 8080 });
 
 wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
+
+  ws.on('message', function incoming(packet) {
+
+    //console.log('received: %s', message);
+
+    var temp = JSON.parse(packet);
+    console.log(temp);
+
   });
+
 });
 
 
