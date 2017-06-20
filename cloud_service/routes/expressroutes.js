@@ -11,13 +11,7 @@ router.get('/history/:name/:field', function(req, res) {
 
   mongo.collection.find(
     {},
-    { _id: 0,
-    telemetry: {
-      "Solar Controller Monitor" : {
-        current : 1
-      }
-    }
-    }
+    {"telemetry.'Solar Controller Monitor'.current" : 1}
   ).toArray( function(err, doc) {
 
     res.json(doc);
