@@ -9,19 +9,17 @@ var app = express();
 
 //var PORT = process.env.PORT || 80;
 
-var handleClient = function (socket) {
+const WebSocket = require('ws');
 
-    socket.on("test", function(data) {
-        console.log(data);
-    });
+const wss = new WebSocket.Server({ port: 8080 });
 
-};
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
 
-var server = require("http").Server(app);
-var io = require("socket.io")(server);
-
-io.on("connection", handleClient);
-
+  ws.send('something');
+});
 
 
 
