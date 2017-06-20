@@ -42,7 +42,7 @@ module.exports = function(app) {
 
   var connectExternalServer = function () {
 
-    remoteServer = new WebSocket( url.format('http://www.rednightsky.com') );
+    remoteServer = new WebSocket( url.format('ws://www.rednightsky.com') );
 
     remoteServer.on('open', function() {
       console.log('Connected to external server.');
