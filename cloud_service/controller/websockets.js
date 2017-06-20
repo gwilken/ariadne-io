@@ -3,7 +3,9 @@ const mongo = require("../model/mongo.js");
 
 const wss = new WebSocket.Server({ port: 8080 });
 
-var telemetry = {};
+var telemetry = {
+  createdAt: null
+};
 var count = 0;
 
 wss.on('connection', function connection(ws) {
@@ -24,7 +26,7 @@ wss.on('connection', function connection(ws) {
 
         count++;
 
-        if(count >= 200) {
+        if(count >= 100) {
 
           telemetry.createdAt = Date.now();
 
