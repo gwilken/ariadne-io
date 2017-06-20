@@ -9,7 +9,7 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var sensor = {};
-var ws = null;
+var ws;
 const realTimeInterval = 3000;
 
 
@@ -38,6 +38,37 @@ var connect = function () {
     console.log('Connection to external server closed.');
     setTimeout(connect, 3000);
   };
+
+
+  if (ws.readyState == WebSocket.OPEN) {
+
+    setInterval(function() {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send( JSON.stringify( gps ) );
+        ws.send( JSON.stringify( motor ) );
+      };
+    }, 1000);
+
+
+    const sensorServer = net.createServer(function(socket) {
+      socket.on("data", function(data) {
+
+        try {
+          sensor = JSON.parse(data);
+
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send( JSON.stringify( sensor ) );
+          };
+
+        } catch(err) {}
+
+      })
+    });
+
+    sensorServer.listen(3215, '192.168.10.1');
+
+  }
+
 }
 
 connect();
@@ -92,32 +123,3 @@ connect();
   //
   //
   // }, realTimeInterval);
-
-  if (ws.readyState === WebSocket.OPEN) {
-
-    setInterval(function() {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send( JSON.stringify( gps ) );
-        ws.send( JSON.stringify( motor ) );
-      };
-    }, 1000);
-
-
-    const sensorServer = net.createServer(function(socket) {
-      socket.on("data", function(data) {
-
-        try {
-          sensor = JSON.parse(data);
-
-          if (ws.readyState === WebSocket.OPEN) {
-            ws.send( JSON.stringify( sensor ) );
-          };
-
-        } catch(err) {}
-
-      })
-    });
-
-    sensorServer.listen(3215, '192.168.10.1');
-
-  }
