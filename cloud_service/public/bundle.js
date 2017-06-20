@@ -21074,64 +21074,42 @@
 	// 21.41
 
 
-	var chartOptions = {
-	  //onClick: graphClickEvent,
-	  maintainAspectRatio: false,
-	  hover: {
-	    animationDuration: 0
-	  },
-	  legend: {
-	    display: false
-	  },
-	  scales: {
-	    yAxes: [{
-	      ticks: {
-	        beginAtZero: true
-	      },
-	      display: false
-	    }],
-	    xAxes: [{
-	      display: false
-	    }]
-	  }
+	// var barChartConfig = {
+	//
+	//       layout: {
+	//         padding: {
+	//           left: 15,
+	//         },
+	//       },
+	//       tooltips: {
+	//         enabled: true,
+	//       },
+	//       legend: {
+	//         display: false,
+	//       },
+	//       // animation: {
+	//       //   duration: 1000,
+	//       // },
+	//       responsive: true,
+	//       maintainAspectRatio: false,
+	//       scales: {
+	//         yAxes: [{
+	//           ticks: {
+	//             display: false,
+	//           },
+	//           barThickness: 120,
+	//           display: false,
+	//         }],
+	//         xAxes: [{
+	//           gridLines: {
+	//             display: false,
+	//             drawTicks: true,
+	//           },
+	//         }]
+	//       }
+	//
+	// };
 
-	  // var barChartConfig = {
-	  //
-	  //       layout: {
-	  //         padding: {
-	  //           left: 15,
-	  //         },
-	  //       },
-	  //       tooltips: {
-	  //         enabled: true,
-	  //       },
-	  //       legend: {
-	  //         display: false,
-	  //       },
-	  //       // animation: {
-	  //       //   duration: 1000,
-	  //       // },
-	  //       responsive: true,
-	  //       maintainAspectRatio: false,
-	  //       scales: {
-	  //         yAxes: [{
-	  //           ticks: {
-	  //             display: false,
-	  //           },
-	  //           barThickness: 120,
-	  //           display: false,
-	  //         }],
-	  //         xAxes: [{
-	  //           gridLines: {
-	  //             display: false,
-	  //             drawTicks: true,
-	  //           },
-	  //         }]
-	  //       }
-	  //
-	  // };
-
-	};
 	var Test = function (_React$Component) {
 	  _inherits(Test, _React$Component);
 
@@ -21141,36 +21119,14 @@
 	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
 
 	    _this.state = {
-
 	      name: _this.props.data.name
-
 	    };
-
 	    return _this;
 	  }
 
 	  _createClass(Test, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps() {}
-
-	    // handleUpdate(event) {
-	    //   this.props.update(event.target.value);
-	    // }
-	    //
-	    // handleDelete(event) {
-	    //   this.props.delete(event.target.value);
-	    // }
-
-
-	    // prettyTime() {
-	    //   var updated = moment(this.state.updatedAt).calendar();
-	    //   return(updated);
-	    // }
-
-	  }, {
 	    key: 'render',
 	    value: function render() {
-
 	      var graphData = {
 	        labels: [this.props.data.name],
 	        datasets: [{
@@ -21181,39 +21137,55 @@
 	        }]
 	      };
 
-	      return (
+	      var chartOptions = {
+	        maintainAspectRatio: false,
+	        hover: {
+	          animationDuration: 0
+	        },
+	        legend: {
+	          display: false
+	        },
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              beginAtZero: true
+	            },
+	            display: false
+	          }],
+	          xAxes: [{
+	            display: false
+	          }]
+	        }
+	      };
 
-	        //<div>test rendered</div>
-
+	      return _react2.default.createElement(
+	        'div',
+	        null,
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: graphData,
+	            options: chartOptions,
+	            width: 800,
+	            height: 150
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'titlebar' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'graphContainer' },
-	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: graphData,
-	              options: chartOptions,
-	              width: 800,
-	              height: 110
-	            })
+	            'span',
+	            { className: 'search-title' },
+	            ' ',
+	            this.state.name,
+	            ' '
 	          ),
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'search-title' },
-	              ' ',
-	              this.state.name,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              null,
-	              ' ',
-	              this.props.data.current,
-	              ' '
-	            )
+	            'p',
+	            null,
+	            ' ',
+	            this.props.data.current,
+	            ' '
 	          )
 	        )
 	      );

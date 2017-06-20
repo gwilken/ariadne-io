@@ -20,27 +20,7 @@ import {HorizontalBar} from 'react-chartjs-2';
 // 21.41
 
 
-const chartOptions = {
-//onClick: graphClickEvent,
-  maintainAspectRatio: false,
-  hover: {
-    animationDuration: 0
-  },
-  legend: {
-    display: false
-  },
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero: true
-      },
-      display: false
-  }],
-  xAxes: [{
-    display: false
-  }]
-  }
-}
+
 
 // var barChartConfig = {
 //
@@ -84,37 +64,11 @@ class Test extends React.Component {
     super(props);
 
     this.state = {
-
       name: this.props.data.name,
-
-
-
     }
-
   }
-
-  componentWillReceiveProps() {
-
-
-
-  }
-
-  // handleUpdate(event) {
-  //   this.props.update(event.target.value);
-  // }
-  //
-  // handleDelete(event) {
-  //   this.props.delete(event.target.value);
-  // }
-
-
-  // prettyTime() {
-  //   var updated = moment(this.state.updatedAt).calendar();
-  //   return(updated);
-  // }
 
   render() {
-
     var graphData = {
       labels: [this.props.data.name],
       datasets: [
@@ -124,20 +78,38 @@ class Test extends React.Component {
           backgroundColor: 'yellow',
           borderWidth: 1
         }
-    ]
+      ]
+    }
+
+    const chartOptions = {
+      maintainAspectRatio: false,
+      hover: {
+        animationDuration: 0
+      },
+      legend: {
+        display: false
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          },
+          display: false
+      }],
+      xAxes: [{
+        display: false
+      }]
+      }
     }
 
     return(
-
-      //<div>test rendered</div>
-
       <div>
         <div className="graphContainer">
 
           <HorizontalBar data={graphData}
               options={chartOptions}
               width={800}
-              height={110}
+              height={150}
           />
 
         </div>
@@ -150,7 +122,6 @@ class Test extends React.Component {
         </div>
 
       </div>
-
     )
   }
 
