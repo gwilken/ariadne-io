@@ -1,15 +1,14 @@
 
-const server = require('http').createServer();
-const io = require('socket.io')(server);
+const WebSocket = require('ws');
 
-server.listen(3000);
+const wss = new WebSocket.Server({ port: 8080 });
 
-
-io.on('connect', (socket) => {
-
-  console.log('connected.');
-
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+  });
 });
+
 
     //
     //
