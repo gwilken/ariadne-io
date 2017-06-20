@@ -21167,6 +21167,13 @@
 	              ' ',
 	              this.state.name,
 	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              ' ',
+	              this.props.data.current,
+	              ' '
 	            )
 	          )
 	        )

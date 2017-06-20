@@ -103,6 +103,8 @@ class Test extends React.Component {
         <div className="titlebar">
           <span className="search-title"> {this.state.name} </span>
 
+          <p> {this.props.data.current} </p>
+
         </div>
 
       </div>
