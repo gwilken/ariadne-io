@@ -7,7 +7,7 @@ const router = new express.Router();
 
 router.post('/history', function(req, res) {
 
-  console.log(req.body);
+  console.log('history route hit', req.body);
 
   //
   // mongo.collection.find({}).sort( {createdAt: -1} ).toArray(function( err, docs) {

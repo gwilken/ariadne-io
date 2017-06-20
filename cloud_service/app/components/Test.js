@@ -39,6 +39,7 @@ class Test extends React.Component {
          field: 'current'
        }
      })
+
   }
 
   componentWillReceiveProps(nextProps) {
