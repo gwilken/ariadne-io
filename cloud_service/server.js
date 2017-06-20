@@ -11,7 +11,10 @@ var app = express();
 
 var handleClient = function (socket) {
 
-    socket.emit("test", {user: "nodesource", text: "Hello, world!"});
+    socket.on("test", function(data) {
+        console.log(data);
+    });
+
 };
 
 var server = require("http").Server(app);
