@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongo = require("./model/mongo.js");
+//const mongo = require("./model/mongo.js");
 const routes = require("./routes/expressroutes");
 
 var app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 //app.use("/", routes);
 
-mongo.connect();
+//mongo.connect();
 
 app.listen(PORT, function() {
   console.log("Server listening on port", PORT);
