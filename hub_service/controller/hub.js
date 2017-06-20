@@ -43,17 +43,12 @@ var reconnect = function () {
 
     console.log('Attempting to reconnect to external server...');
 
+    ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-      ws = new WebSocket('ws://www.rednightsky.com:8080');
-
-      ws.on('error', function() {
-        console.log('caught?');
-      })
-
-      console.log('No connection.');
-
-
+    ws.on('error', function() {
+      console.log('Server not found.');
       setTimeout(reconnect, 3000);
+      })
 
   }  else return
 
