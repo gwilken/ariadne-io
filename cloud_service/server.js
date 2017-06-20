@@ -5,7 +5,7 @@ const routes = require("./routes/expressroutes");
 
 var app = express();
 
-require("./controller/socketListen")(app);
+require("./controller/socketListen");
 
 //var PORT = process.env.PORT || 80;
 
