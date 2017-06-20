@@ -3,6 +3,8 @@ const mongo = require("../model/mongo.js");
 
 const wss = new WebSocket.Server({ port: 8080 });
 
+var telemetry = {};
+
 wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(packet) {
@@ -10,8 +12,6 @@ wss.on('connection', function connection(ws) {
     var data = JSON.parse(packet);
 
     if(mongo.collection) {
-
-        var telemetry = {};
 
         if(data.name) {
           telemetry[data.name] = data;
@@ -21,9 +21,7 @@ wss.on('connection', function connection(ws) {
           telemetry[data.family] = data;
         }
 
-
         console.log(telemetry);
-
     }
 
 
@@ -34,6 +32,5 @@ wss.on('connection', function connection(ws) {
     });
 
   });
-
 
 });
