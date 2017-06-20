@@ -5,22 +5,17 @@ const routes = require("./routes/expressroutes");
 
 var app = express();
 
-//require("./controller/hub")(app);
+const WebSocket = require('ws');
 
-var io = require('socket.io-client')
-var socket = io.connect('http://www.rednightsky.com', {reconnect: true});
+const ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-console.log('2');
-
-// Add a connect listener
-socket.on('connect', function(socket) {
-    console.log('Connected!');
+ws.on('open', function open() {
+  ws.send('something');
 });
-
-socket.emit('test', 'tobi', function (data) {
-  console.log(data); // data will be 'woot'
+ 
+ws.on('message', function incoming(data) {
+  console.log(data);
 });
-//var PORT = process.env.PORT || 80;
 
 var PORT = 80;
 
