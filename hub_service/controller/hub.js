@@ -23,21 +23,21 @@ module.exports = function(app) {
 
 
 
-  wss.on('connection', (ws) => {
-    console.log('Websocket client connected...');
-
-    wss.on('error', function(err) {
-      console.log('error at web socket server:', err);
-    });
-
-    ws.on('close', () => {
-      console.log('Client disconnected');
-    });
-
-    ws.on('error', function(err) {
-      console.log('error at web socket:', err);
-    });
-  });
+  // wss.on('connection', (ws) => {
+  //   console.log('Websocket client connected...');
+  //
+  //   wss.on('error', function(err) {
+  //     console.log('error at web socket server:', err);
+  //   });
+  //
+  //   ws.on('close', () => {
+  //     console.log('Client disconnected');
+  //   });
+  //
+  //   ws.on('error', function(err) {
+  //     console.log('error at web socket:', err);
+  //   });
+  // });
 
 
   var connectExternalServer = function () {
