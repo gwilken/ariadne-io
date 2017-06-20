@@ -93,23 +93,31 @@ connect();
   //
   // }, realTimeInterval);
 
-  setInterval(function() {
-    if (ws.readyState === WebSocket.OPEN) {
-      ws.send( JSON.stringify( gps ) );
-      ws.send( JSON.stringify( motor ) );
-    };
-  }, 1000);
+  if (ws.readyState === WebSocket.OPEN) {
 
-
-  const sensorServer = net.createServer(function(socket) {
-    socket.on("data", function(data) {
-      sensor = JSON.parse(data);
-
+    setInterval(function() {
       if (ws.readyState === WebSocket.OPEN) {
-        ws.send( JSON.stringify( sensor ) );
+        ws.send( JSON.stringify( gps ) );
+        ws.send( JSON.stringify( motor ) );
       };
+    }, 1000);
 
-    })
-  });
 
-  sensorServer.listen(3215, '192.168.10.1');
+    const sensorServer = net.createServer(function(socket) {
+      socket.on("data", function(data) {
+
+        try {
+          sensor = JSON.parse(data);
+
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send( JSON.stringify( sensor ) );
+          };
+
+        } catch(err) {}
+
+      })
+    });
+
+    sensorServer.listen(3215, '192.168.10.1');
+
+  }
