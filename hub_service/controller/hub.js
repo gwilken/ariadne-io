@@ -1,5 +1,4 @@
-const http = require('http');
-const WebSocket = require('ws');
+
 const mongo = require("../model/mongo.js");
 const url = require('url');
 const net = require("net");
@@ -9,18 +8,38 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 
+
+
+
+
+
 module.exports = function(app) {
 
-  // const server = http.createServer(app);
-  // const wss = new WebSocket.Server({ server });
+  const server = require('http').createServer();
+  const io = require('socket.io')(server);
+
+  server.listen(3000);
+
+  var socket = io();
+
+  socket.connect('http://www.rednightsky.com:3000');
+
+  io.on('connect', (socket) => {
+
+    console.log('connected.');
+
+  });
+
+
 
   var remoteServer = null;
-
   const realTimeInterval = 3000;
 
   var sensor = {};
 
+  //io.on('connection', function(){ /* … */ });
 
+  server.listen(3000);
 
 
   // wss.on('connection', (ws) => {

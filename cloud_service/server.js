@@ -5,9 +5,22 @@ const routes = require("./routes/expressroutes");
 
 var app = express();
 
-require("./controller/socketListen");
+//require("./controller/socketListen");
 
 //var PORT = process.env.PORT || 80;
+
+var handleClient = function (socket) {
+
+    socket.emit("test", {user: "nodesource", text: "Hello, world!"});
+};
+
+var server = require("http").Server(app);
+var io = require("socket.io")(server);
+
+io.on("connection", handleClient);
+
+
+
 
 var PORT = 80;
 
