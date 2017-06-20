@@ -37,9 +37,10 @@ var connect = function () {
     console.log('Connection to external server closed.');
     setTimeout(connect, 3000);
   };
+}
 
+connect();
 
-  if (ws) {
 
     setInterval(function() {
       if (ws.readyState === WebSocket.OPEN) {
@@ -65,12 +66,6 @@ var connect = function () {
     });
 
     sensorServer.listen(3215, '192.168.10.1');
-
-  }
-
-}
-
-connect();
 
   //
   // if (ws.readyState !== WebSocket.OPEN) {
