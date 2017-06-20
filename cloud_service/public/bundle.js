@@ -21140,44 +21140,46 @@
 
 	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
 
-	    console.log(props);
-
 	    _this.state = {
 
-	      name: _this.props.data.name,
-
-	      data: {
-	        labels: [_this.props.data.name],
-	        datasets: [{
-	          label: 'Current In',
-	          data: [_this.props.data.current],
-	          backgroundColor: 'yellow',
-	          borderWidth: 1
-	        }]
-	      }
+	      name: _this.props.data.name
 
 	    };
 
 	    return _this;
 	  }
 
-	  // handleUpdate(event) {
-	  //   this.props.update(event.target.value);
-	  // }
-	  //
-	  // handleDelete(event) {
-	  //   this.props.delete(event.target.value);
-	  // }
-
-
-	  // prettyTime() {
-	  //   var updated = moment(this.state.updatedAt).calendar();
-	  //   return(updated);
-	  // }
-
 	  _createClass(Test, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {}
+
+	    // handleUpdate(event) {
+	    //   this.props.update(event.target.value);
+	    // }
+	    //
+	    // handleDelete(event) {
+	    //   this.props.delete(event.target.value);
+	    // }
+
+
+	    // prettyTime() {
+	    //   var updated = moment(this.state.updatedAt).calendar();
+	    //   return(updated);
+	    // }
+
+	  }, {
 	    key: 'render',
 	    value: function render() {
+
+	      graphData = {
+	        labels: [this.props.data.name],
+	        datasets: [{
+	          label: 'Current In',
+	          data: [this.props.data.current],
+	          backgroundColor: 'yellow',
+	          borderWidth: 1
+	        }]
+	      };
 
 	      return (
 
@@ -21189,7 +21191,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
-	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: this.state.data,
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: graphData,
 	              options: chartOptions,
 	              width: 800,
 	              height: 110

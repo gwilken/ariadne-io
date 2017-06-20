@@ -83,25 +83,19 @@ class Test extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.state = {
 
       name: this.props.data.name,
 
-      data: {
-        labels: [this.props.data.name],
-        datasets: [
-          {
-            label: 'Current In',
-            data: [this.props.data.current],
-            backgroundColor: 'yellow',
-            borderWidth: 1
-          }
-      ]
-      }
+
 
     }
+
+  }
+
+  componentWillReceiveProps() {
+
+
 
   }
 
@@ -121,6 +115,18 @@ class Test extends React.Component {
 
   render() {
 
+    graphData = {
+      labels: [this.props.data.name],
+      datasets: [
+        {
+          label: 'Current In',
+          data: [this.props.data.current],
+          backgroundColor: 'yellow',
+          borderWidth: 1
+        }
+    ]
+    }
+
     return(
 
       //<div>test rendered</div>
@@ -128,7 +134,7 @@ class Test extends React.Component {
       <div>
         <div className="graphContainer">
 
-          <HorizontalBar data={this.state.data}
+          <HorizontalBar data={graphData}
               options={chartOptions}
               width={800}
               height={110}
