@@ -37,12 +37,15 @@ ws.onclose = function() {
 
   setTimeout(function() {
     console.log('Attempting to reconnect to external server...');
-    connect();
+
   }, 5000);
 };
 
-var connect = function () {
-  ws = new WebSocket('ws://www.rednightsky.com:8080');
+var reconnect = function () {
+  try {
+    ws = new WebSocket('ws://www.rednightsky.com:8080');
+  } catch(e) {}
+
 };
 
   // wss.on('connection', (ws) => {
