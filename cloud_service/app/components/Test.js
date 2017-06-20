@@ -55,26 +55,20 @@ var barChartConfig = {
       legend: {
         display: false,
       },
-      animation: {
-        duration: 1000,
-      },
+      // animation: {
+      //   duration: 1000,
+      // },
       responsive: true,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
           ticks: {
-            min: 0,
-            max: 0,
             display: false,
           },
           barThickness: 120,
           display: false,
         }],
         xAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-          },
           gridLines: {
             display: false,
             drawTicks: true,
