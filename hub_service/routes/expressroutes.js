@@ -1,7 +1,7 @@
 const ObjectID = require('mongodb').ObjectID;
 const express = require("express");
 const path = require("path");
-const db = require("../models/mongo");
+const db = require("../model/mongo");
 
 const router = new express.Router();
 
@@ -87,3 +87,5 @@ router.get('/automation/:command', function(req, res) {
 router.get('/config', function (req, res) {
   console.log('config route');
 });
+
+module.exports = router;

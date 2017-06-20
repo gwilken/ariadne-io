@@ -1,11 +1,12 @@
 const http = require('http');
 const WebSocket = require('ws');
-const mongo = require("../models/mongo.js");
+const mongo = require("../model/mongo.js");
+const url = require('url');
 
-const automation = require("./automation");
+//const automation = require("./automation");
 const gps = require("./gps");
-const motor = require("./motor");
-const sensors = require("./wireless");
+//const motor = require("./motor");
+//const sensors = require("./wireless");
 
 var telemetry = {};
 const realTimeInterval = 3000;
@@ -18,6 +19,8 @@ module.exports = function(app) {
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });
   const relayUrl  = url.format('http://www.rednightsky.com');;
+  var relayWs = null;
+
 
   wss.on('connection', (ws) => {
     console.log('Websocket client connected...');
@@ -37,7 +40,8 @@ module.exports = function(app) {
 
 
   var connectExternalServer = function () {
-    const relayWs = new WebSocket(relayUrl);
+    
+    relayWs = new WebSocket(relayUrl);
 
     relayWs.on('open', function() {
       console.log('Connected to external server.');
@@ -73,6 +77,15 @@ module.exports = function(app) {
 
 
   }, realTimeInterval);
+
+
+
+  setInterval(function() {
+
+    console.log(gps);
+
+  }, 1000);
+
 
   connectExternalServer();
 

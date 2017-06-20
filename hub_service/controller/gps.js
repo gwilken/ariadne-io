@@ -3,7 +3,7 @@ const nmea = require("nmea-simple");
 
 var gps = {
   latitude: null,
-  longitide: null,
+  longitude: null,
   speed: null,
   tmg: null,
   siv: null
@@ -42,7 +42,7 @@ gpsSocket.on("data", function(data) {
 gpsSocket.on("close", function(data) {
   gps.latitude = "Not Availabe";
   gps.longitude = "Not Availabe";
-  gps.speed.= 0;
+  gps.speed = 0;
   gps.lastAverage = 0;
   gps.buffer = [],
   gps.tmg = "Not Availabe";

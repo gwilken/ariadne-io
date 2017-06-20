@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongo = require("./models/mongo.js");
+const mongo = require("./model/mongo.js");
 const routes = require("./routes/expressroutes");
 
 var app = express();
 
-require("../controller/hub")(app);
+require("./controller/hub")(app);
 
 var PORT = process.env.PORT || 80;
 
