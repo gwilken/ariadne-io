@@ -109,6 +109,7 @@ sendData = function() {
 
     })
   });
-};
 
   sensorServer.listen(3215, '192.168.10.1');
+
+};
