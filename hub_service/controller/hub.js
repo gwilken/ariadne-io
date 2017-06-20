@@ -37,7 +37,7 @@ ws.onclose = function() {
 
   setTimeout(function() {
     console.log('Attempting to reconnect to external server...');
-
+    reconnect();
   }, 5000);
 };
 
