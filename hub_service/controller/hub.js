@@ -27,7 +27,7 @@ var connect = function () {
 
   ws.on('error', function(err) {
     console.log('error at web socket:', err);
-    reconnect();
+    setTimeout(connect, 3000);
   });
 
   ws.on('close', () => {
