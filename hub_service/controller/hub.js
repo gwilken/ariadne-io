@@ -9,6 +9,7 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var sensor = {};
+var sensorServer = null;
 var ws = null;
 const realTimeInterval = 3000;
 
@@ -98,7 +99,7 @@ sendData = function() {
   }, 1000);
 
 
-  const sensorServer = net.createServer(function(socket) {
+  sensorServer = net.createServer(function(socket) {
     socket.on("data", function(data) {
       sensor = JSON.parse(data);
 
