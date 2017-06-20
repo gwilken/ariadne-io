@@ -8,11 +8,9 @@ const net = require("net");
 const gps = require("./gps");
 const motor = require("./motor");
 
-
 var sensor = {};
 var ws = null;
 const realTimeInterval = 3000;
-
 
 ws = new WebSocket('ws://www.rednightsky.com:8080');
 
@@ -34,17 +32,24 @@ ws.on('close', () => {
 
 ws.onclose = function() {
   console.log('Connection to external server closed.');
-
-  setTimeout(function() {
-    console.log('Attempting to reconnect to external server...');
-    reconnect();
-  }, 5000);
+  reconnect();
 };
 
+
 var reconnect = function () {
-  try {
-    ws = new WebSocket('ws://www.rednightsky.com:8080');
-  } catch(e) {}
+
+  if (ws.readyState !== WebSocket.OPEN) {
+
+    console.log('Attempting to reconnect to external server...');
+
+    try {
+      ws = new WebSocket('ws://www.rednightsky.com:8080');
+    }
+      catch(e) {}
+
+      setTimeout(reconnect, 3000);
+
+  }  else return
 
 };
 
