@@ -115,7 +115,7 @@ class Test extends React.Component {
 
   render() {
 
-    graphData = {
+    var graphData = {
       labels: [this.props.data.name],
       datasets: [
         {

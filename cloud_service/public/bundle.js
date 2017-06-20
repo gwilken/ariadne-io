@@ -21171,7 +21171,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      graphData = {
+	      var graphData = {
 	        labels: [this.props.data.name],
 	        datasets: [{
 	          label: 'Current In',
