@@ -24,6 +24,7 @@ ws.on('message', function incoming(data) {
 
 ws.on('error', function(err) {
   console.log('error at web socket:', err);
+  reconnect();
 });
 
 ws.on('close', () => {
@@ -45,7 +46,10 @@ var reconnect = function () {
     try {
       ws = new WebSocket('ws://www.rednightsky.com:8080');
     }
-      catch(e) {}
+
+    catch(e) {
+      console.log('No connection.');
+    }
 
       setTimeout(reconnect, 3000);
 
