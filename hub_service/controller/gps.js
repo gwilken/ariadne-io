@@ -2,6 +2,7 @@ const net = require("net");
 const nmea = require("nmea-simple");
 
 var gps = {
+  family: 'navigation',
   latitude: null,
   longitude: null,
   speed: null,

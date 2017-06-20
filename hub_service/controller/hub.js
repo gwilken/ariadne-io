@@ -2,24 +2,37 @@ const http = require('http');
 const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
 const url = require('url');
+const net = require("net");
 
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
-//const sensors = require("./wireless");
 
-var telemetry = {};
-const realTimeInterval = 3000;
-
-//log to db
-//send to relay via WebSocket
 
 module.exports = function(app) {
 
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });
-  const relayUrl  = url.format('http://www.rednightsky.com');;
+
+  const relayUrl  = url.format('http://www.rednightsky.com');
   var relayWs = null;
+  const realTimeInterval = 3000;
+
+  var sensor = {};
+
+  const sensorServer = net.createServer(function(socket) {
+    socket.on("data", function(data) {
+      sensor = JSON.parse(data);
+
+      if (relayWs.readyState === WebSocket.OPEN) {
+        relayWs.send( JSON.stringify( sensor ) );
+      };
+
+    })
+  });
+
+
+  sensorServer.listen(3215, '192.168.10.1');
 
 
   wss.on('connection', (ws) => {
@@ -40,7 +53,7 @@ module.exports = function(app) {
 
 
   var connectExternalServer = function () {
-    
+
     relayWs = new WebSocket(relayUrl);
 
     relayWs.on('open', function() {
@@ -57,34 +70,34 @@ module.exports = function(app) {
       setTimeout(function() {
         console.log('Attempting to reconnect to external server...');
         connectExternalServer();
-      }, 10000);
+      }, 5000);
 
     };
   };
 
+  //
+  // setInterval(function() {
+  //
+  //   wss.clients.forEach((client) => {
+  //     if (client.readyState === WebSocket.OPEN) {
+  //       client.send( JSON.stringify( sensor ) );
+  //     };
+  //   });
+  //
+  //     if (relayWs.readyState === WebSocket.OPEN) {
+  //       relayWs.send( JSON.stringify( sensor ) );
+  //     };
+  //
+  //
+  // }, realTimeInterval);
+
+
 
   setInterval(function() {
-
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send( JSON.stringify( telemetry ) );
-      };
-    });
-
-      if (relayWs.readyState === WebSocket.OPEN) {
-        relayWs.send( JSON.stringify( telemetry ) );
-      };
-
-
-  }, realTimeInterval);
-
-
-
-  setInterval(function() {
-
-    console.log('gps data', gps);
-    console.log('motor data', motor);
-
+    if (relayWs.readyState === WebSocket.OPEN) {
+      relayWs.send( JSON.stringify( gps ) );
+      relayWs.send( JSON.stringify( motor ) );
+    };
   }, 1000);
 
 

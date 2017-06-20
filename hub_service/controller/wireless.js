@@ -1,44 +1,16 @@
 const net = require("net");
 
-// wireless listen logic
-obj telemetry = {
-}
+var telemetry = null;
 
 const server = net.createServer(function(socket) {
-	
-
 	socket.on("data", function(data) {
-
-		//console.log(data.toJSON());
-
-		console.log(data.toString());
-
-		//var str = data.toString();
-
-		//msg += str;
-
-		// if (str === '}') {
-
-		// 	try {
-
-		// 		var json = JSON.parse(msg)
-
-		// 		console.log(json);
-
-		// 		msg = '';
-		
-		// 	} 
-
-		// 	catch (e) {
-
-		// 		msg = '';
-		// 	}
-
-		// }
-
+		telemetry = JSON.parse(data);
+		console.log('in wireless.js', telemetry);
 	})
-
-
 });
 
+
+
 server.listen(3215, '192.168.10.1');
+
+module.exports = telemetry;
