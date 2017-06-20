@@ -47,8 +47,10 @@ var reconnect = function () {
 
     ws.on('error', function() {
       console.log('Server not found.');
-      setTimeout(reconnect, 3000);
-      })
+    })
+
+    setTimeout(reconnect, 3000);
+
   } else
 
       if (ws.readyState === WebSocket.OPEN) {
