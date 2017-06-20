@@ -21152,7 +21152,7 @@
 	      name: _this.props.data.name,
 
 	      data: {
-	        labels: _this.props.data.name,
+	        labels: [_this.props.data.name],
 	        datasets: [{
 	          label: 'Current In',
 	          data: [_this.props.data.current],

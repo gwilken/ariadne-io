@@ -96,7 +96,7 @@ class Test extends React.Component {
       name: this.props.data.name,
 
       data: {
-        labels: this.props.data.name,
+        labels: [this.props.data.name],
         datasets: [
           {
             label: 'Current In',
