@@ -8,13 +8,14 @@ const net = require("net");
 const gps = require("./gps");
 const motor = require("./motor");
 
+var ws;
 var sensor = {};
 const realTimeInterval = 3000;
 
 
 var connect = function () {
 
-  var ws = new WebSocket('ws://www.rednightsky.com:8080');
+  ws = new WebSocket('ws://www.rednightsky.com:8080');
 
   ws.on('open', function open() {
     console.log('Websocket connection open.');
