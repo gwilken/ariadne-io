@@ -21074,42 +21074,6 @@
 	// 21.41
 
 
-	// var barChartConfig = {
-	//
-	//       layout: {
-	//         padding: {
-	//           left: 15,
-	//         },
-	//       },
-	//       tooltips: {
-	//         enabled: true,
-	//       },
-	//       legend: {
-	//         display: false,
-	//       },
-	//       // animation: {
-	//       //   duration: 1000,
-	//       // },
-	//       responsive: true,
-	//       maintainAspectRatio: false,
-	//       scales: {
-	//         yAxes: [{
-	//           ticks: {
-	//             display: false,
-	//           },
-	//           barThickness: 120,
-	//           display: false,
-	//         }],
-	//         xAxes: [{
-	//           gridLines: {
-	//             display: false,
-	//             drawTicks: true,
-	//           },
-	//         }]
-	//       }
-	//
-	// };
-
 	var Test = function (_React$Component) {
 	  _inherits(Test, _React$Component);
 
@@ -21119,19 +21083,48 @@
 	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
 
 	    _this.state = {
-	      name: _this.props.data.name
+	      current: []
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Test, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+
+	      fetch('/history', {
+	        method: 'post',
+	        body: {
+	          name: 'solar',
+	          field: 'current'
+	        }
+	      }).then(function (res) {
+	        return res.json();
+	      }).then(function (data) {
+	        return data;
+	      });
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.data.current) {
+
+	        var newCurrent = this.state.current.slice();
+	        newCurrent.push(nextProps);
+	        newCurrent.shift();
+
+	        this.setState({ current: newCurrent });
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+
 	      var graphData = {
 	        labels: [this.props.data.name],
 	        datasets: [{
 	          label: 'Current In',
-	          data: [this.props.data.current],
+	          data: [this.state.current],
 	          backgroundColor: 'yellow',
 	          borderWidth: 1
 	        }]
@@ -21177,7 +21170,7 @@
 	            'span',
 	            { className: 'search-title' },
 	            ' ',
-	            this.state.name,
+	            this.props.data.name,
 	            ' '
 	          ),
 	          _react2.default.createElement(

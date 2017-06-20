@@ -20,61 +20,48 @@ import {HorizontalBar} from 'react-chartjs-2';
 // 21.41
 
 
-
-
-// var barChartConfig = {
-//
-//       layout: {
-//         padding: {
-//           left: 15,
-//         },
-//       },
-//       tooltips: {
-//         enabled: true,
-//       },
-//       legend: {
-//         display: false,
-//       },
-//       // animation: {
-//       //   duration: 1000,
-//       // },
-//       responsive: true,
-//       maintainAspectRatio: false,
-//       scales: {
-//         yAxes: [{
-//           ticks: {
-//             display: false,
-//           },
-//           barThickness: 120,
-//           display: false,
-//         }],
-//         xAxes: [{
-//           gridLines: {
-//             display: false,
-//             drawTicks: true,
-//           },
-//         }]
-//       }
-//
-// };
-
 class Test extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      name: this.props.data.name,
+      current: []
+    }
+  }
+
+  componentDidMount() {
+
+    fetch('/history', {
+       method: 'post',
+       body: {
+         name: 'solar',
+         field: 'current'
+       }
+     })
+     .then((res) => res.json())
+        .then((data) => data);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.data.current) {
+
+      var newCurrent = this.state.current.slice();
+      newCurrent.push(nextProps);
+      newCurrent.shift();
+
+      this.setState({current: newCurrent});
     }
   }
 
   render() {
+
     var graphData = {
       labels: [this.props.data.name],
       datasets: [
         {
           label: 'Current In',
-          data: [this.props.data.current],
+          data: [this.state.current],
           backgroundColor: 'yellow',
           borderWidth: 1
         }
@@ -115,7 +102,7 @@ class Test extends React.Component {
         </div>
 
         <div className="titlebar">
-          <span className="search-title"> {this.state.name} </span>
+          <span className="search-title"> {this.props.data.name} </span>
 
           <p> {this.props.data.current} </p>
 
