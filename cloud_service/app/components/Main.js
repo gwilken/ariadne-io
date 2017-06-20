@@ -11,7 +11,7 @@ class Main extends React.Component {
 
       <div>
 
-        <h1> Rendered </h1>
+        <h1 className="search-title"> Rendered </h1>
 
       </div>
 

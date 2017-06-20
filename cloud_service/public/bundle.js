@@ -20857,7 +20857,7 @@
 	        null,
 	        _react2.default.createElement(
 	          "h1",
-	          null,
+	          { className: "search-title" },
 	          " Rendered "
 	        )
 	      );

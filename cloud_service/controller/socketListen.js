@@ -14,13 +14,3 @@ wss.on('connection', function connection(ws) {
   });
 
 });
-
-
-    //
-    //
-    // ws.on('message', function incoming(data) {
-    //
-    //   var temp = JSON.parse(data);
-    //
-    //   console.log(temp);
-    //
