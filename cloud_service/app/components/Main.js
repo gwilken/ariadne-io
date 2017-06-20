@@ -31,12 +31,19 @@ class Main extends React.Component {
 
   render() {
 
+    var solar;
+    if(this.state.solar) {
+
+      solar = <Test data={this.state.solar} />;
+      
+    }
 
     return(
 
+
       <div>
 
-        <Test key={Date.now()} data={this.state.solar} />
+        {solar}
 
       </div>
 

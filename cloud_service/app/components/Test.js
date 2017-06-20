@@ -51,19 +51,19 @@ class Test extends React.Component {
 
     this.state = {
 
-      // name: this.props.data.name,
-      //
-      // data: {
-      //   labels: this.props.data.name,
-      //   datasets: [
-      //     {
-      //       label: 'Current In',
-      //       data: this.props.data.current,
-      //       backgroundColor: 'cyan',
-      //       borderWidth: 1
-      //     }
-      // ]
-      // }
+      name: this.props.data.name,
+
+      data: {
+        labels: this.props.data.name,
+        datasets: [
+          {
+            label: 'Current In',
+            data: this.props.data.current,
+            backgroundColor: 'cyan',
+            borderWidth: 1
+          }
+      ]
+      }
 
     }
 
@@ -87,25 +87,25 @@ class Test extends React.Component {
 
     return(
 
-      <div>test rendered</div>
+      //<div>test rendered</div>
 
-      // <div>
-      //   <div className="graphContainer">
-      //
-      //     <HorizontalBar data={this.state.data}
-      //         options={chartOptions}
-      //         width={800}
-      //         height={110}
-      //     />
-      //
-      //   </div>
-      //
-      //   <div className="titlebar">
-      //     <span className="search-title"> {this.state.name} </span>
-      //
-      //   </div>
-      //
-      // </div>
+      <div>
+        <div className="graphContainer">
+
+          <HorizontalBar data={this.state.data}
+              options={chartOptions}
+              width={800}
+              height={110}
+          />
+
+        </div>
+
+        <div className="titlebar">
+          <span className="search-title"> {this.state.name} </span>
+
+        </div>
+
+      </div>
 
     )
   }

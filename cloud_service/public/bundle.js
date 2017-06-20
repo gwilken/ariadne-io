@@ -20883,10 +20883,16 @@
 	    key: "render",
 	    value: function render() {
 
+	      var solar;
+	      if (this.state.solar) {
+
+	        solar = _react2.default.createElement(_Test2.default, { data: this.state.solar });
+	      }
+
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(_Test2.default, { key: Date.now(), data: this.state.solar })
+	        solar
 	      );
 	    }
 	  }]);
@@ -21028,7 +21034,7 @@
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21101,19 +21107,17 @@
 
 	    _this.state = {
 
-	      // name: this.props.data.name,
-	      //
-	      // data: {
-	      //   labels: this.props.data.name,
-	      //   datasets: [
-	      //     {
-	      //       label: 'Current In',
-	      //       data: this.props.data.current,
-	      //       backgroundColor: 'cyan',
-	      //       borderWidth: 1
-	      //     }
-	      // ]
-	      // }
+	      name: _this.props.data.name,
+
+	      data: {
+	        labels: _this.props.data.name,
+	        datasets: [{
+	          label: 'Current In',
+	          data: _this.props.data.current,
+	          backgroundColor: 'cyan',
+	          borderWidth: 1
+	        }]
+	      }
 
 	    };
 
@@ -21135,34 +21139,38 @@
 	  // }
 
 	  _createClass(Test, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        "test rendered"
-	      )
+	      return (
 
-	      // <div>
-	      //   <div className="graphContainer">
-	      //
-	      //     <HorizontalBar data={this.state.data}
-	      //         options={chartOptions}
-	      //         width={800}
-	      //         height={110}
-	      //     />
-	      //
-	      //   </div>
-	      //
-	      //   <div className="titlebar">
-	      //     <span className="search-title"> {this.state.name} </span>
-	      //
-	      //   </div>
-	      //
-	      // </div>
+	        //<div>test rendered</div>
 
-	      ;
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: this.state.data,
+	              options: chartOptions,
+	              width: 800,
+	              height: 110
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'search-title' },
+	              ' ',
+	              this.state.name,
+	              ' '
+	            )
+	          )
+	        )
+	      );
 	    }
 	  }]);
 
