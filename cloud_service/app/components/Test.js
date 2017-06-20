@@ -84,25 +84,28 @@ class Test extends React.Component {
   // }
 
   render() {
+
     return(
 
-      <div>
-        <div className="graphContainer">
+      <div>test rendered</div>
 
-          <Bar data={this.state.data}
-              options={chartOptions}
-              width={800}
-              height={110}
-          />
-
-        </div>
-
-        <div className="titlebar">
-          <span className="search-title"> {this.state.name} </span>
-
-        </div>
-
-      </div>
+      // <div>
+      //   <div className="graphContainer">
+      //
+      //     <HorizontalBar data={this.state.data}
+      //         options={chartOptions}
+      //         width={800}
+      //         height={110}
+      //     />
+      //
+      //   </div>
+      //
+      //   <div className="titlebar">
+      //     <span className="search-title"> {this.state.name} </span>
+      //
+      //   </div>
+      //
+      // </div>
 
     )
   }

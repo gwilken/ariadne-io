@@ -21137,30 +21137,32 @@
 	  _createClass(Test, [{
 	    key: "render",
 	    value: function render() {
+
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(
-	          "div",
-	          { className: "graphContainer" },
-	          _react2.default.createElement(Bar, { data: this.state.data,
-	            options: chartOptions,
-	            width: 800,
-	            height: 110
-	          })
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "titlebar" },
-	          _react2.default.createElement(
-	            "span",
-	            { className: "search-title" },
-	            " ",
-	            this.state.name,
-	            " "
-	          )
-	        )
-	      );
+	        "test rendered"
+	      )
+
+	      // <div>
+	      //   <div className="graphContainer">
+	      //
+	      //     <HorizontalBar data={this.state.data}
+	      //         options={chartOptions}
+	      //         width={800}
+	      //         height={110}
+	      //     />
+	      //
+	      //   </div>
+	      //
+	      //   <div className="titlebar">
+	      //     <span className="search-title"> {this.state.name} </span>
+	      //
+	      //   </div>
+	      //
+	      // </div>
+
+	      ;
 	    }
 	  }]);
 
