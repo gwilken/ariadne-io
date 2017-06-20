@@ -21092,12 +21092,10 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/history', {
-	        method: 'POST',
-	        body: {
-	          name: 'solar',
-	          field: 'current'
-	        }
+	      fetch('/history/solar/current').then(function (res) {
+	        return res.json();
+	      }).then(function (data) {
+	        console.log(data);
 	      });
 	    }
 	  }, {

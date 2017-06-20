@@ -32,13 +32,11 @@ class Test extends React.Component {
 
   componentDidMount() {
 
-    fetch('/history', {
-       method: 'POST',
-       body: {
-         name: 'solar',
-         field: 'current'
-       }
-     })
+    fetch('/history/solar/current')
+      .then((res) => res.json())
+        .then(function(data) {
+          console.log(data);
+        });
 
   }
 

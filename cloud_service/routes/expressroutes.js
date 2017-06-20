@@ -5,17 +5,12 @@ const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
-router.post('/history', function(req, res) {
+router.post('/history/:name/:field', function(req, res) {
 
-  console.log('history route hit', req.body);
+  console.log('history route hit', req.params);
 
-  //
-  // mongo.collection.find({}).sort( {createdAt: -1} ).toArray(function( err, docs) {
-  //
-  //   res.json(docs);
-  //
-  // })
-  //
+  res.send('ok');
+
 });
 
 
