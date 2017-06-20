@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const routes = require("./routes/expressroutes");
 var app = express();
 
-require("./controller/socketListen");
+//require("./controller/socketListen");
 
 var PORT = 80;
 
