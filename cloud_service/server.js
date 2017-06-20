@@ -14,7 +14,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 //app.use("/", routes);
 
-//mongo.connect();
+mongo.connect();
 
 app.listen(PORT, function() {
   console.log("Server listening on port", PORT);
