@@ -24,7 +24,7 @@ wss.on('connection', function connection(ws) {
 
         count++;
 
-        if(count >= 400) {
+        if(count >= 200) {
 
           mongo.collection.insert({telemetry}, function(err, res) {
             if(err) console.log(err);

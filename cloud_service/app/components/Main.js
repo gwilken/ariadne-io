@@ -19,7 +19,7 @@ class Main extends React.Component {
     ws.onmessage = function(event) {
 
       var msg = JSON.parse(event.data);
-      console.log(msg);
+      //console.log(msg);
 
       if(msg.name === 'Solar Controller Monitor') {
         this.setState( {solar: msg } );
@@ -35,7 +35,7 @@ class Main extends React.Component {
     if(this.state.solar) {
 
       solar = <Test data={this.state.solar} />;
-      
+
     }
 
     return(
