@@ -20856,11 +20856,12 @@
 	  _createClass(Main, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
+
 	      var ws = new WebSocket('ws://www.rednightsky.com:8080');
 
 	      ws.onmessage = function (event) {
 
-	        var msg = JSON.parse(event);
+	        var msg = JSON.parse(event.data);
 	        console.log(msg);
 	      };
 	    }
