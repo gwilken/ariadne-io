@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const routes = require("./routes/expressroutes");
+const mongo = require("./model/mongo");
 var app = express();
 
 require("./controller/websockets");
