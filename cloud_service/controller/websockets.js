@@ -9,11 +9,20 @@ wss.on('connection', function connection(ws) {
 
     var data = JSON.parse(packet);
 
-    //console.log(data);
-
     if(mongo.collection) {
 
-      console.log('put to db here');
+        var obj = telemetry {}
+
+        if(data.name) {
+          telemetry[data.name] = data;
+        } else
+
+        if(data.family) {
+          telemetry[data.family] = data;
+        }
+
+
+        console.log(telemetry);
 
     }
 
