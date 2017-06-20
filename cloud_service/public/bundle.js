@@ -21028,7 +21028,7 @@
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21095,23 +21095,23 @@
 	  function Test(props) {
 	    _classCallCheck(this, Test);
 
-	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
+	    //console.log(props);
 
-	    console.log(props);
+	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
 
 	    _this.state = {
 
-	      // data: {
-	      //   labels: this.props.obj.titles,
-	      //   datasets: [
-	      //     {
-	      //       label: 'Price',
-	      //       data: this.props.obj.prices,
-	      //       backgroundColor: 'cyan',
-	      //       borderWidth: 1
-	      //     }
-	      // ]
-	      // }
+	      name: _this.props.data.name,
+
+	      data: {
+	        labels: _this.props.data.name,
+	        datasets: [{
+	          label: 'Current In',
+	          data: _this.props.data.current,
+	          backgroundColor: 'cyan',
+	          borderWidth: 1
+	        }]
+	      }
 
 	    };
 
@@ -21133,33 +21133,32 @@
 	  // }
 
 	  _createClass(Test, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
-	        "test rendered"
-	      )
-
-	      // <div>
-	      //   <div className="graphContainer">
-	      //
-	      //     <Bar data={this.state.data}
-	      //         options={chartOptions}
-	      //         width={800}
-	      //         height={110}
-	      //     />
-	      //
-	      //   </div>
-	      //
-	      //   <div className="titlebar">
-	      //     <span className="search-title"> {this.state.target} </span>
-	      //
-	      //   </div>
-	      //
-	      // </div>
-
-	      ;
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(Bar, { data: this.state.data,
+	            options: chartOptions,
+	            width: 800,
+	            height: 110
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'titlebar' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'search-title' },
+	            ' ',
+	            this.state.name,
+	            ' '
+	          )
+	        )
+	      );
 	    }
 	  }]);
 
