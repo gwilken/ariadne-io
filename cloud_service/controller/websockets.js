@@ -24,18 +24,15 @@ wss.on('connection', function connection(ws) {
 
         count++;
 
-        if(count >= 10) {
-
-          console.log('telemetry added to db');
+        if(count >= 400) {
 
           mongo.collection.insert({telemetry}, function(err, res) {
             if(err) console.log(err);
+            console.log('telemetry added to db');
           });
 
           count = 0;
         }
-
-        console.log(count);
 
     }
 
