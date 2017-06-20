@@ -28,7 +28,7 @@ wss.on('connection', function connection(ws) {
 
           console.log('telemetry added to db');
 
-          mongo.collection.insert(telemetry, function(err, res) {
+          mongo.collection.insert({telemetry}, function(err, res) {
             if(err) console.log(err);
           });
 
