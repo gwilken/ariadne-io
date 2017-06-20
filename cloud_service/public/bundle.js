@@ -21098,10 +21098,6 @@
 	          name: 'solar',
 	          field: 'current'
 	        }
-	      }).then(function (res) {
-	        return res.json();
-	      }).then(function (data) {
-	        return data;
 	      });
 	    }
 	  }, {

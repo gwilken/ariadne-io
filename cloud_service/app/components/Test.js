@@ -39,8 +39,6 @@ class Test extends React.Component {
          field: 'current'
        }
      })
-     .then((res) => res.json())
-        .then((data) => data);
   }
 
   componentWillReceiveProps(nextProps) {
