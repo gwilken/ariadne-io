@@ -40,7 +40,7 @@ motorPort.on('data', function (data) {
       data.copy(motorData, 0, i);
       motor.current = ((motorData[9] << 8) + motorData[8]) / 10;
       motor.volts = ((motorData.readUInt8(13) << 8) + motorData.readUInt8(12)) / 100;
-      motor.rpm = round(((motorData[16] << 8) + motorData[15]) / 100, 0);
+      motor.rpm = ((motorData[16] << 8) + motorData[15]) / 100;
       motor.tempAlarm = motorData[19];
     };
 

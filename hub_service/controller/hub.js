@@ -5,7 +5,7 @@ const url = require('url');
 
 //const automation = require("./automation");
 const gps = require("./gps");
-//const motor = require("./motor");
+const motor = require("./motor");
 //const sensors = require("./wireless");
 
 var telemetry = {};
@@ -82,7 +82,8 @@ module.exports = function(app) {
 
   setInterval(function() {
 
-    console.log(gps);
+    console.log('gps data', gps);
+    console.log('motor data', motor);
 
   }, 1000);
 
