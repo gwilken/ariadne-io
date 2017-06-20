@@ -26,6 +26,8 @@ wss.on('connection', function connection(ws) {
 
         if(count >= 200) {
 
+          telemetry.createdAt = Date.now();
+
           mongo.collection.insert({telemetry}, function(err, res) {
             if(err) console.log(err);
             console.log('telemetry added to db');
