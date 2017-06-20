@@ -1,0 +1,60 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.graphContainer {
+  margin-top: 2%;
+  margin-right: 2%;
+}
+
+.titlebar {
+  margin: 2% 5%;
+}
+
+.search-title {
+  color: white;
+  font-size: 24px;
+}
+
+.search-updatedAt {
+    font-size: 20px;
+    color: grey;
+}
+
+#search-container {
+  margin: 2% 0% 2% 4%;
+}
+
+#search-label {
+  top: 40%;
+  left: 0;
+  font-size: 26px;
+  color: grey;
+}
+
+#go-button {
+  display: none;
+}
+
+.search-updatedAt {
+  color: grey;
+  font-size: 16px;
+}
+
+.mdl-textfield__input {
+  font-size: 32px;
+  color: white;
+}
+
+.favorite {
+  margin-left: 2%;
+}
+
+.unselected {
+  color: grey;
+}
+
+.selected {
+  color: lightblue;
+}

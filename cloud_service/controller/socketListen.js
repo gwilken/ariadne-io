@@ -7,10 +7,9 @@ wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(packet) {
 
-    //console.log('received: %s', message);
+    var data = JSON.parse(packet);
 
-    var temp = JSON.parse(packet);
-    console.log(temp);
+    console.log(data);
 
   });
 
