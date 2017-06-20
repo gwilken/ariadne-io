@@ -4,7 +4,7 @@ var app = express();
 
 const routes = require("./routes/expressroutes");
 const mongo = require("./model/mongo");
-require("./controller/websockets");
+
 
 var PORT = 80;
 
@@ -14,6 +14,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
 app.use("/", routes);
+
+require("./controller/websockets");
 
 mongo.connect();
 
