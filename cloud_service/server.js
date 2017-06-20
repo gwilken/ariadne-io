@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const routes = require("./routes/expressroutes");
-const mongo = require("./model/mongo");
 var app = express();
 
+const routes = require("./routes/expressroutes");
+const mongo = require("./model/mongo");
 require("./controller/websockets");
 
 var PORT = 80;
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(express.static("./public"));
-//app.use("/", routes);
+app.use("/", routes);
 
 mongo.connect();
 

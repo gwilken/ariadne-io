@@ -1,9 +1,15 @@
 import React from "react";
+import Test from "./Test";
 
 class Main extends React.Component {
 
   constructor() {
     super();
+
+    this.state = {
+      solar: null
+    }
+
   }
 
   componentDidMount() {
@@ -15,16 +21,22 @@ class Main extends React.Component {
       var msg = JSON.parse(event.data);
       console.log(msg);
 
+      if(msg.name === 'Solar Controller Monitor') {
+        this.setState({solar: msg });
+      }
+
     }
 
   }
 
   render() {
+
+
     return(
 
       <div>
 
-        <h1 className="search-title"> Rendered </h1>
+        <Test key={Date.now()} data={this.state.solar} />
 
       </div>
 
