@@ -14,7 +14,7 @@ wss.on('connection', function connection(ws) {
 
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(data);
+        client.send(packet);
       }
     });
 
