@@ -1,7 +1,7 @@
 const ObjectID = require('mongodb').ObjectID;
 const express = require("express");
 const path = require("path");
-const mongo = require("../models/mongo");
+const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
