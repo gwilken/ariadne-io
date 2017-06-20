@@ -7,7 +7,9 @@ var app = express();
 
 require("./controller/hub")(app);
 
-var PORT = process.env.PORT || 80;
+//var PORT = process.env.PORT || 80;
+
+var PORT = 80;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
