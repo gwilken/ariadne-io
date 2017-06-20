@@ -32,7 +32,6 @@ const chartOptions = {
   scales: {
     yAxes: [{
       ticks: {
-        max: 4000,
         beginAtZero: true
       },
       display: false
@@ -96,7 +95,7 @@ class Test extends React.Component {
           {
             label: 'Current In',
             data: [this.props.data.current],
-            backgroundColor: 'cyan',
+            backgroundColor: 'yellow',
             borderWidth: 1
           }
       ]

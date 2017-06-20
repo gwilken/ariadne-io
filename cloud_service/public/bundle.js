@@ -21151,7 +21151,7 @@
 	        datasets: [{
 	          label: 'Current In',
 	          data: [_this.props.data.current],
-	          backgroundColor: 'cyan',
+	          backgroundColor: 'yellow',
 	          borderWidth: 1
 	        }]
 	      }
