@@ -1,6 +1,4 @@
 import React from "react";
-import WebSocket from 'ws';
-import mongo from "../../model/mongo.js";
 
 class Main extends React.Component {
 
@@ -9,19 +7,15 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    const wss = new WebSocket.Server({ port: 8080 });
+    var ws = new WebSocket('ws://www.rednightsky.com');
 
-    wss.on('connection', function connection(ws) {
+    ws.onmessage = function (event) {
 
-      ws.on('message', function incoming(packet) {
+      var msg = JSON.parse(event);
+      console.log(msg);
 
-        var data = JSON.parse(packet);
+    }
 
-        console.log(data);
-
-      });
-
-    });
   }
 
   render() {
