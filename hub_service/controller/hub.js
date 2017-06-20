@@ -12,51 +12,55 @@ var sensor = {};
 var ws = null;
 const realTimeInterval = 3000;
 
-ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-ws.on('open', function open() {
-  console.log('Websocket connection open.');
-});
+var connect = function () {
 
-ws.on('message', function incoming(data) {
-  console.log(data);
-});
+  ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-ws.on('error', function(err) {
-  console.log('error at web socket:', err);
-  reconnect();
-});
+  ws.on('open', function open() {
+    console.log('Websocket connection open.');
+  });
 
-ws.on('close', () => {
-  console.log('Websocket disconnected.');
-});
+  ws.on('message', function incoming(data) {
+    console.log(data);
+  });
 
-ws.onclose = function() {
-  console.log('Connection to external server closed.');
-  reconnect();
-};
+  ws.on('error', function(err) {
+    console.log('error at web socket:', err);
+    reconnect();
+  });
 
+  ws.on('close', () => {
+    console.log('Websocket disconnected.');
+  });
 
-var reconnect = function () {
+  ws.onclose = function() {
+    console.log('Connection to external server closed.');
+    setTimeout(connect, 3000);
+  };
+}
 
-  if (ws.readyState !== WebSocket.OPEN) {
+connect();
 
-    console.log('Attempting to reconnect to external server...');
+  //
+  // if (ws.readyState !== WebSocket.OPEN) {
+  //
+  //   console.log('Attempting to reconnect to external server...');
+  //
+  //   ws = new WebSocket('ws://www.rednightsky.com:8080');
+  //
+  //   ws.on('error', function() {
+  //     console.log('Server not found.');
+  //   })
+  //
+  //   setTimeout(reconnect, 3000);
+  //
+  // } else
+  //
+  //     if (ws.readyState === WebSocket.OPEN) {
+  //       console.log('Reconnected.');
+  //     }
 
-    ws = new WebSocket('ws://www.rednightsky.com:8080');
-
-    ws.on('error', function() {
-      console.log('Server not found.');
-    })
-
-    setTimeout(reconnect, 3000);
-
-  } else
-
-      if (ws.readyState === WebSocket.OPEN) {
-        console.log('Reconnected.');
-      }
-};
 
   // wss.on('connection', (ws) => {
   //   console.log('Websocket client connected...');
