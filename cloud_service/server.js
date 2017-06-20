@@ -1,9 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-<<<<<<< HEAD
-//const mongo = require("./model/mongo.js");
-=======
->>>>>>> c7c922f442b97816991ce8636ed7c060b9750211
 const routes = require("./routes/expressroutes");
 var app = express();
 
