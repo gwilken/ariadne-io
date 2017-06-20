@@ -21074,25 +21074,67 @@
 	// 21.41
 
 
-	var chartOptions = {
-	  //onClick: graphClickEvent,
-	  maintainAspectRatio: false,
-	  hover: {
-	    animationDuration: 0
+	// const chartOptions = {
+	// //onClick: graphClickEvent,
+	//   maintainAspectRatio: false,
+	//   hover: {
+	//     animationDuration: 0
+	//   },
+	//   legend: {
+	//     display: false
+	//   },
+	//   scales: {
+	//     yAxes: [{
+	//       ticks: {
+	//         beginAtZero: true
+	//       }
+	//   }],
+	//   xAxes: [{
+	//     display: false
+	//   }]
+	//   }
+	// }
+
+	var barChartConfig = {
+
+	  layout: {
+	    padding: {
+	      left: 15
+	    }
+	  },
+	  tooltips: {
+	    enabled: true
 	  },
 	  legend: {
 	    display: false
 	  },
+	  animation: {
+	    duration: 1000
+	  },
+	  responsive: true,
+	  maintainAspectRatio: false,
 	  scales: {
 	    yAxes: [{
 	      ticks: {
-	        beginAtZero: true
-	      }
+	        min: 0,
+	        max: 0,
+	        display: false
+	      },
+	      barThickness: 120,
+	      display: false
 	    }],
 	    xAxes: [{
-	      display: false
+	      ticks: {
+	        min: 0,
+	        max: 0
+	      },
+	      gridLines: {
+	        display: false,
+	        drawTicks: true
+	      }
 	    }]
 	  }
+
 	};
 
 	var Test = function (_React$Component) {
@@ -21153,7 +21195,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: this.state.data,
-	              options: chartOptions,
+	              options: barChartConfig,
 	              width: 800,
 	              height: 110
 	            })

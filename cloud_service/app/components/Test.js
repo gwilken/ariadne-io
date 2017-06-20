@@ -20,27 +20,69 @@ import {HorizontalBar} from 'react-chartjs-2';
 // 21.41
 
 
-const chartOptions = {
-//onClick: graphClickEvent,
-  maintainAspectRatio: false,
-  hover: {
-    animationDuration: 0
-  },
-  legend: {
-    display: false
-  },
-  scales: {
-    yAxes: [{
-      ticks: {
-        beginAtZero: true
-      }
-  }],
-  xAxes: [{
-    display: false
-  }]
-  }
-}
+// const chartOptions = {
+// //onClick: graphClickEvent,
+//   maintainAspectRatio: false,
+//   hover: {
+//     animationDuration: 0
+//   },
+//   legend: {
+//     display: false
+//   },
+//   scales: {
+//     yAxes: [{
+//       ticks: {
+//         beginAtZero: true
+//       }
+//   }],
+//   xAxes: [{
+//     display: false
+//   }]
+//   }
+// }
 
+var barChartConfig = {
+
+
+      layout: {
+        padding: {
+          left: 15,
+        },
+      },
+      tooltips: {
+        enabled: true,
+      },
+      legend: {
+        display: false,
+      },
+      animation: {
+        duration: 1000,
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          barThickness: 120,
+          display: false,
+        }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
+
+};
 
 class Test extends React.Component {
 
@@ -93,7 +135,7 @@ class Test extends React.Component {
         <div className="graphContainer">
 
           <HorizontalBar data={this.state.data}
-              options={chartOptions}
+              options={barChartConfig}
               width={800}
               height={110}
           />
