@@ -9,7 +9,6 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var sensor = {};
-var sensorServer = null;
 var ws = null;
 const realTimeInterval = 3000;
 
@@ -54,7 +53,7 @@ var reconnect = function () {
 
       if (ws.readyState !== WebSocket.OPEN) {
         console.log('Reconnected.');
-        sendData();
+        break;
       }
 };
 
@@ -89,8 +88,6 @@ var reconnect = function () {
   //
   // }, realTimeInterval);
 
-sendData = function() {
-
   setInterval(function() {
     if (ws.readyState === WebSocket.OPEN) {
       ws.send( JSON.stringify( gps ) );
@@ -99,7 +96,7 @@ sendData = function() {
   }, 1000);
 
 
-  sensorServer = net.createServer(function(socket) {
+  const sensorServer = net.createServer(function(socket) {
     socket.on("data", function(data) {
       sensor = JSON.parse(data);
 
@@ -111,5 +108,3 @@ sendData = function() {
   });
 
   sensorServer.listen(3215, '192.168.10.1');
-
-};
