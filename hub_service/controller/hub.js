@@ -4,39 +4,35 @@ const mongo = require("../model/mongo.js");
 const url = require('url');
 const net = require("net");
 
-
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
 
-//const t = require("./wireless");
-
-const realTimeInterval = 3000;
-
-var sensor = {};
-
-const server = net.createServer(function(socket) {
-  socket.on("data", function(data) {
-    sensor = JSON.parse(data);
-
-    if (relayWs.readyState === WebSocket.OPEN) {
-      relayWs.send( JSON.stringify( sensor ) );
-    };
-
-  })
-});
-
-server.listen(3215, '192.168.10.1');
-
-//log to db
-//send to relay via WebSocket
 
 module.exports = function(app) {
 
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });
+
   const relayUrl  = url.format('http://www.rednightsky.com');
   var relayWs = null;
+  const realTimeInterval = 3000;
+
+  var sensor = {};
+
+  const sensorServer = net.createServer(function(socket) {
+    socket.on("data", function(data) {
+      sensor = JSON.parse(data);
+
+      if (relayWs.readyState === WebSocket.OPEN) {
+        relayWs.send( JSON.stringify( sensor ) );
+      };
+
+    })
+  });
+
+
+  sensorServer.listen(3215, '192.168.10.1');
 
 
   wss.on('connection', (ws) => {
