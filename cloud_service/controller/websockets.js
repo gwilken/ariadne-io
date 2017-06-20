@@ -11,6 +11,12 @@ wss.on('connection', function connection(ws) {
 
     //console.log(data);
 
+    if(mongo.collection) {
+
+      console.log('put to db here');
+
+    }
+
 
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
