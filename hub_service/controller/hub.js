@@ -1,4 +1,5 @@
 
+const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
 const url = require('url');
 const net = require("net");
@@ -7,39 +8,84 @@ const net = require("net");
 const gps = require("./gps");
 const motor = require("./motor");
 
+var ws;
+var sensor = {};
+const realTimeInterval = 3000;
 
 
+var connect = function () {
 
+  ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-
-
-module.exports = function(app) {
-
-  const server = require('http').createServer();
-  const io = require('socket.io')(server);
-
-  server.listen(3000);
-
-  var socket = io();
-
-  socket.connect('http://www.rednightsky.com:3000');
-
-  io.on('connect', (socket) => {
-
-    console.log('connected.');
-
+  ws.on('open', function open() {
+    console.log('Websocket connection open.');
   });
 
+  ws.on('message', function incoming(data) {
+    console.log(data);
+  });
+
+  ws.on('error', function(err) {
+    console.log('error at web socket.');
+    setTimeout(connect, 3000);
+  });
+
+  ws.on('close', () => {
+    console.log('Websocket disconnected.');
+  });
+
+  ws.onclose = function() {
+    console.log('Connection to external server closed.');
+    setTimeout(connect, 3000);
+  };
+}
+
+connect();
 
 
-  var remoteServer = null;
-  const realTimeInterval = 3000;
+    setInterval(function() {
+      if (ws.readyState === WebSocket.OPEN) {
+        ws.send( JSON.stringify( gps ) );
+        ws.send( JSON.stringify( motor ) );
+      };
+    }, 1000);
 
-  var sensor = {};
 
-  //io.on('connection', function(){ /* … */ });
+    const sensorServer = net.createServer(function(socket) {
+      socket.on("data", function(data) {
 
-  server.listen(3000);
+        try {
+          sensor = JSON.parse(data);
+
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send( JSON.stringify( sensor ) );
+          };
+
+        } catch(err) {}
+
+      })
+    });
+
+    sensorServer.listen(3215, '192.168.10.1');
+
+  //
+  // if (ws.readyState !== WebSocket.OPEN) {
+  //
+  //   console.log('Attempting to reconnect to external server...');
+  //
+  //   ws = new WebSocket('ws://www.rednightsky.com:8080');
+  //
+  //   ws.on('error', function() {
+  //     console.log('Server not found.');
+  //   })
+  //
+  //   setTimeout(reconnect, 3000);
+  //
+  // } else
+  //
+  //     if (ws.readyState === WebSocket.OPEN) {
+  //       console.log('Reconnected.');
+  //     }
 
 
   // wss.on('connection', (ws) => {
@@ -49,39 +95,13 @@ module.exports = function(app) {
   //     console.log('error at web socket server:', err);
   //   });
   //
-  //   ws.on('close', () => {
-  //     console.log('Client disconnected');
-  //   });
+
   //
-  //   ws.on('error', function(err) {
-  //     console.log('error at web socket:', err);
-  //   });
+
   // });
 
 
-  var connectExternalServer = function () {
 
-    remoteServer = new WebSocket( url.format('ws://50.116.5.92') );
-
-    remoteServer.on('open', function() {
-      console.log('Connected to external server.');
-    });
-
-    remoteServer.on('error', function(err) {
-      console.log('Error on external server socket. Is it up?', err);
-
-    });
-
-    remoteServer.onclose = function() {
-      console.log('Connection to external server closed.');
-
-      setTimeout(function() {
-        console.log('Attempting to reconnect to external server...');
-        connectExternalServer();
-      }, 5000);
-
-    };
-  };
 
   //
   // setInterval(function() {
@@ -98,30 +118,3 @@ module.exports = function(app) {
   //
   //
   // }, realTimeInterval);
-
-
-
-  setInterval(function() {
-    if (remoteServer.readyState === WebSocket.OPEN) {
-      remoteServer.send( JSON.stringify( gps ) );
-      remoteServer.send( JSON.stringify( motor ) );
-    };
-  }, 1000);
-
-  const sensorServer = net.createServer(function(socket) {
-    socket.on("data", function(data) {
-      sensor = JSON.parse(data);
-
-      if (remoteServer.readyState === WebSocket.OPEN) {
-        remoteServer.send( JSON.stringify( sensor ) );
-      };
-
-    })
-  });
-
-  sensorServer.listen(3215, '192.168.10.1');
-
-
-  connectExternalServer();
-
-}

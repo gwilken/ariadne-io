@@ -5,17 +5,7 @@ const routes = require("./routes/expressroutes");
 
 var app = express();
 
-const WebSocket = require('ws');
-
-const ws = new WebSocket('ws://www.rednightsky.com:8080');
-
-ws.on('open', function open() {
-  ws.send('something');
-});
- 
-ws.on('message', function incoming(data) {
-  console.log(data);
-});
+require("./controller/hub");
 
 var PORT = 80;
 
