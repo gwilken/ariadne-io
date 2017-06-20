@@ -47,23 +47,23 @@ class Test extends React.Component {
   constructor(props) {
     super(props);
 
-    //console.log(props);
+    console.log(props);
 
     this.state = {
 
-      name: this.props.data.name,
-
-      data: {
-        labels: this.props.data.name,
-        datasets: [
-          {
-            label: 'Current In',
-            data: this.props.data.current,
-            backgroundColor: 'cyan',
-            borderWidth: 1
-          }
-      ]
-      }
+      // name: this.props.data.name,
+      //
+      // data: {
+      //   labels: this.props.data.name,
+      //   datasets: [
+      //     {
+      //       label: 'Current In',
+      //       data: this.props.data.current,
+      //       backgroundColor: 'cyan',
+      //       borderWidth: 1
+      //     }
+      // ]
+      // }
 
     }
 
