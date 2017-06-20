@@ -33,7 +33,7 @@ class Test extends React.Component {
   componentDidMount() {
 
     fetch('/history', {
-       method: 'GET',
+       method: 'POST',
        body: {
          name: 'solar',
          field: 'current'

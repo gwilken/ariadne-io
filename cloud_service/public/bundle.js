@@ -21093,7 +21093,7 @@
 	    value: function componentDidMount() {
 
 	      fetch('/history', {
-	        method: 'GET',
+	        method: 'POST',
 	        body: {
 	          name: 'solar',
 	          field: 'current'

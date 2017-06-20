@@ -5,7 +5,7 @@ const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
-router.get('/history', function(req, res) {
+router.post('/history', function(req, res) {
 
   console.log(req.body);
 
