@@ -20877,7 +20877,7 @@
 	        if (msg.name === 'Solar Controller Monitor') {
 	          this.setState({ solar: msg });
 	        }
-	      };
+	      }.bind(this);
 	    }
 	  }, {
 	    key: "render",
