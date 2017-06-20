@@ -1,27 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+<<<<<<< HEAD
 //const mongo = require("./model/mongo.js");
+=======
+>>>>>>> c7c922f442b97816991ce8636ed7c060b9750211
 const routes = require("./routes/expressroutes");
-
 var app = express();
 
-//require("./controller/socketListen");
-
-//var PORT = process.env.PORT || 80;
-
-const WebSocket = require('ws');
-
-const wss = new WebSocket.Server({ port: 8080 });
-
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-  });
-
-  ws.send('something');
-});
-
-
+require("./controller/socketListen");
 
 var PORT = 80;
 
