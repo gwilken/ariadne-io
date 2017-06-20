@@ -11,28 +11,16 @@ const motor = require("./motor");
 
 module.exports = function(app) {
 
-  const server = http.createServer(app);
-  const wss = new WebSocket.Server({ server });
+  // const server = http.createServer(app);
+  // const wss = new WebSocket.Server({ server });
 
-  const relayUrl  = url.format('http://www.rednightsky.com');
-  var relayWs = null;
+  var remoteServer = null;
+
   const realTimeInterval = 3000;
 
   var sensor = {};
 
-  const sensorServer = net.createServer(function(socket) {
-    socket.on("data", function(data) {
-      sensor = JSON.parse(data);
 
-      if (relayWs.readyState === WebSocket.OPEN) {
-        relayWs.send( JSON.stringify( sensor ) );
-      };
-
-    })
-  });
-
-
-  sensorServer.listen(3215, '192.168.10.1');
 
 
   wss.on('connection', (ws) => {
@@ -54,17 +42,18 @@ module.exports = function(app) {
 
   var connectExternalServer = function () {
 
-    relayWs = new WebSocket(relayUrl);
+    remoteServer = new WebSocket( url.format('http://www.rednightsky.com') );
 
-    relayWs.on('open', function() {
+    remoteServer.on('open', function() {
       console.log('Connected to external server.');
     });
 
-    relayWs.on('error', function() {
-      console.log('Error on external server socket. Is it up?');
+    remoteServer.on('error', function(err) {
+      console.log('Error on external server socket. Is it up?', err);
+
     });
 
-    relayWs.onclose = function() {
+    remoteServer.onclose = function() {
       console.log('Connection to external server closed.');
 
       setTimeout(function() {
@@ -94,11 +83,24 @@ module.exports = function(app) {
 
 
   setInterval(function() {
-    if (relayWs.readyState === WebSocket.OPEN) {
-      relayWs.send( JSON.stringify( gps ) );
-      relayWs.send( JSON.stringify( motor ) );
+    if (remoteServer.readyState === WebSocket.OPEN) {
+      remoteServer.send( JSON.stringify( gps ) );
+      remoteServer.send( JSON.stringify( motor ) );
     };
   }, 1000);
+
+  const sensorServer = net.createServer(function(socket) {
+    socket.on("data", function(data) {
+      sensor = JSON.parse(data);
+
+      if (remoteServer.readyState === WebSocket.OPEN) {
+        remoteServer.send( JSON.stringify( sensor ) );
+      };
+
+    })
+  });
+
+  sensorServer.listen(3215, '192.168.10.1');
 
 
   connectExternalServer();
