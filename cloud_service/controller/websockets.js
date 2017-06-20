@@ -24,7 +24,7 @@ wss.on('connection', function connection(ws) {
 
         count++;
 
-        if(count > 400) {
+        if(count === 400) {
 
           console.log(telemetry);
 
@@ -33,8 +33,10 @@ wss.on('connection', function connection(ws) {
           });
 
           count = 0;
-
         }
+
+        console.log(count);
+
     }
 
 
