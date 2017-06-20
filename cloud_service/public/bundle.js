@@ -20856,7 +20856,7 @@
 	  _createClass(Main, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      var ws = new WebSocket('ws://www.rednightsky.com');
+	      var ws = new WebSocket('ws://localhost:8080');
 
 	      ws.onmessage = function (event) {
 

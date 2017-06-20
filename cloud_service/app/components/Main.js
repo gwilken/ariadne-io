@@ -7,7 +7,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    var ws = new WebSocket('ws://www.rednightsky.com');
+    var ws = new WebSocket('ws://localhost:8080');
 
     ws.onmessage = function (event) {
 
