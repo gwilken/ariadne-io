@@ -4,6 +4,7 @@ const mongo = require("../model/mongo.js");
 const wss = new WebSocket.Server({ port: 8080 });
 
 var telemetry = {};
+var count = 0;
 
 wss.on('connection', function connection(ws) {
 
@@ -19,6 +20,16 @@ wss.on('connection', function connection(ws) {
 
         if(data.family) {
           telemetry[data.family] = data;
+        }
+
+        count++;
+
+        if(count > 400) {
+
+          db.collection.insertOne(telemetry, function(err, res) {
+            if(err) console.log(err);
+          });
+
         }
 
         console.log(telemetry);
