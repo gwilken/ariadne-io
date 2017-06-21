@@ -52516,8 +52516,8 @@
 	  }
 
 	  _createClass(Solar, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      fetch('/sensor/Solar Controller Monitor/5').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
@@ -52527,9 +52527,6 @@
 	        this.setState({ data: objs });
 	      }.bind(this));
 	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
@@ -52579,9 +52576,13 @@
 	      //   }
 	      // }
 
-	      var content = _react2.default.createElement('div', null);
+	      var content = _react2.default.createElement(
+	        'div',
+	        null,
+	        ' test '
+	      );
 
-	      if (this.state.data) {
+	      if (false) {
 
 	        var lastObj = this.state.data.length - 1;
 
@@ -52601,7 +52602,7 @@
 	            borderWidth: 2,
 	            lineTension: 0.1,
 	            pointRadius: 0,
-	            data: data
+	            data: currentData
 	          }]
 	        };
 
@@ -52683,13 +52684,6 @@
 	              'div',
 	              { className: 'title' },
 	              ' Current In'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              this.state.data[lastObj].current,
-	              ' mV '
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -52708,13 +52702,6 @@
 	              'div',
 	              { className: 'title' },
 	              ' Current In'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              this.state.data[lastObj].volt,
-	              ' mV '
 	            )
 	          )
 	        );
