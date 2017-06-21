@@ -36,6 +36,8 @@ class Solar extends React.Component {
 
   render() {
 
+    console.log(this.state);
+
     // var graphData = {
     //   labels: this.state.current,
     //   datasets: [

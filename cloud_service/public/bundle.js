@@ -52543,6 +52543,8 @@
 	    key: 'render',
 	    value: function render() {
 
+	      console.log(this.state);
+
 	      // var graphData = {
 	      //   labels: this.state.current,
 	      //   datasets: [
@@ -52582,7 +52584,7 @@
 	        ' test '
 	      );
 
-	      if (false) {
+	      if (this.state.data) {
 
 	        var lastObj = this.state.data.length - 1;
 
