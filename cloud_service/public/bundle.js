@@ -20857,7 +20857,8 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
 	    _this.state = {
-	      solar: null
+	      solar: null,
+	      house: null
 	    };
 
 	    return _this;
@@ -20874,8 +20875,8 @@
 	        var msg = JSON.parse(event.data);
 	        //console.log(msg);
 
-	        if (msg.name === 'Solar Controller Monitor') {
-	          this.setState({ solar: msg });
+	        if (msg.name === 'House Battery Bank') {
+	          this.setState({ house: msg });
 	        }
 	      }.bind(this);
 	    }
@@ -20884,15 +20885,21 @@
 	    value: function render() {
 
 	      var solar;
-	      if (this.state.solar) {
+	      var house;
 
+	      if (this.state.solar) {
 	        solar = _react2.default.createElement(_Test2.default, { data: this.state.solar });
+	      }
+
+	      if (this.state.house) {
+	        house = _react2.default.createElement(_Test2.default, { data: this.state.house });
 	      }
 
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        solar
+	        solar,
+	        house
 	      );
 	    }
 	  }]);

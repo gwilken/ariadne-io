@@ -7,7 +7,8 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      solar: null
+      solar: null,
+      house: null
     }
 
   }
@@ -21,8 +22,8 @@ class Main extends React.Component {
       var msg = JSON.parse(event.data);
       //console.log(msg);
 
-      if(msg.name === 'Solar Controller Monitor') {
-        this.setState( {solar: msg } );
+      if(msg.name === 'House Battery Bank') {
+        this.setState( {house: msg } );
       }
 
     }.bind(this);
@@ -32,11 +33,16 @@ class Main extends React.Component {
   render() {
 
     var solar;
+    var house;
+
     if(this.state.solar) {
-
       solar = <Test data={this.state.solar} />;
-
     }
+
+    if(this.state.house) {
+      house = <Test data={this.state.house} />;
+    }
+
 
     return(
 
@@ -44,6 +50,7 @@ class Main extends React.Component {
       <div>
 
         {solar}
+        {house}
 
       </div>
 
