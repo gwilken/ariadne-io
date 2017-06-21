@@ -184,7 +184,7 @@ class House extends React.Component {
             <Line data={currentGraphData}
                 options={currentChartOptions}
                 width={800}
-                height={110}
+                height={140}
             />
 
             <div className="titlebar">
@@ -198,7 +198,7 @@ class House extends React.Component {
             <Line data={voltGraphData}
                 options={voltChartOptions}
                 width={800}
-                height={110}
+                height={140}
             />
 
             <div className="titlebar">

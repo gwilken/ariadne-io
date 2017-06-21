@@ -52691,7 +52691,7 @@
 	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
 	                options: currentChartOptions,
 	                width: 800,
-	                height: 110
+	                height: 140
 	              }),
 	              _react2.default.createElement(
 	                'div',
@@ -52716,7 +52716,7 @@
 	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
 	                options: voltChartOptions,
 	                width: 800,
-	                height: 110
+	                height: 140
 	              }),
 	              _react2.default.createElement(
 	                'div',
@@ -52968,7 +52968,7 @@
 	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
 	                options: currentChartOptions,
 	                width: 800,
-	                height: 110
+	                height: 140
 	              }),
 	              _react2.default.createElement(
 	                'div',
@@ -52993,7 +52993,7 @@
 	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
 	                options: voltChartOptions,
 	                width: 800,
-	                height: 110
+	                height: 140
 	              }),
 	              _react2.default.createElement(
 	                'div',
