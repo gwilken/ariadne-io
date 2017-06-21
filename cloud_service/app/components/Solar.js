@@ -16,6 +16,8 @@ class Solar extends React.Component {
       .then((res) => res.json())
         .then(function(data) {
 
+          console.log(data);
+
           var arr = [];
           arr = data.slice();
 

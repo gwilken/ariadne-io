@@ -28,7 +28,7 @@ router.get('/history/:name/:field', function(req, res) {
 
 router.get('/sensor/:name', function(req, res) {
 
-  console.log('sensot route hit', req.params);
+  console.log('sensor route hit', req.params);
 
   var arr = [];
 
@@ -37,17 +37,13 @@ router.get('/sensor/:name', function(req, res) {
   mongo.collection.find(
     {},
     {field : 1}
-  ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
-
-    arr.push(doc.telemetry["House Battery Bank"].current);
-
-  }, function(err) {
-
+  ).sort( { _id: -1 } ).limit(10).toArray( function(err, doc) {
+    
     if(err) {
       console.log(err);
       res.end();
     }
-    else res.json(arr);
+    else res.json(doc);
 
   });
 
