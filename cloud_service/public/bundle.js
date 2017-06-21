@@ -52521,23 +52521,21 @@
 	      fetch('/sensor/Solar Controller Monitor/5').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
-
-	        console.log(objs);
-
+	        //console.log(objs);
 	        this.setState({ data: objs });
 	      }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      // if(nextProps.data.current) {
-	      //
-	      //   var newCurrent = this.state.current.slice();
-	      //   newCurrent.push(nextProps.data.current);
-	      //   newCurrent.shift();
-	      //
-	      // this.setState({current: newCurrent});
-	      // }
+	      if (nextProps.data) {
+
+	        var newState = this.state.data.slice();
+	        newState.push(nextProps.data);
+	        newState.shift();
+
+	        this.setState({ data: newState });
+	      }
 	    }
 	  }, {
 	    key: 'render',
