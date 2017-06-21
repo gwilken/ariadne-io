@@ -21089,8 +21089,6 @@
 	        var arr = [];
 	        arr = data.slice();
 
-	        console.log(arr);
-
 	        this.setState({ current: arr });
 	      }.bind(this));
 	    }
@@ -21100,14 +21098,14 @@
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      // if(nextProps.data.current) {
-	      // //
-	      // //   var newCurrent = this.state.current.slice();
-	      // //   newCurrent.push(nextProps);
-	      // //   newCurrent.shift();
-	      // //
-	      // this.setState({current: nextProps});
-	      // }
+	      if (nextProps.data.current) {
+
+	        var newCurrent = this.state.current.slice();
+	        newCurrent.push(nextProps);
+	        newCurrent.shift();
+
+	        this.setState({ current: newCurrent });
+	      }
 	    }
 	  }, {
 	    key: 'render',

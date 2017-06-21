@@ -14,7 +14,7 @@ router.get('/history/:name/:field', function(req, res) {
   mongo.collection.find(
     {},
     {"telemetry.House Battery Bank.current" : 1}
-  ).limit(10).forEach( function(doc) {
+  ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
 
     arr.push(doc.telemetry["House Battery Bank"].current);
 

@@ -24,8 +24,6 @@ class Test extends React.Component {
           var arr = [];
           arr = data.slice();
 
-          console.log(arr);
-
           this.setState( { current: arr} );
 
         }.bind(this));
@@ -35,14 +33,14 @@ class Test extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if(nextProps.data.current) {
-    // //
-    // //   var newCurrent = this.state.current.slice();
-    // //   newCurrent.push(nextProps);
-    // //   newCurrent.shift();
-    // //
-    // this.setState({current: nextProps});
-    // }
+    if(nextProps.data.current) {
+
+      var newCurrent = this.state.current.slice();
+      newCurrent.push(nextProps);
+      newCurrent.shift();
+
+    this.setState({current: newCurrent});
+    }
   }
 
   render() {
