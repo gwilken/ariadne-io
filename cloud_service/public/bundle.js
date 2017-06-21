@@ -52518,7 +52518,7 @@
 	  _createClass(Solar, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      fetch('/sensor/Solar Controller Monitor/5').then(function (res) {
+	      fetch('/sensor/Solar Controller Monitor/10').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
 	        //console.log(objs);
@@ -52718,6 +52718,11 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	              options: currentChartOptions,
+	              width: 800,
+	              height: 150
+	            }),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'titlebar' },
@@ -52733,12 +52738,7 @@
 	                this.props.data.current,
 	                ' mA '
 	              )
-	            ),
-	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	              options: currentChartOptions,
-	              width: 800,
-	              height: 150
-	            })
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -52747,22 +52747,22 @@
 	              options: voltChartOptions,
 	              width: 800,
 	              height: 150
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
+	            }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'title' },
-	              ' Volts'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              this.props.data.loadvoltage,
-	              ' V '
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                ' Volts'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                this.props.data.loadvoltage,
+	                ' V '
+	              )
 	            )
 	          )
 	        );

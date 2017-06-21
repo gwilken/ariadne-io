@@ -12,7 +12,7 @@ class Solar extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/sensor/Solar Controller Monitor/5')
+    fetch('/sensor/Solar Controller Monitor/10')
       .then((res) => res.json())
         .then(function(objs) {
           //console.log(objs);
@@ -213,16 +213,17 @@ if(this.state.data) {
       <div>
         <div className="graphContainer">
 
-          <div className="titlebar">
-            <div className="title"> Amps Producing</div>
-            <div className="rtData"> {this.props.data.current} mA </div>
-          </div>
-
           <Line data={currentGraphData}
               options={currentChartOptions}
               width={800}
               height={150}
           />
+
+          <div className="titlebar">
+            <div className="title"> Amps Producing</div>
+            <div className="rtData"> {this.props.data.current} mA </div>
+          </div>
+
         </div>
 
 
@@ -234,12 +235,14 @@ if(this.state.data) {
               width={800}
               height={150}
           />
+
+          <div className="titlebar">
+            <div className="title"> Volts</div>
+            <div className="rtData"> {this.props.data.loadvoltage} V </div>
+          </div>
+
         </div>
 
-        <div className="titlebar">
-          <div className="title"> Volts</div>
-          <div className="rtData"> {this.props.data.loadvoltage} V </div>
-        </div>
 
       </div>
     )
