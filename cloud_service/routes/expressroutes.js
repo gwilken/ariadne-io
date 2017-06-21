@@ -14,16 +14,11 @@ router.get('/history/:name/:field', function(req, res) {
   mongo.collection.find(
     {},
     {"telemetry.Solar Controller Monitor.current" : 1}
-  ).map(function(doc) {
-      return doc.telemetry["Solar Controller Monitor"].current;
-  }).toArray(function(arr) {
+  ).limit(10).forEach( function( doc ) {
 
-    console.log(arr)
-    res.json(arr);
-
+      console.log( doc.telemetry["Solar Controller Monitor"].current);
 
   });
-
 
 });
 
