@@ -9,16 +9,16 @@ router.get('/history/:name/:field', function(req, res) {
 
   console.log('history route hit', req.params);
 
-  //var arr = [];
+  var arr = [];
 
   mongo.collection.find(
     {},
     {"telemetry.Solar Controller Monitor.current" : 1}
-  ).limit(10).forEach( function( doc ) {
+  ).limit(10).forEach( (doc) => {
 
-      console.log( doc.telemetry["Solar Controller Monitor"].current);
+    arr.push(doc.telemetry["Solar Controller Monitor"].current);
 
-  });
+  }), () => res.json(arr);
 
 });
 
