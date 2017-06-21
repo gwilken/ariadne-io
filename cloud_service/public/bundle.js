@@ -53172,7 +53172,6 @@
 	        var data = {
 	          labels: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage],
 	          datasets: [{
-	            label: 'My First dataset',
 	            backgroundColor: 'rgba(255,99,132,0.2)',
 	            borderColor: 'rgba(255,99,132,1)',
 	            borderWidth: 1,
