@@ -71,7 +71,7 @@ class Solar extends React.Component {
 
 var content = ( <div> test </div> );
 
-if(false) {
+if(this.state.data) {
 
   var lastObj = this.state.data.length - 1;
 
