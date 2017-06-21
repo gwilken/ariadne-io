@@ -21221,16 +21221,14 @@
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'search-title' },
-	            ' ',
-	            this.props.data.name,
-	            ' '
+	            ' House Battery Bank Current Out ',
+	            this.props.data.current,
+	            ' mV '
 	          ),
 	          _react2.default.createElement(
-	            'p',
+	            'span',
 	            null,
-	            ' ',
-	            this.props.data.current,
-	            ' '
+	            '  '
 	          )
 	        )
 	      );
