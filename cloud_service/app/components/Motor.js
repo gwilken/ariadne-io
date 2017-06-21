@@ -29,7 +29,7 @@ class Motor extends React.Component {
 
 
     if(this.props.data.batt1) {
-        console.log(this.props.data.batt1.busvoltage);
+        console.log(this.props.data.batt1);
     }
 
 
