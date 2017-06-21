@@ -35,7 +35,7 @@ router.get('/sensor/:name', function(req, res) {
 
   mongo.collection.find(
     {},
-    {field : 1}
+    {}
   ).sort( { _id: -1 } ).limit(10).toArray( function(err, doc) {
 
     if(err) {
