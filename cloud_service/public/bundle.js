@@ -20866,9 +20866,15 @@
 
 	    _this.state = {
 	      solar: null,
-	      house: null
+	      house: null,
+	      motor: {
+	        ey: null,
+	        batt1: null,
+	        batt2: null,
+	        batt3: null,
+	        batt4: null
+	      }
 	    };
-
 	    return _this;
 	  }
 
@@ -20881,7 +20887,6 @@
 	      ws.onmessage = function (event) {
 
 	        var msg = JSON.parse(event.data);
-	        //console.log(msg);
 
 	        if (msg.name === 'House Battery Bank') {
 	          this.setState({ house: msg });
@@ -20889,6 +20894,31 @@
 
 	        if (msg.name === 'Solar Controller Monitor') {
 	          this.setState({ solar: msg });
+	        }
+
+	        if (msg.name === 'Motor Battery #1') {
+	          var obj = {};
+	          this.setState({ motor: Object.assign({}, this.state.motor, { batt1: msg }) });
+	        }
+
+	        if (msg.name === 'Motor Battery #2') {
+	          var obj = {};
+	          this.setState({ motor: Object.assign({}, this.state.motor, { batt2: msg }) });
+	        }
+
+	        if (msg.name === 'Motor Battery #3') {
+	          var obj = {};
+	          this.setState({ motor: Object.assign({}, this.state.motor, { batt3: msg }) });
+	        }
+
+	        if (msg.name === 'Motor Battery #4') {
+	          var obj = {};
+	          this.setState({ motor: Object.assign({}, this.state.motor, { batt4: msg }) });
+	        }
+
+	        if (msg.name === 'Electric Yacht 10kW Motor') {
+	          var obj = {};
+	          this.setState({ motor: Object.assign({}, this.state.motor, { ey: msg }) });
 	        }
 	      }.bind(this);
 	    }
@@ -20907,11 +20937,16 @@
 	        house = _react2.default.createElement(_House2.default, { data: this.state.house });
 	      }
 
+	      if (this.state.motor) {
+	        motor = _react2.default.createElement(Motor, { data: this.state.motor });
+	      }
+
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
 	        house,
-	        solar
+	        solar,
+	        motor
 	      );
 	    }
 	  }]);

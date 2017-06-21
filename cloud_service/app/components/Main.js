@@ -10,9 +10,15 @@ class Main extends React.Component {
 
     this.state = {
       solar: null,
-      house: null
+      house: null,
+      motor: {
+        ey: null,
+        batt1: null,
+        batt2: null,
+        batt3: null,
+        batt4: null
+      }
     }
-
   }
 
   componentDidMount() {
@@ -22,7 +28,6 @@ class Main extends React.Component {
     ws.onmessage = function(event) {
 
       var msg = JSON.parse(event.data);
-      //console.log(msg);
 
       if(msg.name === 'House Battery Bank') {
         this.setState( {house: msg } );
@@ -32,8 +37,32 @@ class Main extends React.Component {
         this.setState( {solar: msg } );
       }
 
-    }.bind(this);
+      if(msg.name === 'Motor Battery #1') {
+        var obj = {};
+        this.setState( { motor: Object.assign( {}, this.state.motor, {batt1: msg} ) } );
+      }
 
+      if(msg.name === 'Motor Battery #2') {
+        var obj = {};
+        this.setState( { motor: Object.assign( {}, this.state.motor, {batt2: msg} ) } );
+      }
+
+      if(msg.name === 'Motor Battery #3') {
+        var obj = {};
+        this.setState( { motor: Object.assign( {}, this.state.motor, {batt3: msg} ) } );
+      }
+
+      if(msg.name === 'Motor Battery #4') {
+        var obj = {};
+        this.setState( { motor: Object.assign( {}, this.state.motor, {batt4: msg} ) } );
+      }
+
+      if(msg.name === 'Electric Yacht 10kW Motor') {
+        var obj = {};
+        this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
+      }
+
+    }.bind(this);
   }
 
   render() {
@@ -49,15 +78,17 @@ class Main extends React.Component {
       house = <House data={this.state.house} />;
     }
 
+    if(this.state.motor) {
+      motor = <Motor data={this.state.motor} />;
+    }
 
     return(
-
 
       <div className="mainContainer">
 
         {house}
         {solar}
-
+        {motor}
 
       </div>
 
