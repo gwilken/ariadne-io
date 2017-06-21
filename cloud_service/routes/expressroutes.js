@@ -26,9 +26,9 @@ router.get('/history/:name/:field', function(req, res) {
 
 
 
-  }).then(function() {
-      res.send(arr);
-  })
+  });
+
+  res.send(arr);
 
 });
 
