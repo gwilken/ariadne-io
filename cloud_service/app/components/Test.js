@@ -2,22 +2,8 @@ import React from "react";
 import {line} from 'react-chartjs-2';
 
 
-// busvoltage: 13.636
-// current
-// :
-// 3638
-// family
-// :
-// "Energy"
-// loadvoltage
-// :
-// 13.65741
-// name
-// :
-// "Solar Controller Monitor"
-// shuntvoltage
-// :
-// 21.41
+
+
 
 
 class Test extends React.Component {
@@ -56,37 +42,96 @@ class Test extends React.Component {
 
   render() {
 
+    // var graphData = {
+    //   labels: this.state.current,
+    //   datasets: [
+    //     {
+    //       label: 'Current In',
+    //       data: this.state.current,
+    //       backgroundColor: 'yellow',
+    //       borderWidth: 1
+    //     }
+    //   ]
+    // }
+    //
+    // const chartOptions = {
+    //   maintainAspectRatio: false,
+    //   hover: {
+    //     animationDuration: 0
+    //   },
+    //   legend: {
+    //     display: false
+    //   },
+    //   scales: {
+    //     yAxes: [{
+    //       ticks: {
+    //         beginAtZero: true
+    //       },
+    //       display: false
+    //   }],
+    //   xAxes: [{
+    //     display: false
+    //   }]
+    //   }
+    // }
+
     var graphData = {
       labels: this.state.current,
       datasets: [
-        {
-          label: 'Current In',
-          data: this.state.current,
-          backgroundColor: 'yellow',
-          borderWidth: 1
-        }
-      ]
+          {
+            fill: true,
+            borderWidth: 2,
+            lineTension: 0.3,
+            pointRadius: 0,
+            data: this.state.current
+          }
+       ]
     }
 
-    const chartOptions = {
-      maintainAspectRatio: false,
-      hover: {
-        animationDuration: 0
+    var chartOptions = {
+      layout: {
+        padding: {
+          left: 15,
+          right: 3,
+        },
+      },
+      tooltips: {
+        enabled: false,
       },
       legend: {
-        display: false
+        display: false,
+        position: 'top',
       },
+      animation: {
+        duration: 500,
+      },
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         yAxes: [{
+          position: 'right',
           ticks: {
-            beginAtZero: true
+            mirror: false,
+           },
+          }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
           },
-          display: false
-      }],
-      xAxes: [{
-        display: false
-      }]
-      }
+          gridLines: {
+            display: false,
+            drawTicks: false,
+          },
+          scaleLabel: {
+            display: true,
+          },
+          ticks: {
+            display: false,
+          },
+        },
+        ],
+      },
     }
 
     return(

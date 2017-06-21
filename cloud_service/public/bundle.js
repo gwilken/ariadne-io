@@ -21057,29 +21057,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// busvoltage: 13.636
-	// current
-	// :
-	// 3638
-	// family
-	// :
-	// "Energy"
-	// loadvoltage
-	// :
-	// 13.65741
-	// name
-	// :
-	// "Solar Controller Monitor"
-	// shuntvoltage
-	// :
-	// 21.41
-
 
 	var Test = function (_React$Component) {
 	  _inherits(Test, _React$Component);
@@ -21123,34 +21107,91 @@
 	    key: 'render',
 	    value: function render() {
 
+	      // var graphData = {
+	      //   labels: this.state.current,
+	      //   datasets: [
+	      //     {
+	      //       label: 'Current In',
+	      //       data: this.state.current,
+	      //       backgroundColor: 'yellow',
+	      //       borderWidth: 1
+	      //     }
+	      //   ]
+	      // }
+	      //
+	      // const chartOptions = {
+	      //   maintainAspectRatio: false,
+	      //   hover: {
+	      //     animationDuration: 0
+	      //   },
+	      //   legend: {
+	      //     display: false
+	      //   },
+	      //   scales: {
+	      //     yAxes: [{
+	      //       ticks: {
+	      //         beginAtZero: true
+	      //       },
+	      //       display: false
+	      //   }],
+	      //   xAxes: [{
+	      //     display: false
+	      //   }]
+	      //   }
+	      // }
+
 	      var graphData = {
 	        labels: this.state.current,
 	        datasets: [{
-	          label: 'Current In',
-	          data: this.state.current,
-	          backgroundColor: 'yellow',
-	          borderWidth: 1
+	          fill: true,
+	          borderWidth: 2,
+	          lineTension: 0.3,
+	          pointRadius: 0,
+	          data: this.state.current
 	        }]
 	      };
 
 	      var chartOptions = {
-	        maintainAspectRatio: false,
-	        hover: {
-	          animationDuration: 0
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
 	        },
 	        legend: {
-	          display: false
+	          display: false,
+	          position: 'top'
 	        },
+	        animation: {
+	          duration: 500
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
 	        scales: {
 	          yAxes: [{
+	            position: 'right',
 	            ticks: {
-	              beginAtZero: true
-	            },
-	            display: false
+	              mirror: false
+	            }
 	          }],
-	          xAxes: [{
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
 	            display: false
-	          }]
+	          })]
 	        }
 	      };
 
