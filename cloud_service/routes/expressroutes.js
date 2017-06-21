@@ -32,9 +32,11 @@ router.get('/sensor/:name', function(req, res) {
 
   var arr = [];
 
+  var field = 'telemetry.' + req.params.name;
+
   mongo.collection.find(
     {},
-    {'telemetry.'+ req.params.name : 1}
+    {field : 1}
   ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
 
     arr.push(doc.telemetry["House Battery Bank"].current);
