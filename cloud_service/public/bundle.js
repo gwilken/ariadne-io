@@ -52729,30 +52729,6 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	                options: currentChartOptions,
-	                width: 800,
-	                height: 140
-	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  ' Amps Producing'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  this.props.data.current + 'mA'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
 	                options: voltChartOptions,
 	                width: 800,
@@ -52764,7 +52740,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'title' },
-	                  ' Volts'
+	                  'Panel Voltage:'
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -52772,6 +52748,30 @@
 	                  ' ',
 	                  this.props.data.loadvoltage + 'v',
 	                  ' '
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	                options: currentChartOptions,
+	                width: 800,
+	                height: 140
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Current:'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  this.props.data.current + 'mA'
 	                )
 	              )
 	            )
@@ -53005,30 +53005,6 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	                options: currentChartOptions,
-	                width: 800,
-	                height: 140
-	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Current Use'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  this.props.data.current + ' mA'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
 	                options: voltChartOptions,
 	                width: 800,
@@ -53040,7 +53016,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'title' },
-	                  'Battery Voltage'
+	                  'Battery Voltage:'
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -53048,6 +53024,30 @@
 	                  ' ',
 	                  this.props.data.loadvoltage + 'v',
 	                  ' '
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	                options: currentChartOptions,
+	                width: 800,
+	                height: 140
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Current Usage:'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  this.props.data.current + ' mA'
 	                )
 	              )
 	            )

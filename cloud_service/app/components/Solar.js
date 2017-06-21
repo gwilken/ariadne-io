@@ -176,20 +176,6 @@ class Solar extends React.Component {
 
       <div> <h3>Solar</h3>
         <div>
-          <div className="graphContainer">
-
-            <Line data={currentGraphData}
-                options={currentChartOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title"> Amps Producing</div>
-              <div className="rtData"> {this.props.data.current + 'mA'}</div>
-            </div>
-
-          </div>
 
           <div className="graphContainer">
             <Line data={voltGraphData}
@@ -199,11 +185,24 @@ class Solar extends React.Component {
             />
 
             <div className="titlebar">
-              <div className="title"> Volts</div>
+              <div className="title">Panel Voltage:</div>
               <div className="rtData"> {this.props.data.loadvoltage + 'v'} </div>
             </div>
-
           </div>
+
+          <div className="graphContainer">
+            <Line data={currentGraphData}
+                options={currentChartOptions}
+                width={800}
+                height={140}
+            />
+
+            <div className="titlebar">
+              <div className="title">Current:</div>
+              <div className="rtData"> {this.props.data.current + 'mA'}</div>
+            </div>
+          </div>
+
         </div>
       </div>
       )
