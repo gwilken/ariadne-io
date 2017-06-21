@@ -21100,7 +21100,7 @@
 	        //   newCurrent.push(nextProps);
 	        //   newCurrent.shift();
 	        //
-	        this.setState({ current: newCurrent });
+	        this.setState({ current: nextProps });
 	      }
 	    }
 	  }, {
