@@ -52714,9 +52714,9 @@
 	          null,
 	          ' ',
 	          _react2.default.createElement(
-	            'h3',
+	            'h4',
 	            null,
-	            'Solar Panels'
+	            'Solar'
 	          ),
 	          _react2.default.createElement(
 	            'div',

@@ -211,7 +211,7 @@ if(this.state.data) {
 
   content = (
 
-    <div> <h3>Solar Panels</h3>
+    <div> <h4>Solar</h4>
 
       <div>
         <div className="graphContainer">
