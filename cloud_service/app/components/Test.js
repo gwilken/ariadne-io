@@ -16,8 +16,7 @@ class Test extends React.Component {
     }
   }
 
-  componentDidMount() {
-
+  componentWillMount() {
     fetch('/history/solar/current')
       .then((res) => res.json())
         .then(function(data) {
@@ -26,18 +25,20 @@ class Test extends React.Component {
           this.setState({ current: data });
 
         }.bind(this));
+  }
 
+  componentDidMount() {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.data.current) {
-    //
-    //   var newCurrent = this.state.current.slice();
-    //   newCurrent.push(nextProps);
-    //   newCurrent.shift();
-    //
-    this.setState({current: nextProps});
-    }
+    // if(nextProps.data.current) {
+    // //
+    // //   var newCurrent = this.state.current.slice();
+    // //   newCurrent.push(nextProps);
+    // //   newCurrent.shift();
+    // //
+    // this.setState({current: nextProps});
+    // }
   }
 
   render() {
