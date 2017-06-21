@@ -70,6 +70,7 @@ class Main extends React.Component {
 
     var solar;
     var house;
+    var motor;
 
     if(this.state.solar) {
       solar = <Solar data={this.state.solar} />;

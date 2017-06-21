@@ -20932,6 +20932,7 @@
 
 	      var solar;
 	      var house;
+	      var motor;
 
 	      if (this.state.solar) {
 	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar });
