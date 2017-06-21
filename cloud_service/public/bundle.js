@@ -21093,7 +21093,7 @@
 	    value: function componentDidMount() {
 
 	      fetch('/history/solar/current').then(function (res) {
-	        return res;
+	        return res.json();
 	      }).then(function (data) {
 	        console.log(data);
 	      });
