@@ -52578,7 +52578,12 @@
 	      //   }]
 	      //   }
 	      // }
+
+
 	      if (this.state.data) {
+
+	        var lastObj = this.state.data.length - 1;
+
 	        var data = this.state.data.map(function (obj) {
 	          return obj.current;
 	        });
@@ -52667,7 +52672,7 @@
 	            'div',
 	            { className: 'rtData' },
 	            ' ',
-	            this.state.data[this.state.data.length - 1].current,
+	            this.state.data[lastObj].current,
 	            ' mV '
 	          )
 	        )

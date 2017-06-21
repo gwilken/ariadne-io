@@ -71,10 +71,18 @@ class Solar extends React.Component {
     //   }]
     //   }
     // }
+
+
+
 if(this.state.data) {
-    var data = this.state.data.map(function(obj) {
-      return(obj.current);
-    })
+
+  var lastObj = this.state.data.length - 1;
+
+  var data = this.state.data.map(function(obj) {
+    return(obj.current);
+  })
+
+
 }
 
 
@@ -156,7 +164,7 @@ if(this.state.data) {
 
         <div className="titlebar">
           <div className="title"> Current In</div>
-          <div className="rtData"> {this.state.data[this.state.data.length - 1].current} mV </div>
+          <div className="rtData"> {this.state.data[lastObj].current} mV </div>
         </div>
 
       </div>
