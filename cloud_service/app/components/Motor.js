@@ -112,6 +112,7 @@ class Motor extends React.Component {
              },
             }],
           xAxes: [{
+            display: true,
             ticks: {
               min: 0,
               max: 0,
@@ -124,7 +125,7 @@ class Motor extends React.Component {
               display: true,
             },
             ticks: {
-              display: true,
+              display: false,
             },
           },
           ],

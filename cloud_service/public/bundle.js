@@ -53212,6 +53212,7 @@
 	              }
 	            }],
 	            xAxes: [_defineProperty({
+	              display: true,
 	              ticks: {
 	                min: 0,
 	                max: 0
