@@ -53151,10 +53151,10 @@
 	      );
 
 	      if (this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4) {
-	        console.log('1', this.props.data.batt1.busvoltage);
-	        console.log('2', this.props.data.batt2.busvoltage);
-	        console.log('3', this.props.data.batt3.busvoltage);
-	        console.log('4', this.props.data.batt4.busvoltage);
+	        console.log('1', this.state.batt1.busvoltage);
+	        console.log('2', this.state.batt2.busvoltage);
+	        console.log('3', this.state.batt3.busvoltage);
+	        console.log('4', this.state.batt4.busvoltage);
 	      }
 
 	      // if(this.state) {
