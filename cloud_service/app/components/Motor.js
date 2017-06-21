@@ -91,7 +91,7 @@ class Motor extends React.Component {
           },
         },
         tooltips: {
-          enabled: false,
+          enabled: true,
         },
         legend: {
           display: false,

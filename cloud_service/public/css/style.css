@@ -17,6 +17,7 @@ h3 {
 }
 
 .titlebar {
+  width: 40%;
   position: absolute;
   bottom: 25%;
   left: 1%;
