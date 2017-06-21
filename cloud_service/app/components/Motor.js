@@ -83,6 +83,53 @@ class Motor extends React.Component {
         ]
       };
 
+      var options = {
+        layout: {
+          padding: {
+            left: 15,
+            right: 3,
+          },
+        },
+        tooltips: {
+          enabled: false,
+        },
+        legend: {
+          display: false,
+          position: 'top',
+        },
+        animation: {
+          duration: 100,
+          easing: 'linear'
+        },
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            position: 'right',
+            ticks: {
+              min: 0,
+              max: 14.5,
+              mirror: false,
+             },
+            }],
+          xAxes: [{
+            ticks: {
+              min: 0,
+              max: 0,
+            },
+            gridLines: {
+              display: false,
+              drawTicks: false,
+            },
+            scaleLabel: {
+              display: true,
+            },
+            ticks: {
+              display: false,
+            },
+          },
+          ],
+        },
+      }
     //
     // var currentGraphData = {
     //   labels: currentData,
@@ -159,7 +206,7 @@ class Motor extends React.Component {
             />
 
             <div className="titlebar">
-              <div className="title">Motor Batts</div>
+              {/* <div className="title">Motor Batts</div> */}
               {/* <div className="rtData"> {this.props.data.current} mA </div> */}
             </div>
 

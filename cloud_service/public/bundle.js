@@ -53086,6 +53086,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53181,70 +53183,114 @@
 	          }]
 	        };
 
-	        //
-	        // var currentGraphData = {
-	        //   labels: currentData,
-	        //   datasets: [
-	        //       {
-	        //         fill: true,
-	        //         backgroundColor: 'yellow',
-	        //         borderWidth: 2,
-	        //         lineTension: 0.1,
-	        //         pointRadius: 0,
-	        //         data: currentData
-	        //       }
-	        //    ]
-	        // }
-	        //
-	        // var currentChartOptions = {
-	        //   layout: {
-	        //     padding: {
-	        //       left: 15,
-	        //       right: 3,
-	        //     },
-	        //   },
-	        //   tooltips: {
-	        //     enabled: false,
-	        //   },
-	        //   legend: {
-	        //     display: false,
-	        //     position: 'top',
-	        //   },
-	        //   animation: {
-	        //     duration: 100,
-	        //     easing: 'linear'
-	        //   },
-	        //   maintainAspectRatio: false,
-	        //   scales: {
-	        //     yAxes: [{
-	        //       position: 'right',
-	        //       ticks: {
-	        //         min: 0,
-	        //         max: 5000,
-	        //         mirror: false,
-	        //        },
-	        //       }],
-	        //     xAxes: [{
-	        //       ticks: {
-	        //         min: 0,
-	        //         max: 0,
-	        //       },
-	        //       gridLines: {
-	        //         display: false,
-	        //         drawTicks: false,
-	        //       },
-	        //       scaleLabel: {
-	        //         display: true,
-	        //       },
-	        //       ticks: {
-	        //         display: false,
-	        //       },
-	        //     },
-	        //     ],
-	        //   },
-	        // }
+	        var options = {
+	          layout: {
+	            padding: {
+	              left: 15,
+	              right: 3
+	            }
+	          },
+	          tooltips: {
+	            enabled: false
+	          },
+	          legend: {
+	            display: false,
+	            position: 'top'
+	          },
+	          animation: {
+	            duration: 100,
+	            easing: 'linear'
+	          },
+	          maintainAspectRatio: false,
+	          scales: {
+	            yAxes: [{
+	              position: 'right',
+	              ticks: {
+	                min: 0,
+	                max: 14.5,
+	                mirror: false
+	              }
+	            }],
+	            xAxes: [_defineProperty({
+	              ticks: {
+	                min: 0,
+	                max: 0
+	              },
+	              gridLines: {
+	                display: false,
+	                drawTicks: false
+	              },
+	              scaleLabel: {
+	                display: true
+	              }
+	            }, 'ticks', {
+	              display: false
+	            })]
+	          }
+	          //
+	          // var currentGraphData = {
+	          //   labels: currentData,
+	          //   datasets: [
+	          //       {
+	          //         fill: true,
+	          //         backgroundColor: 'yellow',
+	          //         borderWidth: 2,
+	          //         lineTension: 0.1,
+	          //         pointRadius: 0,
+	          //         data: currentData
+	          //       }
+	          //    ]
+	          // }
+	          //
+	          // var currentChartOptions = {
+	          //   layout: {
+	          //     padding: {
+	          //       left: 15,
+	          //       right: 3,
+	          //     },
+	          //   },
+	          //   tooltips: {
+	          //     enabled: false,
+	          //   },
+	          //   legend: {
+	          //     display: false,
+	          //     position: 'top',
+	          //   },
+	          //   animation: {
+	          //     duration: 100,
+	          //     easing: 'linear'
+	          //   },
+	          //   maintainAspectRatio: false,
+	          //   scales: {
+	          //     yAxes: [{
+	          //       position: 'right',
+	          //       ticks: {
+	          //         min: 0,
+	          //         max: 5000,
+	          //         mirror: false,
+	          //        },
+	          //       }],
+	          //     xAxes: [{
+	          //       ticks: {
+	          //         min: 0,
+	          //         max: 0,
+	          //       },
+	          //       gridLines: {
+	          //         display: false,
+	          //         drawTicks: false,
+	          //       },
+	          //       scaleLabel: {
+	          //         display: true,
+	          //       },
+	          //       ticks: {
+	          //         display: false,
+	          //       },
+	          //     },
+	          //     ],
+	          //   },
+	          // }
 
-	        content = _react2.default.createElement(
+	        };content = _react2.default.createElement(
 	          'div',
 	          null,
 	          ' ',
@@ -53264,15 +53310,7 @@
 	                width: 800,
 	                height: 140
 	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Motor Batts'
-	                )
-	              )
+	              _react2.default.createElement('div', { className: 'titlebar' })
 	            )
 	          )
 	        );
