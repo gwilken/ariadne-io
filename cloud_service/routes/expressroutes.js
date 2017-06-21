@@ -16,7 +16,9 @@ router.get('/history/:name/:field', function(req, res) {
     {"telemetry.Solar Controller Monitor.current" : 1}
   ).map(function(doc) {
 
-    return doc.telemetry["Solar Controller Monitor"].current;
+    if(doc.telemetry["Solar Controller Monitor"].current) {
+
+      return doc.telemetry["Solar Controller Monitor"].current;
 
   }).toArray(function(A) {
 
