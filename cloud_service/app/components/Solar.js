@@ -85,7 +85,7 @@ if(this.state.data) {
             fill: true,
             backgroundColor: 'yellow',
             borderWidth: 2,
-            lineTension: 0.3,
+            lineTension: 0.1,
             pointRadius: 0,
             data: data
           }
@@ -156,7 +156,7 @@ if(this.state.data) {
 
         <div className="titlebar">
 
-          <div className="title"> House Battery Amps</div>
+          <div className="title"> Current In</div>
 
           {/* <div className="rtData"> {this.props.data.current} mV </div> */}
 

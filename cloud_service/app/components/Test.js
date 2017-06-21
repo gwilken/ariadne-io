@@ -1,11 +1,6 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 
-
-
-
-
-
 class Test extends React.Component {
 
   constructor(props) {
@@ -85,7 +80,7 @@ class Test extends React.Component {
             fill: true,
             backgroundColor: 'yellow',
             borderWidth: 2,
-            lineTension: 0.3,
+            lineTension: 0.1,
             pointRadius: 0,
             data: this.state.current
           }

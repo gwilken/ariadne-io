@@ -21158,7 +21158,7 @@
 	          fill: true,
 	          backgroundColor: 'yellow',
 	          borderWidth: 2,
-	          lineTension: 0.3,
+	          lineTension: 0.1,
 	          pointRadius: 0,
 	          data: this.state.current
 	        }]
@@ -52590,7 +52590,7 @@
 	          fill: true,
 	          backgroundColor: 'yellow',
 	          borderWidth: 2,
-	          lineTension: 0.3,
+	          lineTension: 0.1,
 	          pointRadius: 0,
 	          data: data
 	        }]
@@ -52661,7 +52661,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'title' },
-	            ' House Battery Amps'
+	            ' Current In'
 	          )
 	        )
 	      );
