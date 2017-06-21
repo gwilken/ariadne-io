@@ -94,7 +94,7 @@ class House extends React.Component {
         duration: 100,
         easing: 'linear'
       },
-      responsive: true,
+      responsive: false,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
@@ -143,7 +143,7 @@ class House extends React.Component {
         duration: 100,
         easing: 'linear'
       },
-      responsive: true,
+      responsive: false,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{

@@ -52875,7 +52875,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: true,
+	          responsive: false,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
@@ -52922,7 +52922,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: true,
+	          responsive: false,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
