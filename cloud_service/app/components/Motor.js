@@ -124,7 +124,7 @@ class Motor extends React.Component {
               display: true,
             },
             ticks: {
-              display: false,
+              display: true,
             },
           },
           ],
