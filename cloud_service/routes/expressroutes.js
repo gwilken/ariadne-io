@@ -13,10 +13,10 @@ router.get('/history/:name/:field', function(req, res) {
 
   mongo.collection.find(
     {},
-    {"telemetry.Solar Controller Monitor.current" : 1}
+    {"telemetry.House Battery Bank.current" : 1}
   ).limit(10).forEach( function(doc) {
 
-    arr.push(doc.telemetry["Solar Controller Monitor"].current);
+    arr.push(doc.telemetry["House Battery Bank"].current);
 
   }, function(err) {
 

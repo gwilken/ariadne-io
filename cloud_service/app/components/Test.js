@@ -37,8 +37,9 @@ class Test extends React.Component {
     fetch('/history/solar/current')
       .then((res) => res.json())
         .then(function(data) {
+          console.log(data);
 
-          this.setState({current: data});
+          this.setState({ current: data });
 
         }.bind(this));
 

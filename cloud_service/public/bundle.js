@@ -21096,6 +21096,7 @@
 	      fetch('/history/solar/current').then(function (res) {
 	        return res.json();
 	      }).then(function (data) {
+	        console.log(data);
 
 	        this.setState({ current: data });
 	      }.bind(this));
