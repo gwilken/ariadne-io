@@ -1,5 +1,5 @@
 import React from "react";
-import {HorizontalBar} from 'react-chartjs-2';
+import {line} from 'react-chartjs-2';
 
 
 // busvoltage: 13.636
@@ -28,6 +28,8 @@ class Test extends React.Component {
     this.state = {
       current: []
     }
+
+
   }
 
   componentDidMount() {
@@ -35,8 +37,10 @@ class Test extends React.Component {
     fetch('/history/solar/current')
       .then((res) => res.json())
         .then(function(data) {
-          console.log(data);
-        });
+
+          this.setState({current: data});
+
+        }).bind(this);
 
   }
 
@@ -54,11 +58,11 @@ class Test extends React.Component {
   render() {
 
     var graphData = {
-      labels: [this.props.data.name],
+      labels: this.state.current,
       datasets: [
         {
           label: 'Current In',
-          data: [this.state.current],
+          data: this.state.current,
           backgroundColor: 'yellow',
           borderWidth: 1
         }
@@ -90,7 +94,7 @@ class Test extends React.Component {
       <div>
         <div className="graphContainer">
 
-          <HorizontalBar data={graphData}
+          <line data={graphData}
               options={chartOptions}
               width={800}
               height={150}

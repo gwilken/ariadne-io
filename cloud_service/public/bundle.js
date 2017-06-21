@@ -21085,6 +21085,7 @@
 	    _this.state = {
 	      current: []
 	    };
+
 	    return _this;
 	  }
 
@@ -21095,8 +21096,9 @@
 	      fetch('/history/solar/current').then(function (res) {
 	        return res.json();
 	      }).then(function (data) {
-	        console.log(data);
-	      });
+
+	        this.setState({ current: data });
+	      }).bind(this);
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
@@ -21115,10 +21117,10 @@
 	    value: function render() {
 
 	      var graphData = {
-	        labels: [this.props.data.name],
+	        labels: this.state.current,
 	        datasets: [{
 	          label: 'Current In',
-	          data: [this.state.current],
+	          data: this.state.current,
 	          backgroundColor: 'yellow',
 	          borderWidth: 1
 	        }]
@@ -21151,7 +21153,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: graphData,
+	          _react2.default.createElement('line', { data: graphData,
 	            options: chartOptions,
 	            width: 800,
 	            height: 150
