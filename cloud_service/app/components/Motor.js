@@ -18,7 +18,7 @@ class Motor extends React.Component {
 
   render() {
 
-    var content = ( <div></div> );
+    var content = ( <div> *** TEST *** </div> );
 
     if(this.state.data) {
 
