@@ -22,7 +22,7 @@ class Test extends React.Component {
         .then(function(data) {
 
           var arr = [];
-          arr.concat(data);
+          arr = data.slice();
 
           console.log(arr);
 
