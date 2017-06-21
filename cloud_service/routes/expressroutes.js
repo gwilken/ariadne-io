@@ -16,10 +16,18 @@ router.get('/history/:name/:field', function(req, res) {
     {"telemetry.Solar Controller Monitor.current" : 1}
   ).forEach(function(doc) {
 
-    if(doc.telemetry["Solar Controller Monitor"].current) {
-      arr.push(doc.telemetry["Solar Controller Monitor"].current);
-    }
-    res.send(arr);
+    arr.push(doc);
+
+    // if(doc.telemetry["Solar Controller Monitor"].current) {
+    //
+    //   arr.push(doc.telemetry["Solar Controller Monitor"].current);
+    //
+    // }
+
+
+
+  }).then(function() {
+      res.send(arr);
   })
 
 });
