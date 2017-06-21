@@ -30,14 +30,14 @@ class Test extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if(nextProps.data.current) {
+    if(nextProps.data.current) {
     //
     //   var newCurrent = this.state.current.slice();
     //   newCurrent.push(nextProps);
     //   newCurrent.shift();
     //
-    //   this.setState({current: newCurrent});
-    // }
+    this.setState({current: newCurrent});
+    }
   }
 
   render() {
