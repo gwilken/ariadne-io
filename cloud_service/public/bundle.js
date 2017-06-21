@@ -52707,7 +52707,7 @@
 	        );
 	      }
 
-	      return { content: content };
+	      return content;
 	    }
 	  }]);
 

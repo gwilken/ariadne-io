@@ -195,9 +195,8 @@ if(false) {
 }
 
 
-    return(
-      {content}
-    )
+    return content;
+
   }
 
 }
