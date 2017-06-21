@@ -20,9 +20,13 @@ class Test extends React.Component {
     fetch('/history/solar/current')
       .then((res) => res.json())
         .then(function(data) {
-          console.log(data);
 
-          this.setState({ current: data });
+          console.log('fetch data', data);
+
+          var arr = [];
+          arr.concat(data);
+
+          this.setState( { current: arr} );
 
         }.bind(this));
   }

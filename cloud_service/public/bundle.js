@@ -21080,28 +21080,34 @@
 	  }
 
 	  _createClass(Test, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
 	      fetch('/history/solar/current').then(function (res) {
 	        return res.json();
 	      }).then(function (data) {
-	        console.log(data);
 
-	        this.setState({ current: data });
+	        console.log('fetch data', data);
+
+	        var arr = [];
+	        arr.concat(data);
+
+	        this.setState({ current: arr });
 	      }.bind(this));
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.data.current) {
-	        //
-	        //   var newCurrent = this.state.current.slice();
-	        //   newCurrent.push(nextProps);
-	        //   newCurrent.shift();
-	        //
-	        this.setState({ current: nextProps });
-	      }
+	      // if(nextProps.data.current) {
+	      // //
+	      // //   var newCurrent = this.state.current.slice();
+	      // //   newCurrent.push(nextProps);
+	      // //   newCurrent.shift();
+	      // //
+	      // this.setState({current: nextProps});
+	      // }
 	    }
 	  }, {
 	    key: 'render',
