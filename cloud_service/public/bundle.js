@@ -52662,6 +52662,13 @@
 	            'div',
 	            { className: 'title' },
 	            ' Current In'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'rtData' },
+	            ' ',
+	            this.state.data[this.state.data.length - 1].current,
+	            ' mV '
 	          )
 	        )
 	      );

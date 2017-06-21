@@ -142,8 +142,8 @@ if(this.state.data) {
     }
 
     return(
-      <div>
 
+      <div>
         <div className="graphContainer">
 
           <Line data={graphData}
@@ -155,11 +155,8 @@ if(this.state.data) {
         </div>
 
         <div className="titlebar">
-
           <div className="title"> Current In</div>
-
-          {/* <div className="rtData"> {this.props.data.current} mV </div> */}
-
+          <div className="rtData"> {this.state.data[this.state.data.length - 1].current} mV </div>
         </div>
 
       </div>
