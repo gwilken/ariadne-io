@@ -8,7 +8,9 @@ class Motor extends React.Component {
 
     this.state = {
       ey: null,
-      batt1: null,
+      batt1: {
+          busvoltage: 0
+      },
       batt2: null,
       batt3: null,
       batt4: null
@@ -59,7 +61,7 @@ class Motor extends React.Component {
 
 
 
-    if(this.state) {
+    if(this.state.batt1) {
 
       var data = {
         labels: [this.state.batt1.busvoltage],
