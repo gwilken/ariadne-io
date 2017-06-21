@@ -1,5 +1,5 @@
 import React from "react";
-import {line} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
 
 
@@ -143,7 +143,7 @@ class Test extends React.Component {
       <div>
         <div className="graphContainer">
 
-          <line data={graphData}
+          <Line data={graphData}
               options={chartOptions}
               width={800}
               height={150}

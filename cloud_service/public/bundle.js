@@ -21207,7 +21207,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'graphContainer' },
-	          _react2.default.createElement('line', { data: graphData,
+	          _react2.default.createElement(_reactChartjs.Line, { data: graphData,
 	            options: chartOptions,
 	            width: 800,
 	            height: 150
