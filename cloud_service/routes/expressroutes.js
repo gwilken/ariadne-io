@@ -20,7 +20,7 @@ router.get('/history/:name/:field', function(req, res) {
 
   }), () => done(function() {
     res.json(arr);
-  }
+  });
 
 });
 
