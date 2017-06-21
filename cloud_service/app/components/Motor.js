@@ -11,9 +11,15 @@ class Motor extends React.Component {
       batt1: {
           busvoltage: 0
       },
-      batt2: null,
-      batt3: null,
-      batt4: null
+      batt2:  {
+          busvoltage: 0
+      },
+      batt3:  {
+          busvoltage: 0
+      },
+      batt4:  {
+          busvoltage: 0
+      }
     }
   }
 
@@ -64,7 +70,7 @@ class Motor extends React.Component {
     if(this.state.batt1) {
 
       var data = {
-        labels: [this.state.batt1.busvoltage],
+        labels: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage],
         datasets: [
           {
             label: 'My First dataset',
@@ -73,73 +79,73 @@ class Motor extends React.Component {
             borderWidth: 1,
             hoverBackgroundColor: 'rgba(255,99,132,0.4)',
             hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [this.state.batt1.busvoltage]
+            data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
           }
         ]
       };
 
-
-    var currentGraphData = {
-      labels: currentData,
-      datasets: [
-          {
-            fill: true,
-            backgroundColor: 'yellow',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: currentData
-          }
-       ]
-    }
-
-    var currentChartOptions = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        duration: 100,
-        easing: 'linear'
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          position: 'right',
-          ticks: {
-            min: 0,
-            max: 5000,
-            mirror: false,
-           },
-          }],
-        xAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-          },
-          gridLines: {
-            display: false,
-            drawTicks: false,
-          },
-          scaleLabel: {
-            display: true,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        ],
-      },
-    }
+    //
+    // var currentGraphData = {
+    //   labels: currentData,
+    //   datasets: [
+    //       {
+    //         fill: true,
+    //         backgroundColor: 'yellow',
+    //         borderWidth: 2,
+    //         lineTension: 0.1,
+    //         pointRadius: 0,
+    //         data: currentData
+    //       }
+    //    ]
+    // }
+    //
+    // var currentChartOptions = {
+    //   layout: {
+    //     padding: {
+    //       left: 15,
+    //       right: 3,
+    //     },
+    //   },
+    //   tooltips: {
+    //     enabled: false,
+    //   },
+    //   legend: {
+    //     display: false,
+    //     position: 'top',
+    //   },
+    //   animation: {
+    //     duration: 100,
+    //     easing: 'linear'
+    //   },
+    //   maintainAspectRatio: false,
+    //   scales: {
+    //     yAxes: [{
+    //       position: 'right',
+    //       ticks: {
+    //         min: 0,
+    //         max: 5000,
+    //         mirror: false,
+    //        },
+    //       }],
+    //     xAxes: [{
+    //       ticks: {
+    //         min: 0,
+    //         max: 0,
+    //       },
+    //       gridLines: {
+    //         display: false,
+    //         drawTicks: false,
+    //       },
+    //       scaleLabel: {
+    //         display: true,
+    //       },
+    //       ticks: {
+    //         display: false,
+    //       },
+    //     },
+    //     ],
+    //   },
+    // }
 
     content = (
 
