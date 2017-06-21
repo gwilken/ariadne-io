@@ -21219,13 +21219,12 @@
 	          'div',
 	          { className: 'titlebar' },
 	          _react2.default.createElement(
-	            'span',
+	            'div',
 	            { className: 'title' },
 	            ' House Battery Amps'
 	          ),
-	          ' ',
 	          _react2.default.createElement(
-	            'span',
+	            'div',
 	            { className: 'rtData' },
 	            ' ',
 	            this.props.data.current,
