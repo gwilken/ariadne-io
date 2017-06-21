@@ -21150,6 +21150,7 @@
 	        labels: this.state.current,
 	        datasets: [{
 	          fill: true,
+	          backgroundColor: 'yellow',
 	          borderWidth: 2,
 	          lineTension: 0.3,
 	          pointRadius: 0,
