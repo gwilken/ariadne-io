@@ -102,6 +102,7 @@ if(this.state.data) {
         {
           fill: false,
           backgroundColor: 'yellow',
+          borderColor: 'yellow',
           borderWidth: 2,
           lineTension: 0.1,
           pointRadius: 2,
