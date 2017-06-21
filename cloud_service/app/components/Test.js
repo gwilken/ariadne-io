@@ -152,7 +152,7 @@ class Test extends React.Component {
 
           <div className="title"> House Battery Amps</div>
 
-          <div className="rtData"> {this.props.data.current} mV </div>
+          <div className="rtData"> {this.props.data.current} mA </div>
 
         </div>
 

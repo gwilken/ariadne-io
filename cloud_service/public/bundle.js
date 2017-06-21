@@ -21236,7 +21236,7 @@
 	            { className: 'rtData' },
 	            ' ',
 	            this.props.data.current,
-	            ' mV '
+	            ' mA '
 	          )
 	        )
 	      );
@@ -52620,7 +52620,7 @@
 	          }]
 	        };
 
-	        var chartOptions = {
+	        var currentChartOptions = {
 	          layout: {
 	            padding: {
 	              left: 15,
@@ -52667,6 +52667,53 @@
 	          }
 	        };
 
+	        var voltChartOptions = {
+	          layout: {
+	            padding: {
+	              left: 15,
+	              right: 3
+	            }
+	          },
+	          tooltips: {
+	            enabled: false
+	          },
+	          legend: {
+	            display: false,
+	            position: 'top'
+	          },
+	          animation: {
+	            duration: 100,
+	            easing: 'linear'
+	          },
+	          responsive: true,
+	          maintainAspectRatio: false,
+	          scales: {
+	            yAxes: [{
+	              position: 'right',
+	              ticks: {
+	                min: 0,
+	                max: 14.5,
+	                mirror: false
+	              }
+	            }],
+	            xAxes: [_defineProperty({
+	              ticks: {
+	                min: 0,
+	                max: 0
+	              },
+	              gridLines: {
+	                display: false,
+	                drawTicks: false
+	              },
+	              scaleLabel: {
+	                display: true
+	              }
+	            }, 'ticks', {
+	              display: false
+	            })]
+	          }
+	        };
+
 	        content = _react2.default.createElement(
 	          'div',
 	          null,
@@ -52674,7 +52721,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	              options: chartOptions,
+	              options: currentChartOptions,
 	              width: 800,
 	              height: 150
 	            })
@@ -52685,7 +52732,14 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'title' },
-	              ' Current In'
+	              ' Amps Producing'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              this.state.data[lastObj].current,
+	              ' mA '
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -52703,7 +52757,14 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'title' },
-	              ' Current In'
+	              ' Volts'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              this.state.data[lastObj].loadvoltage,
+	              ' V '
 	            )
 	          )
 	        );

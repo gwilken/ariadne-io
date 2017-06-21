@@ -113,7 +113,7 @@ if(this.state.data) {
      ]
   }
 
-  var chartOptions = {
+  var currentChartOptions = {
     layout: {
       padding: {
         left: 15,
@@ -162,45 +162,91 @@ if(this.state.data) {
     },
   }
 
-  content = (
-    <div>
-      <div className="graphContainer">
-        <Line data={currentGraphData}
-            options={chartOptions}
-            width={800}
-            height={150}
-        />
-      </div>
-
-      <div className="titlebar">
-        <div className="title"> Current In</div>
-        {/* <div className="rtData"> {this.state.data[lastObj].current} mV </div> */}
-      </div>
-
-
-      <div className="graphContainer">
-        <Line data={voltGraphData}
-            options={chartOptions}
-            width={800}
-            height={150}
-        />
-      </div>
-
-      <div className="titlebar">
-        <div className="title"> Current In</div>
-        {/* <div className="rtData"> {this.state.data[lastObj].volt} mV </div> */}
-      </div>
-
-
-    </div>
-  )
-}
-
-
-    return content;
-
+  var voltChartOptions = {
+    layout: {
+      padding: {
+        left: 15,
+        right: 3,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+      position: 'top',
+    },
+    animation: {
+      duration: 100,
+      easing: 'linear'
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        position: 'right',
+        ticks: {
+          min: 0,
+          max: 14.5,
+          mirror: false,
+         },
+        }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: false,
+        },
+        scaleLabel: {
+          display: true,
+        },
+        ticks: {
+          display: false,
+        },
+      },
+      ],
+    },
   }
 
+
+  content = (
+      <div>
+        <div className="graphContainer">
+          <Line data={currentGraphData}
+              options={currentChartOptions}
+              width={800}
+              height={150}
+          />
+        </div>
+
+        <div className="titlebar">
+          <div className="title"> Amps Producing</div>
+          <div className="rtData"> {this.state.data[lastObj].current} mA </div>
+        </div>
+
+
+        <div className="graphContainer">
+          <Line data={voltGraphData}
+              options={chartOptions}
+              width={800}
+              height={150}
+          />
+        </div>
+
+        <div className="titlebar">
+          <div className="title"> Volts</div>
+          <div className="rtData"> {this.state.data[lastObj].loadvoltage} V </div>
+        </div>
+
+      </div>
+    )
+  }
+
+    return content;
+  }
 }
 
 export default Solar;
