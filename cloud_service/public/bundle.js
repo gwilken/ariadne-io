@@ -52520,11 +52520,11 @@
 	    value: function componentWillMount() {
 	      fetch('/sensor/Solar Controller Monitor/5').then(function (res) {
 	        return res.json();
-	      }).then(function (data) {
+	      }).then(function (objs) {
 
-	        console.log(data);
+	        console.log(objs);
 
-	        this.setState({ data: arr });
+	        this.setState({ data: objs });
 	      }.bind(this));
 	    }
 	  }, {

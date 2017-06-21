@@ -14,11 +14,11 @@ class Solar extends React.Component {
   componentWillMount() {
     fetch('/sensor/Solar Controller Monitor/5')
       .then((res) => res.json())
-        .then(function(data) {
+        .then(function(objs) {
 
-          console.log(data);
+          console.log(objs);
 
-          this.setState( { data: arr} );
+          this.setState( { data: objs} );
 
         }.bind(this));
   }
