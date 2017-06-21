@@ -21085,7 +21085,6 @@
 	    _this.state = {
 	      current: []
 	    };
-
 	    return _this;
 	  }
 
@@ -21104,14 +21103,14 @@
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.data.current) {
-
-	        var newCurrent = this.state.current.slice();
-	        newCurrent.push(nextProps);
-	        newCurrent.shift();
-
-	        this.setState({ current: newCurrent });
-	      }
+	      // if(nextProps.data.current) {
+	      //
+	      //   var newCurrent = this.state.current.slice();
+	      //   newCurrent.push(nextProps);
+	      //   newCurrent.shift();
+	      //
+	      //   this.setState({current: newCurrent});
+	      // }
 	    }
 	  }, {
 	    key: 'render',
