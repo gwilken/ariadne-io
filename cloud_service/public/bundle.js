@@ -21221,14 +21221,14 @@
 	          _react2.default.createElement(
 	            'span',
 	            { className: 'search-title' },
-	            ' House Battery Bank Current Out ',
-	            this.props.data.current,
-	            ' mV '
+	            ' House Battery Amps'
 	          ),
 	          _react2.default.createElement(
-	            'span',
+	            'p',
 	            null,
-	            '  '
+	            ' ',
+	            this.props.data.current,
+	            ' mV '
 	          )
 	        )
 	      );

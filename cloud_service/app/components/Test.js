@@ -154,10 +154,8 @@ class Test extends React.Component {
         </div>
 
         <div className="titlebar">
-          <span className="search-title"> House Battery Bank Current Out {this.props.data.current} mV </span>
-
-          <span>  </span>
-
+          <span className="search-title"> House Battery Amps</span>
+          <p> {this.props.data.current} mV </p>
         </div>
 
       </div>
