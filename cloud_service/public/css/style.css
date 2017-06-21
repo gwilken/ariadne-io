@@ -12,9 +12,14 @@ body {
   margin: 2% 5%;
 }
 
-.search-title {
+.title {
   color: white;
   font-size: 24px;
+}
+
+.rtData {
+  color: white;
+  font-size: 14px;
 }
 
 .search-updatedAt {

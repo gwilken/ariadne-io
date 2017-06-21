@@ -21220,12 +21220,13 @@
 	          { className: 'titlebar' },
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'search-title' },
+	            { className: 'title' },
 	            ' House Battery Amps'
 	          ),
+	          ' ',
 	          _react2.default.createElement(
-	            'p',
-	            null,
+	            'span',
+	            { className: 'rtData' },
 	            ' ',
 	            this.props.data.current,
 	            ' mV '
