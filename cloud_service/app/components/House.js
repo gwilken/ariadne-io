@@ -21,13 +21,16 @@ class House extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.data) {
 
-      var newState = this.state.data.slice();
-      newState.push(nextProps.data);
-      newState.shift();
+    if(this.state) {
+      if(nextProps.data) {
 
-    this.setState({data: newState});
+        var newState = this.state.data.slice();
+        newState.push(nextProps.data);
+        newState.shift();
+
+        this.setState({data: newState});
+      }
     }
   }
 
