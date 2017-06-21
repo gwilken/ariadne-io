@@ -53123,7 +53123,9 @@
 	        ' *** TEST *** '
 	      );
 
-	      if (this.state.data) {
+	      console.log(this.props.data.batt1.busvoltage);
+
+	      if (this.state) {
 
 	        var data = {
 	          labels: [this.props.data.batt1.busvoltage],
