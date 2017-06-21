@@ -26,7 +26,7 @@ router.get('/history/:name/:field', function(req, res) {
 });
 
 
-router.get('/sensor/:name', function(req, res) {
+router.get('/sensor/:name/:limit', function(req, res) {
 
   var arr = [];
   var field = 'telemetry.' + req.params.name;
@@ -35,7 +35,7 @@ router.get('/sensor/:name', function(req, res) {
 
   mongo.collection.find({})
     .sort( { _id: -1 } )
-      .limit(10)
+      .limit(parseInt(req.params.limit))
       .forEach( function(doc) {
 
         arr.push(doc.telemetry[req.params.name]);

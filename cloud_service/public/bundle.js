@@ -52510,7 +52510,7 @@
 	    var _this = _possibleConstructorReturn(this, (Solar.__proto__ || Object.getPrototypeOf(Solar)).call(this, props));
 
 	    _this.state = {
-	      current: []
+	      data: null
 	    };
 	    return _this;
 	  }
@@ -52518,16 +52518,13 @@
 	  _createClass(Solar, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      fetch('/sensor/Solar Controller Monitor').then(function (res) {
+	      fetch('/sensor/Solar Controller Monitor/5').then(function (res) {
 	        return res.json();
 	      }).then(function (data) {
 
 	        console.log(data);
 
-	        var arr = [];
-	        arr = data.slice();
-
-	        this.setState({ current: arr });
+	        this.setState({ data: arr });
 	      }.bind(this));
 	    }
 	  }, {
