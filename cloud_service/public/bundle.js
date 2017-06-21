@@ -52643,7 +52643,7 @@
 	              position: 'right',
 	              ticks: {
 	                min: 0,
-	                max: 7500,
+	                max: 5000,
 	                mirror: false
 	              }
 	            }],
@@ -52718,27 +52718,27 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                ' Amps Producing'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                this.props.data.current,
+	                ' mA '
+	              )
+	            ),
 	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
 	              options: currentChartOptions,
 	              width: 800,
 	              height: 150
 	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'title' },
-	              ' Amps Producing'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              this.props.data.current,
-	              ' mA '
-	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',

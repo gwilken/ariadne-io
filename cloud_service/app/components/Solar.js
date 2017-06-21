@@ -135,7 +135,7 @@ if(this.state.data) {
         position: 'right',
         ticks: {
           min: 0,
-          max: 7500,
+          max: 5000,
           mirror: false,
          },
         }],
@@ -212,6 +212,12 @@ if(this.state.data) {
   content = (
       <div>
         <div className="graphContainer">
+
+          <div className="titlebar">
+            <div className="title"> Amps Producing</div>
+            <div className="rtData"> {this.props.data.current} mA </div>
+          </div>
+
           <Line data={currentGraphData}
               options={currentChartOptions}
               width={800}
@@ -219,10 +225,7 @@ if(this.state.data) {
           />
         </div>
 
-        <div className="titlebar">
-          <div className="title"> Amps Producing</div>
-          <div className="rtData"> {this.props.data.current} mA </div>
-        </div>
+
 
 
         <div className="graphContainer">
