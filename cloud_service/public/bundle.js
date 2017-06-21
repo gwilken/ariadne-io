@@ -53117,15 +53117,15 @@
 	  _createClass(Motor, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      var obj = {};
-	      var data = {
-	        busvoltage: 0
-	      };
-
-	      this.setState({ motor: Object.assign({}, this.state.motor, { batt1: data }) });
-	      this.setState({ motor: Object.assign({}, this.state.motor, { batt2: data }) });
-	      this.setState({ motor: Object.assign({}, this.state.motor, { batt3: data }) });
-	      this.setState({ motor: Object.assign({}, this.state.motor, { batt4: data }) });
+	      // var obj = {};
+	      // var data = {
+	      //   busvoltage: 0
+	      // }
+	      //
+	      // this.setState( { motor: Object.assign( {}, this.state.motor, { batt1: data } ) } );
+	      // this.setState( { motor: Object.assign( {}, this.state.motor, { batt2: data } ) } );
+	      // this.setState( { motor: Object.assign( {}, this.state.motor, { batt3: data } ) } );
+	      // this.setState( { motor: Object.assign( {}, this.state.motor, { batt4: data } ) } );
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
