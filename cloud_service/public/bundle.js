@@ -21181,7 +21181,7 @@
 	            position: 'right',
 	            ticks: {
 	              min: 0,
-	              max: 6000,
+	              max: 7500,
 	              mirror: false
 	            }
 	          }],
