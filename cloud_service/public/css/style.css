@@ -21,26 +21,26 @@ h3 {
   bottom: 25%;
   left: 1%;
   margin: 0% 2%;
-
-}
 }
 
 .title {
   display: inline-block;
   font-size: 19px;
-  /*color: rgb(255, 255, 255);*/
-  mix-blend-mode: difference;
+  background-color: black;
+  color: white;
 }
 
 .rtData {
   display: inline-block;
   margin-left: 3%;
   font-size: 17px;
+  background-color: black;
+  color: white;
 }
 
 .search-updatedAt {
-    font-size: 20px;
-    color: grey;
+  font-size: 20px;
+  color: grey;
 }
 
 #search-container {
