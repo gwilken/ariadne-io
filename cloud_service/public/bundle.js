@@ -21086,10 +21086,10 @@
 	        return res.json();
 	      }).then(function (data) {
 
-	        console.log('fetch data', data);
-
 	        var arr = [];
 	        arr.concat(data);
+
+	        console.log(arr);
 
 	        this.setState({ current: arr });
 	      }.bind(this));
