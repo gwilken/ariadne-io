@@ -28,21 +28,21 @@ router.get('/history/:name/:field', function(req, res) {
 
 router.get('/sensor/:name', function(req, res) {
 
-  console.log('sensor route hit', req.params);
-
   var arr = [];
-
   var field = 'telemetry.' + req.params.name;
+
+  console.log('sensor route hit', field);
 
   mongo.collection.find(
     {},
     {field : 1}
   ).sort( { _id: -1 } ).limit(10).toArray( function(err, doc) {
-    
+
     if(err) {
       console.log(err);
       res.end();
     }
+
     else res.json(doc);
 
   });
