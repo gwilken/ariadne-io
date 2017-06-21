@@ -72,7 +72,7 @@ class Solar extends React.Component {
     //   }
     // }
 
-
+var content = ( <div></div> );
 
 if(this.state.data) {
 
@@ -163,7 +163,7 @@ if(this.state.data) {
     },
   }
 
-  var content = (
+  content = (
     <div>
       <div className="graphContainer">
         <Line data={currentGraphData}
@@ -195,11 +195,11 @@ if(this.state.data) {
 
     </div>
   )
-} 
+}
 
 
     return(
-      {content || <div></div>}
+      {content}
     )
   }
 
