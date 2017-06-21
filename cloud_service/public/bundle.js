@@ -21088,8 +21088,8 @@
 	  }
 
 	  _createClass(Test, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
 	      fetch('/history/solar/current').then(function (res) {
 	        return res.json();
 	      }).then(function (data) {
@@ -21100,9 +21100,6 @@
 	        this.setState({ current: arr });
 	      }.bind(this));
 	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
@@ -52717,9 +52714,9 @@
 	          null,
 	          ' ',
 	          _react2.default.createElement(
-	            'h1',
+	            'h2',
 	            null,
-	            'SOLAR'
+	            'Solar Panels'
 	          ),
 	          _react2.default.createElement(
 	            'div',

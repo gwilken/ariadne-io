@@ -11,7 +11,7 @@ class Test extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch('/history/solar/current')
       .then((res) => res.json())
         .then(function(data) {
@@ -22,9 +22,6 @@ class Test extends React.Component {
           this.setState( { current: arr} );
 
         }.bind(this));
-  }
-
-  componentDidMount() {
   }
 
   componentWillReceiveProps(nextProps) {
