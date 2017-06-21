@@ -52578,10 +52578,11 @@
 	      //   }]
 	      //   }
 	      // }
-
-	      var data = this.state.data.map(function (obj) {
-	        return obj.current;
-	      });
+	      if (this.state.data) {
+	        var data = this.state.data.map(function (obj) {
+	          return obj.current;
+	        });
+	      }
 
 	      var graphData = {
 	        labels: data,
