@@ -7,13 +7,34 @@ const router = new express.Router();
 
 router.get('/history/:name/:field', function(req, res) {
 
-  console.log('history route hit', req.params);
-
   var arr = [];
 
   mongo.collection.find(
     {},
     {"telemetry.House Battery Bank.current" : 1}
+  ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
+
+    arr.push(doc.telemetry["House Battery Bank"].current);
+
+  }, function(err) {
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+    else res.json(arr);
+  });
+});
+
+
+router.get('/sensor/:name', function(req, res) {
+
+  console.log('sensot route hit', req.params);
+
+  var arr = [];
+
+  mongo.collection.find(
+    {},
+    {`telemetry.${req.params.name}` : 1}
   ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
 
     arr.push(doc.telemetry["House Battery Bank"].current);
@@ -29,6 +50,5 @@ router.get('/history/:name/:field', function(req, res) {
   });
 
 });
-
 
 module.exports = router;

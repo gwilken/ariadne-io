@@ -20840,6 +20840,10 @@
 
 	var _Test2 = _interopRequireDefault(_Test);
 
+	var _Solar = __webpack_require__(445);
+
+	var _Solar2 = _interopRequireDefault(_Solar);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20878,6 +20882,10 @@
 	        if (msg.name === 'House Battery Bank') {
 	          this.setState({ house: msg });
 	        }
+
+	        if (msg.name === 'Solar Controller Monitor') {
+	          this.setState({ solar: msg });
+	        }
 	      }.bind(this);
 	    }
 	  }, {
@@ -20888,7 +20896,7 @@
 	      var house;
 
 	      if (this.state.solar) {
-	        solar = _react2.default.createElement(_Test2.default, { data: this.state.solar });
+	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar });
 	      }
 
 	      if (this.state.house) {
@@ -20897,7 +20905,7 @@
 
 	      return _react2.default.createElement(
 	        "div",
-	        null,
+	        { className: "mainContainer" },
 	        solar,
 	        house
 	      );
@@ -52464,6 +52472,181 @@
 	module.exports = isEqual;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(244)(module)))
+
+/***/ }),
+/* 445 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(170);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(276);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Solar = function (_React$Component) {
+	  _inherits(Solar, _React$Component);
+
+	  function Solar(props) {
+	    _classCallCheck(this, Solar);
+
+	    var _this = _possibleConstructorReturn(this, (Solar.__proto__ || Object.getPrototypeOf(Solar)).call(this, props));
+
+	    _this.state = {
+	      current: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Solar, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      fetch('/sensor/Solar Controller Monitor').then(function (res) {
+	        return res.json();
+	      }).then(function (data) {
+
+	        var arr = [];
+	        arr = data.slice();
+
+	        this.setState({ current: arr });
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      // if(nextProps.data.current) {
+	      //
+	      //   var newCurrent = this.state.current.slice();
+	      //   newCurrent.push(nextProps.data.current);
+	      //   newCurrent.shift();
+	      //
+	      // this.setState({current: newCurrent});
+	      // }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      // var graphData = {
+	      //   labels: this.state.current,
+	      //   datasets: [
+	      //     {
+	      //       label: 'Current In',
+	      //       data: this.state.current,
+	      //       backgroundColor: 'yellow',
+	      //       borderWidth: 1
+	      //     }
+	      //   ]
+	      // }
+	      //
+	      // const chartOptions = {
+	      //   maintainAspectRatio: false,
+	      //   hover: {
+	      //     animationDuration: 0
+	      //   },
+	      //   legend: {
+	      //     display: false
+	      //   },
+	      //   scales: {
+	      //     yAxes: [{
+	      //       ticks: {
+	      //         beginAtZero: true
+	      //       },
+	      //       display: false
+	      //   }],
+	      //   xAxes: [{
+	      //     display: false
+	      //   }]
+	      //   }
+	      // }
+
+	      var graphData = {
+	        labels: this.state.current,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'yellow',
+	          borderWidth: 2,
+	          lineTension: 0.3,
+	          pointRadius: 0,
+	          data: this.state.current
+	        }]
+	      };
+
+	      var chartOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          duration: 100,
+	          easing: 'linear'
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 7500,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      return _react2.default.createElement('div', null);
+	    }
+	  }]);
+
+	  return Solar;
+	}(_react2.default.Component);
+
+		exports.default = Solar;
 
 /***/ })
 /******/ ]);

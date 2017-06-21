@@ -1,5 +1,7 @@
 import React from "react";
 import Test from "./Test";
+import Solar from "./Solar";
+
 
 class Main extends React.Component {
 
@@ -26,6 +28,12 @@ class Main extends React.Component {
         this.setState( {house: msg } );
       }
 
+      if(msg.name === 'Solar Controller Monitor') {
+        this.setState( {solar: msg } );
+      }
+
+
+
     }.bind(this);
 
   }
@@ -36,7 +44,7 @@ class Main extends React.Component {
     var house;
 
     if(this.state.solar) {
-      solar = <Test data={this.state.solar} />;
+      solar = <Solar data={this.state.solar} />;
     }
 
     if(this.state.house) {
@@ -47,7 +55,7 @@ class Main extends React.Component {
     return(
 
 
-      <div>
+      <div className="mainContainer">
 
         {solar}
         {house}
