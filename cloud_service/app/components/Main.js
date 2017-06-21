@@ -41,7 +41,7 @@ class Main extends React.Component {
       if(msg.name === 'Motor Battery #1') {
         var obj = {};
         this.setState( { motor: Object.assign( {}, this.state.motor, { batt1: msg } ) } );
-        console.log('motor 1 state', this.state);
+        console.log('motor 1 state', this.state.motor);
       }
 
       if(msg.name === 'Motor Battery #2') {

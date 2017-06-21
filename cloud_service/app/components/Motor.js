@@ -20,7 +20,7 @@ class Motor extends React.Component {
 
     var content = ( <div> *** TEST *** </div> );
 
-    if(this.state.data) {
+    if(this.state) {
 
       var data = {
         labels: [this.props.data.batt1.busvoltage],
