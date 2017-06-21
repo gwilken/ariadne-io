@@ -33,8 +33,7 @@ class Test extends React.Component {
   componentDidMount() {
 
     fetch('/history/solar/current')
-      .then((res) => res.json())
-        .then(function(data) {
+      .then((res) => (function(data) {
           console.log(data);
         });
 
