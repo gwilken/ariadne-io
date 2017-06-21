@@ -52714,7 +52714,7 @@
 	          null,
 	          ' ',
 	          _react2.default.createElement(
-	            'h2',
+	            'h3',
 	            null,
 	            'Solar Panels'
 	          ),
