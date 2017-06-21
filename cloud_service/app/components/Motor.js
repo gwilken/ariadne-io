@@ -70,7 +70,7 @@ class Motor extends React.Component {
     if(this.state.batt1) {
 
       var data = {
-        labels: ['Battery 1\n' + this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage],
+        labels: ['Battery 1\n' + this.state.batt1.busvoltage, 'Battery 2\n' + this.state.batt2.busvoltage, 'Battery 3\n' + this.state.batt3.busvoltage, 'Battery 4\n' + this.state.batt4.busvoltage],
         datasets: [
           {
             backgroundColor: 'rgba(255,99,132,0.2)',
