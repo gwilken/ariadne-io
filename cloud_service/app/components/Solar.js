@@ -78,96 +78,128 @@ if(this.state.data) {
 
   var lastObj = this.state.data.length - 1;
 
-  var data = this.state.data.map(function(obj) {
+  var currentData = this.state.data.map(function(obj) {
     return(obj.current);
   })
 
+  var voltData = this.state.data.map(function(obj) {
+    return(obj.loadvoltage);
+  })
 
-}
+  var currentGraphData = {
+    labels: currentData,
+    datasets: [
+        {
+          fill: true,
+          backgroundColor: 'yellow',
+          borderWidth: 2,
+          lineTension: 0.1,
+          pointRadius: 0,
+          data: data
+        }
+     ]
+  }
 
+  var voltGraphData = {
+    labels: voltData,
+    datasets: [
+        {
+          fill: true,
+          backgroundColor: 'yellow',
+          borderWidth: 2,
+          lineTension: 0.1,
+          pointRadius: 0,
+          data: voltData
+        }
+     ]
+  }
 
-    var graphData = {
-      labels: data,
-      datasets: [
-          {
-            fill: true,
-            backgroundColor: 'yellow',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: data
-          }
-       ]
-    }
-
-    var chartOptions = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
+  var chartOptions = {
+    layout: {
+      padding: {
+        left: 15,
+        right: 3,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+      position: 'top',
+    },
+    animation: {
+      duration: 100,
+      easing: 'linear'
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        position: 'right',
+        ticks: {
+          min: 0,
+          max: 7500,
+          mirror: false,
+         },
+        }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: false,
+        },
+        scaleLabel: {
+          display: true,
+        },
+        ticks: {
+          display: false,
         },
       },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        duration: 100,
-        easing: 'linear'
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          position: 'right',
-          ticks: {
-            min: 0,
-            max: 7500,
-            mirror: false,
-           },
-          }],
-        xAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-          },
-          gridLines: {
-            display: false,
-            drawTicks: false,
-          },
-          scaleLabel: {
-            display: true,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        ],
-      },
-    }
+      ],
+    },
+  }
+
+  var content = (
+    <div>
+      <div className="graphContainer">
+        <Line data={currentGraphData}
+            options={chartOptions}
+            width={800}
+            height={150}
+        />
+      </div>
+
+      <div className="titlebar">
+        <div className="title"> Current In</div>
+        <div className="rtData"> {this.state.data[lastObj].current} mV </div>
+      </div>
+
+
+      <div className="graphContainer">
+        <Line data={voltGraphData}
+            options={chartOptions}
+            width={800}
+            height={150}
+        />
+      </div>
+
+      <div className="titlebar">
+        <div className="title"> Current In</div>
+        <div className="rtData"> {this.state.data[lastObj].volt} mV </div>
+      </div>
+
+
+    </div>
+  )
+} 
+
 
     return(
-
-      <div>
-        <div className="graphContainer">
-
-          <Line data={graphData}
-              options={chartOptions}
-              width={800}
-              height={150}
-          />
-
-        </div>
-
-        <div className="titlebar">
-          <div className="title"> Current In</div>
-          <div className="rtData"> {this.state.data[lastObj].current} mV </div>
-        </div>
-
-      </div>
+      {content || <div></div>}
     )
   }
 
