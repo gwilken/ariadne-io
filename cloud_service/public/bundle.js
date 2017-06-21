@@ -53217,9 +53217,6 @@
 	              },
 	              scaleLabel: {
 	                display: true
-	              },
-	              ticks: {
-	                display: false
 	              }
 	            }]
 	          }

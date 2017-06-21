@@ -119,13 +119,10 @@ class Motor extends React.Component {
             },
             scaleLabel: {
               display: true,
-            },
-            ticks: {
-              display: false,
-            },
-          },
-          ],
-        },
+            }
+          }
+          ]
+        }
       }
     //
     // var currentGraphData = {
