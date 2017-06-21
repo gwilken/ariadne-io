@@ -33,19 +33,20 @@ router.get('/sensor/:name', function(req, res) {
 
   console.log('sensor route hit', field);
 
-  mongo.collection.find(
-    {},
-    {}
-  ).sort( { _id: -1 } ).limit(10).toArray( function(err, doc) {
+  mongo.collection.find({})
+    .sort( { _id: -1 } )
+      .limit(10)
+      .forEach( function(doc) {
 
-    if(err) {
-      console.log(err);
-      res.end();
-    }
+        arr.push(doc[field]);
 
-    else res.json(doc);
-
-  });
+      }, function(err) {
+        if(err) {
+          console.log(err);
+          res.end();
+        }
+        else res.json(arr);
+      });
 
 });
 
