@@ -53118,13 +53118,13 @@
 	        this.setState({ batt1: nextProps.data.batt1 });
 	      }
 	      if (nextProps.data.batt2) {
-	        this.setState({ batt1: nextProps.data.batt2 });
+	        this.setState({ batt2: nextProps.data.batt2 });
 	      }
 	      if (nextProps.data.batt3) {
-	        this.setState({ batt1: nextProps.data.batt3 });
+	        this.setState({ batt3: nextProps.data.batt3 });
 	      }
 	      if (nextProps.data.batt4) {
-	        this.setState({ batt1: nextProps.data.batt4 });
+	        this.setState({ batt4: nextProps.data.batt4 });
 	      }
 	    }
 	  }, {
