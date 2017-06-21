@@ -4,6 +4,7 @@ body {
 }
 
 h3 {
+  margin: 0 1%;
 }
 
 .mainContainer {
@@ -17,8 +18,8 @@ h3 {
 
 .titlebar {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 25%;
+  left: 1%;
   margin: 0% 2%;
 }
 

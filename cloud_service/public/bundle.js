@@ -53008,7 +53008,7 @@
 	                  { className: 'rtData' },
 	                  ' ',
 	                  this.props.data.loadvoltage,
-	                  ' V '
+	                  ' v '
 	                )
 	              )
 	            )
