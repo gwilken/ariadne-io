@@ -40,7 +40,7 @@ class Test extends React.Component {
 
           this.setState({current: data});
 
-        }).bind(this);
+        }.bind(this));
 
   }
 

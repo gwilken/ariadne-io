@@ -21098,7 +21098,7 @@
 	      }).then(function (data) {
 
 	        this.setState({ current: data });
-	      }).bind(this);
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
