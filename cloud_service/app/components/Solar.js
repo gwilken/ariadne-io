@@ -230,7 +230,7 @@ if(this.state.data) {
 
         <div className="graphContainer">
           <Line data={voltGraphData}
-              options={chartOptions}
+              options={voltChartOptions}
               width={800}
               height={150}
           />

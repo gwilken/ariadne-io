@@ -52746,7 +52746,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
-	              options: chartOptions,
+	              options: voltChartOptions,
 	              width: 800,
 	              height: 150
 	            })
