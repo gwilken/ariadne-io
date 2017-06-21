@@ -53070,7 +53070,7 @@
 /* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -53111,25 +53111,37 @@
 	  }
 
 	  _createClass(Motor, [{
-	    key: "componentWillReceiveProps",
+	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 
 	      if (nextProps.data.batt1) {
 	        this.setState({ batt1: nextProps.data.batt1 });
 	      }
+	      if (nextProps.data.batt2) {
+	        this.setState({ batt1: nextProps.data.batt2 });
+	      }
+	      if (nextProps.data.batt3) {
+	        this.setState({ batt1: nextProps.data.batt3 });
+	      }
+	      if (nextProps.data.batt4) {
+	        this.setState({ batt1: nextProps.data.batt4 });
+	      }
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
 	      var content = _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
-	        " *** TEST *** "
+	        ' *** TEST *** '
 	      );
 
-	      if (this.state.batt1) {
-	        console.log(this.props.data.batt1.busvoltage);
+	      if (this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4) {
+	        console.log('1', this.props.data.batt1.busvoltage);
+	        console.log('2', this.props.data.batt2.busvoltage);
+	        console.log('3', this.props.data.batt3.busvoltage);
+	        console.log('4', this.props.data.batt4.busvoltage);
 	      }
 
 	      // if(this.state) {
