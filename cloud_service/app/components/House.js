@@ -176,7 +176,7 @@ class House extends React.Component {
 
     content = (
 
-      <div> <h3>House Bank</h3>
+      <div> <h3>House</h3>
         <div>
           <div className="graphContainer">
 

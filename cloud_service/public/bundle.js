@@ -52542,46 +52542,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      console.log(this.state);
-
-	      // var graphData = {
-	      //   labels: this.state.current,
-	      //   datasets: [
-	      //     {
-	      //       label: 'Current In',
-	      //       data: this.state.current,
-	      //       backgroundColor: 'yellow',
-	      //       borderWidth: 1
-	      //     }
-	      //   ]
-	      // }
-	      //
-	      // const chartOptions = {
-	      //   maintainAspectRatio: false,
-	      //   hover: {
-	      //     animationDuration: 0
-	      //   },
-	      //   legend: {
-	      //     display: false
-	      //   },
-	      //   scales: {
-	      //     yAxes: [{
-	      //       ticks: {
-	      //         beginAtZero: true
-	      //       },
-	      //       display: false
-	      //   }],
-	      //   xAxes: [{
-	      //     display: false
-	      //   }]
-	      //   }
-	      // }
-
-	      var content = _react2.default.createElement(
-	        'div',
-	        null,
-	        ' test '
-	      );
+	      var content = _react2.default.createElement('div', null);
 
 	      if (this.state.data) {
 
@@ -52638,7 +52599,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: true,
+	          responsive: false,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
@@ -52685,7 +52646,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: true,
+	          responsive: false,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
@@ -52997,7 +52958,7 @@
 	          _react2.default.createElement(
 	            'h3',
 	            null,
-	            'House Bank'
+	            'House'
 	          ),
 	          _react2.default.createElement(
 	            'div',
