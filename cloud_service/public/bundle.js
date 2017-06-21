@@ -21171,7 +21171,8 @@
 	          position: 'top'
 	        },
 	        animation: {
-	          duration: 500
+	          duration: 100,
+	          easing: 'linear'
 	        },
 	        responsive: true,
 	        maintainAspectRatio: false,
@@ -21179,6 +21180,8 @@
 	          yAxes: [{
 	            position: 'right',
 	            ticks: {
+	              min: 0,
+	              max: 6000,
 	              mirror: false
 	            }
 	          }],
