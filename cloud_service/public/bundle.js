@@ -53107,11 +53107,18 @@
 	      batt3: null,
 	      batt4: null
 	    };
-
 	    return _this;
 	  }
 
 	  _createClass(Motor, [{
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
+
+	      if (nextProps.data.batt1) {
+	        this.setState({ batt1: nextProps.data.batt1 });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 

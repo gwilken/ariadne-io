@@ -13,8 +13,15 @@ class Motor extends React.Component {
       batt3: null,
       batt4: null
     }
-
   }
+
+  componentWillReceiveProps(nextProps) {
+
+      if(nextProps.data.batt1) {
+        this.setState( { batt1: nextProps.data.batt1 } );
+      }
+    }
+
 
   render() {
 
