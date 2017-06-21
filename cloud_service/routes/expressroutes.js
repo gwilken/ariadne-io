@@ -38,7 +38,7 @@ router.get('/sensor/:name', function(req, res) {
       .limit(10)
       .forEach( function(doc) {
 
-        arr.push(doc);
+        arr.push(doc.telemetry['Solar Controller Monitor']);
 
       }, function(err) {
         if(err) {
