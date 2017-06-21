@@ -52738,7 +52738,7 @@
 	              'div',
 	              { className: 'rtData' },
 	              ' ',
-	              this.state.data[lastObj].current,
+	              this.props.data.current,
 	              ' mA '
 	            )
 	          ),
@@ -52763,7 +52763,7 @@
 	              'div',
 	              { className: 'rtData' },
 	              ' ',
-	              this.state.data[lastObj].loadvoltage,
+	              this.props.data.loadvoltage,
 	              ' V '
 	            )
 	          )

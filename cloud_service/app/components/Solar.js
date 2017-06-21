@@ -224,7 +224,7 @@ if(this.state.data) {
 
         <div className="titlebar">
           <div className="title"> Amps Producing</div>
-          <div className="rtData"> {this.state.data[lastObj].current} mA </div>
+          <div className="rtData"> {this.props.data.current} mA </div>
         </div>
 
 
@@ -238,7 +238,7 @@ if(this.state.data) {
 
         <div className="titlebar">
           <div className="title"> Volts</div>
-          <div className="rtData"> {this.state.data[lastObj].loadvoltage} V </div>
+          <div className="rtData"> {this.props.data.loadvoltage} V </div>
         </div>
 
       </div>
