@@ -52875,7 +52875,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: false,
+	          responsive: true,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
@@ -52922,7 +52922,7 @@
 	            duration: 100,
 	            easing: 'linear'
 	          },
-	          responsive: false,
+	          responsive: true,
 	          maintainAspectRatio: false,
 	          scales: {
 	            yAxes: [{
@@ -52967,9 +52967,8 @@
 	              'div',
 	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	                options: currentChartOptions,
-	                width: 800,
-	                height: 150
+	                options: currentChartOptions
+
 	              }),
 	              _react2.default.createElement(
 	                'div',
@@ -52992,9 +52991,8 @@
 	              'div',
 	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
-	                options: voltChartOptions,
-	                width: 800,
-	                height: 150
+	                options: voltChartOptions
+
 	              }),
 	              _react2.default.createElement(
 	                'div',
