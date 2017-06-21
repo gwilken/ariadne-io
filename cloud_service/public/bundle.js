@@ -53306,7 +53306,7 @@
 	              'div',
 	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.Bar, { data: data,
-	                options: { maintainAspectRatio: false },
+	                options: options,
 	                width: 800,
 	                height: 140
 	              }),

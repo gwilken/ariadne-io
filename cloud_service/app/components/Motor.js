@@ -200,7 +200,7 @@ class Motor extends React.Component {
           <div className="graphContainer">
 
             <Bar data={data}
-              options={{maintainAspectRatio: false}}
+              options={options}
                 width={800}
                 height={140}
             />
