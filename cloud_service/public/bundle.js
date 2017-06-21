@@ -53086,6 +53086,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53150,130 +53152,121 @@
 	        ' *** TEST *** '
 	      );
 
-	      if (this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4) {
-	        console.log('1', this.state.batt1.busvoltage);
-	        console.log('2', this.state.batt2.busvoltage);
-	        console.log('3', this.state.batt3.busvoltage);
-	        console.log('4', this.state.batt4.busvoltage);
-	      }
+	      //
+	      // if(this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4 ) {
+	      //     console.log('1', this.state.batt1.busvoltage);
+	      //     console.log('2', this.state.batt2.busvoltage);
+	      //     console.log('3', this.state.batt3.busvoltage);
+	      //     console.log('4', this.state.batt4.busvoltage);
+	      // }
 
-	      // if(this.state) {
-	      //
-	      //   var data = {
-	      //     labels: [this.props.data.batt1.busvoltage],
-	      //     datasets: [
-	      //       {
-	      //         label: 'My First dataset',
-	      //         backgroundColor: 'rgba(255,99,132,0.2)',
-	      //         borderColor: 'rgba(255,99,132,1)',
-	      //         borderWidth: 1,
-	      //         hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-	      //         hoverBorderColor: 'rgba(255,99,132,1)',
-	      //         data: [this.props.data.batt1.busvoltage]
-	      //       }
-	      //     ]
-	      //   };
-	      //
-	      //
-	      // var currentGraphData = {
-	      //   labels: currentData,
-	      //   datasets: [
-	      //       {
-	      //         fill: true,
-	      //         backgroundColor: 'yellow',
-	      //         borderWidth: 2,
-	      //         lineTension: 0.1,
-	      //         pointRadius: 0,
-	      //         data: currentData
-	      //       }
-	      //    ]
-	      // }
-	      //
-	      // var currentChartOptions = {
-	      //   layout: {
-	      //     padding: {
-	      //       left: 15,
-	      //       right: 3,
-	      //     },
-	      //   },
-	      //   tooltips: {
-	      //     enabled: false,
-	      //   },
-	      //   legend: {
-	      //     display: false,
-	      //     position: 'top',
-	      //   },
-	      //   animation: {
-	      //     duration: 100,
-	      //     easing: 'linear'
-	      //   },
-	      //   maintainAspectRatio: false,
-	      //   scales: {
-	      //     yAxes: [{
-	      //       position: 'right',
-	      //       ticks: {
-	      //         min: 0,
-	      //         max: 5000,
-	      //         mirror: false,
-	      //        },
-	      //       }],
-	      //     xAxes: [{
-	      //       ticks: {
-	      //         min: 0,
-	      //         max: 0,
-	      //       },
-	      //       gridLines: {
-	      //         display: false,
-	      //         drawTicks: false,
-	      //       },
-	      //       scaleLabel: {
-	      //         display: true,
-	      //       },
-	      //       ticks: {
-	      //         display: false,
-	      //       },
-	      //     },
-	      //     ],
-	      //   },
-	      // }
-	      //
-	      // content = (
-	      //
-	      //   <div> <h3>Motor</h3>
-	      //     <div>
-	      //       <div className="graphContainer">
-	      //
-	      //         <Bar data={data}
-	      //           options={{maintainAspectRatio: false}}
-	      //             width={800}
-	      //             height={140}
-	      //         />
-	      //
-	      //         <div className="titlebar">
-	      //           <div className="title">Motor Batts</div>
-	      //           {/* <div className="rtData"> {this.props.data.current} mA </div> */}
-	      //         </div>
-	      //
-	      //       </div>
-	      //
-	      //
-	      //       {/* <div className="graphContainer">
-	      //         <Line data={voltGraphData}
-	      //             options={voltChartOptions}
-	      //             width={800}
-	      //             height={140}
-	      //         />
-	      //
-	      //         <div className="titlebar">
-	      //           <div className="title"> Volts</div>
-	      //           <div className="rtData"> {this.props.data.loadvoltage} V </div>
-	      //         </div>
-	      //       </div> */}
-	      //
-	      //     </div>
-	      //   </div>
-	      //   )
-	      // }
+
+	      if (this.state) {
+
+	        var data = {
+	          labels: [this.state.batt1.busvoltage],
+	          datasets: [{
+	            label: 'My First dataset',
+	            backgroundColor: 'rgba(255,99,132,0.2)',
+	            borderColor: 'rgba(255,99,132,1)',
+	            borderWidth: 1,
+	            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+	            hoverBorderColor: 'rgba(255,99,132,1)',
+	            data: [this.state.batt1.busvoltage]
+	          }]
+	        };
+
+	        var currentGraphData = {
+	          labels: currentData,
+	          datasets: [{
+	            fill: true,
+	            backgroundColor: 'yellow',
+	            borderWidth: 2,
+	            lineTension: 0.1,
+	            pointRadius: 0,
+	            data: currentData
+	          }]
+	        };
+
+	        var currentChartOptions = {
+	          layout: {
+	            padding: {
+	              left: 15,
+	              right: 3
+	            }
+	          },
+	          tooltips: {
+	            enabled: false
+	          },
+	          legend: {
+	            display: false,
+	            position: 'top'
+	          },
+	          animation: {
+	            duration: 100,
+	            easing: 'linear'
+	          },
+	          maintainAspectRatio: false,
+	          scales: {
+	            yAxes: [{
+	              position: 'right',
+	              ticks: {
+	                min: 0,
+	                max: 5000,
+	                mirror: false
+	              }
+	            }],
+	            xAxes: [_defineProperty({
+	              ticks: {
+	                min: 0,
+	                max: 0
+	              },
+	              gridLines: {
+	                display: false,
+	                drawTicks: false
+	              },
+	              scaleLabel: {
+	                display: true
+	              }
+	            }, 'ticks', {
+	              display: false
+	            })]
+	          }
+	        };
+
+	        content = _react2.default.createElement(
+	          'div',
+	          null,
+	          ' ',
+	          _react2.default.createElement(
+	            'h3',
+	            null,
+	            'Motor'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.Bar, { data: data,
+	                options: { maintainAspectRatio: false },
+	                width: 800,
+	                height: 140
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Motor Batts'
+	                )
+	              )
+	            )
+	          )
+	        );
+	      }
 
 	      return content;
 	    }
