@@ -35,7 +35,6 @@ router.get('/sensor/:name', function(req, res) {
 
   mongo.collection.find({})
     .sort( { _id: -1 } )
-      .limit(10)
       .forEach( function(doc) {
 
         arr.push(doc[field]);
