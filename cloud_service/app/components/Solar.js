@@ -186,7 +186,7 @@ class Solar extends React.Component {
 
             <div className="titlebar">
               <div className="title"> Amps Producing</div>
-              <div className="rtData"> {this.props.data.current} mA </div>
+              <div className="rtData"> {this.props.data.current + 'mA'}</div>
             </div>
 
           </div>
@@ -200,7 +200,7 @@ class Solar extends React.Component {
 
             <div className="titlebar">
               <div className="title"> Volts</div>
-              <div className="rtData"> {this.props.data.loadvoltage} V </div>
+              <div className="rtData"> {this.props.data.loadvoltage 'v'} </div>
             </div>
 
           </div>
