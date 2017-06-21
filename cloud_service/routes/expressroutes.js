@@ -25,7 +25,7 @@ router.get('/history/:name/:field', function(req, res) {
 
   }).toArray(function(A) {
 
-    res.send(A);
+    res.json(A);
 
 
   });
