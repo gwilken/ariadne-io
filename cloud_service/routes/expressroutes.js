@@ -18,7 +18,9 @@ router.get('/history/:name/:field', function(req, res) {
 
     arr.push(doc.telemetry["Solar Controller Monitor"].current);
 
-  }), () => res.json(arr);
+  }), () => done(function() {
+    res.json(arr);
+  }
 
 });
 
