@@ -24,14 +24,14 @@ class Solar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // if(nextProps.data.current) {
-    //
-    //   var newCurrent = this.state.current.slice();
-    //   newCurrent.push(nextProps.data.current);
-    //   newCurrent.shift();
-    //
-    // this.setState({current: newCurrent});
-    // }
+    if(nextProps.data) {
+
+      var newState = this.state.data.slice();
+      newState.push(nextProps.data);
+      newState.shift();
+
+    this.setState({current: newState});
+    }
   }
 
   render() {
