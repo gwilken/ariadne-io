@@ -53128,7 +53128,7 @@
 	        " *** TEST *** "
 	      );
 
-	      if (this.props.data.batt1) {
+	      if (this.state.batt1) {
 	        console.log(this.props.data.batt1.busvoltage);
 	      }
 
