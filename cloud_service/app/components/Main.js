@@ -2,6 +2,7 @@ import React from "react";
 import Test from "./Test";
 import Solar from "./Solar";
 import House from "./House";
+import Motor from "./Motor";
 
 class Main extends React.Component {
 
