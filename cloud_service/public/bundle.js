@@ -20903,7 +20903,7 @@
 	        if (msg.name === 'Motor Battery #1') {
 	          var obj = {};
 	          this.setState({ motor: Object.assign({}, this.state.motor, { batt1: msg }) });
-	          console.log('motor 1 state', this.state.motor);
+	          //console.log('motor 1 state', this.state.motor);
 	        }
 
 	        if (msg.name === 'Motor Battery #2') {
@@ -53128,8 +53128,8 @@
 	        " *** TEST *** "
 	      );
 
-	      if (this.props.data.batt1) {
-	        console.log(this.props.data.batt1);
+	      if (this.props.data.batt1.busvoltage) {
+	        console.log(this.props.data.batt1.busvoltage);
 	      }
 
 	      // if(this.state) {
