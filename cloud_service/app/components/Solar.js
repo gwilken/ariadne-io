@@ -72,8 +72,14 @@ class Solar extends React.Component {
     //   }
     // }
 
+    var data = this.state.data.map(function(obj) {
+      return(obj.current);
+    })
+
+
+
     var graphData = {
-      labels: this.state.current,
+      labels: data,
       datasets: [
           {
             fill: true,
@@ -81,7 +87,7 @@ class Solar extends React.Component {
             borderWidth: 2,
             lineTension: 0.3,
             pointRadius: 0,
-            data: this.state.current
+            data: data
           }
        ]
     }
@@ -137,7 +143,8 @@ class Solar extends React.Component {
 
     return(
       <div>
-        {/* <div className="graphContainer">
+
+        <div className="graphContainer">
 
           <Line data={graphData}
               options={chartOptions}
@@ -151,9 +158,9 @@ class Solar extends React.Component {
 
           <div className="title"> House Battery Amps</div>
 
-          <div className="rtData"> {this.props.data.current} mV </div>
+          {/* <div className="rtData"> {this.props.data.current} mV </div> */}
 
-        </div> */}
+        </div>
 
       </div>
     )

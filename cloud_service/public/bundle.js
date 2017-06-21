@@ -52579,15 +52579,19 @@
 	      //   }
 	      // }
 
+	      var data = this.state.data.map(function (obj) {
+	        return obj.current;
+	      });
+
 	      var graphData = {
-	        labels: this.state.current,
+	        labels: data,
 	        datasets: [{
 	          fill: true,
 	          backgroundColor: 'yellow',
 	          borderWidth: 2,
 	          lineTension: 0.3,
 	          pointRadius: 0,
-	          data: this.state.current
+	          data: data
 	        }]
 	      };
 
@@ -52638,7 +52642,28 @@
 	        }
 	      };
 
-	      return _react2.default.createElement('div', null);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.Line, { data: graphData,
+	            options: chartOptions,
+	            width: 800,
+	            height: 150
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'titlebar' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'title' },
+	            ' House Battery Amps'
+	          )
+	        )
+	      );
 	    }
 	  }]);
 
