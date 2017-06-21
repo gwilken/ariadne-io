@@ -28,7 +28,7 @@ h3 {
 .title {
   display: inline-block;
   font-size: 19px;
-  color: rgb(255, 255, 255);
+  /*color: rgb(255, 255, 255);*/
   mix-blend-mode: difference;
 }
 
