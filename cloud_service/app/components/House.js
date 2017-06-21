@@ -94,7 +94,6 @@ class House extends React.Component {
         duration: 100,
         easing: 'linear'
       },
-      responsive: true,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
@@ -143,7 +142,6 @@ class House extends React.Component {
         duration: 100,
         easing: 'linear'
       },
-      responsive: true,
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
@@ -182,7 +180,8 @@ class House extends React.Component {
 
             <Line data={currentGraphData}
                 options={currentChartOptions}
-
+                width={800}
+                height={110}
             />
 
             <div className="titlebar">
@@ -195,7 +194,8 @@ class House extends React.Component {
           <div className="graphContainer">
             <Line data={voltGraphData}
                 options={voltChartOptions}
-
+                width={800}
+                height={110}
             />
 
             <div className="titlebar">
