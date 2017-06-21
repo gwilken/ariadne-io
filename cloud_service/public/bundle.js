@@ -21101,7 +21101,7 @@
 	      if (nextProps.data.current) {
 
 	        var newCurrent = this.state.current.slice();
-	        newCurrent.push(nextProps);
+	        newCurrent.push(nextProps.data.current);
 	        newCurrent.shift();
 
 	        this.setState({ current: newCurrent });
