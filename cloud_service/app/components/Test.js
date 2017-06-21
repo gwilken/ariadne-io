@@ -78,7 +78,7 @@ class Test extends React.Component {
       datasets: [
           {
             fill: true,
-            backgroundColor: 'yellow',
+            backgroundColor: 'blue',
             borderWidth: 2,
             lineTension: 0.1,
             pointRadius: 0,
@@ -150,7 +150,7 @@ class Test extends React.Component {
 
         <div className="titlebar">
 
-          <div className="title"> House Battery Amps</div>
+          <div className="title"> House Energy Use</div>
 
           <div className="rtData"> {this.props.data.current} mA </div>
 

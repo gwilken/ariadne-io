@@ -210,6 +210,9 @@ if(this.state.data) {
 
 
   content = (
+
+    <div> <h1>SOLAR</h1>
+
       <div>
         <div className="graphContainer">
 
@@ -226,9 +229,6 @@ if(this.state.data) {
 
         </div>
 
-
-
-
         <div className="graphContainer">
           <Line data={voltGraphData}
               options={voltChartOptions}
@@ -242,9 +242,8 @@ if(this.state.data) {
           </div>
 
         </div>
-
-
       </div>
+    </div>
     )
   }
 

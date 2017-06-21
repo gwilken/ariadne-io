@@ -21156,7 +21156,7 @@
 	        labels: this.state.current,
 	        datasets: [{
 	          fill: true,
-	          backgroundColor: 'yellow',
+	          backgroundColor: 'blue',
 	          borderWidth: 2,
 	          lineTension: 0.1,
 	          pointRadius: 0,
@@ -21229,7 +21229,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'title' },
-	            ' House Battery Amps'
+	            ' House Energy Use'
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -52715,53 +52715,63 @@
 	        content = _react2.default.createElement(
 	          'div',
 	          null,
+	          ' ',
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'graphContainer' },
-	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	              options: currentChartOptions,
-	              width: 800,
-	              height: 150
-	            }),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'titlebar' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'title' },
-	                ' Amps Producing'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rtData' },
-	                ' ',
-	                this.props.data.current,
-	                ' mA '
-	              )
-	            )
+	            'h1',
+	            null,
+	            'SOLAR'
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'graphContainer' },
-	            _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
-	              options: voltChartOptions,
-	              width: 800,
-	              height: 150
-	            }),
+	            null,
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'titlebar' },
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	                options: currentChartOptions,
+	                width: 800,
+	                height: 150
+	              }),
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'title' },
-	                ' Volts'
-	              ),
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  ' Amps Producing'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  this.props.data.current,
+	                  ' mA '
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
+	                options: voltChartOptions,
+	                width: 800,
+	                height: 150
+	              }),
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'rtData' },
-	                ' ',
-	                this.props.data.loadvoltage,
-	                ' V '
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  ' Volts'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  this.props.data.loadvoltage,
+	                  ' V '
+	                )
 	              )
 	            )
 	          )
