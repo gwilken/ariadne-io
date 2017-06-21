@@ -100,11 +100,11 @@ if(this.state.data) {
     labels: voltData,
     datasets: [
         {
-          fill: true,
+          fill: false,
           backgroundColor: 'yellow',
           borderWidth: 2,
           lineTension: 0.1,
-          pointRadius: 0,
+          pointRadius: 2,
           data: voltData
         }
      ]
@@ -211,7 +211,7 @@ if(this.state.data) {
 
   content = (
 
-    <div> <h4>Solar</h4>
+    <div> <h3>Solar</h3>
 
       <div>
         <div className="graphContainer">

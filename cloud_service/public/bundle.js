@@ -52606,11 +52606,11 @@
 	        var voltGraphData = {
 	          labels: voltData,
 	          datasets: [{
-	            fill: true,
+	            fill: false,
 	            backgroundColor: 'yellow',
 	            borderWidth: 2,
 	            lineTension: 0.1,
-	            pointRadius: 0,
+	            pointRadius: 2,
 	            data: voltData
 	          }]
 	        };
@@ -52714,7 +52714,7 @@
 	          null,
 	          ' ',
 	          _react2.default.createElement(
-	            'h4',
+	            'h3',
 	            null,
 	            'Solar'
 	          ),
