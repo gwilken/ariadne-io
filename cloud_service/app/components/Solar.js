@@ -100,12 +100,12 @@ if(this.state.data) {
     labels: voltData,
     datasets: [
         {
-          fill: false,
+          fill: true,
           backgroundColor: 'yellow',
-          borderColor: 'yellow',
+          // borderColor: 'yellow',
           borderWidth: 2,
           lineTension: 0.1,
-          pointRadius: 2,
+          pointRadius: 0,
           data: voltData
         }
      ]

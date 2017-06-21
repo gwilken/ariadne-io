@@ -1,7 +1,7 @@
 import React from "react";
 import Test from "./Test";
 import Solar from "./Solar";
-
+import House from "./House";
 
 class Main extends React.Component {
 
@@ -32,8 +32,6 @@ class Main extends React.Component {
         this.setState( {solar: msg } );
       }
 
-
-
     }.bind(this);
 
   }
@@ -48,7 +46,7 @@ class Main extends React.Component {
     }
 
     if(this.state.house) {
-      house = <Test data={this.state.house} />;
+      house = <House data={this.state.house} />;
     }
 
 
@@ -57,8 +55,9 @@ class Main extends React.Component {
 
       <div className="mainContainer">
 
-        {solar}
         {house}
+        {solar}
+
 
       </div>
 
