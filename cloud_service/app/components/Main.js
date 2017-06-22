@@ -70,7 +70,7 @@ class Main extends React.Component {
         this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
       }
 
-      if(msg.name === 'Environmental') {
+      if(msg.family === 'Environmental') {
         var obj = {};
         console.log('at main: ', msg);
         this.setState( { enviro: msg } );
