@@ -210,6 +210,6 @@ class House extends React.Component {
         </div>
       </div>
     )
+  }
 }
-
 export default House;

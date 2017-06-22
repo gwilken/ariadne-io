@@ -20844,7 +20844,7 @@
 
 	var _Solar2 = _interopRequireDefault(_Solar);
 
-	var _House = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./House\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _House = __webpack_require__(446);
 
 	var _House2 = _interopRequireDefault(_House);
 
@@ -52785,7 +52785,278 @@
 		exports.default = Solar;
 
 /***/ }),
-/* 446 */,
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(170);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(276);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var House = function (_React$Component) {
+	  _inherits(House, _React$Component);
+
+	  function House(props) {
+	    _classCallCheck(this, House);
+
+	    var _this = _possibleConstructorReturn(this, (House.__proto__ || Object.getPrototypeOf(House)).call(this, props));
+
+	    _this.state = {
+	      data: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(House, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      fetch('/sensor/House Battery Bank/10').then(function (res) {
+	        return res.json();
+	      }).then(function (objs) {
+	        //console.log(objs);
+	        this.setState({ data: objs });
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+
+	      if (this.state) {
+	        if (nextProps.data) {
+
+	          var newState = this.state.data.slice();
+	          newState.push(nextProps.data);
+	          newState.shift();
+
+	          this.setState({ data: newState });
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+	      var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
+
+	      var lastObj = this.state.data.length - 1;
+
+	      var currentData = this.state.data.map(function (obj) {
+	        return obj.current;
+	      });
+
+	      var voltData = this.state.data.map(function (obj) {
+	        return obj.loadvoltage;
+	      });
+
+	      var currentGraphData = {
+	        labels: currentData,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: currentData
+	        }]
+	      };
+
+	      var voltGraphData = {
+	        labels: voltData,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          // borderColor: 'yellow',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: voltData
+	        }]
+	      };
+
+	      var currentChartOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 7500,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      var voltChartOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 14.5,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'House'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
+	              options: voltChartOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Battery Voltage'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtVolt,
+	                ' '
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	              options: currentChartOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Current Usage'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtCurrent
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return House;
+	}(_react2.default.Component);
+
+		exports.default = House;
+
+/***/ }),
 /* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
