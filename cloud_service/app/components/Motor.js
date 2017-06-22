@@ -112,6 +112,7 @@ class Motor extends React.Component {
       var rpm = 'RPM: ' + this.state.ey.rpm;
 
       var rtCurrent = this.state.ey.current + ' Ah';
+      var rtBankVolt = this.state.ey.volts + ' v';
 
       var data = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
