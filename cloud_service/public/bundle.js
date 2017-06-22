@@ -53218,6 +53218,32 @@
 	          }]
 	        }
 	      };
+	      var ttdData = {
+	        labels: ["Red", "darker red"],
+	        datasets: [{
+	          label: '',
+	          data: [this.state.ey.ttd],
+	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
+	          borderWidth: 0
+	        }]
+	      };
+
+	      var ttdOptions = {
+	        rotation: 1 * Math.PI,
+	        circumference: 1 * Math.PI,
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false
+	      };
 
 	      var rpmData = {
 	        labels: ["Red", "darker red"],
