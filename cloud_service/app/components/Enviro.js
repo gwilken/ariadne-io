@@ -24,7 +24,7 @@ class Enviro extends React.Component {
     // T(°C) × 9/5 + 32
 
     var tempF = this.props.data.temperature * 9/5 + 32;
-    var tempDisplay = tempF.toFixed(2) + ' F' ;
+    var tempDisplay = tempF.toFixed(2) + &#176 + ' f' ;
 
     var tempData = {
         labels: [tempF],
@@ -64,7 +64,7 @@ class Enviro extends React.Component {
       xAxes: [{
         ticks: {
           min: 0,
-          max: 60,
+          max: 120,
         },
         gridLines: {
           display: false,
