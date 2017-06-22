@@ -53840,7 +53840,20 @@
 	              )
 	            )
 	          ),
-	          _react2.default.createElement('div', { className: 'geoLocation' })
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'geoLocation' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              rtLat
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              rtLon
+	            )
+	          )
 	        )
 	      );
 	    }

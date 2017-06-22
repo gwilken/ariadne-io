@@ -92,9 +92,8 @@ class Geo extends React.Component {
             </div>
 
             <div className="geoLocation">
-
-                {/* 800 x 140 */}
-
+              <div className="rtData">{rtLat}</div>
+              <div className="rtData">{rtLon}</div>
             </div>
 
           </div>
