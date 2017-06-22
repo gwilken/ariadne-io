@@ -20856,6 +20856,10 @@
 
 	var _Enviro2 = _interopRequireDefault(_Enviro);
 
+	var _Geo = __webpack_require__(449);
+
+	var _Geo2 = _interopRequireDefault(_Geo);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20876,6 +20880,7 @@
 	      solar: null,
 	      house: null,
 	      enviro: null,
+	      geo: null,
 	      motor: {
 	        ey: null,
 	        batt1: null,
@@ -20897,7 +20902,7 @@
 
 	        var msg = JSON.parse(event.data);
 
-	        console.log(msg);
+	        //console.log(msg);
 
 	        if (msg.name === 'House Battery Bank') {
 	          this.setState({ house: msg });
@@ -20936,8 +20941,14 @@
 
 	        if (msg.family === 'Environmental') {
 	          var obj = {};
-	          console.log('at main: ', msg);
+	          //console.log('at main: ', msg);
 	          this.setState({ enviro: msg });
+	        }
+
+	        if (msg.family === 'navigation') {
+	          var obj = {};
+	          //console.log('at main: ', msg);
+	          this.setState({ geo: msg });
 	        }
 	      }.bind(this);
 	    }
@@ -20949,6 +20960,7 @@
 	      var house;
 	      var motor;
 	      var enviro;
+	      var geo;
 
 	      if (this.state.solar) {
 	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar });
@@ -20966,13 +20978,18 @@
 	        enviro = _react2.default.createElement(_Enviro2.default, { data: this.state.enviro });
 	      }
 
+	      if (this.state.geo) {
+	        geo = _react2.default.createElement(_Geo2.default, { data: this.state.geo });
+	      }
+
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
 	        house,
 	        solar,
 	        motor,
-	        enviro
+	        enviro,
+	        geo
 	      );
 	    }
 	  }]);
@@ -53205,7 +53222,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      console.log('at render:', this.state.ey);
+	      //  console.log('at render:', this.state.ey);
 
 	      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
 	      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
@@ -53630,7 +53647,7 @@
 	        datasets: [{
 	          labels: '',
 	          data: [tempF],
-	          backgroundColor: ['lightseagreen']
+	          backgroundColor: ['darkviolet']
 	        }]
 	      };
 
@@ -53676,7 +53693,7 @@
 	        datasets: [{
 	          labels: '',
 	          data: [this.props.data.pressure],
-	          backgroundColor: ['lightseagreen']
+	          backgroundColor: ['darkviolet']
 	        }]
 	      };
 
@@ -53787,6 +53804,155 @@
 	}(_react2.default.Component);
 
 		exports.default = Enviro;
+
+/***/ }),
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(170);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(276);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Geo = function (_React$Component) {
+	  _inherits(Geo, _React$Component);
+
+	  function Geo(props) {
+	    _classCallCheck(this, Geo);
+
+	    var _this = _possibleConstructorReturn(this, (Geo.__proto__ || Object.getPrototypeOf(Geo)).call(this, props));
+
+	    _this.state = {
+	      data: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Geo, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var rtLat = this.props.data.latitude;
+	      var rtLon = this.props.data.longitude;
+	      var rtSpeed = this.props.data.speed + ' knots';
+	      //var rtTmg = this.props.data.tmg;
+
+	      var speedData = {
+	        labels: [this.props.data.speed],
+	        datasets: [{
+	          labels: '',
+	          data: [this.props.data.speed],
+	          backgroundColor: ['lightseagreen']
+	        }]
+	      };
+
+	      var speedOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 140,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 10
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Geospatial'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
+	              options: sppedOptions,
+	              width: 400,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Speed'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtSpeed,
+	                ' '
+	              )
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'graphContainer' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Geo;
+	}(_react2.default.Component);
+
+		exports.default = Geo;
 
 /***/ })
 /******/ ]);

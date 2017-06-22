@@ -4,7 +4,7 @@ import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
 import Enviro from "./Enviro";
-
+import Geo from "./Geo";
 
 class Main extends React.Component {
 
@@ -15,6 +15,7 @@ class Main extends React.Component {
       solar: null,
       house: null,
       enviro: null,
+      geo: null,
       motor: {
         ey: null,
         batt1: null,
@@ -33,7 +34,7 @@ class Main extends React.Component {
 
       var msg = JSON.parse(event.data);
 
-      console.log(msg);
+      //console.log(msg);
 
       if(msg.name === 'House Battery Bank') {
         this.setState( {house: msg } );
@@ -72,10 +73,15 @@ class Main extends React.Component {
 
       if(msg.family === 'Environmental') {
         var obj = {};
-        console.log('at main: ', msg);
+        //console.log('at main: ', msg);
         this.setState( { enviro: msg } );
       }
 
+      if(msg.family === 'navigation') {
+        var obj = {};
+        //console.log('at main: ', msg);
+        this.setState( { geo: msg } );
+      }
 
     }.bind(this);
   }
@@ -86,6 +92,7 @@ class Main extends React.Component {
     var house;
     var motor;
     var enviro;
+    var geo;
 
     if(this.state.solar) {
       solar = <Solar data={this.state.solar} />;
@@ -103,6 +110,9 @@ class Main extends React.Component {
       enviro = <Enviro data={this.state.enviro} />;
     }
 
+    if(this.state.geo) {
+      geo = <Geo data={this.state.geo} />;
+    }
 
     return(
 
@@ -112,6 +122,7 @@ class Main extends React.Component {
         {solar}
         {motor}
         {enviro}
+        {geo}
 
       </div>
 

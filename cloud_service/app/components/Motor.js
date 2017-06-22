@@ -101,7 +101,7 @@ class Motor extends React.Component {
 
   render() {
 
-    console.log('at render:', this.state.ey);
+  //  console.log('at render:', this.state.ey);
 
       var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
       var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';

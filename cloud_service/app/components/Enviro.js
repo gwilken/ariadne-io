@@ -32,7 +32,7 @@ class Enviro extends React.Component {
             {
               labels: '',
               data: [tempF],
-              backgroundColor: ['lightseagreen']
+              backgroundColor: ['darkviolet']
             }
          ]
        };
@@ -80,7 +80,7 @@ class Enviro extends React.Component {
           {
             labels: '',
             data: [this.props.data.pressure],
-            backgroundColor: ['lightseagreen']
+            backgroundColor: ['darkviolet']
           }
        ]
      };
