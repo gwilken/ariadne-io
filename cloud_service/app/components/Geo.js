@@ -75,7 +75,6 @@ class Geo extends React.Component {
     return (
 
       <div> <h3>Geospatial</h3>
-        <div>
 
           <div className="geoContainer">
 
@@ -92,7 +91,7 @@ class Geo extends React.Component {
               </div>
             </div>
 
-            <div className="graphContainer geoLocation">
+            <div className="geoLocation">
 
                 {/* 800 x 140 */}
 
@@ -100,9 +99,6 @@ class Geo extends React.Component {
 
           </div>
 
-
-
-        </div>
       </div>
     )
   }

@@ -53814,37 +53814,33 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'geoContainer' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'geoContainer' },
+	            { className: 'graphContainer geoSpeed' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
+	              options: speedOptions,
+	              width: 400,
+	              height: 140
+	            }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'graphContainer geoSpeed' },
-	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
-	                options: speedOptions,
-	                width: 400,
-	                height: 140
-	              }),
+	              { className: 'titlebar' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Speed'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  rtSpeed,
-	                  ' '
-	                )
+	                { className: 'title' },
+	                'Speed'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtSpeed,
+	                ' '
 	              )
 	            )
 	          ),
-	          _react2.default.createElement('div', { className: 'graphContainer geoLocation' })
+	          _react2.default.createElement('div', { className: 'geoLocation' })
 	        )
 	      );
 	    }
