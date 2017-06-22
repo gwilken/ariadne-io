@@ -9,7 +9,13 @@ class Motor extends React.Component {
     super(props);
 
     this.state = {
-      ey: null,
+      ey: {
+        ttd: 0,
+        current: 0,
+        volts: 0,
+        rpm: 0,
+        soc: 0
+      },
       batt1: {
           busvoltage: 0
       },
@@ -39,6 +45,11 @@ class Motor extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
+      if(nextProps.data.ey.ttd) {
+        var obj = {};
+        this.setState( { ey: Object.assign( {}, this.state.ey, { ttd: nextProps.data.ey.ttd } ) } )
+      }
+
       if(nextProps.data.batt1) {
         this.setState( { batt1: nextProps.data.batt1 } );
       }
@@ -56,20 +67,6 @@ class Motor extends React.Component {
 
 
   render() {
-
-    var content = ( <div> *** TEST *** </div> );
-
-    //
-    // if(this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4 ) {
-    //     console.log('1', this.state.batt1.busvoltage);
-    //     console.log('2', this.state.batt2.busvoltage);
-    //     console.log('3', this.state.batt3.busvoltage);
-    //     console.log('4', this.state.batt4.busvoltage);
-    // }
-
-
-
-    if(this.state.batt1) {
 
       var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
       var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
@@ -132,14 +129,16 @@ class Motor extends React.Component {
         }
       }
 
+
+
       var doughnutData = {
           labels: ["Red", "darker red"],
           datasets: [{
-              label: '# of Votes',
-              data: [12, ],
+              label: '',
+              data: [this.state.ey.ttd, ],
               backgroundColor: [
                   'firebrick',
-                  'black'
+                  'rgb(0,0,0)'
               ],
               borderWidth: 0
           }]
@@ -162,7 +161,7 @@ class Motor extends React.Component {
           maintainAspectRatio: false
       };
 
-    content = (
+    return (
 
       <div>
 
@@ -213,9 +212,7 @@ class Motor extends React.Component {
         </div>
       </div>
       )
-    }
 
-    return content;
   }
 }
 

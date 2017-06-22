@@ -53105,7 +53105,13 @@
 	    var _this = _possibleConstructorReturn(this, (Motor.__proto__ || Object.getPrototypeOf(Motor)).call(this, props));
 
 	    _this.state = {
-	      ey: null,
+	      ey: {
+	        ttd: 0,
+	        current: 0,
+	        volts: 0,
+	        rpm: 0,
+	        soc: 0
+	      },
 	      batt1: {
 	        busvoltage: 0
 	      },
@@ -53139,6 +53145,11 @@
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 
+	      if (nextProps.data.ey.ttd) {
+	        var obj = {};
+	        this.setState({ ey: Object.assign({}, this.state.ey, { ttd: nextProps.data.ey.ttd }) });
+	      }
+
 	      if (nextProps.data.batt1) {
 	        this.setState({ batt1: nextProps.data.batt1 });
 	      }
@@ -53156,174 +53167,154 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var content = _react2.default.createElement(
+	      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
+	      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
+	      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
+	      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
+
+	      var data = {
+	        labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
+	        datasets: [{
+	          backgroundColor: 'firebrick',
+	          borderColor: 'firebrick',
+	          borderWidth: 1,
+	          // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+	          // hoverBorderColor: 'rgba(255,99,132,1)',
+	          data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 14.5,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [{
+	            display: true,
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var doughnutData = {
+	        labels: ["Red", "darker red"],
+	        datasets: [{
+	          label: '',
+	          data: [this.state.ey.ttd],
+	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
+	          borderWidth: 0
+	        }]
+	      };
+
+	      var doughnutOptions = {
+	        rotation: 1 * Math.PI,
+	        circumference: 1 * Math.PI,
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false
+	      };
+
+	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        ' *** TEST *** '
-	      );
-
-	      //
-	      // if(this.state.batt1 && this.state.batt2 && this.state.batt3 && this.state.batt4 ) {
-	      //     console.log('1', this.state.batt1.busvoltage);
-	      //     console.log('2', this.state.batt2.busvoltage);
-	      //     console.log('3', this.state.batt3.busvoltage);
-	      //     console.log('4', this.state.batt4.busvoltage);
-	      // }
-
-
-	      if (this.state.batt1) {
-
-	        var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
-	        var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
-	        var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
-	        var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
-
-	        var data = {
-	          labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
-	          datasets: [{
-	            backgroundColor: 'firebrick',
-	            borderColor: 'firebrick',
-	            borderWidth: 1,
-	            // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-	            // hoverBorderColor: 'rgba(255,99,132,1)',
-	            data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
-	          }]
-	        };
-
-	        var options = {
-	          layout: {
-	            padding: {
-	              left: 15,
-	              right: 3
-	            }
-	          },
-	          tooltips: {
-	            enabled: false
-	          },
-	          legend: {
-	            display: false,
-	            position: 'top'
-	          },
-	          animation: {
-	            // duration: 100,
-	            easing: 'linear'
-	          },
-	          maintainAspectRatio: false,
-	          scales: {
-	            yAxes: [{
-	              position: 'right',
-	              ticks: {
-	                min: 0,
-	                max: 14.5,
-	                mirror: false
-	              }
-	            }],
-	            xAxes: [{
-	              display: true,
-	              gridLines: {
-	                display: false,
-	                drawTicks: false
-	              },
-	              scaleLabel: {
-	                display: true
-	              }
-	            }]
-	          }
-	        };
-
-	        var doughnutData = {
-	          labels: ["Red", "darker red"],
-	          datasets: [{
-	            label: '# of Votes',
-	            data: [12],
-	            backgroundColor: ['firebrick', 'black'],
-	            borderWidth: 0
-	          }]
-	        };
-
-	        var doughnutOptions = {
-	          rotation: 1 * Math.PI,
-	          circumference: 1 * Math.PI,
-	          tooltips: {
-	            enabled: false
-	          },
-	          legend: {
-	            display: false,
-	            position: 'top'
-	          },
-	          animation: {
-	            // duration: 100,
-	            easing: 'linear'
-	          },
-	          maintainAspectRatio: false
-	        };
-
-	        content = _react2.default.createElement(
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Motor'
+	        ),
+	        _react2.default.createElement(
 	          'div',
 	          null,
 	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Motor'
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Bar, { data: data,
+	              options: options,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattBar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt1,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt2,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt3,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt4,
+	                ' '
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            null,
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Bar, { data: data,
-	                options: options,
-	                width: 800,
-	                height: 140
-	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattBar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  rtBatt1,
-	                  ' '
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  rtBatt2,
-	                  ' '
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  rtBatt3,
-	                  ' '
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  rtBatt4,
-	                  ' '
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Doughnut, { data: doughnutData,
-	                options: doughnutOptions,
-	                width: 800,
-	                height: 140
-	              })
-	            )
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Doughnut, { data: doughnutData,
+	              options: doughnutOptions,
+	              width: 800,
+	              height: 140
+	            })
 	          )
-	        );
-	      }
-
-	      return content;
+	        )
+	      );
 	    }
 	  }]);
 
