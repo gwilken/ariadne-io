@@ -121,14 +121,15 @@ h3 {
 }
 
 .historySelect {
-  position: absolute;
+  position: relative;
   float: left;
-  width: 20%;
-  min-height:;
+  width: 17%;
+  margin: 2% 0%;
 }
 
 .historyGraph {
-  position: absolute;
+  position: relative;
   float: right;
-  width: 70%;
+  width: 80%;
+  margin: 1% 1%;
 }
