@@ -54,20 +54,25 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
   console.log('route hit');
 
-  var now = new Date();
-  console.log('now', now.getTime());
-  console.log('then', now.getTime() - (req.params.time * 60000));
+  var secs = Math.floor(Date.now() - (req.params.time * 60000) / 1000);
+  var objID = ObjectId.createFromTime(secs);
 
 
-  var secs = now.getTime() - (req.params.time * 60000);
+  //
+  // var now = new Date();
+  // console.log('now', now.getTime());
+  // console.log('then', now.getTime() - (req.params.time * 60000));
+  //
 
-  var hex = secs.toString(16);
+  //
+  // var hex = secs.toString(16);
+//
+//   console.log(hex);
+// //15cd13a0025
 
-  console.log(hex);
-//15cd13a0025
   var id = ObjectId(hex + "0000000000000");
 
-  mongo.collection.find( { _id: { $gt: id } } ).toArray(function(err, docs) {
+  mongo.collection.find( { _id: { $gt: objID } } ).toArray(function(err, docs) {
     console.log(docs);
   })
 
