@@ -53910,15 +53910,12 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/datapoint/test/test/10');
-
-	      // .then((res) => res.json())
-	      //   .then(function(objs) {
-	      //     //console.log(objs);
-	      //     this.setState( { data: objs} );
-	      //
-	      //   }.bind(this));
-
+	      fetch('/datapoint/test/test/10').then(function (res) {
+	        return res.json();
+	      }).then(function (objs) {
+	        console.log(objs);
+	        this.setState({ data: objs });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',

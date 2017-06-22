@@ -52,29 +52,16 @@ router.get('/sensor/:name/:limit', function(req, res) {
 
 router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
-  console.log('route hit');
-
   var secs = Date.now() - (req.params.time * 60000);
-
   var objID = ObjectId.createFromTime(secs/1000);
 
-
-  //
-  // var now = new Date();
-  // console.log('now', now.getTime());
-  // console.log('then', now.getTime() - (req.params.time * 60000));
-  //
-
-  //
-  // var hex = secs.toString(16);
-//
-//   console.log(hex);
-// //15cd13a0025
-
-  // var id = ObjectId(hex + "0000000000000");
-
   mongo.collection.find( { _id: { $gt: objID } } ).toArray(function(err, docs) {
-    console.log(docs);
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+    else res.json(arr);
+  });
   })
 
 })
