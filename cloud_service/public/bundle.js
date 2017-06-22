@@ -20963,7 +20963,7 @@
 	      }
 
 	      if (this.state.enviro) {
-	        enviro = _react2.default.createElement(Enviro, { data: this.state.enviro });
+	        enviro = _react2.default.createElement(_Enviro2.default, { data: this.state.enviro });
 	      }
 
 	      return _react2.default.createElement(

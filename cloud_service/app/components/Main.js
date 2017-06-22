@@ -3,7 +3,7 @@ import Test from "./Test";
 import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
-import Enivro from "./Enviro";
+import Enviro from "./Enviro";
 
 
 class Main extends React.Component {
