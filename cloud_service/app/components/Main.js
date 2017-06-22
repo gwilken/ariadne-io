@@ -13,6 +13,7 @@ class Main extends React.Component {
     super();
 
     this.state = {
+      single: false,
       solar: null,
       house: null,
       enviro: null,
@@ -89,6 +90,7 @@ class Main extends React.Component {
 
   render() {
 
+    var content;
     var solar;
     var house;
     var motor;
@@ -115,23 +117,27 @@ class Main extends React.Component {
       geo = <Geo data={this.state.geo} />;
     }
 
-    return(
+    if(this.state.single) {
 
-      <div className="mainContainer">
-{/*
-        {house}
-        {solar}
-        {motor}
-        {enviro}
-        {geo} */}
+      return (
+        <div className="mainContainer">
 
-        <History selected="solarcurrent"/>
+          <History selected="solarcurrent"/>
 
-      </div>
+        </div>
+      )
 
-    )
-  }
-
+      } else {
+          return (
+            <div className="mainContainer">
+                    {house}
+                    {solar}
+                    {motor}
+                    {enviro}
+                    {geo}
+            </div>
+          )
+        }
+      }
 }
-
 export default Main;

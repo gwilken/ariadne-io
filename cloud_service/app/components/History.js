@@ -10,13 +10,20 @@ class History extends React.Component {
       data: [],
       chartData: [],
       chartLabels: [],
-      max: 10
+      max: 10,
+      time: 180
     }
+
+    this.setTime = this.setTime.bind(this);
+  }
+
+  setTime(newTime) {
+    this.setState({time: newTime})
   }
 
   componentDidMount() {
 
-    fetch('/data/180')
+    fetch('/data/' + this.state.time)
       .then((res) => res.json())
         .then(function(objs) {
           console.log(objs);

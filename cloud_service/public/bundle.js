@@ -20890,6 +20890,7 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
 	    _this.state = {
+	      single: false,
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -20969,6 +20970,7 @@
 	    key: "render",
 	    value: function render() {
 
+	      var content;
 	      var solar;
 	      var house;
 	      var motor;
@@ -20995,11 +20997,24 @@
 	        geo = _react2.default.createElement(_Geo2.default, { data: this.state.geo });
 	      }
 
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "mainContainer" },
-	        _react2.default.createElement(_History2.default, { selected: "solarcurrent" })
-	      );
+	      if (this.state.single) {
+
+	        return _react2.default.createElement(
+	          "div",
+	          { className: "mainContainer" },
+	          _react2.default.createElement(_History2.default, { selected: "solarcurrent" })
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          "div",
+	          { className: "mainContainer" },
+	          house,
+	          solar,
+	          motor,
+	          enviro,
+	          geo
+	        );
+	      }
 	    }
 	  }]);
 
@@ -53904,16 +53919,24 @@
 	      data: [],
 	      chartData: [],
 	      chartLabels: [],
-	      max: 10
+	      max: 10,
+	      time: 180
 	    };
+
+	    _this.setTime = _this.setTime.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(History, [{
+	    key: 'setTime',
+	    value: function setTime(newTime) {
+	      this.setState({ time: newTime });
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/data/180').then(function (res) {
+	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
 	        console.log(objs);
