@@ -12,7 +12,7 @@ router.get('/history/:name/:field', function(req, res) {
   mongo.collection.find(
     {},
     {"telemetry.House Battery Bank.current" : 1}
-  ).sort( { _id: -1 } ).limit(10).forEach( function(doc) {
+  ).sort( { _id: 1 } ).limit(10).forEach( function(doc) {
 
     arr.push(doc.telemetry["House Battery Bank"].current);
 
@@ -34,7 +34,7 @@ router.get('/sensor/:name/:limit', function(req, res) {
   console.log('sensor route hit', field);
 
   mongo.collection.find({})
-    .sort( { _id: -1 } )
+    .sort( { _id: 1 } )
       .limit(parseInt(req.params.limit))
       .forEach( function(doc) {
 
