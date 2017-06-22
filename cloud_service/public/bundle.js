@@ -53752,8 +53752,8 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var rtLat = this.props.data.latitude;
-	      var rtLon = this.props.data.longitude;
+	      var rtLat = 'Lat: ' + this.props.data.latitude;
+	      var rtLon = 'Lon: ' + this.props.data.longitude;
 	      var rtSpeed = this.props.data.speed + ' knots';
 	      //var rtTmg = this.props.data.tmg;
 
@@ -53845,12 +53845,12 @@
 	            { className: 'geoLocation' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'rtData' },
+	              { className: 'geoLocLabel' },
 	              rtLat
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'rtData' },
+	              { className: 'geoLocLabel' },
 	              rtLon
 	            )
 	          )

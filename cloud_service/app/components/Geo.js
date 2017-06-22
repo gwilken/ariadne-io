@@ -19,8 +19,8 @@ class Geo extends React.Component {
 
   render() {
 
-    var rtLat = this.props.data.latitude;
-    var rtLon = this.props.data.longitude;
+    var rtLat = 'Lat: ' + this.props.data.latitude;
+    var rtLon = 'Lon: ' + this.props.data.longitude;
     var rtSpeed = this.props.data.speed + ' knots';
     //var rtTmg = this.props.data.tmg;
 
@@ -92,8 +92,8 @@ class Geo extends React.Component {
             </div>
 
             <div className="geoLocation">
-              <div className="rtData">{rtLat}</div>
-              <div className="rtData">{rtLon}</div>
+              <div className="geoLocLabel">{rtLat}</div>
+              <div className="geoLocLabel">{rtLon}</div>
             </div>
 
           </div>

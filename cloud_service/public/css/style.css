@@ -110,3 +110,7 @@ h3 {
   min-height: 110px;
   width: 40%;
 }
+
+.geoLocLabel {
+  font-size: 19px;
+}
