@@ -53923,7 +53923,7 @@
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 
-	      if (this.nextProps.selected === 'temp') {
+	      if (nextProps.selected === 'temp') {
 
 	        var data = this.state.data.map(function (obj) {
 	          return obj.Environmental.temperature;
