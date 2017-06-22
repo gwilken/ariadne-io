@@ -53022,7 +53022,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'title' },
-	                  'Battery Voltage:'
+	                  'Battery Voltage'
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -53047,7 +53047,7 @@
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'title' },
-	                  'Current Usage:'
+	                  'Current Usage'
 	                ),
 	                _react2.default.createElement(
 	                  'div',

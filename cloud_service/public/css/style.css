@@ -20,7 +20,7 @@ h3 {
 .titlebar {
   width: 90%;
   position: absolute;
-  bottom: 20%;
+  bottom: 25%;
   left: 1%;
   margin: 0% 2%;
 }
@@ -37,7 +37,7 @@ h3 {
   display: inline;
   margin-left: 3%;
   float: right;
-  font-size: 34px;
+  font-size: 48px;
   color: white;
   /*mix-blend-mode: exclusion;*/
 }
