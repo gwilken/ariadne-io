@@ -53286,24 +53286,28 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'gaugeContainer' },
+	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'gaugeLeft' },
-	            _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
-	              options: ttdOptions,
-	              width: 800,
-	              height: 140
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'gaugeRight' },
-	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
-	              options: rpmOptions,
-	              width: 800,
-	              height: 140
-	            })
+	            { className: 'gaugeContainer' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'gaugeLeft' },
+	              _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
+	                options: ttdOptions,
+	                width: 800,
+	                height: 140
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'gaugeRight' },
+	              _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
+	                options: rpmOptions,
+	                width: 800,
+	                height: 140
+	              })
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
