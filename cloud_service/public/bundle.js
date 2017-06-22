@@ -53310,7 +53310,7 @@
 	              max: 0,
 	              display: false
 	            },
-	            barThickness: 140,
+	            barThickness: 120,
 	            display: false
 	          }],
 	          xAxes: [{
@@ -53356,7 +53356,7 @@
 	              max: 0,
 	              display: false
 	            },
-	            // barThickness: 120,
+	            barThickness: 120,
 	            display: false
 	          }],
 	          xAxes: [{
