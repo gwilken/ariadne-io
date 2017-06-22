@@ -7,13 +7,15 @@ class History extends React.Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      chartData: [],
+      chartLabels: []
     }
   }
 
   componentDidMount() {
 
-    fetch('/datapoint/test/test/10')
+    fetch('/data/10')
       .then((res) => res.json())
         .then(function(objs) {
           console.log(objs);
@@ -23,22 +25,28 @@ class History extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    // if(this.state) {
-    //   if(nextProps.data) {
-    //
-    //     var newState = this.state.data.slice();
-    //     newState.push(nextProps.data);
-    //     newState.shift();
-    //
-    //     this.setState({data: newState});
-    //   }
-    // }
+    if(this.nextProps.selected === 'temp') {
+
+      var data = this.state.data.map(function(obj) {
+        return obj.Environmental.temperature;
+      })
+
+      this.setState( { chartData: data, chartLabels: data } );
+
+      // var labels = this.state.data.map(function(obj) {
+      //   return obj.Environmental.temperature;
+      // })
+      //
+      // this.setState( { chartData: data} );
+
+
+    }
   }
 
   render() {
 
     var data = {
-      labels: [1] ,
+      labels: this.state.chartLabels,
       datasets: [
           {
             fill: true,
@@ -46,7 +54,7 @@ class History extends React.Component {
             borderWidth: 2,
             lineTension: 0.1,
             pointRadius: 0,
-            data: [1]
+            data: this.state.chartData
           }
        ]
     }

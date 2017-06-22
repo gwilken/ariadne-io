@@ -125,7 +125,7 @@ class Main extends React.Component {
         {enviro}
         {geo} */}
 
-        <History />
+        <History selected="temp"/>
 
       </div>
 

@@ -20998,7 +20998,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
-	        _react2.default.createElement(_History2.default, null)
+	        _react2.default.createElement(_History2.default, { selected: "temp" })
 	      );
 	    }
 	  }]);
@@ -53901,7 +53901,9 @@
 	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
 
 	    _this.state = {
-	      data: []
+	      data: [],
+	      chartData: [],
+	      chartLabels: []
 	    };
 	    return _this;
 	  }
@@ -53910,7 +53912,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/datapoint/test/test/10').then(function (res) {
+	      fetch('/data/10').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
 	        console.log(objs);
@@ -53921,30 +53923,35 @@
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 
-	      // if(this.state) {
-	      //   if(nextProps.data) {
-	      //
-	      //     var newState = this.state.data.slice();
-	      //     newState.push(nextProps.data);
-	      //     newState.shift();
-	      //
-	      //     this.setState({data: newState});
-	      //   }
-	      // }
+	      if (this.nextProps.selected === 'temp') {
+
+	        var data = this.state.data.map(function (obj) {
+	          return obj.Environmental.temperature;
+	        });
+
+	        this.setState({ chartData: data, chartLabels: data });
+
+	        // var labels = this.state.data.map(function(obj) {
+	        //   return obj.Environmental.temperature;
+	        // })
+	        //
+	        // this.setState( { chartData: data} );
+
+	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 
 	      var data = {
-	        labels: [1],
+	        labels: this.state.chartLabels,
 	        datasets: [{
 	          fill: true,
 	          backgroundColor: 'royalblue',
 	          borderWidth: 2,
 	          lineTension: 0.1,
 	          pointRadius: 0,
-	          data: [1]
+	          data: this.state.chartData
 	        }]
 	      };
 
