@@ -63,13 +63,19 @@ h3 {
 
 .gaugeLeft {
   position: absolute;
-  left: -24%;
+  left: 5%;
 }
 
 .gaugeRight {
   position: absolute;
-  left: 22%;
+  left: 51%;
 }
+
+.motorGauageBar {
+
+}
+
+
 .search-updatedAt {
   font-size: 20px;
   color: grey;

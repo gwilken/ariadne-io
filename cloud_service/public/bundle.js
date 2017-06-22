@@ -53166,6 +53166,9 @@
 	      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
 	      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
 
+	      var ttd = 'Total Dischaege in' + this.state.ey.ttd + ' Hours';
+	      var rpm = 'RPM: ' + this.state.ey.rpm;
+
 	      var data = {
 	        labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
 	        datasets: [{
@@ -53304,6 +53307,24 @@
 	              width: 400,
 	              height: 140
 	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'motorGauageBar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorGaugeData' },
+	              ' ',
+	              ttd,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorGaugeData' },
+	              ' ',
+	              rpm,
+	              ' '
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
