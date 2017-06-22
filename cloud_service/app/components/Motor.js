@@ -227,7 +227,7 @@ class Motor extends React.Component {
 
         <div className="gaugeContainer">
 
-          <div className="graphContainer">
+          <div className="gauge">
             <Doughnut data={ttdData}
               options={ttdOptions}
                 width={800}
@@ -235,7 +235,7 @@ class Motor extends React.Component {
             />
           </div>
 
-          <div className="graphContainer">
+          <div className="gauge">
             <Doughnut data={rpmData}
               options={rpmOptions}
                 width={800}

@@ -57,7 +57,7 @@ h3 {
 }
 
 .gaugeContainer {
-
+  position: relative;
 }
 
 .search-updatedAt {
