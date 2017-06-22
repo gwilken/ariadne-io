@@ -50,19 +50,19 @@ class Motor extends React.Component {
       if(nextProps.data.ey.current) {
         var obj = {};
         this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
-      }
+      } else
 
       if(nextProps.data.ey.volts) {
         var obj = {};
         console.log('at motor', nextProps.data.ey.volts);
         this.setState( { ey: Object.assign( {}, this.state.ey, { volts: nextProps.data.ey.volts } ) } );
         console.log(this.state.ey);
-      }
+      } else
 
       if(nextProps.data.ey.ttd) {
         var obj = {};
         this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
-      }
+      } else
 
       if(nextProps.data.ey.rpm) {
         var obj = {};
@@ -74,12 +74,15 @@ class Motor extends React.Component {
     if(nextProps.data.batt1) {
       this.setState( { batt1: nextProps.data.batt1 } );
     }
+
     if(nextProps.data.batt2) {
       this.setState( { batt2: nextProps.data.batt2 } );
     }
+
     if(nextProps.data.batt3) {
       this.setState( { batt3: nextProps.data.batt3 } );
     }
+
     if(nextProps.data.batt4) {
       this.setState( { batt4: nextProps.data.batt4 } );
     }
