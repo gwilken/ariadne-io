@@ -301,7 +301,6 @@ class Motor extends React.Component {
             <div className="title">Amps</div>
             <div className="rtData"> {rtCurrent} </div>
           </div>
-        </div>
 
         </div>
 
