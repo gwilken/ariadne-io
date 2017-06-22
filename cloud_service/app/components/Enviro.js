@@ -24,7 +24,7 @@ class Enviro extends React.Component {
     // T(°C) × 9/5 + 32
 
     var tempF = this.props.data.temperature * 9/5 + 32;
-    var tempDisplay = tempF + ' F' ;
+    var tempDisplay = tempF.toFixed(2) + ' F' ;
 
     var tempData = {
         labels: [tempF],
@@ -136,7 +136,7 @@ class Enviro extends React.Component {
 
             <div className="titlebar">
 
-              <div className="title">temperature</div>
+              <div className="title">Temperature</div>
               <div className="rtData"> {tempDisplay} </div>
 
             </div>

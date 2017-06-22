@@ -53623,7 +53623,7 @@
 	      // T(°C) × 9/5 + 32
 
 	      var tempF = this.props.data.temperature * 9 / 5 + 32;
-	      var tempDisplay = tempF + ' F';
+	      var tempDisplay = tempF.toFixed(2) + ' F';
 
 	      var tempData = {
 	        labels: [tempF],
@@ -53743,7 +53743,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'title' },
-	                'temperature'
+	                'Temperature'
 	              ),
 	              _react2.default.createElement(
 	                'div',
