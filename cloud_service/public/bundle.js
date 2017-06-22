@@ -53926,7 +53926,7 @@
 	      if (nextProps.selected === 'temp') {
 
 	        var data = this.state.data.map(function (obj) {
-	          return obj.telemetry.Environmental.temperature;
+	          return obj.telemetry.Environmental.temperature * 9 / 5 + 32;
 	          //console.log(obj.Environmental);
 	        });
 
@@ -53980,7 +53980,7 @@
 	            position: 'right',
 	            ticks: {
 	              min: 0,
-	              max: 40,
+	              max: 120,
 	              mirror: false
 	            }
 	          }],
