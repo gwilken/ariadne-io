@@ -52,7 +52,9 @@ router.get('/sensor/:name/:limit', function(req, res) {
 
 router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
-  var secs = Date.now() - req.params.time * 1000;
+  console.log('route hit');
+
+  var secs = Date.now() - (req.params.time * 60000);
 
   var id = secs.toString(16) + "0000000000000000";
 
