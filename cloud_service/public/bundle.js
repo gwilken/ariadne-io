@@ -53346,6 +53346,15 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
+	            options: currentOptions,
+	            width: 800,
+	            height: 140
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          { className: 'gaugeContainer' },
 	          _react2.default.createElement(
 	            'div',
@@ -53365,15 +53374,6 @@
 	              height: 140
 	            })
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
-	            options: currentData,
-	            width: 800,
-	            height: 140
-	          })
 	        ),
 	        _react2.default.createElement(
 	          'div',

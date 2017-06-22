@@ -269,6 +269,17 @@ class Motor extends React.Component {
 
         <h3>Motor</h3>
 
+
+        <div className="graphContainer">
+
+          <HorizontalBar data={currentData}
+            options={currentOptions}
+              width={800}
+              height={140}
+          />
+
+      </div>
+
           <div className="gaugeContainer">
 
             <div className="gaugeLeft">
@@ -290,15 +301,7 @@ class Motor extends React.Component {
           </div>
 
 
-          <div className="graphContainer">
 
-            <HorizontalBar data={currentData}
-              options={currentData}
-                width={800}
-                height={140}
-            />
-
-        </div>
 
 
           <div className="motorGauageBar">
