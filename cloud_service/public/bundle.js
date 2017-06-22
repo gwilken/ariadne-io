@@ -52587,6 +52587,9 @@
 
 	      if (this.state.data) {
 
+	        var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+	        var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
+
 	        var lastObj = this.state.data.length - 1;
 
 	        var currentData = this.state.data.map(function (obj) {
@@ -52746,7 +52749,7 @@
 	                  'div',
 	                  { className: 'rtData' },
 	                  ' ',
-	                  this.props.data.loadvoltage + 'v',
+	                  rtVolt,
 	                  ' '
 	                )
 	              )
@@ -52771,7 +52774,7 @@
 	                  'div',
 	                  { className: 'rtData' },
 	                  ' ',
-	                  this.props.data.current + 'mA'
+	                  rtCurrent
 	                )
 	              )
 	            )
@@ -52864,6 +52867,7 @@
 	      if (this.state.data) {
 
 	        var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+	        var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
 
 	        var lastObj = this.state.data.length - 1;
 
@@ -53049,7 +53053,7 @@
 	                  'div',
 	                  { className: 'rtData' },
 	                  ' ',
-	                  this.props.data.current + ' mA'
+	                  rtCurrent
 	                )
 	              )
 	            )
