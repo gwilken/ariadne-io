@@ -233,7 +233,7 @@ class Motor extends React.Component {
             max: 0,
             display: false,
           },
-          // barThickness: 120,
+          barThickness: 140,
           display: false,
         }],
         xAxes: [{
