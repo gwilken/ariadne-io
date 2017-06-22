@@ -53229,7 +53229,6 @@
 	        content = _react2.default.createElement(
 	          'div',
 	          null,
-	          ' ',
 	          _react2.default.createElement(
 	            'h3',
 	            null,
@@ -53245,34 +53244,34 @@
 	                options: options,
 	                width: 800,
 	                height: 140
-	              }),
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattBar' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'motorBattBar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  this.state.batt1.busvoltage
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  this.state.batt2.busvoltage
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  this.state.batt3.busvoltage
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'motorBattData' },
-	                  ' ',
-	                  this.state.batt4.busvoltage
-	                )
+	                { className: 'motorBattData' },
+	                ' ',
+	                this.state.batt1.busvoltage
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                this.state.batt2.busvoltage
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                this.state.batt3.busvoltage
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                this.state.batt4.busvoltage
 	              )
 	            )
 	          )

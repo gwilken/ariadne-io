@@ -128,8 +128,12 @@ class Motor extends React.Component {
 
     content = (
 
-      <div> <h3>Motor</h3>
+      <div>
+
+        <h3>Motor</h3>
+
         <div>
+
           <div className="graphContainer">
 
             <Bar data={data}
@@ -138,17 +142,16 @@ class Motor extends React.Component {
                 height={140}
             />
 
-            <div className="motorBattBar">
-              {/* <div className="title">Motor Batts</div> */}
-              <div className="motorBattData"> {this.state.batt1.busvoltage}</div>
-              <div className="motorBattData"> {this.state.batt2.busvoltage}</div>
-              <div className="motorBattData"> {this.state.batt3.busvoltage}</div>
-              <div className="motorBattData"> {this.state.batt4.busvoltage}</div>
-
-            </div>
-
           </div>
 
+          <div className="motorBattBar">
+            {/* <div className="title">Motor Batts</div> */}
+            <div className="motorBattData"> {this.state.batt1.busvoltage}</div>
+            <div className="motorBattData"> {this.state.batt2.busvoltage}</div>
+            <div className="motorBattData"> {this.state.batt3.busvoltage}</div>
+            <div className="motorBattData"> {this.state.batt4.busvoltage}</div>
+
+          </div>
 
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
