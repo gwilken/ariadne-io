@@ -70,7 +70,7 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
 //   console.log(hex);
 // //15cd13a0025
 
-  var id = ObjectId(hex + "0000000000000");
+  // var id = ObjectId(hex + "0000000000000");
 
   mongo.collection.find( { _id: { $gt: objID } } ).toArray(function(err, docs) {
     console.log(docs);
