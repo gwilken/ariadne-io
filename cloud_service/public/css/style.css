@@ -28,6 +28,7 @@ h3 {
 .title {
   display: inline;
   font-size: 19px;
+  float: right;
   color: white;
   mix-blend-mode: exclusion;
 }
@@ -35,7 +36,8 @@ h3 {
 .rtData {
   display: inline;
   margin-left: 3%;
-  font-size: 17px;
+  float: left;
+  font-size: 28px;
   color: white;
   mix-blend-mode: exclusion;
 }

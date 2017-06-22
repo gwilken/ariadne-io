@@ -53015,15 +53015,15 @@
 	                { className: 'titlebar' },
 	                _react2.default.createElement(
 	                  'div',
-	                  { className: 'title' },
-	                  'Battery Voltage:'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
 	                  { className: 'rtData' },
 	                  ' ',
 	                  this.props.data.loadvoltage + 'v',
 	                  ' '
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Battery Voltage:'
 	                )
 	              )
 	            ),
