@@ -53134,8 +53134,6 @@
 
 	      if (nextProps.data.ey) {
 
-	        console.log('at motor', nextProps);
-
 	        if (nextProps.data.ey.current) {
 	          var obj = {};
 	          this.setState({ ey: Object.assign({}, this.state.ey, { current: nextProps.data.ey.current }) });
@@ -53143,6 +53141,7 @@
 
 	        if (nextProps.data.ey.volts) {
 	          var obj = {};
+	          console.log('at motor', nextProps.data.ey.volts);
 	          this.setState({ ey: Object.assign({}, this.state.ey, { volts: nextProps.data.ey.volts }) });
 	        }
 
