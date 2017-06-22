@@ -190,7 +190,7 @@ class House extends React.Component {
             <div className="titlebar">
 
               <div className="title">Battery Voltage:</div>
-              <div className="rtData"> {this.props.data.loadvoltage + 'v'} </div>
+              <div className="rtData"> {this.props.data.loadvoltage.toFixed(2) + 'v'} </div>
 
             </div>
           </div>
