@@ -53895,7 +53895,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactChartjs = __webpack_require__(172);
+	var _Select = __webpack_require__(348);
+
+	var _Select2 = _interopRequireDefault(_Select);
+
+	var _HistoryGraph = __webpack_require__(349);
+
+	var _HistoryGraph2 = _interopRequireDefault(_HistoryGraph);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53919,6 +53925,7 @@
 	      data: [],
 	      chartData: [],
 	      chartLabels: [],
+	      min: 0,
 	      max: 10,
 	      time: 180
 	    };
@@ -53931,6 +53938,23 @@
 	    key: 'setTime',
 	    value: function setTime(newTime) {
 	      this.setState({ time: newTime });
+	    }
+	  }, {
+	    key: 'getData',
+	    value: function getData(name, field) {
+
+	      fetch('/data/' + this.state.time).then(function (res) {
+	        return res.json();
+	      }).then(function (objs) {
+
+	        var data = objs.map(function (obj) {
+	          return obj.telemetry[name][field];
+	        });
+
+	        console.log(data);
+
+	        this.setState({ data: objs });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -53982,6 +54006,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
 
 	      var data = {
 	        labels: this.state.chartLabels,
@@ -54058,19 +54083,13 @@
 	            { className: 'historySelect' },
 	            _react2.default.createElement(
 	              'div',
-	              null,
-	              '***select component***'
+	              { onClick: function onClick() {
+	                  return _this2.getData('Environmental', 'temperature');
+	                } },
+	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'historyGraph' },
-	            _react2.default.createElement(_reactChartjs.Line, { data: data,
-	              options: options,
-	              width: 800,
-	              height: 800
-	            })
-	          )
+	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, min: this.state.min, max: this.state.max })
 	        )
 	      );
 	    }
@@ -54080,6 +54099,169 @@
 	}(_react2.default.Component);
 
 		exports.default = History;
+
+/***/ }),
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Select = function (_React$Component) {
+	  _inherits(Select, _React$Component);
+
+	  function Select(props) {
+	    _classCallCheck(this, Select);
+
+	    var _this = _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).call(this, props));
+
+	    _this.state = {};
+	    return _this;
+	  }
+
+	  _createClass(Select, [{
+	    key: "render",
+	    value: function render() {
+
+	      _react2.default.createElement("div", { onClick: this.props.getData("Environmental", "pressure") });
+	    }
+	  }]);
+
+	  return Select;
+	}(_react2.default.Component);
+
+		exports.default = Select;
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var HistoryGraph = function (_React$Component) {
+	  _inherits(HistoryGraph, _React$Component);
+
+	  function HistoryGraph(props) {
+	    _classCallCheck(this, HistoryGraph);
+
+	    return _possibleConstructorReturn(this, (HistoryGraph.__proto__ || Object.getPrototypeOf(HistoryGraph)).call(this, props));
+	  }
+
+	  _createClass(HistoryGraph, [{
+	    key: 'render',
+	    value: function render() {
+
+	      var data = {
+	        labels: this.props.chartLabels,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: this.props.chartData
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: this.props.min,
+	              max: this.props.max,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'historyGraph' },
+	        _react2.default.createElement(Line, { data: data,
+	          options: options,
+	          width: 800,
+	          height: 800
+	        })
+	      );
+	    }
+	  }]);
+
+	  return HistoryGraph;
+	}(_react2.default.Component);
+
+		exports.default = HistoryGraph;
 
 /***/ })
 /******/ ]);

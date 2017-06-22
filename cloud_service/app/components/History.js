@@ -1,5 +1,6 @@
 import React from "react";
-import {Line} from 'react-chartjs-2';
+import Select from './Select';
+import HistoryGraph from './HistoryGraph'
 
 class History extends React.Component {
 
@@ -10,6 +11,7 @@ class History extends React.Component {
       data: [],
       chartData: [],
       chartLabels: [],
+      min: 0,
       max: 10,
       time: 180
     }
@@ -19,6 +21,23 @@ class History extends React.Component {
 
   setTime(newTime) {
     this.setState({time: newTime})
+  }
+
+  getData(name, field) {
+
+    fetch('/data/' + this.state.time)
+      .then((res) => res.json())
+        .then(function(objs) {
+
+          var data = objs.map(function(obj) {
+            return obj.telemetry[name][field];
+          })
+
+          console.log(data);
+
+          this.setState( { data: objs} );
+
+        }.bind(this));
   }
 
   componentDidMount() {
@@ -140,19 +159,13 @@ class History extends React.Component {
         <div className="historyContainer">
 
           <div className="historySelect">
-            <div>***select component***</div>
-          </div>
 
-
-          <div className="historyGraph">
-
-            <Line data={data}
-                options={options}
-                width={800}
-                height={800}
-            />
+          <div onClick={ () => this.getData('Environmental', 'temperature' ) }>***select***</div>
 
           </div>
+
+
+          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} min={this.state.min} max={this.state.max} />
 
         </div>
 
