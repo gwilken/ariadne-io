@@ -53286,68 +53286,68 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'gaugeContainer' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'gaugeContainer' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'gaugeLeft' },
-	              _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
-	                options: ttdOptions,
-	                width: 800,
-	                height: 140
-	              })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'gaugeRight' },
-	              _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
-	                options: rpmOptions,
-	                width: 800,
-	                height: 140
-	              })
-	            )
+	            { className: 'gaugeLeft' },
+	            _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
+	              options: ttdOptions,
+	              width: 800,
+	              height: 140
+	            })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'gaugeRight' },
+	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
+	              options: rpmOptions,
+	              width: 800,
+	              height: 140
+	            })
 	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.Bar, { data: data,
-	            options: options,
-	            width: 800,
-	            height: 140
-	          }),
+	          null,
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'motorBattBar' },
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Bar, { data: data,
+	              options: options,
+	              width: 800,
+	              height: 140
+	            }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              rtBatt1,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              rtBatt2,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              rtBatt3,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              rtBatt4,
-	              ' '
+	              { className: 'motorBattBar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt1,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt2,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt3,
+	                ' '
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattData' },
+	                ' ',
+	                rtBatt4,
+	                ' '
+	              )
 	            )
 	          )
 	        )

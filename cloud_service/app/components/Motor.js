@@ -205,7 +205,7 @@ class Motor extends React.Component {
 
         <h3>Motor</h3>
 
-        <div>
+
           <div className="gaugeContainer">
 
             <div className="gaugeLeft">
@@ -225,8 +225,9 @@ class Motor extends React.Component {
             </div>
 
           </div>
-        </div>
 
+
+        <div>
           <div className="graphContainer">
 
             <Bar data={data}
@@ -244,7 +245,7 @@ class Motor extends React.Component {
           </div>
 
         </div>
-
+      </div>
 
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
