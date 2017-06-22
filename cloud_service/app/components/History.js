@@ -23,7 +23,7 @@ class History extends React.Component {
     this.setState({time: newTime})
   }
 
-  getData(name, field) {
+  getData(name, field, newMin, newMax) {
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
@@ -35,7 +35,7 @@ class History extends React.Component {
 
           console.log(data);
 
-          this.setState( { chartData: data, chartLabels: data } );
+          this.setState( { chartData: data, chartLabels: data , min: newMin, max: newMax } );
 
         }.bind(this));
   }
@@ -160,7 +160,7 @@ class History extends React.Component {
 
           <div className="historySelect">
 
-            <div onClick={ () => this.getData('Environmental', 'temperature' ) }>***select***</div>
+            <div onClick={ () => this.getData('Environmental', 'temperature', 0, 30 ) }>***select***</div>
 
           </div>
 

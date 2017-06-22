@@ -53941,7 +53941,7 @@
 	    }
 	  }, {
 	    key: 'getData',
-	    value: function getData(name, field) {
+	    value: function getData(name, field, newMin, newMax) {
 
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
@@ -53953,7 +53953,7 @@
 
 	        console.log(data);
 
-	        this.setState({ chartData: data, chartLabels: data });
+	        this.setState({ chartData: data, chartLabels: data, min: newMin, max: newMax });
 	      }.bind(this));
 	    }
 	  }, {
@@ -54086,7 +54086,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: function onClick() {
-	                  return _this2.getData('Environmental', 'temperature');
+	                  return _this2.getData('Environmental', 'temperature', 0, 30);
 	                } },
 	              '***select***'
 	            )
