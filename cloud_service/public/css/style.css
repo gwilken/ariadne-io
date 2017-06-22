@@ -98,7 +98,6 @@ h3 {
   min-height: 140px;
 }
 
-
 .geoSpeed {
   position: absolute;
   left: 5%;
@@ -107,4 +106,5 @@ h3 {
 .geoLocation {
   position: absolute;
   left: 51%;
+  background-color: lightseagreen;
 }
