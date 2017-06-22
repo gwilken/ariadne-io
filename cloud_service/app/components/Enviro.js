@@ -24,7 +24,7 @@ class Enviro extends React.Component {
     // T(°C) × 9/5 + 32
 
     var tempF = this.props.data.temperature * 9/5 + 32;
-    var tempDisplay = tempF.toFixed(2) + &#176 + ' f' ;
+    var tempDisplay = tempF.toFixed(2) + '\u00B0' + 'f' ;
 
     var tempData = {
         labels: [tempF],
