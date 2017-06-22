@@ -58,6 +58,7 @@ h3 {
 
 .gaugeContainer {
   position: relative;
+  min-height: 140px;
 }
 
 .gaugeLeft {
