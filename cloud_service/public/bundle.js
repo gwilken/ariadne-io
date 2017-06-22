@@ -53174,7 +53174,7 @@
 	      if (this.state.batt1) {
 
 	        var data = {
-	          labels: ['#1 - ' + this.state.batt1.busvoltage, '#2 - ' + this.state.batt2.busvoltage, '#3 - ' + this.state.batt3.busvoltage, '#4 - ' + this.state.batt4.busvoltage],
+	          labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
 	          datasets: [{
 	            backgroundColor: 'firebrick',
 	            borderColor: 'firebrick',
@@ -53224,70 +53224,9 @@
 	              }
 	            }]
 	          }
-	          //
-	          // var currentGraphData = {
-	          //   labels: currentData,
-	          //   datasets: [
-	          //       {
-	          //         fill: true,
-	          //         backgroundColor: 'yellow',
-	          //         borderWidth: 2,
-	          //         lineTension: 0.1,
-	          //         pointRadius: 0,
-	          //         data: currentData
-	          //       }
-	          //    ]
-	          // }
-	          //
-	          // var currentChartOptions = {
-	          //   layout: {
-	          //     padding: {
-	          //       left: 15,
-	          //       right: 3,
-	          //     },
-	          //   },
-	          //   tooltips: {
-	          //     enabled: false,
-	          //   },
-	          //   legend: {
-	          //     display: false,
-	          //     position: 'top',
-	          //   },
-	          //   animation: {
-	          //     duration: 100,
-	          //     easing: 'linear'
-	          //   },
-	          //   maintainAspectRatio: false,
-	          //   scales: {
-	          //     yAxes: [{
-	          //       position: 'right',
-	          //       ticks: {
-	          //         min: 0,
-	          //         max: 5000,
-	          //         mirror: false,
-	          //        },
-	          //       }],
-	          //     xAxes: [{
-	          //       ticks: {
-	          //         min: 0,
-	          //         max: 0,
-	          //       },
-	          //       gridLines: {
-	          //         display: false,
-	          //         drawTicks: false,
-	          //       },
-	          //       scaleLabel: {
-	          //         display: true,
-	          //       },
-	          //       ticks: {
-	          //         display: false,
-	          //       },
-	          //     },
-	          //     ],
-	          //   },
-	          // }
+	        };
 
-	        };content = _react2.default.createElement(
+	        content = _react2.default.createElement(
 	          'div',
 	          null,
 	          ' ',
@@ -53307,7 +53246,34 @@
 	                width: 800,
 	                height: 140
 	              }),
-	              _react2.default.createElement('div', { className: 'titlebar' })
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'motorBattBar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  this.state.batt1.busvoltage
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  this.state.batt2.busvoltage
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  this.state.batt3.busvoltage
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  this.state.batt4.busvoltage
+	                )
+	              )
 	            )
 	          )
 	        );
