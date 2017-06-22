@@ -44,31 +44,33 @@ class Motor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
-      if(nextProps.data.ey) {
-
-        if(nextProps.data.ey.ttd) {
-
-          var obj = {};
-          this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
-
-        }
-
-      }
-
-      if(nextProps.data.batt1) {
-        this.setState( { batt1: nextProps.data.batt1 } );
-      }
-      if(nextProps.data.batt2) {
-        this.setState( { batt2: nextProps.data.batt2 } );
-      }
-      if(nextProps.data.batt3) {
-        this.setState( { batt3: nextProps.data.batt3 } );
-      }
-      if(nextProps.data.batt4) {
-        this.setState( { batt4: nextProps.data.batt4 } );
+    if(nextProps.data.ey) {
+      if(nextProps.data.ey.ttd) {
+        var obj = {};
+        this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
       }
     }
+
+    if(nextProps.data.ey) {
+      if(nextProps.data.ey.rpm) {
+        var obj = {};
+        this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.rpm} ) } );
+      }
+    }
+
+    if(nextProps.data.batt1) {
+      this.setState( { batt1: nextProps.data.batt1 } );
+    }
+    if(nextProps.data.batt2) {
+      this.setState( { batt2: nextProps.data.batt2 } );
+    }
+    if(nextProps.data.batt3) {
+      this.setState( { batt3: nextProps.data.batt3 } );
+    }
+    if(nextProps.data.batt4) {
+      this.setState( { batt4: nextProps.data.batt4 } );
+    }
+  }
 
 
   render() {
@@ -134,35 +136,35 @@ class Motor extends React.Component {
         }
       }
 
-      var doughnutData = {
-          labels: ["Red", "darker red"],
-          datasets: [{
-              label: '',
-              data: [ this.state.ey.ttd ],
-              backgroundColor: [
-                  'firebrick',
-                  'rgb(0,0,0)'
-              ],
-              borderWidth: 0
-          }]
-      };
+    var rpmData = {
+      labels: ["Red", "darker red"],
+      datasets: [{
+          label: '',
+          data: [ this.state.ey.rpm ],
+          backgroundColor: [
+              'firebrick',
+              'rgb(0,0,0)'
+          ],
+          borderWidth: 0
+      }]
+    };
 
-    var doughnutOptions = {
-          rotation: 1 * Math.PI,
-          circumference: 1 * Math.PI,
-          tooltips: {
-            enabled: false,
-          },
-          legend: {
-            display: false,
-            position: 'top',
-          },
-          animation: {
-            // duration: 100,
-            easing: 'linear'
-          },
-          maintainAspectRatio: false
-      };
+    var rpmOptions = {
+      rotation: 1 * Math.PI,
+      circumference: 1 * Math.PI,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        // duration: 100,
+        easing: 'linear'
+      },
+      maintainAspectRatio: false
+    };
 
     return (
 
@@ -190,15 +192,24 @@ class Motor extends React.Component {
 
         </div>
 
+        <div className="gaugeContainer">
 
-        <div className="graphContainer">
-          <Doughnut data={doughnutData}
-            options={doughnutOptions}
-              width={800}
-              height={140}
-          />
+          <div className="graphContainer">
+            <Doughnut data={ttdData}
+              options={ttdOptions}
+                width={800}
+                height={140}
+            />
+          </div>
+
+          <div className="graphContainer">
+            <Doughnut data={rpmData}
+              options={rpmOptions}
+                width={800}
+                height={140}
+            />
+          </div>
         </div>
-
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
                 options={voltChartOptions}

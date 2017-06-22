@@ -36,10 +36,6 @@ class House extends React.Component {
 
   render() {
 
-    var content = ( <div></div> );
-
-    if(this.state.data) {
-
     var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
     var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
 
@@ -178,7 +174,7 @@ class House extends React.Component {
       },
     }
 
-    content = (
+    return (
 
       <div> <h3>House</h3>
         <div>
@@ -211,15 +207,9 @@ class House extends React.Component {
             </div>
           </div>
 
-
-
         </div>
       </div>
-      )
-    }
-
-    return content;
-  }
+    )
 }
 
 export default House;
