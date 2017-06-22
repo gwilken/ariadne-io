@@ -205,13 +205,12 @@ class Motor extends React.Component {
 
         <h3>Motor</h3>
 
-
           <div className="gaugeContainer">
 
             <div className="gaugeLeft">
               <Doughnut data={ttdData}
                 options={ttdOptions}
-                  width={800}
+                  width={400}
                   height={140}
               />
             </div>
@@ -219,7 +218,7 @@ class Motor extends React.Component {
             <div className="gaugeRight">
               <Doughnut data={rpmData}
                 options={rpmOptions}
-                  width={800}
+                  width={400}
                   height={140}
               />
             </div>

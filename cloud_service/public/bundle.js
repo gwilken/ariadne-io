@@ -53292,7 +53292,7 @@
 	            { className: 'gaugeLeft' },
 	            _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
 	              options: ttdOptions,
-	              width: 800,
+	              width: 400,
 	              height: 140
 	            })
 	          ),
@@ -53301,7 +53301,7 @@
 	            { className: 'gaugeRight' },
 	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
 	              options: rpmOptions,
-	              width: 800,
+	              width: 400,
 	              height: 140
 	            })
 	          )
