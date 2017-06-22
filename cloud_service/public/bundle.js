@@ -53213,7 +53213,7 @@
 	      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
 
 	      var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
-	      var rpm = 'RPM: ' + this.state.ey.rpm;
+	      var rpm = this.state.ey.rpm + ' RPM';
 
 	      var rtCurrent = this.state.ey.current + ' Ah';
 	      var rtBankVolt = this.state.ey.volts + ' v';
