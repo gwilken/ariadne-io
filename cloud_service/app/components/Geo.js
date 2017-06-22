@@ -77,21 +77,23 @@ class Geo extends React.Component {
       <div> <h3>Geospatial</h3>
         <div>
 
-          <div className="graphContainer">
-            <HorizontalBar data={speedData}
-                options={speedOptions}
-                width={400}
-                height={140}
-            />
+          <div className="geoContainer">
 
-            <div className="titlebar">
-              <div className="title">Speed</div>
-              <div className="rtData"> {rtSpeed} </div>
+            <div className="graphContainer geoSpeed">
+              <HorizontalBar data={speedData}
+                  options={speedOptions}
+                  width={400}
+                  height={140}
+              />
+
+              <div className="titlebar">
+                <div className="title">Speed</div>
+                <div className="rtData"> {rtSpeed} </div>
+              </div>
             </div>
           </div>
 
-
-          <div className="graphContainer">
+          <div className="graphContainer geoLocation">
 
               {/* 800 x 140 */}
 

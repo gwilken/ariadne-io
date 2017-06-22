@@ -93,44 +93,18 @@ h3 {
     font-size: 19px;
 }
 
-.search-updatedAt {
-  font-size: 20px;
-  color: grey;
+.geoContainer {
+  position: relative;
+  min-height: 140px;
 }
 
-#search-container {
-  margin: 2% 0% 2% 4%;
+
+.geoSpeed {
+  position: absolute;
+  left: 5%;
 }
 
-#search-label {
-  top: 40%;
-  left: 0;
-  font-size: 26px;
-  color: grey;
-}
-
-#go-button {
-  display: none;
-}
-
-.search-updatedAt {
-  color: grey;
-  font-size: 16px;
-}
-
-.mdl-textfield__input {
-  font-size: 32px;
-  color: white;
-}
-
-.favorite {
-  margin-left: 2%;
-}
-
-.unselected {
-  color: grey;
-}
-
-.selected {
-  color: lightblue;
+.geoLocation {
+  position: absolute;
+  left: 51%;
 }
