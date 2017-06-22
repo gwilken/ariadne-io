@@ -53819,7 +53819,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
-	              options: sppedOptions,
+	              options: speedOptions,
 	              width: 400,
 	              height: 140
 	            }),

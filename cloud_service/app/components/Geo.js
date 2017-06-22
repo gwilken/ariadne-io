@@ -79,7 +79,7 @@ class Geo extends React.Component {
 
           <div className="graphContainer">
             <HorizontalBar data={speedData}
-                options={sppedOptions}
+                options={speedOptions}
                 width={400}
                 height={140}
             />
