@@ -13,7 +13,7 @@ class History extends React.Component {
 
   componentDidMount() {
 
-    fetch('/datapoint/test/test/5');
+    fetch('/datapoint/test/test/60');
 
       // .then((res) => res.json())
       //   .then(function(objs) {
