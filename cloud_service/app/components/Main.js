@@ -13,7 +13,7 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      single: false,
+      single: true,
       solar: null,
       house: null,
       enviro: null,

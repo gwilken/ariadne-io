@@ -20890,7 +20890,7 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
 	    _this.state = {
-	      single: false,
+	      single: true,
 	      solar: null,
 	      house: null,
 	      enviro: null,
