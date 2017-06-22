@@ -53910,7 +53910,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/datapoint/test/test/60');
+	      fetch('/datapoint/test/test/10');
 
 	      // .then((res) => res.json())
 	      //   .then(function(objs) {
