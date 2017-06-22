@@ -64,8 +64,8 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
   var hex = secs.toString(16);
 
   console.log(hex);
-
-  var id = ObjectId(hex + "0000000000000000");
+//15cd13a0025
+  var id = ObjectId(hex + "0000000000000");
 
   mongo.collection.find( { _id: { $gt: id } } ).toArray(function(err, docs) {
     console.log(docs);
