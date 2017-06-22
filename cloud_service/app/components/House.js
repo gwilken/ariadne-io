@@ -7,7 +7,7 @@ class House extends React.Component {
     super(props);
 
     this.state = {
-      data: null
+      data: []
     }
   }
 

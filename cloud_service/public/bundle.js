@@ -52583,206 +52583,199 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var content = _react2.default.createElement('div', null);
+	      var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+	      var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
 
-	      if (this.state.data) {
+	      var lastObj = this.state.data.length - 1;
 
-	        var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
-	        var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
+	      var currentData = this.state.data.map(function (obj) {
+	        return obj.current;
+	      });
 
-	        var lastObj = this.state.data.length - 1;
+	      var voltData = this.state.data.map(function (obj) {
+	        return obj.loadvoltage;
+	      });
 
-	        var currentData = this.state.data.map(function (obj) {
-	          return obj.current;
-	        });
+	      var currentGraphData = {
+	        labels: currentData,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'gold',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: currentData
+	        }]
+	      };
 
-	        var voltData = this.state.data.map(function (obj) {
-	          return obj.loadvoltage;
-	        });
+	      var voltGraphData = {
+	        labels: voltData,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'gold',
+	          // borderColor: 'yellow',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: voltData
+	        }]
+	      };
 
-	        var currentGraphData = {
-	          labels: currentData,
-	          datasets: [{
-	            fill: true,
-	            backgroundColor: 'gold',
-	            borderWidth: 2,
-	            lineTension: 0.1,
-	            pointRadius: 0,
-	            data: currentData
-	          }]
-	        };
-
-	        var voltGraphData = {
-	          labels: voltData,
-	          datasets: [{
-	            fill: true,
-	            backgroundColor: 'gold',
-	            // borderColor: 'yellow',
-	            borderWidth: 2,
-	            lineTension: 0.1,
-	            pointRadius: 0,
-	            data: voltData
-	          }]
-	        };
-
-	        var currentChartOptions = {
-	          layout: {
-	            padding: {
-	              left: 15,
-	              right: 3
-	            }
-	          },
-	          tooltips: {
-	            enabled: false
-	          },
-	          legend: {
-	            display: false,
-	            position: 'top'
-	          },
-	          animation: {
-	            // duration: 100,
-	            easing: 'linear'
-	          },
-	          maintainAspectRatio: false,
-	          scales: {
-	            yAxes: [{
-	              position: 'right',
-	              ticks: {
-	                min: 0,
-	                max: 5000,
-	                mirror: false
-	              }
-	            }],
-	            xAxes: [_defineProperty({
-	              ticks: {
-	                min: 0,
-	                max: 0
-	              },
-	              gridLines: {
-	                display: false,
-	                drawTicks: false
-	              },
-	              scaleLabel: {
-	                display: true
-	              }
-	            }, 'ticks', {
-	              display: false
-	            })]
+	      var currentChartOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
 	          }
-	        };
-
-	        var voltChartOptions = {
-	          layout: {
-	            padding: {
-	              left: 15,
-	              right: 3
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 5000,
+	              mirror: false
 	            }
-	          },
-	          tooltips: {
-	            enabled: false
-	          },
-	          legend: {
-	            display: false,
-	            position: 'top'
-	          },
-	          animation: {
-	            // duration: 100,
-	            easing: 'linear'
-	          },
-	          maintainAspectRatio: false,
-	          scales: {
-	            yAxes: [{
-	              position: 'right',
-	              ticks: {
-	                min: 0,
-	                max: 14.5,
-	                mirror: false
-	              }
-	            }],
-	            xAxes: [_defineProperty({
-	              ticks: {
-	                min: 0,
-	                max: 0
-	              },
-	              gridLines: {
-	                display: false,
-	                drawTicks: false
-	              },
-	              scaleLabel: {
-	                display: true
-	              }
-	            }, 'ticks', {
-	              display: false
-	            })]
-	          }
-	        };
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
 
-	        content = _react2.default.createElement(
+	      var voltChartOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 14.5,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      content = _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Solar'
+	        ),
+	        _react2.default.createElement(
 	          'div',
 	          null,
-	          ' ',
 	          _react2.default.createElement(
-	            'h3',
-	            null,
-	            'Solar'
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
+	              options: voltChartOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Panel Voltage:'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtVolt,
+	                ' '
+	              )
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            null,
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
+	              options: currentChartOptions,
+	              width: 800,
+	              height: 140
+	            }),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Line, { data: voltGraphData,
-	                options: voltChartOptions,
-	                width: 800,
-	                height: 140
-	              }),
+	              { className: 'titlebar' },
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Panel Voltage:'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  rtVolt,
-	                  ' '
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.Line, { data: currentGraphData,
-	                options: currentChartOptions,
-	                width: 800,
-	                height: 140
-	              }),
+	                { className: 'title' },
+	                'Current:'
+	              ),
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Current:'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  rtCurrent
-	                )
+	                { className: 'rtData' },
+	                ' ',
+	                rtCurrent
 	              )
 	            )
 	          )
-	        );
-	      }
-
-	      return content;
+	        )
+	      );
 	    }
 	  }]);
 
@@ -52828,7 +52821,7 @@
 	    var _this = _possibleConstructorReturn(this, (House.__proto__ || Object.getPrototypeOf(House)).call(this, props));
 
 	    _this.state = {
-	      data: null
+	      data: []
 	    };
 	    return _this;
 	  }
