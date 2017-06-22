@@ -160,7 +160,7 @@ class History extends React.Component {
 
           <div className="historySelect">
 
-            <div onClick={ () => this.getData('Solar Controller Monitor', 'current', 0, 30 ) }>***select***</div>
+            <div onClick={ () => this.getData('Solar Controller Monitor', 'current', 0, 4000 ) }>***select***</div>
 
           </div>
 
