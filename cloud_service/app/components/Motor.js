@@ -139,9 +139,8 @@ class Motor extends React.Component {
               data: [12, 1],
               backgroundColor: [
                   'firebrick',
-                  'rgb(107, 20, 20)'
-              ],
-              borderWidth: 1
+                  'rgb(65, 12, 12)'
+              ]
           }]
       };
 
