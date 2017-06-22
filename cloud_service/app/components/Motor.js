@@ -63,14 +63,13 @@ class Motor extends React.Component {
         var obj = {};
         this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
       }
-    }
 
-    if(nextProps.data.ey) {
       if(nextProps.data.ey.rpm) {
         var obj = {};
-        this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.rpm} ) } );
+        this.setState( { ey: Object.assign( {}, this.state.ey, {rpm: nextProps.data.ey.rpm} ) } );
       }
     }
+
 
     if(nextProps.data.batt1) {
       this.setState( { batt1: nextProps.data.batt1 } );
