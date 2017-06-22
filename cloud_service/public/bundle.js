@@ -53138,7 +53138,7 @@
 
 	        if (nextProps.data.ey.current) {
 	          var obj = {};
-	          this.setState({ ey: Object.assign({}, this.state.ey, { current: nextProps.data.ey.current }) });
+	          this.setState({ ey: Object.assign({}, this.state.ey, { current: parseFloat(nextProps.data.ey.current) }) });
 	        }
 
 	        if (nextProps.data.ey.volts) {
