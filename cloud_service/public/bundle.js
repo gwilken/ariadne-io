@@ -54096,7 +54096,9 @@
 	            'div',
 	            null,
 	            '**** SLIDER ****'
-	          )
+	          ),
+	          _react2.default.createElement('input', { 'class': 'mdl-slider mdl-js-slider', type: 'range',
+	            min: '0', max: '100', value: '25', tabindex: '0' })
 	        )
 	      );
 	    }
