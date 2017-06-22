@@ -80,17 +80,17 @@ h3 {
 
 .motorGaugeData {
   flex: 1;
-  font-size: 19pt;
+  font-size: 19px;
 }
 
 .ttdLabel {
   margin-left: 9%;
-  font-size: 19pt;
+  font-size: 19px;
 }
 
 .rpmLabel {
     margin-left: 27%;
-    font-size: 19pt;
+    font-size: 19px;
 }
 
 .search-updatedAt {
