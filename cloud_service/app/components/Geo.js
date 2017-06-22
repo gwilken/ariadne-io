@@ -91,13 +91,16 @@ class Geo extends React.Component {
                 <div className="rtData"> {rtSpeed} </div>
               </div>
             </div>
+
+            <div className="graphContainer geoLocation">
+
+                {/* 800 x 140 */}
+
+            </div>
+
           </div>
 
-          <div className="graphContainer geoLocation">
 
-              {/* 800 x 140 */}
-
-          </div>
 
         </div>
       </div>
