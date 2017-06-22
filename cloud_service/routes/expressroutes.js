@@ -50,4 +50,20 @@ router.get('/sensor/:name/:limit', function(req, res) {
 
 });
 
+router.get('/datapoint/:obj/:field/:time', function(req, res) {
+
+  var secs = Date.now() - Math.floor(req.params.time / 1000);
+
+  console.log('secs ago', secs);
+
+  var hexSecs = secs.toString(16)
+
+  var gtId = ObjectId(hexSecs + "0000000000000000");
+
+  mongo.collection.find( { _id: { $gt: gtId } } ).toArray(function(err, docs) {
+    console.log(docs);
+  })
+
+})
+
 module.exports = router;

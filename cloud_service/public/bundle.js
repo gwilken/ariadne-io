@@ -20869,6 +20869,10 @@
 
 	var _Geo2 = _interopRequireDefault(_Geo);
 
+	var _History = __webpack_require__(347);
+
+	var _History2 = _interopRequireDefault(_History);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20994,11 +20998,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
-	        house,
-	        solar,
-	        motor,
-	        enviro,
-	        geo
+	        _react2.default.createElement(_History2.default, null)
 	      );
 	    }
 	  }]);
@@ -53863,6 +53863,170 @@
 	}(_react2.default.Component);
 
 		exports.default = Geo;
+
+/***/ }),
+/* 347 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(172);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var History = function (_React$Component) {
+	  _inherits(History, _React$Component);
+
+	  function History(props) {
+	    _classCallCheck(this, History);
+
+	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
+
+	    _this.state = {
+	      data: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(History, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+
+	      fetch('/datapoint/test/test/600');
+
+	      // .then((res) => res.json())
+	      //   .then(function(objs) {
+	      //     //console.log(objs);
+	      //     this.setState( { data: objs} );
+	      //
+	      //   }.bind(this));
+
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+
+	      // if(this.state) {
+	      //   if(nextProps.data) {
+	      //
+	      //     var newState = this.state.data.slice();
+	      //     newState.push(nextProps.data);
+	      //     newState.shift();
+	      //
+	      //     this.setState({data: newState});
+	      //   }
+	      // }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var data = {
+	        labels: currentData,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: currentData
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 7500,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Historical ***TESTING****'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(_reactChartjs.Line, { data: data,
+	              options: options,
+	              width: 800,
+	              height: 800
+	            })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return History;
+	}(_react2.default.Component);
+
+		exports.default = History;
 
 /***/ })
 /******/ ]);

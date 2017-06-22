@@ -5,6 +5,7 @@ import House from "./House";
 import Motor from "./Motor";
 import Enviro from "./Enviro";
 import Geo from "./Geo";
+import History from "./History";
 
 class Main extends React.Component {
 
@@ -117,12 +118,14 @@ class Main extends React.Component {
     return(
 
       <div className="mainContainer">
-
+{/*
         {house}
         {solar}
         {motor}
         {enviro}
-        {geo}
+        {geo} */}
+
+        <History />
 
       </div>
 
