@@ -53903,7 +53903,8 @@
 	    _this.state = {
 	      data: [],
 	      chartData: [],
-	      chartLabels: []
+	      chartLabels: [],
+	      max: 10
 	    };
 	    return _this;
 	  }
@@ -53930,7 +53931,7 @@
 	          //console.log(obj.Environmental);
 	        });
 
-	        this.setState({ chartData: data, chartLabels: data });
+	        this.setState({ chartData: data, chartLabels: data, max: 120 });
 
 	        // var labels = this.state.data.map(function(obj) {
 	        //   return obj.Environmental.temperature;
@@ -53946,7 +53947,7 @@
 	          //console.log(obj.Environmental);
 	        });
 
-	        this.setState({ chartData: data, chartLabels: data });
+	        this.setState({ chartData: data, chartLabels: data, max: 5000 });
 
 	        // var labels = this.state.data.map(function(obj) {
 	        //   return obj.Environmental.temperature;
@@ -53995,7 +53996,7 @@
 	            position: 'right',
 	            ticks: {
 	              min: 0,
-	              max: 120,
+	              max: this.state.max,
 	              mirror: false
 	            }
 	          }],
