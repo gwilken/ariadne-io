@@ -18,9 +18,9 @@ h3 {
 }
 
 .titlebar {
-  width: 40%;
+  width: 90%;
   position: absolute;
-  bottom: 25%;
+  bottom: 20%;
   left: 1%;
   margin: 0% 2%;
 }
@@ -30,16 +30,16 @@ h3 {
   font-size: 19px;
   float: right;
   color: white;
-  mix-blend-mode: exclusion;
+  /*mix-blend-mode: exclusion;*/
 }
 
 .rtData {
   display: inline;
   margin-left: 3%;
   float: left;
-  font-size: 28px;
+  font-size: 34px;
   color: white;
-  mix-blend-mode: exclusion;
+  /*mix-blend-mode: exclusion;*/
 }
 
 .search-updatedAt {
