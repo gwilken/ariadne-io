@@ -53224,7 +53224,9 @@
 	          label: '',
 	          data: [this.state.ey.ttd],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderWidth: 0
+	          borderColor: ['firebrick'],
+
+	          borderWidth: 1
 	        }]
 	      };
 
@@ -53251,7 +53253,9 @@
 	          label: '',
 	          data: [this.state.ey.rpm],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderWidth: 0
+	          borderColor: ['firebrick'],
+
+	          borderWidth: 1
 	        }]
 	      };
 

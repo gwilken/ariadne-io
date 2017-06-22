@@ -144,7 +144,9 @@ class Motor extends React.Component {
                 'firebrick',
                 'rgb(0,0,0)'
             ],
-            borderWidth: 0
+            borderColor: ['firebrick'],
+
+            borderWidth: 1
         }]
       };
 
@@ -174,7 +176,9 @@ class Motor extends React.Component {
               'firebrick',
               'rgb(0,0,0)'
           ],
-          borderWidth: 0
+          borderColor: ['firebrick'],
+
+          borderWidth: 1
       }]
     };
 
