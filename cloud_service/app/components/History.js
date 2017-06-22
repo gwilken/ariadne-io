@@ -168,8 +168,9 @@ class History extends React.Component {
 
 
           <div>**** SLIDER ****</div>
-          <input class="mdl-slider mdl-js-slider" type="range"
-            min="0" max="100" value="25" tabindex="0" />
+          <p style="width:300px">
+          <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="0" max="10" value="4" step="2" />
+          </p>
 
         </div>
 
