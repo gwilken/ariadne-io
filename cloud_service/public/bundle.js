@@ -53907,8 +53907,6 @@
 
 	var _Slider2 = _interopRequireDefault(_Slider);
 
-	__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../public/css/slider.css\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -53920,6 +53918,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	//import Slider, { Range } from 'rc-slider';
 	// We can just import Slider or Range to reduce bundle size
+
 
 	// import Range from 'rc-slider/lib/Range';
 
