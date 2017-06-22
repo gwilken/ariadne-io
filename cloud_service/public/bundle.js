@@ -53623,7 +53623,7 @@
 	      // T(°C) × 9/5 + 32
 
 	      var tempF = this.props.data.temperature * 9 / 5 + 32;
-	      var tempDisplay = tempF.toFixed(2) + '\xB0' + 'f';
+	      var tempDisplay = tempF.toFixed(2) + '\xB0' + ' F';
 
 	      var tempData = {
 	        labels: [tempF],
