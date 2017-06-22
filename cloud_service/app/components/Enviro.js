@@ -58,7 +58,7 @@ class Enviro extends React.Component {
           max: 0,
           display: false,
         },
-        barThickness: 120,
+        barThickness: 140,
         display: false,
       }],
       xAxes: [{
@@ -106,7 +106,7 @@ class Enviro extends React.Component {
         max: 0,
         display: false,
       },
-      barThickness: 120,
+      barThickness: 140,
       display: false,
     }],
     xAxes: [{
