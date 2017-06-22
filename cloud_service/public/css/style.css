@@ -107,4 +107,5 @@ h3 {
   position: absolute;
   left: 51%;
   background-color: lightseagreen;
+  min-height: 140px;
 }
