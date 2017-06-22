@@ -60,7 +60,7 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
       console.log(err);
       res.end();
     }
-    else res.json(arr);
+    else res.json(docs);
   });
 
 })
