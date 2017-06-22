@@ -53477,6 +53477,31 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: voltBankData,
+	            options: voltBankOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'Total Bank Voltage'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              rtBankVolt,
+	              ' '
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
 	          _react2.default.createElement(_reactChartjs.Bar, { data: data,
 	            options: options,
 	            width: 800,
@@ -53511,31 +53536,6 @@
 	              { className: 'motorBattData' },
 	              ' ',
 	              rtBatt4,
-	              ' '
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: voltBankData,
-	            options: voltBankOptions,
-	            width: 800,
-	            height: 140
-	          }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'title' },
-	              'Total Bank Voltage'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              rtBankVolt,
 	              ' '
 	            )
 	          )
