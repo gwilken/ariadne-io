@@ -48,15 +48,22 @@ class Motor extends React.Component {
     if(nextProps.data.ey) {
 
       if(nextProps.data.ey.current) {
-        var obj = {};
-        this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
+
+        var newState = React.addons.update(this.state, {
+          ey: { current: {$set: nextProps.data.ey.current} }
+        });
+
+        this.setState(newState);
+
+        // var obj = {};
+        // this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
       } else
 
       if(nextProps.data.ey.volts) {
         var obj = {};
         console.log('at motor', nextProps.data.ey.volts);
         this.setState( { ey: Object.assign( {}, this.state.ey, { volts: nextProps.data.ey.volts } ) } );
-        console.log(this.state.ey);
+        console.log('at volts:', this.state.ey);
       } else
 
       if(nextProps.data.ey.ttd) {
@@ -68,6 +75,7 @@ class Motor extends React.Component {
         var obj = {};
         this.setState( { ey: Object.assign( {}, this.state.ey, {rpm: nextProps.data.ey.rpm} ) } );
       }
+
     }
 
 
@@ -91,7 +99,7 @@ class Motor extends React.Component {
 
   render() {
 
-    console.log(this.state.ey);
+    console.log('at render:', this.state.ey);
 
       var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
       var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
