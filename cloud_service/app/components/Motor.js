@@ -147,7 +147,7 @@ class Motor extends React.Component {
                 height={140}
             />
 
-          </div>
+
 
           <div className="motorBattBar">
             {/* <div className="title">Motor Batts</div> */}
@@ -156,6 +156,8 @@ class Motor extends React.Component {
             <div className="motorBattData"> {rtBatt3}</div>
             <div className="motorBattData"> {rtBatt4}</div>
           </div>
+
+        </div>
 
           {/* <div className="graphContainer">
             <Line data={voltGraphData}

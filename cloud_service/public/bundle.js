@@ -53249,34 +53249,34 @@
 	                options: options,
 	                width: 800,
 	                height: 140
-	              })
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattBar' },
+	              }),
 	              _react2.default.createElement(
 	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt1
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt2
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt3
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt4
+	                { className: 'motorBattBar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  rtBatt1
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  rtBatt2
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  rtBatt3
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'motorBattData' },
+	                  ' ',
+	                  rtBatt4
+	                )
 	              )
 	            )
 	          )
