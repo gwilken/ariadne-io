@@ -54086,7 +54086,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: function onClick() {
-	                  return _this2.getData('Environmental', 'temperature', 0, 30);
+	                  return _this2.getData('Solar Controller Monitor', 'current', 0, 30);
 	                } },
 	              '***select***'
 	            )
