@@ -6,7 +6,7 @@ import HistoryGraph from './HistoryGraph'
 // We can just import Slider or Range to reduce bundle size
 import Slider from 'rc-slider/lib/Slider';
 // import Range from 'rc-slider/lib/Range';
-import '../../public/assets/css/slider.css';
+import '../../public/css/slider.css';
 
 
 class History extends React.Component {
