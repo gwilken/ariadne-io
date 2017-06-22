@@ -72,9 +72,14 @@ h3 {
 }
 
 .motorGauageBar {
-
+  margin: 3% 0;
+  display: flex;
+  width: 90%;
 }
 
+.motorGaugeData {
+  flex: 1;
+}
 
 .search-updatedAt {
   font-size: 20px;
