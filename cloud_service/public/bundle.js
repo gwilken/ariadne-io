@@ -20934,7 +20934,7 @@
 
 	        if (msg.name === 'Environmental') {
 	          var obj = {};
-	          //    console.log('at main: ', msg);
+	          console.log('at main: ', msg);
 	          this.setState({ enviro: msg });
 	        }
 	      }.bind(this);
