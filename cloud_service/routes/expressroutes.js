@@ -56,7 +56,7 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
   var secs = Date.now() - (req.params.time * 60000);
 
-  var id = secs.toString(16) + "0000000000000000";
+  var id = ObjectId(secs.toString(16) + "0000000000000000");
 
   mongo.collection.find( { _id: { $gt: id } } ).toArray(function(err, docs) {
     console.log(docs);
