@@ -28,7 +28,8 @@ class History extends React.Component {
     if(nextProps.selected === 'temp') {
 
       var data = this.state.data.map(function(obj) {
-        return obj.Environmental.temperature;
+        return obj.telemetry.Environmental.temperature;
+        //console.log(obj.Environmental);
       })
 
       this.setState( { chartData: data, chartLabels: data } );
