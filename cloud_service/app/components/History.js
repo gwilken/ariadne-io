@@ -84,7 +84,7 @@ class History extends React.Component {
           position: 'right',
           ticks: {
             min: 0,
-            max: 120,
+            max: 40,
             mirror: false,
            },
           }],
