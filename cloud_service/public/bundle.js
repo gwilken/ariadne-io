@@ -53235,8 +53235,9 @@
 	          labels: ["Red", "darker red"],
 	          datasets: [{
 	            label: '# of Votes',
-	            data: [12, 1],
-	            backgroundColor: ['firebrick', 'rgb(65, 12, 12)']
+	            data: [12],
+	            backgroundColor: ['firebrick', 'black'],
+	            borderWidth: 0
 	          }]
 	        };
 

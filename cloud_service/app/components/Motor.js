@@ -136,11 +136,12 @@ class Motor extends React.Component {
           labels: ["Red", "darker red"],
           datasets: [{
               label: '# of Votes',
-              data: [12, 1],
+              data: [12, ],
               backgroundColor: [
                   'firebrick',
-                  'rgb(65, 12, 12)'
-              ]
+                  'black'
+              ],
+              borderWidth: 0
           }]
       };
 
