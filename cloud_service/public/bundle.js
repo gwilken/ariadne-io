@@ -53138,7 +53138,7 @@
 
 	        if (nextProps.data.ey.current) {
 	          var obj = {};
-	          this.setState({ ey: Object.assign({}, this.state.ey, { current: parseFloat(nextProps.data.ey.current) }) });
+	          this.setState({ ey: Object.assign({}, this.state.ey, { current: nextProps.data.ey.current }) });
 	        }
 
 	        if (nextProps.data.ey.volts) {
@@ -53174,7 +53174,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      console.log(this.state.ey.current);
+	      console.log(this.state.ey.volts);
 
 	      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
 	      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
