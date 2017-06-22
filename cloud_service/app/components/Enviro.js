@@ -128,7 +128,7 @@ class Enviro extends React.Component {
         <div>
 
           <div className="graphContainer">
-            <Line data={tempData}
+            <HorizontalBar data={tempData}
                 options={tempOptions}
                 width={800}
                 height={140}
@@ -143,7 +143,7 @@ class Enviro extends React.Component {
           </div>
 
           <div className="graphContainer">
-            <Line data={pressData}
+            <HorizontalBar data={pressData}
                 options={pressOptions}
                 width={800}
                 height={140}

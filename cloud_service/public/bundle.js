@@ -53732,7 +53732,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
-	            _react2.default.createElement(Line, { data: tempData,
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: tempData,
 	              options: tempOptions,
 	              width: 800,
 	              height: 140
@@ -53757,7 +53757,7 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
-	            _react2.default.createElement(Line, { data: pressData,
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: pressData,
 	              options: pressOptions,
 	              width: 800,
 	              height: 140
