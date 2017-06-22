@@ -54,8 +54,9 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
   console.log('route hit');
 
-  var secs = Math.floor(Date.now() - (req.params.time * 60000) / 1000);
-  var objID = ObjectId.createFromTime(secs);
+  var secs = Date.now() - (req.params.time * 60000);
+
+  var objID = ObjectId.createFromTime(secs/1000);
 
 
   //
