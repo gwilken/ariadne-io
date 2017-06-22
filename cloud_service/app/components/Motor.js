@@ -127,7 +127,7 @@ class Motor extends React.Component {
           labels: ["Red", "darker red"],
           datasets: [{
               label: '',
-              data: [this.props.data.ey.ttd ],
+              data: [ this.state.ey.ttd ],
               backgroundColor: [
                   'firebrick',
                   'rgb(0,0,0)'
