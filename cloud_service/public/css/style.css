@@ -95,7 +95,7 @@ h3 {
 
 .geoContainer {
   position: relative;
-  min-height: 140px;
+  min-height: 120px;
 }
 
 .geoSpeed {
@@ -108,5 +108,5 @@ h3 {
   left: 51%;
   background-color: lightseagreen;
   min-height: 140px;
-  width: 100%;
+  width: 40%;
 }
