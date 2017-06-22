@@ -20998,7 +20998,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
-	        _react2.default.createElement(_History2.default, { selected: "temp" })
+	        _react2.default.createElement(_History2.default, { selected: "solarcurrent" })
 	      );
 	    }
 	  }]);
@@ -53937,7 +53937,22 @@
 	        // })
 	        //
 	        // this.setState( { chartData: data} );
+	      }
 
+	      if (nextProps.selected === 'solarcurrent') {
+
+	        var data = this.state.data.map(function (obj) {
+	          return obj.telemetry["Solar Controller Monitor"].current;
+	          //console.log(obj.Environmental);
+	        });
+
+	        this.setState({ chartData: data, chartLabels: data });
+
+	        // var labels = this.state.data.map(function(obj) {
+	        //   return obj.Environmental.temperature;
+	        // })
+	        //
+	        // this.setState( { chartData: data} );
 	      }
 	    }
 	  }, {

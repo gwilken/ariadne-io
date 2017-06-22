@@ -39,9 +39,25 @@ class History extends React.Component {
       // })
       //
       // this.setState( { chartData: data} );
-
-
     }
+
+    if(nextProps.selected === 'solarcurrent') {
+
+      var data = this.state.data.map(function(obj) {
+        return obj.telemetry["Solar Controller Monitor"].current;
+        //console.log(obj.Environmental);
+      })
+
+      this.setState( { chartData: data, chartLabels: data } );
+
+      // var labels = this.state.data.map(function(obj) {
+      //   return obj.Environmental.temperature;
+      // })
+      //
+      // this.setState( { chartData: data} );
+    }
+
+
   }
 
   render() {
