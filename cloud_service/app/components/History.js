@@ -15,7 +15,7 @@ class History extends React.Component {
 
   componentDidMount() {
 
-    fetch('/data/10')
+    fetch('/data/60')
       .then((res) => res.json())
         .then(function(objs) {
           console.log(objs);

@@ -53912,7 +53912,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      fetch('/data/10').then(function (res) {
+	      fetch('/data/60').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
 	        console.log(objs);
