@@ -171,7 +171,7 @@ class Solar extends React.Component {
       },
     }
 
-    content = (
+    return (
 
       <div> <h3>Solar</h3>
         <div>
