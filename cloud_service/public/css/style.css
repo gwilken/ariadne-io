@@ -43,10 +43,16 @@ h3 {
 }
 
 .motorBattBar {
-  flex: 1;
+  display: flex;
+  bottom: 12%;
+  position: absolute;
+  width: 89%;
 }
 
 .motorBattData {
+  position: relative;
+  margin-left: 11%;
+  font-size: 28px;
   flex: 1;
 }
 

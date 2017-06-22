@@ -69,6 +69,11 @@ class Motor extends React.Component {
 
     if(this.state.batt1) {
 
+      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
+      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
+      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
+      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
+
       var data = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
         datasets: [
@@ -146,11 +151,10 @@ class Motor extends React.Component {
 
           <div className="motorBattBar">
             {/* <div className="title">Motor Batts</div> */}
-            <div className="motorBattData"> {this.state.batt1.busvoltage}</div>
-            <div className="motorBattData"> {this.state.batt2.busvoltage}</div>
-            <div className="motorBattData"> {this.state.batt3.busvoltage}</div>
-            <div className="motorBattData"> {this.state.batt4.busvoltage}</div>
-
+            <div className="motorBattData"> {rtBatt1}</div>
+            <div className="motorBattData"> {rtBatt2}</div>
+            <div className="motorBattData"> {rtBatt3}</div>
+            <div className="motorBattData"> {rtBatt4}</div>
           </div>
 
           {/* <div className="graphContainer">

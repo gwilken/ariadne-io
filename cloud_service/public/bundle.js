@@ -53173,6 +53173,11 @@
 
 	      if (this.state.batt1) {
 
+	        var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
+	        var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
+	        var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
+	        var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
+
 	        var data = {
 	          labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
 	          datasets: [{
@@ -53253,25 +53258,25 @@
 	                'div',
 	                { className: 'motorBattData' },
 	                ' ',
-	                this.state.batt1.busvoltage
+	                rtBatt1
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'motorBattData' },
 	                ' ',
-	                this.state.batt2.busvoltage
+	                rtBatt2
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'motorBattData' },
 	                ' ',
-	                this.state.batt3.busvoltage
+	                rtBatt3
 	              ),
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'motorBattData' },
 	                ' ',
-	                this.state.batt4.busvoltage
+	                rtBatt4
 	              )
 	            )
 	          )
