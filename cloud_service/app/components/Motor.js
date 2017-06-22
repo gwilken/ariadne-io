@@ -73,11 +73,11 @@ class Motor extends React.Component {
         labels: ['#1 - ' + this.state.batt1.busvoltage, '#2 - ' + this.state.batt2.busvoltage, '#3 - ' + this.state.batt3.busvoltage, '#4 - ' + this.state.batt4.busvoltage],
         datasets: [
           {
-            backgroundColor: 'rgba(255,99,132,0.2)',
-            borderColor: 'rgba(255,99,132,1)',
+            backgroundColor: 'firebrick',
+            borderColor: 'firebrick',
             borderWidth: 1,
-            hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            hoverBorderColor: 'rgba(255,99,132,1)',
+            // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+            // hoverBorderColor: 'rgba(255,99,132,1)',
             data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
           }
         ]
@@ -91,7 +91,7 @@ class Motor extends React.Component {
           },
         },
         tooltips: {
-          enabled: true,
+          enabled: false,
         },
         legend: {
           display: false,

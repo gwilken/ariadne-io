@@ -55,7 +55,7 @@ class House extends React.Component {
       datasets: [
           {
             fill: true,
-            backgroundColor: 'blue',
+            backgroundColor: 'royalblue',
             borderWidth: 2,
             lineTension: 0.1,
             pointRadius: 0,
@@ -69,7 +69,7 @@ class House extends React.Component {
       datasets: [
           {
             fill: true,
-            backgroundColor: 'blue',
+            backgroundColor: 'royalblue',
             // borderColor: 'yellow',
             borderWidth: 2,
             lineTension: 0.1,

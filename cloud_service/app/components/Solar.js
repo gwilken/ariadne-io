@@ -52,7 +52,7 @@ class Solar extends React.Component {
       datasets: [
           {
             fill: true,
-            backgroundColor: 'yellow',
+            backgroundColor: 'gold',
             borderWidth: 2,
             lineTension: 0.1,
             pointRadius: 0,
@@ -66,7 +66,7 @@ class Solar extends React.Component {
       datasets: [
           {
             fill: true,
-            backgroundColor: 'yellow',
+            backgroundColor: 'gold',
             // borderColor: 'yellow',
             borderWidth: 2,
             lineTension: 0.1,
