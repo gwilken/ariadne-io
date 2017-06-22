@@ -53325,6 +53325,52 @@
 	        }
 	      };
 
+	      var voltBankData = {
+	        labels: [this.state.ey.volts],
+	        datasets: [{
+	          labels: '',
+	          data: [this.state.ey.volts],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var voltBankOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            // barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 60
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
 	      var rpmData = {
 	        labels: ["Red", "darker red"],
 	        datasets: [{
@@ -53464,6 +53510,31 @@
 	              { className: 'motorBattData' },
 	              ' ',
 	              rtBatt4,
+	              ' '
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: voltBankData,
+	            options: voltBankOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'Total Bank Voltage'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              rtBankVolt,
 	              ' '
 	            )
 	          )

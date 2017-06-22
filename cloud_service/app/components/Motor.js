@@ -248,7 +248,53 @@ class Motor extends React.Component {
       }
     }
 
+    var voltBankData = {
+        labels: [this.state.ey.volts],
+        datasets: [
+            {
+              labels: '',
+              data: [this.state.ey.volts],
+              backgroundColor: ['firebrick']
+            }
+         ]
+       };
 
+    var voltBankOptions = {
+    layout: {
+      padding: {
+        left: 15,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+          display: false,
+        },
+        // barThickness: 120,
+        display: false,
+      }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 60,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: true,
+        },
+      }]
+    }
+  }
 
     var rpmData = {
       labels: ["Red", "darker red"],
@@ -351,6 +397,20 @@ class Motor extends React.Component {
         </div>
 
 
+        <div className="graphContainer">
+
+          <HorizontalBar data={voltBankData}
+            options={voltBankOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Total Bank Voltage</div>
+            <div className="rtData"> {rtBankVolt} </div>
+          </div>
+
+        </div>
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
                 options={voltChartOptions}
