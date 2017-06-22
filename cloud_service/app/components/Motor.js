@@ -157,7 +157,7 @@ class Motor extends React.Component {
           }]
       };
 
-    var DoughnutOptions = {
+    var doughnutOptions = {
           rotation: 1 * Math.PI,
           circumference: 1 * Math.PI
       };
