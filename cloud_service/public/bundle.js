@@ -53980,7 +53980,7 @@
 	            position: 'right',
 	            ticks: {
 	              min: 0,
-	              max: 7500,
+	              max: 120,
 	              mirror: false
 	            }
 	          }],
