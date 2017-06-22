@@ -33,8 +33,8 @@ class Solar extends React.Component {
 
   render() {
 
-      var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
-      var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
+    var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+    var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
 
     var lastObj = this.state.data.length - 1;
 

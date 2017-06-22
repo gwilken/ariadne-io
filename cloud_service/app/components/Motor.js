@@ -111,6 +111,8 @@ class Motor extends React.Component {
       var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
       var rpm = 'RPM: ' + this.state.ey.rpm;
 
+      var rtCurrent = this.state.ey.current;
+
       var data = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
         datasets: [
@@ -295,7 +297,13 @@ class Motor extends React.Component {
               height={140}
           />
 
-      </div>
+          <div className="titlebar">
+            <div className="title">Amps</div>
+            <div className="rtData"> {rtCurrent} </div>
+          </div>
+        </div>
+
+        </div>
 
           <div className="gaugeContainer">
 
@@ -316,9 +324,6 @@ class Motor extends React.Component {
             </div>
 
           </div>
-
-
-
 
 
           <div className="motorGauageBar">
