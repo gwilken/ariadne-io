@@ -53224,7 +53224,7 @@
 	          label: '',
 	          data: [this.state.ey.ttd],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderColor: ['firebrick'],
+	          borderColor: ['firebrick', 'firebrick'],
 
 	          borderWidth: 1
 	        }]
@@ -53253,7 +53253,7 @@
 	          label: '',
 	          data: [this.state.ey.rpm],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderColor: ['firebrick'],
+	          borderColor: ['firebrick', 'firebrick'],
 
 	          borderWidth: 1
 	        }]
