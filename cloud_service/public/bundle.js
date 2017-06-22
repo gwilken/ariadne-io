@@ -53953,7 +53953,7 @@
 
 	        console.log(data);
 
-	        this.setState({ data: objs });
+	        this.setState({ chartData: data, chartLabels: data });
 	      }.bind(this));
 	    }
 	  }, {
@@ -54089,7 +54089,12 @@
 	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, min: this.state.min, max: this.state.max })
+	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, min: this.state.min, max: this.state.max }),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            '**** SLIDER ****'
+	          )
 	        )
 	      );
 	    }

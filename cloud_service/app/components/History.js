@@ -35,7 +35,7 @@ class History extends React.Component {
 
           console.log(data);
 
-          this.setState( { data: objs} );
+          this.setState( { chartData: data, chartLabels: data } );
 
         }.bind(this));
   }
@@ -160,12 +160,15 @@ class History extends React.Component {
 
           <div className="historySelect">
 
-          <div onClick={ () => this.getData('Environmental', 'temperature' ) }>***select***</div>
+            <div onClick={ () => this.getData('Environmental', 'temperature' ) }>***select***</div>
 
           </div>
 
-
           <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} min={this.state.min} max={this.state.max} />
+
+
+          <div>**** SLIDER ****</div>
+
 
         </div>
 
