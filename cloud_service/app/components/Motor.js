@@ -207,6 +207,26 @@ class Motor extends React.Component {
 
         <div>
 
+
+          <div className="gaugeContainer">
+            <div className="gauge">
+              <Doughnut data={ttdData}
+                options={ttdOptions}
+                  width={800}
+                  height={140}
+              />
+            </div>
+
+            <div className="gauge">
+              <Doughnut data={rpmData}
+                options={rpmOptions}
+                  width={800}
+                  height={140}
+              />
+            </div>
+          </div>
+
+
           <div className="graphContainer">
 
             <Bar data={data}
@@ -225,24 +245,7 @@ class Motor extends React.Component {
 
         </div>
 
-        <div className="gaugeContainer">
 
-          <div className="gauge">
-            <Doughnut data={ttdData}
-              options={ttdOptions}
-                width={800}
-                height={140}
-            />
-          </div>
-
-          <div className="gauge">
-            <Doughnut data={rpmData}
-              options={rpmOptions}
-                width={800}
-                height={140}
-            />
-          </div>
-        </div>
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
                 options={voltChartOptions}
