@@ -52640,7 +52640,7 @@
 	            position: 'top'
 	          },
 	          animation: {
-	            duration: 100,
+	            // duration: 100,
 	            easing: 'linear'
 	          },
 	          maintainAspectRatio: false,
@@ -52686,7 +52686,7 @@
 	            position: 'top'
 	          },
 	          animation: {
-	            duration: 100,
+	            // duration: 100,
 	            easing: 'linear'
 	          },
 	          maintainAspectRatio: false,
@@ -52919,7 +52919,7 @@
 	            position: 'top'
 	          },
 	          animation: {
-	            duration: 100,
+	            // duration: 100,
 	            easing: 'linear'
 	          },
 	          maintainAspectRatio: false,
@@ -52965,7 +52965,7 @@
 	            position: 'top'
 	          },
 	          animation: {
-	            duration: 100,
+	            // duration: 100,
 	            easing: 'linear'
 	          },
 	          maintainAspectRatio: false,
@@ -53205,7 +53205,7 @@
 	            position: 'top'
 	          },
 	          animation: {
-	            duration: 100,
+	            // duration: 100,
 	            easing: 'linear'
 	          },
 	          maintainAspectRatio: false,
@@ -53257,28 +53257,33 @@
 	                  'div',
 	                  { className: 'motorBattData' },
 	                  ' ',
-	                  rtBatt1
+	                  rtBatt1,
+	                  ' '
 	                ),
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'motorBattData' },
 	                  ' ',
-	                  rtBatt2
+	                  rtBatt2,
+	                  ' '
 	                ),
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'motorBattData' },
 	                  ' ',
-	                  rtBatt3
+	                  rtBatt3,
+	                  ' '
 	                ),
 	                _react2.default.createElement(
 	                  'div',
 	                  { className: 'motorBattData' },
 	                  ' ',
-	                  rtBatt4
+	                  rtBatt4,
+	                  ' '
 	                )
 	              )
-	            )
+	            ),
+	            _react2.default.createElement('div', { className: 'graphContainer' })
 	          )
 	        );
 	      }

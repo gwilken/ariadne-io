@@ -97,7 +97,7 @@ class House extends React.Component {
         position: 'top',
       },
       animation: {
-        duration: 100,
+        // duration: 100,
         easing: 'linear'
       },
       maintainAspectRatio: false,
@@ -145,7 +145,7 @@ class House extends React.Component {
         position: 'top',
       },
       animation: {
-        duration: 100,
+        // duration: 100,
         easing: 'linear'
       },
       maintainAspectRatio: false,

@@ -103,7 +103,7 @@ class Motor extends React.Component {
           position: 'top',
         },
         animation: {
-          duration: 100,
+          // duration: 100,
           easing: 'linear'
         },
         maintainAspectRatio: false,
@@ -147,15 +147,18 @@ class Motor extends React.Component {
                 height={140}
             />
 
-
-
           <div className="motorBattBar">
             {/* <div className="title">Motor Batts</div> */}
-            <div className="motorBattData"> {rtBatt1}</div>
-            <div className="motorBattData"> {rtBatt2}</div>
-            <div className="motorBattData"> {rtBatt3}</div>
-            <div className="motorBattData"> {rtBatt4}</div>
+            <div className="motorBattData"> {rtBatt1} </div>
+            <div className="motorBattData"> {rtBatt2} </div>
+            <div className="motorBattData"> {rtBatt3} </div>
+            <div className="motorBattData"> {rtBatt4} </div>
           </div>
+
+        </div>
+
+
+        <div className="graphContainer">
 
         </div>
 
