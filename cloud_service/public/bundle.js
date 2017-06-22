@@ -53222,7 +53222,7 @@
 	        labels: ["Red", "darker red"],
 	        datasets: [{
 	          label: '',
-	          data: [this.state.ey.ttd],
+	          data: [this.state.ey.ttd, 0],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
 	          borderColor: ['firebrick', 'firebrick'],
 
@@ -53251,7 +53251,7 @@
 	        labels: ["Red", "darker red"],
 	        datasets: [{
 	          label: '',
-	          data: [this.state.ey.rpm],
+	          data: [this.state.ey.rpm, 9],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
 	          borderColor: ['firebrick', 'firebrick'],
 
