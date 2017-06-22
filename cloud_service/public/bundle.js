@@ -53131,6 +53131,17 @@
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      if (nextProps.data.ey) {
+
+	        if (nextProps.data.ey.current) {
+	          var obj = {};
+	          this.setState({ ey: Object.assign({}, this.state.ey, { current: nextProps.data.ey.current }) });
+	        }
+
+	        if (nextProps.data.ey.volts) {
+	          var obj = {};
+	          this.setState({ ey: Object.assign({}, this.state.ey, { volts: nextProps.data.ey.volts }) });
+	        }
+
 	        if (nextProps.data.ey.ttd) {
 	          var obj = {};
 	          this.setState({ ey: Object.assign({}, this.state.ey, { ttd: nextProps.data.ey.ttd }) });
@@ -53250,6 +53261,52 @@
 	        maintainAspectRatio: false
 	      };
 
+	      var currentData = {
+	        labels: [this.state.ey.current],
+	        datasets: [{
+	          labels: '',
+	          data: [this.state.ey.current],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var currentOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            // barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 50
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
 	      var rpmData = {
 	        labels: ["Red", "darker red"],
 	        datasets: [{
@@ -53311,6 +53368,15 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
+	            options: currentData,
+	            width: 800,
+	            height: 140
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
 	          { className: 'motorGauageBar' },
 	          _react2.default.createElement(
 	            'div',
@@ -53329,46 +53395,42 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.Bar, { data: data,
+	            options: options,
+	            width: 800,
+	            height: 140
+	          }),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'graphContainer' },
-	            _react2.default.createElement(_reactChartjs.Bar, { data: data,
-	              options: options,
-	              width: 800,
-	              height: 140
-	            }),
+	            { className: 'motorBattBar' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'motorBattBar' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt1,
-	                ' '
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt2,
-	                ' '
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt3,
-	                ' '
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'motorBattData' },
-	                ' ',
-	                rtBatt4,
-	                ' '
-	              )
+	              { className: 'motorBattData' },
+	              ' ',
+	              rtBatt1,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              rtBatt2,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              rtBatt3,
+	              ' '
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              rtBatt4,
+	              ' '
 	            )
 	          )
 	        )

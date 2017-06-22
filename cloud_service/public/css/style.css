@@ -79,6 +79,7 @@ h3 {
 
 .motorGaugeData {
   flex: 1;
+  font-size: 19pt;
 }
 
 .search-updatedAt {

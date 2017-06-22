@@ -1,7 +1,7 @@
 import React from "react";
 import {Bar} from 'react-chartjs-2';
 import {Doughnut} from 'react-chartjs-2';
-
+import {HorizontalBar} from 'react-chartjs-2';
 
 class Motor extends React.Component {
 
@@ -45,6 +45,17 @@ class Motor extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.data.ey) {
+
+      if(nextProps.data.ey.current) {
+        var obj = {};
+        this.setState( { ey: Object.assign( {}, this.state.ey, {current: nextProps.data.ey.current} ) } );
+      }
+
+      if(nextProps.data.ey.volts) {
+        var obj = {};
+        this.setState( { ey: Object.assign( {}, this.state.ey, {volts: nextProps.data.ey.volts} ) } );
+      }
+
       if(nextProps.data.ey.ttd) {
         var obj = {};
         this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
@@ -170,6 +181,56 @@ class Motor extends React.Component {
         maintainAspectRatio: false
       };
 
+      var currentData = {
+          labels: [this.state.ey.current],
+          datasets: [
+              {
+                labels: '',
+                data: [this.state.ey.current],
+                backgroundColor: ['firebrick']
+              }
+           ]
+         };
+
+      var currentOptions = {
+      layout: {
+        padding: {
+          left: 15,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          // barThickness: 120,
+          display: false,
+        }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 50,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
+    }
+
+
+
     var rpmData = {
       labels: ["Red", "darker red"],
       datasets: [{
@@ -228,13 +289,25 @@ class Motor extends React.Component {
 
           </div>
 
+
+          <div className="graphContainer">
+
+            <HorizontalBar data={currentData}
+              options={currentData}
+                width={800}
+                height={140}
+            />
+
+        </div>
+
+
           <div className="motorGauageBar">
             {/* <div className="title">Motor Batts</div> */}
             <div className="motorGaugeData"> {ttd} </div>
             <div className="motorGaugeData"> {rpm} </div>
           </div>
 
-        <div>
+
           <div className="graphContainer">
 
             <Bar data={data}
@@ -252,7 +325,7 @@ class Motor extends React.Component {
           </div>
 
         </div>
-      </div>
+
 
           {/* <div className="graphContainer">
             <Line data={voltGraphData}
