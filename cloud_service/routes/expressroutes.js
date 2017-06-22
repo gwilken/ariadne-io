@@ -54,7 +54,9 @@ router.get('/datapoint/:obj/:field/:time', function(req, res) {
 
   console.log('route hit');
 
-  var secs = Date.now() - (req.params.time * 60000);
+  var now = new Date();
+
+  var secs = now.getTime() - (req.params.time * 60000);
 
   var hex = secs.toString(16);
 
