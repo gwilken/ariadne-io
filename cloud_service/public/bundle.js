@@ -53134,28 +53134,36 @@
 
 	      if (nextProps.data.ey) {
 
-	        if (nextProps.data.ey.current) {
+	        this.setState({ ey: nextProps.data.ey });
 
-	          var newState = _react2.default.addons.update(this.state, {
-	            ey: { current: { $set: nextProps.data.ey.current } }
-	          });
-
-	          this.setState(newState);
-
-	          // var obj = {};
-	          // this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
-	        } else if (nextProps.data.ey.volts) {
-	          var obj = {};
-	          console.log('at motor', nextProps.data.ey.volts);
-	          this.setState({ ey: Object.assign({}, this.state.ey, { volts: nextProps.data.ey.volts }) });
-	          console.log('at volts:', this.state.ey);
-	        } else if (nextProps.data.ey.ttd) {
-	          var obj = {};
-	          this.setState({ ey: Object.assign({}, this.state.ey, { ttd: nextProps.data.ey.ttd }) });
-	        } else if (nextProps.data.ey.rpm) {
-	          var obj = {};
-	          this.setState({ ey: Object.assign({}, this.state.ey, { rpm: nextProps.data.ey.rpm }) });
-	        }
+	        // if(nextProps.data.ey.current) {
+	        //
+	        //   var newState = React.addons.update(this.state, {
+	        //     ey: { current: {$set: nextProps.data.ey.current} }
+	        //   });
+	        //
+	        //   this.setState(newState);
+	        //
+	        //   // var obj = {};
+	        //   // this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
+	        // } else
+	        //
+	        // if(nextProps.data.ey.volts) {
+	        //   var obj = {};
+	        //   console.log('at motor', nextProps.data.ey.volts);
+	        //   this.setState( { ey: Object.assign( {}, this.state.ey, { volts: nextProps.data.ey.volts } ) } );
+	        //   console.log('at volts:', this.state.ey);
+	        // } else
+	        //
+	        // if(nextProps.data.ey.ttd) {
+	        //   var obj = {};
+	        //   this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
+	        // } else
+	        //
+	        // if(nextProps.data.ey.rpm) {
+	        //   var obj = {};
+	        //   this.setState( { ey: Object.assign( {}, this.state.ey, {rpm: nextProps.data.ey.rpm} ) } );
+	        // }
 	      }
 
 	      if (nextProps.data.batt1) {
