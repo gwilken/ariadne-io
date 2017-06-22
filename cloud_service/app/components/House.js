@@ -40,6 +40,8 @@ class House extends React.Component {
 
     if(this.state.data) {
 
+    var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+
     var lastObj = this.state.data.length - 1;
 
     var currentData = this.state.data.map(function(obj) {
@@ -190,7 +192,7 @@ class House extends React.Component {
             <div className="titlebar">
 
               <div className="title">Battery Voltage:</div>
-              <div className="rtData"> {this.props.data.loadvoltage.toFixed(2) + 'v'} </div>
+              <div className="rtData"> {rtVolt} </div>
 
             </div>
           </div>

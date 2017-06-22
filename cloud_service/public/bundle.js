@@ -52863,6 +52863,8 @@
 
 	      if (this.state.data) {
 
+	        var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+
 	        var lastObj = this.state.data.length - 1;
 
 	        var currentData = this.state.data.map(function (obj) {
@@ -53022,7 +53024,7 @@
 	                  'div',
 	                  { className: 'rtData' },
 	                  ' ',
-	                  this.props.data.loadvoltage + 'v',
+	                  rtVolt,
 	                  ' '
 	                )
 	              )
