@@ -85,10 +85,12 @@ h3 {
 
 .ttdLabel {
   margin-left: 9%;
+  font-size: 19pt;
 }
 
 .rpmLabel {
     margin-left: 9%;
+    font-size: 19pt;
 }
 
 .search-updatedAt {
