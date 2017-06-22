@@ -45,11 +45,6 @@ class Motor extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-      if(nextProps.data.ey.ttd) {
-        var obj = {};
-        this.setState( { ey: Object.assign( {}, this.state.ey, { ttd: nextProps.data.ey.ttd } ) } )
-      }
-
       if(nextProps.data.batt1) {
         this.setState( { batt1: nextProps.data.batt1 } );
       }
@@ -62,7 +57,6 @@ class Motor extends React.Component {
       if(nextProps.data.batt4) {
         this.setState( { batt4: nextProps.data.batt4 } );
       }
-
     }
 
 
@@ -129,13 +123,11 @@ class Motor extends React.Component {
         }
       }
 
-
-
       var doughnutData = {
           labels: ["Red", "darker red"],
           datasets: [{
               label: '',
-              data: [this.state.ey.ttd, ],
+              data: [this.props.data.ey.ttd ],
               backgroundColor: [
                   'firebrick',
                   'rgb(0,0,0)'
