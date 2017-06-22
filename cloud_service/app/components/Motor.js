@@ -80,7 +80,7 @@ class Motor extends React.Component {
       var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
       var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
 
-      var ttd = 'Total Dischaege in' + this.state.ey.ttd + ' Hours';
+      var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
       var rpm = 'RPM: ' + this.state.ey.rpm;
 
       var data = {
@@ -226,14 +226,13 @@ class Motor extends React.Component {
               />
             </div>
 
-            <div className="motorGauageBar">
-              {/* <div className="title">Motor Batts</div> */}
-              <div className="motorGaugeData"> {ttd} </div>
-              <div className="motorGaugeData"> {rpm} </div>
-            </div>
-
           </div>
 
+          <div className="motorGauageBar">
+            {/* <div className="title">Motor Batts</div> */}
+            <div className="motorGaugeData"> {ttd} </div>
+            <div className="motorGaugeData"> {rpm} </div>
+          </div>
 
         <div>
           <div className="graphContainer">

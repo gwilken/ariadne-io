@@ -53166,7 +53166,7 @@
 	      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
 	      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
 
-	      var ttd = 'Total Dischaege in' + this.state.ey.ttd + ' Hours';
+	      var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
 	      var rpm = 'RPM: ' + this.state.ey.rpm;
 
 	      var data = {
@@ -53307,24 +53307,24 @@
 	              width: 400,
 	              height: 140
 	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'motorGauageBar' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'motorGaugeData' },
+	            ' ',
+	            ttd,
+	            ' '
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'motorGauageBar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorGaugeData' },
-	              ' ',
-	              ttd,
-	              ' '
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorGaugeData' },
-	              ' ',
-	              rpm,
-	              ' '
-	            )
+	            { className: 'motorGaugeData' },
+	            ' ',
+	            rpm,
+	            ' '
 	          )
 	        ),
 	        _react2.default.createElement(
