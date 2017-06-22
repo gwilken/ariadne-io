@@ -53292,7 +53292,7 @@
 	            { className: 'gaugeContainer' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'gauge' },
+	              { className: 'gaugeLeft' },
 	              _react2.default.createElement(_reactChartjs.Doughnut, { data: ttdData,
 	                options: ttdOptions,
 	                width: 800,
@@ -53301,7 +53301,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'gauge' },
+	              { className: 'gaugeRight' },
 	              _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
 	                options: rpmOptions,
 	                width: 800,
