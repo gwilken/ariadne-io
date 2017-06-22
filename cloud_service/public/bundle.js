@@ -20897,6 +20897,8 @@
 
 	        var msg = JSON.parse(event.data);
 
+	        console.log(msg);
+
 	        if (msg.name === 'House Battery Bank') {
 	          this.setState({ house: msg });
 	        }
