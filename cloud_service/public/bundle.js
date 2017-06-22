@@ -20852,6 +20852,10 @@
 
 	var _Motor2 = _interopRequireDefault(_Motor);
 
+	var _Enviro = __webpack_require__(448);
+
+	var _Enviro2 = _interopRequireDefault(_Enviro);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20871,6 +20875,7 @@
 	    _this.state = {
 	      solar: null,
 	      house: null,
+	      enviro: null,
 	      motor: {
 	        ey: null,
 	        batt1: null,
@@ -20923,8 +20928,14 @@
 
 	        if (msg.name === 'Electric Yacht 10kW Motor') {
 	          var obj = {};
-	          console.log('at main: ', msg);
+	          //      console.log('at main: ', msg);
 	          this.setState({ motor: Object.assign({}, this.state.motor, { ey: msg }) });
+	        }
+
+	        if (msg.name === 'Environmental') {
+	          var obj = {};
+	          //    console.log('at main: ', msg);
+	          this.setState({ enviro: msg });
 	        }
 	      }.bind(this);
 	    }
@@ -20935,6 +20946,7 @@
 	      var solar;
 	      var house;
 	      var motor;
+	      var enviro;
 
 	      if (this.state.solar) {
 	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar });
@@ -20948,12 +20960,17 @@
 	        motor = _react2.default.createElement(_Motor2.default, { data: this.state.motor });
 	      }
 
+	      if (this.state.enviro) {
+	        enviro = _react2.default.createElement(Enviro, { data: this.state.enviro });
+	      }
+
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "mainContainer" },
 	        house,
 	        solar,
-	        motor
+	        motor,
+	        enviro
 	      );
 	    }
 	  }]);
@@ -53548,6 +53565,226 @@
 	}(_react2.default.Component);
 
 		exports.default = Motor;
+
+/***/ }),
+/* 448 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(170);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(276);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Enviro = function (_React$Component) {
+	  _inherits(Enviro, _React$Component);
+
+	  function Enviro(props) {
+	    _classCallCheck(this, Enviro);
+
+	    var _this = _possibleConstructorReturn(this, (Enviro.__proto__ || Object.getPrototypeOf(Enviro)).call(this, props));
+
+	    _this.state = {
+	      data: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Enviro, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var rtPress = this.props.data.pressure.toFixed(2) + ' mB';
+
+	      // T(°C) × 9/5 + 32
+
+	      var tempF = this.props.data.temperature * 9 / 5 + 32;
+	      var tempDisplay = tempF + ' F';
+
+	      var tempData = {
+	        labels: [tempF],
+	        datasets: [{
+	          labels: '',
+	          data: [tempF],
+	          backgroundColor: ['lightseagreen']
+	        }]
+	      };
+
+	      var tempOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 60
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var pressData = {
+	        labels: [this.props.data.pressure],
+	        datasets: [{
+	          labels: '',
+	          data: [this.props.data.pressure],
+	          backgroundColor: ['lightseagreen']
+	        }]
+	      };
+
+	      var pressOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 1100
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Environmental'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(Line, { data: tempData,
+	              options: tempOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'temperature'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                tempDisplay,
+	                ' '
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(Line, { data: pressData,
+	              options: pressOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Barometric Pressure'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtPress
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Enviro;
+	}(_react2.default.Component);
+
+		exports.default = Enviro;
 
 /***/ })
 /******/ ]);

@@ -3,6 +3,8 @@ import Test from "./Test";
 import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
+import Enivro from "./Enviro";
+
 
 class Main extends React.Component {
 
@@ -12,6 +14,7 @@ class Main extends React.Component {
     this.state = {
       solar: null,
       house: null,
+      enviro: null,
       motor: {
         ey: null,
         batt1: null,
@@ -61,9 +64,16 @@ class Main extends React.Component {
 
       if(msg.name === 'Electric Yacht 10kW Motor') {
         var obj = {};
-        console.log('at main: ', msg);
+  //      console.log('at main: ', msg);
         this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
       }
+
+      if(msg.name === 'Environmental') {
+        var obj = {};
+    //    console.log('at main: ', msg);
+        this.setState( { enviro: msg } );
+      }
+
 
     }.bind(this);
   }
@@ -73,6 +83,7 @@ class Main extends React.Component {
     var solar;
     var house;
     var motor;
+    var enviro;
 
     if(this.state.solar) {
       solar = <Solar data={this.state.solar} />;
@@ -86,6 +97,11 @@ class Main extends React.Component {
       motor = <Motor data={this.state.motor} />;
     }
 
+    if(this.state.enviro) {
+      enviro = <Enviro data={this.state.enviro} />;
+    }
+
+
     return(
 
       <div className="mainContainer">
@@ -93,6 +109,7 @@ class Main extends React.Component {
         {house}
         {solar}
         {motor}
+        {enviro}
 
       </div>
 
