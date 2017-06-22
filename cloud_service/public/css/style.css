@@ -83,6 +83,14 @@ h3 {
   font-size: 19pt;
 }
 
+.ttdLabel {
+  margin-left: 9%;
+}
+
+.rpmLabel {
+    margin-left: 9%;
+}
+
 .search-updatedAt {
   font-size: 20px;
   color: grey;

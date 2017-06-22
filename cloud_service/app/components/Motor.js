@@ -374,8 +374,8 @@ class Motor extends React.Component {
 
           <div className="motorGauageBar">
             {/* <div className="title">Motor Batts</div> */}
-            <div className="motorGaugeData"> {ttd} </div>
-            <div className="motorGaugeData"> {rpm} </div>
+            <div className="ttdLabel"> {ttd} </div>
+            <div className="rpmLabel"> {rpm} </div>
           </div>
 
 

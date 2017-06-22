@@ -53480,14 +53480,14 @@
 	          { className: 'motorGauageBar' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'motorGaugeData' },
+	            { className: 'ttdLabel' },
 	            ' ',
 	            ttd,
 	            ' '
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'motorGaugeData' },
+	            { className: 'rpmLabel' },
 	            ' ',
 	            rpm,
 	            ' '
