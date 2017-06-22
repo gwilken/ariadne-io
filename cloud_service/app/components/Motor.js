@@ -45,6 +45,17 @@ class Motor extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
+      if(nextProps.data.ey) {
+
+        if(nextProps.data.ey.ttd) {
+
+          var obj = {};
+          this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
+
+        }
+
+      }
+
       if(nextProps.data.batt1) {
         this.setState( { batt1: nextProps.data.batt1 } );
       }
