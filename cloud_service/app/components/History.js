@@ -41,9 +41,8 @@ class History extends React.Component {
 
   render() {
 
-
     var data = {
-      labels: currentData,
+      labels: [1] ,
       datasets: [
           {
             fill: true,
@@ -51,7 +50,7 @@ class History extends React.Component {
             borderWidth: 2,
             lineTension: 0.1,
             pointRadius: 0,
-            data: currentData
+            data: [1]
           }
        ]
     }
