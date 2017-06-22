@@ -54052,10 +54052,19 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
+	          { className: 'historyContainer' },
 	          _react2.default.createElement(
 	            'div',
-	            null,
+	            { className: 'historySelect' },
+	            _react2.default.createElement(
+	              'div',
+	              null,
+	              '***select component***'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'historyGraph' },
 	            _react2.default.createElement(_reactChartjs.Line, { data: data,
 	              options: options,
 	              width: 800,

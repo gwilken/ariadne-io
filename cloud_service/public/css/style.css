@@ -115,3 +115,20 @@ h3 {
   margin: 5% 5%;
   font-size: 24px;
 }
+
+.historyContainer {
+  position: relative;
+}
+
+.historySelect {
+  position: absolute;
+  float: left;
+  width: 20%;
+  min-height:;
+}
+
+.historyGraph {
+  position: absolute;
+  float: right;
+  width: 70%;
+}

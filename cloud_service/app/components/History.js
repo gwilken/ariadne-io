@@ -136,9 +136,15 @@ class History extends React.Component {
   return (
 
       <div> <h3>Historical ***TESTING****</h3>
-        <div>
 
-          <div>
+        <div className="historyContainer">
+
+          <div className="historySelect">
+            <div>***select component***</div>
+          </div>
+
+
+          <div className="historyGraph">
 
             <Line data={data}
                 options={options}
@@ -149,6 +155,7 @@ class History extends React.Component {
           </div>
 
         </div>
+
       </div>
     )
   }
