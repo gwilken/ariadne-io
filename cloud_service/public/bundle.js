@@ -52552,7 +52552,7 @@
 	    var _this = _possibleConstructorReturn(this, (Solar.__proto__ || Object.getPrototypeOf(Solar)).call(this, props));
 
 	    _this.state = {
-	      data: null
+	      data: []
 	    };
 	    return _this;
 	  }

@@ -7,7 +7,7 @@ class Solar extends React.Component {
     super(props);
 
     this.state = {
-      data: null
+      data: []
     }
   }
 
