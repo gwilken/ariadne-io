@@ -91,7 +91,7 @@ class Motor extends React.Component {
 
   render() {
 
-    console.log(this.state.ey.volts);
+    console.log(this.state.ey);
 
       var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
       var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
@@ -160,7 +160,7 @@ class Motor extends React.Component {
         labels: ["Red", "darker red"],
         datasets: [{
             label: '',
-            data: [ this.state.ey.ttd, 0 ],
+            data: [ this.state.ey.ttd ],
             backgroundColor: [
                 'firebrick',
                 'rgb(0,0,0)'
