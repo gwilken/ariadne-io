@@ -53971,37 +53971,39 @@
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 
-	      if (nextProps.selected === 'temp') {
+	      // if(nextProps.selected === 'temp') {
+	      //
+	      //   var data = this.state.data.map(function(obj) {
+	      //     return obj.telemetry.Environmental.temperature * 9/5 + 32;
+	      //     //console.log(obj.Environmental);
+	      //   })
+	      //
+	      //   this.setState( { chartData: data, chartLabels: data, max: 120 } );
+	      //
+	      //   // var labels = this.state.data.map(function(obj) {
+	      //   //   return obj.Environmental.temperature;
+	      //   // })
+	      //   //
+	      //   // this.setState( { chartData: data} );
+	      // }
+	      //
+	      // if(nextProps.selected === 'solarcurrent') {
+	      //
+	      //   var data = this.state.data.map(function(obj) {
+	      //     return obj.telemetry["Solar Controller Monitor"].current;
+	      //     //console.log(obj.Environmental);
+	      //   })
+	      //
+	      //   this.setState( { chartData: data, chartLabels: data, max: 5000 } );
+	      //
+	      //   // var labels = this.state.data.map(function(obj) {
+	      //   //   return obj.Environmental.temperature;
+	      //   // })
+	      //   //
+	      //   // this.setState( { chartData: data} );
+	      // }
 
-	        var data = this.state.data.map(function (obj) {
-	          return obj.telemetry.Environmental.temperature * 9 / 5 + 32;
-	          //console.log(obj.Environmental);
-	        });
 
-	        this.setState({ chartData: data, chartLabels: data, max: 120 });
-
-	        // var labels = this.state.data.map(function(obj) {
-	        //   return obj.Environmental.temperature;
-	        // })
-	        //
-	        // this.setState( { chartData: data} );
-	      }
-
-	      if (nextProps.selected === 'solarcurrent') {
-
-	        var data = this.state.data.map(function (obj) {
-	          return obj.telemetry["Solar Controller Monitor"].current;
-	          //console.log(obj.Environmental);
-	        });
-
-	        this.setState({ chartData: data, chartLabels: data, max: 5000 });
-
-	        // var labels = this.state.data.map(function(obj) {
-	        //   return obj.Environmental.temperature;
-	        // })
-	        //
-	        // this.setState( { chartData: data} );
-	      }
 	    }
 	  }, {
 	    key: 'render',

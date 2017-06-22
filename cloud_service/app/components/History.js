@@ -52,37 +52,37 @@ class History extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    if(nextProps.selected === 'temp') {
-
-      var data = this.state.data.map(function(obj) {
-        return obj.telemetry.Environmental.temperature * 9/5 + 32;
-        //console.log(obj.Environmental);
-      })
-
-      this.setState( { chartData: data, chartLabels: data, max: 120 } );
-
-      // var labels = this.state.data.map(function(obj) {
-      //   return obj.Environmental.temperature;
-      // })
-      //
-      // this.setState( { chartData: data} );
-    }
-
-    if(nextProps.selected === 'solarcurrent') {
-
-      var data = this.state.data.map(function(obj) {
-        return obj.telemetry["Solar Controller Monitor"].current;
-        //console.log(obj.Environmental);
-      })
-
-      this.setState( { chartData: data, chartLabels: data, max: 5000 } );
-
-      // var labels = this.state.data.map(function(obj) {
-      //   return obj.Environmental.temperature;
-      // })
-      //
-      // this.setState( { chartData: data} );
-    }
+    // if(nextProps.selected === 'temp') {
+    //
+    //   var data = this.state.data.map(function(obj) {
+    //     return obj.telemetry.Environmental.temperature * 9/5 + 32;
+    //     //console.log(obj.Environmental);
+    //   })
+    //
+    //   this.setState( { chartData: data, chartLabels: data, max: 120 } );
+    //
+    //   // var labels = this.state.data.map(function(obj) {
+    //   //   return obj.Environmental.temperature;
+    //   // })
+    //   //
+    //   // this.setState( { chartData: data} );
+    // }
+    //
+    // if(nextProps.selected === 'solarcurrent') {
+    //
+    //   var data = this.state.data.map(function(obj) {
+    //     return obj.telemetry["Solar Controller Monitor"].current;
+    //     //console.log(obj.Environmental);
+    //   })
+    //
+    //   this.setState( { chartData: data, chartLabels: data, max: 5000 } );
+    //
+    //   // var labels = this.state.data.map(function(obj) {
+    //   //   return obj.Environmental.temperature;
+    //   // })
+    //   //
+    //   // this.setState( { chartData: data} );
+    // }
 
 
   }
