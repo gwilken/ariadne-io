@@ -239,7 +239,7 @@ class Motor extends React.Component {
         xAxes: [{
           ticks: {
             min: 0,
-            max: 5,
+            max: 10,
           },
           gridLines: {
             display: false,
