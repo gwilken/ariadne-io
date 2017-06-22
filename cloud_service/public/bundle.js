@@ -20923,6 +20923,7 @@
 
 	        if (msg.name === 'Electric Yacht 10kW Motor') {
 	          var obj = {};
+	          console.log('at main: ', msg);
 	          this.setState({ motor: Object.assign({}, this.state.motor, { ey: msg }) });
 	        }
 	      }.bind(this);
@@ -53130,7 +53131,10 @@
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
+
 	      if (nextProps.data.ey) {
+
+	        console.log('at motor', nextProps);
 
 	        if (nextProps.data.ey.current) {
 	          var obj = {};

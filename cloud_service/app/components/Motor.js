@@ -44,7 +44,10 @@ class Motor extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     if(nextProps.data.ey) {
+
+      console.log('at motor', nextProps);
 
       if(nextProps.data.ey.current) {
         var obj = {};

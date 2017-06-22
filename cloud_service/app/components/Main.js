@@ -61,6 +61,7 @@ class Main extends React.Component {
 
       if(msg.name === 'Electric Yacht 10kW Motor') {
         var obj = {};
+        console.log('at main: ', msg);
         this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
       }
 
