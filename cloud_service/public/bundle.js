@@ -53985,7 +53985,7 @@
 	        this.setState({
 	          chartData: data
 	        });
-	      });
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'render',

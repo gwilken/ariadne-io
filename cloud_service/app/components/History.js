@@ -50,7 +50,7 @@ class History extends React.Component {
             chartData: data
           });
 
-        });
+        }.bind(this));
   }
 
   render() {
