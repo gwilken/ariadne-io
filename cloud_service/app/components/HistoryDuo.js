@@ -90,18 +90,18 @@ class HistoryDuo extends React.Component {
           right: 3,
         },
       },
-      // tooltips: {
-      //   enabled: false,
-      // },
-      // legend: {
-      //   display: false,
-      //   position: 'top',
-      // },
-      // animation: {
-      //   // duration: 400,
-      //   easing: 'linear'
-      // },
-      // maintainAspectRatio: false,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        // duration: 400,
+        easing: 'linear'
+      },
+      maintainAspectRatio: false,
       // scales: {
       //   yAxes: [{
       //     position: 'right',
