@@ -20873,7 +20873,7 @@
 
 	var _History2 = _interopRequireDefault(_History);
 
-	var _HistoryDuo = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./HistoryDuo\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _HistoryDuo = __webpack_require__(470);
 
 	var _HistoryDuo2 = _interopRequireDefault(_HistoryDuo);
 
@@ -57760,6 +57760,252 @@
 	  } catch(e){ /* empty */ }
 	  return safe;
 	};
+
+/***/ }),
+/* 470 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _HistoryGraph = __webpack_require__(349);
+
+	var _HistoryGraph2 = _interopRequireDefault(_HistoryGraph);
+
+	var _reactChartjs = __webpack_require__(172);
+
+	var _Slider = __webpack_require__(350);
+
+	var _Slider2 = _interopRequireDefault(_Slider);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var HistoryDuo = function (_React$Component) {
+	  _inherits(HistoryDuo, _React$Component);
+
+	  function HistoryDuo(props) {
+	    _classCallCheck(this, HistoryDuo);
+
+	    var _this = _possibleConstructorReturn(this, (HistoryDuo.__proto__ || Object.getPrototypeOf(HistoryDuo)).call(this, props));
+
+	    _this.state = {
+	      docs: [],
+	      data: {},
+	      color: '',
+	      name: '',
+	      field1: '',
+	      field2: '',
+	      time: 180
+	    };
+
+	    _this.setTime = _this.setTime.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(HistoryDuo, [{
+	    key: 'setTime',
+	    value: function setTime(newTime) {
+	      this.setState({ time: newTime });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+
+	      console.log(this.props);
+
+	      var name = this.props.selected.name;
+	      var field1 = this.props.selected.field1;
+	      var field2 = this.props.selected.field2;
+	      var color = this.props.color;
+
+	      fetch('/data/' + this.state.time).then(function (res) {
+	        return res.json();
+	      }).then(function (docs) {
+
+	        //console.log(docs);
+
+	        var data1 = docs.map(function (obj) {
+	          return obj.telemetry[name][field1];
+	        });
+
+	        var data2 = docs.map(function (obj) {
+	          return obj.telemetry[name][field2];
+	        });
+
+	        var data = {
+	          data1: data1,
+	          data2: data2
+	        };
+
+	        return data;
+	      }).then(function (data) {
+
+	        console.log(data);
+
+	        console.log('state:', this.state);
+
+	        var newObj = Object.assign({}, this.state, { data: data });
+
+	        console.log('newobj:', newObj);
+
+	        this.setState({
+	          data: newObj,
+	          color: color,
+	          name: name,
+	          field1: field1,
+	          field2: field2
+	        });
+	      }.bind(this));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      //console.log(this.state);
+
+	      var data1 = {
+	        labels: this.state.data.data1,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: this.state.color,
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: this.state.data.data1
+	        }]
+	      };
+
+	      var data2 = {
+	        labels: this.state.data.data2,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: this.state.color,
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: this.state.data.data2
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          duration: 400,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [{
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            },
+	            ticks: {
+	              display: false
+	            }
+	          }]
+	        }
+	      };
+
+	      var graph1 = null;
+	      var graph2 = null;
+
+	      if (this.state.data.data1) graph1 = _react2.default.createElement(_reactChartjs.Line, { data: data1,
+	        options: options,
+	        width: 800,
+	        height: 500
+	      });
+
+	      if (this.state.data.data2) graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
+	        options: options,
+	        width: 800,
+	        height: 500
+	      });
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Historical Data',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'backButton', onClick: function onClick() {
+	                return _this2.props.setView('all');
+	              } },
+	            ' Back '
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h4',
+	          null,
+	          this.state.name,
+	          ' - ',
+	          this.state.field1,
+	          ' - ',
+	          this.state.field2
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'historyContainer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'historyGraph' },
+	            graph1,
+	            graph2,
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'sliderContainer' },
+	              _react2.default.createElement(_Slider2.default, { min: 0, max: 200, defaultValue: 3 })
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return HistoryDuo;
+	}(_react2.default.Component);
+
+		exports.default = HistoryDuo;
 
 /***/ })
 /******/ ]);

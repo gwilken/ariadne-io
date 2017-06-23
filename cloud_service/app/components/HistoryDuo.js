@@ -42,11 +42,11 @@ class HistoryDuo extends React.Component {
 
             var data1 = docs.map( function(obj) {
                 return obj.telemetry[name][field1];
-              };
+              });
 
             var data2 = docs.map( function(obj) {
                   return obj.telemetry[name][field2];
-              };
+              });
 
           var data = {
             data1: data1,
