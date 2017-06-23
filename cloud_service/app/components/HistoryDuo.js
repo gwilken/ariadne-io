@@ -48,8 +48,6 @@ class HistoryDuo extends React.Component {
               return obj;
             })
 
-            console.log(data);
-
             return data;
 
         }).then(function(data) {
@@ -60,8 +58,8 @@ class HistoryDuo extends React.Component {
             data: data,
             color: color,
             name: name,
-            field1: field1,
-            field2: field2
+            field1: data.field1,
+            field2: data.field2
           });
 
         }.bind(this));
