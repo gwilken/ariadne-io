@@ -113,7 +113,7 @@ class History extends React.Component {
               data: []
             };
 
-            dataset.data = data.slice();
+            dataset.data = data.concat();
 
             console.log('dataset', dataset);
 
