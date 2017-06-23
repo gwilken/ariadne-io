@@ -139,8 +139,8 @@ class HistoryDuo extends React.Component {
       },
     }
 
-    var graph1;
-    var graph2;
+    var graph1 = null;
+    var graph2 = null;
 
     if(this.state.data.data1) (
       graph1 = (
@@ -150,7 +150,7 @@ class HistoryDuo extends React.Component {
             height={500}
         />
       )
-    }
+    )
 
     if(this.state.data.data2) (
       graph2 = (
@@ -160,7 +160,7 @@ class HistoryDuo extends React.Component {
             height={500}
         />
       )
-    }
+    )
 
     return (
 
