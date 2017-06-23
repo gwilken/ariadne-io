@@ -9,6 +9,8 @@ class HistoryGraph extends React.Component {
 
   render() {
 
+    console.log(this.props);
+
     var data = {
       labels: this.props.chartLabels,
       datasets: [
@@ -72,8 +74,6 @@ class HistoryGraph extends React.Component {
     }
 
   return (
-
-    console.log(this.props);
 
       <div className="historyGraph">
         <Line data={data}
