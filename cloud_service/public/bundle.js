@@ -57877,31 +57877,52 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      //console.log(this.state);
+	      console.log(this.state);
 
-	      var data1 = {
-	        labels: this.state.data.data1,
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: this.state.color,
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: this.state.data.data1
-	        }]
-	      };
+	      var graph1 = null;
+	      var graph2 = null;
 
-	      var data2 = {
-	        labels: this.state.data.data2,
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: this.state.color,
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: this.state.data.data2
-	        }]
-	      };
+	      if (this.state.data.data1) {
+
+	        var data1 = {
+	          labels: this.state.data.data1,
+	          datasets: [{
+	            fill: true,
+	            backgroundColor: this.state.color,
+	            borderWidth: 2,
+	            lineTension: 0.1,
+	            pointRadius: 0,
+	            data: this.state.data.data1
+	          }]
+	        };
+
+	        graph1 = _react2.default.createElement(_reactChartjs.Line, { data: data1,
+	          options: options,
+	          width: 800,
+	          height: 500
+	        });
+	      }
+
+	      if (this.state.data.data2) {
+
+	        var data2 = {
+	          labels: this.state.data.data2,
+	          datasets: [{
+	            fill: true,
+	            backgroundColor: this.state.color,
+	            borderWidth: 2,
+	            lineTension: 0.1,
+	            pointRadius: 0,
+	            data: this.state.data.data2
+	          }]
+	        };
+
+	        graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
+	          options: options,
+	          width: 800,
+	          height: 500
+	        });
+	      }
 
 	      var options = {
 	        layout: {
@@ -57943,21 +57964,6 @@
 	          }]
 	        }
 	      };
-
-	      var graph1 = null;
-	      var graph2 = null;
-
-	      if (this.state.data.data1) graph1 = _react2.default.createElement(_reactChartjs.Line, { data: data1,
-	        options: options,
-	        width: 800,
-	        height: 500
-	      });
-
-	      if (this.state.data.data2) graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
-	        options: options,
-	        width: 800,
-	        height: 500
-	      });
 
 	      return _react2.default.createElement(
 	        'div',
