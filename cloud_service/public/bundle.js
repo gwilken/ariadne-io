@@ -54086,7 +54086,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, data, 'blue');
+	        this.addDataset(data, [], 'blue');
 	      }.bind(this));
 	    }
 	  }, {
@@ -54108,7 +54108,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, data, 'yellow');
+	        this.addDataset(data, [], 'yellow');
 	      }.bind(this));
 	    }
 	  }, {
