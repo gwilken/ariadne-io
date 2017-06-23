@@ -20890,7 +20890,7 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
 	    _this.state = {
-	      view: 'history',
+	      view: 'all',
 	      selected: {
 	        name: 'House Battery Bank',
 	        field: 'current'

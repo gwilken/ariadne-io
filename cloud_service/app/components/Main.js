@@ -13,7 +13,7 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      view: 'history',
+      view: 'all',
       selected: {
         name: 'House Battery Bank',
         field: 'current',
