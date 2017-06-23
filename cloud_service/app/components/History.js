@@ -12,6 +12,8 @@ class History extends React.Component {
       docs: [],
       data: [],
       color: null,
+      name: '',
+      field: '',
       time: 180
     }
 
@@ -48,7 +50,9 @@ class History extends React.Component {
 
           this.setState({
             data: data,
-            color: color
+            color: color,
+            name: name,
+            field: field
           });
 
         }.bind(this));
@@ -117,9 +121,12 @@ class History extends React.Component {
 
     return (
 
-      <div> <h3>Historical ***TESTING****</h3>
+      <div> <h3>Historical Data</h3>
+      <div> <h4>{this.state.name} - {this.state.field}}</h4>
 
         <div className="historyContainer">
+
+          <div className='backButton'>Back</div>
 
           <div className="historyGraph">
 

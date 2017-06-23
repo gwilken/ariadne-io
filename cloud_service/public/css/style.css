@@ -120,6 +120,14 @@ h3 {
   position: relative;
 }
 
+.backButton {
+  position: absolute;
+  right: 0;
+  margin: 0 0;
+  font-size: 19px;
+
+}
+
 .historySelect {
   position: relative;
   float: left;
