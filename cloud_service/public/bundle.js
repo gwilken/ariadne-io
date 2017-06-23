@@ -53980,10 +53980,7 @@
 	        });
 
 	        this.setState({
-	          docs: docs,
-	          chartData: data,
-	          chartLabels: data,
-	          chartColor: color
+	          docs: docs
 	        });
 	      }.bind(this));
 	    }
