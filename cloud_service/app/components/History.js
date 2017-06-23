@@ -16,7 +16,6 @@ class History extends React.Component {
     this.state = {
       docs: [],
       chartData: [],
-      chartLabels: [],
       chartColor: "gold",
       time: 180
     }
@@ -47,7 +46,8 @@ class History extends React.Component {
         }).then(function(data) {
 
           this.setState({
-            chartData: data
+            chartData: data,
+            chartColor: color
           });
 
         }.bind(this));
@@ -61,7 +61,7 @@ class History extends React.Component {
 
         <div className="historyContainer">
 
-          <HistoryGraph data={this.state.chartData} labels={this.state.chartLabels} color={this.state.chartColor} />
+          <HistoryGraph data={this.state.chartData} color={this.state.chartColor} />
 
           <div className="sliderContainer">
              <Slider min={0} max={200} defaultValue={3}  />

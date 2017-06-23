@@ -53949,7 +53949,6 @@
 	    _this.state = {
 	      docs: [],
 	      chartData: [],
-	      chartLabels: [],
 	      chartColor: "gold",
 	      time: 180
 	    };
@@ -53983,7 +53982,8 @@
 	      }).then(function (data) {
 
 	        this.setState({
-	          chartData: data
+	          chartData: data,
+	          chartColor: color
 	        });
 	      }.bind(this));
 	    }
@@ -54003,7 +54003,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'historyContainer' },
-	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.chartData, labels: this.state.chartLabels, color: this.state.chartColor }),
+	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.chartData, color: this.state.chartColor }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sliderContainer' },
@@ -54112,7 +54112,7 @@
 	      console.log(this.props);
 
 	      var data = {
-	        labels: this.props.chartLabels,
+	        labels: this.props.chartData,
 	        datasets: [{
 	          fill: true,
 	          backgroundColor: this.props.color,

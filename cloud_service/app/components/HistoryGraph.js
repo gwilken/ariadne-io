@@ -12,7 +12,7 @@ class HistoryGraph extends React.Component {
     console.log(this.props);
 
     var data = {
-      labels: this.props.chartLabels,
+      labels: this.props.chartData,
       datasets: [
           {
             fill: true,
