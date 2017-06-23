@@ -139,6 +139,28 @@ class HistoryDuo extends React.Component {
       },
     }
 
+    var graph1;
+    var graph2;
+
+    if(this.state.data.data1) (
+      graph1 = (
+        <Line data={data1}
+            options={options}
+            width={800}
+            height={500}
+        />
+      )
+    }
+
+    if(this.state.data.data2) (
+      graph2 = (
+        <Line data={data2}
+            options={options}
+            width={800}
+            height={500}
+        />
+      )
+    }
 
     return (
 
@@ -154,17 +176,9 @@ class HistoryDuo extends React.Component {
 
           <div className="historyGraph">
 
-            <Line data={data1}
-                options={options}
-                width={800}
-                height={500}
-            />
+            {graph1}
 
-            <Line data={data2}
-                options={options}
-                width={800}
-                height={500}
-            />
+            {graph2}
 
             <div className="sliderContainer">
                <Slider min={0} max={200} defaultValue={3}  />
