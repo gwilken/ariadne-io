@@ -130,7 +130,7 @@ h3 {
 .historyGraph {
   position: relative;
   float: right;
-  width: 80%;
+  width: 100%;
   margin: 1% 1%;
 }
 .sliderContainer {
