@@ -84,45 +84,45 @@ class HistoryDuo extends React.Component {
     var graph2 = null;
 
     var options = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        // duration: 400,
-        easing: 'linear'
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          position: 'right',
-          ticks: {
-            mirror: false,
-           },
-          }],
-        xAxes: [{
-          gridLines: {
-            display: false,
-            drawTicks: false,
-          },
-          scaleLabel: {
-            display: true,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        ],
-      },
+      // layout: {
+      //   padding: {
+      //     left: 15,
+      //     right: 3,
+      //   },
+      // },
+      // tooltips: {
+      //   enabled: false,
+      // },
+      // legend: {
+      //   display: false,
+      //   position: 'top',
+      // },
+      // animation: {
+      //   // duration: 400,
+      //   easing: 'linear'
+      // },
+      // maintainAspectRatio: false,
+      // scales: {
+      //   yAxes: [{
+      //     position: 'right',
+      //     ticks: {
+      //       mirror: false,
+      //      },
+      //     }],
+      //   xAxes: [{
+      //     gridLines: {
+      //       display: false,
+      //       drawTicks: false,
+      //     },
+      //     scaleLabel: {
+      //       display: true,
+      //     },
+      //     ticks: {
+      //       display: false,
+      //     },
+      //   },
+      //   ],
+      // },
     };
 
     if(this.state.data.data1) {
