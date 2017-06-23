@@ -1,11 +1,7 @@
 import React from "react";
 import HistoryGraph from './HistoryGraph'
 import {Line} from 'react-chartjs-2';
-// //import Slider, { Range } from 'rc-slider';
-// // We can just import Slider or Range to reduce bundle size
-// import Slider from 'rc-slider/lib/Slider';
-// // import Range from 'rc-slider/lib/Range';
-
+import Slider from 'rc-slider/lib/Slider';
 
 class History extends React.Component {
 
@@ -15,7 +11,7 @@ class History extends React.Component {
     this.state = {
       docs: [],
       data: [],
-      color: "gold",
+      color: null,
       time: 180
     }
 
@@ -139,9 +135,9 @@ class History extends React.Component {
 
           </div>
 
-          {/* <div className="sliderContainer">
+          <div className="sliderContainer">
              <Slider min={0} max={200} defaultValue={3}  />
-          </div> */}
+          </div>
 
         </div>
 
