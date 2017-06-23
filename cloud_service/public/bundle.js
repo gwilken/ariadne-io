@@ -54044,7 +54044,7 @@
 
 	        console.log('data', data);
 
-	        dataset.data = data;
+	        dataset.data.push(data);
 
 	        console.log('dataset', dataset);
 
