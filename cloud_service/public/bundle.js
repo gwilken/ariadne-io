@@ -54059,7 +54059,7 @@
 	        }
 	      };
 
-	      var newOptions = this.state.data.options;
+	      var newOptions = Object.assign({}, this.state.data.options);
 
 	      newOptions.scales.yAxes.push(yAxis);
 	      newOptions.scales.xAxes.push(xAxis);
