@@ -108,10 +108,8 @@ class History extends React.Component {
               borderWidth: 2,
               lineTension: 0.1,
               pointRadius: 0,
-              data: []
+              data: data.slice();
             };
-
-            dataset.data = data.concat();
 
             console.log('dataset', dataset);
 
