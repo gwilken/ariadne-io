@@ -58,9 +58,10 @@ class History extends React.Component {
     this.setState({time: newTime})
   }
 
-  addDataset(data, labels, color) {
+  addDataset(data, labels, id, color) {
 
     var set = {
+      yAxisID: id,
       fill: false,
       backgroundColor: color,
       borderWidth: 2,
@@ -96,7 +97,7 @@ class History extends React.Component {
     var xAxis = {
       ticks: {
         min: 0,
-        max: 1000,
+        max: 0,
       },
       gridLines: {
         display: false,
@@ -111,8 +112,11 @@ class History extends React.Component {
     };
 
     var yAxis = {
-      position: 'right',
+      id: id,
+      position: 'left',
       ticks: {
+        min: 1,
+        max: 1000,
         mirror: false,
        }
     };
@@ -148,7 +152,7 @@ class History extends React.Component {
             return obj.telemetry[name][field];
           })
 
-          this.addDataset(data, [], 'blue');
+          this.addDataset(data, [], name+field, 'blue');
 
         }.bind(this));
   }
@@ -170,7 +174,7 @@ class History extends React.Component {
               return obj.telemetry[name][field];
             })
 
-            this.addDataset(data, [], 'yellow');
+            this.addDataset(data, [], name+field, 'yellow');
 
         }.bind(this));
   }

@@ -53997,9 +53997,10 @@
 	    }
 	  }, {
 	    key: 'addDataset',
-	    value: function addDataset(data, labels, color) {
+	    value: function addDataset(data, labels, id, color) {
 
 	      var set = {
+	        yAxisID: id,
 	        fill: false,
 	        backgroundColor: color,
 	        borderWidth: 2,
@@ -54035,7 +54036,7 @@
 	      var xAxis = _defineProperty({
 	        ticks: {
 	          min: 0,
-	          max: 1000
+	          max: 0
 	        },
 	        gridLines: {
 	          display: false,
@@ -54049,8 +54050,11 @@
 	      });
 
 	      var yAxis = {
-	        position: 'right',
+	        id: id,
+	        position: 'left',
 	        ticks: {
+	          min: 1,
+	          max: 1000,
 	          mirror: false
 	        }
 	      };
@@ -54086,7 +54090,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, [], 'blue');
+	        this.addDataset(data, [], name + field, 'blue');
 	      }.bind(this));
 	    }
 	  }, {
@@ -54108,7 +54112,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, [], 'yellow');
+	        this.addDataset(data, [], name + field, 'yellow');
 	      }.bind(this));
 	    }
 	  }, {
