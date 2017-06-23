@@ -53996,9 +53996,10 @@
 	          backgroundColor: 'royalblue',
 	          borderWidth: 2,
 	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: data
+	          pointRadius: 0
 	        };
+
+	        dataset.data = data;
 
 	        datasets.push(dataset);
 
