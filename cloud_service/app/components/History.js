@@ -18,7 +18,7 @@ class History extends React.Component {
       chartData: [],
       chartLabels: [],
       min: 0,
-      max: 10,
+      max: 15,
       time: 180
     }
 
@@ -141,7 +141,6 @@ class History extends React.Component {
         easing: 'linear'
       },
       maintainAspectRatio: false,
-      responsive: true,
       scales: {
         yAxes: [{
           position: 'right',
