@@ -54069,12 +54069,12 @@
 	              options: options,
 	              width: 800,
 	              height: 800
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'sliderContainer' },
-	            _react2.default.createElement(_Slider2.default, { min: 0, max: 200, defaultValue: 3 })
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'sliderContainer' },
+	              _react2.default.createElement(_Slider2.default, { min: 0, max: 200, defaultValue: 3 })
+	            )
 	          )
 	        )
 	      );

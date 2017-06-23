@@ -133,11 +133,12 @@ class History extends React.Component {
                 height={800}
             />
 
+            
+                      <div className="sliderContainer">
+                         <Slider min={0} max={200} defaultValue={3}  />
+                      </div>
           </div>
 
-          <div className="sliderContainer">
-             <Slider min={0} max={200} defaultValue={3}  />
-          </div>
 
         </div>
 
