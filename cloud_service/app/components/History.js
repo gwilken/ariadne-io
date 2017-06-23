@@ -13,6 +13,8 @@ class History extends React.Component {
   constructor(props) {
     super(props);
 
+//this.state.data.options.scales.xAxes.slice()
+
     this.state = {
       docs: [],
       data: {
@@ -130,7 +132,7 @@ class History extends React.Component {
     var newObj = {
       labels: newLabels,
       datasets: newDatasets,
-      options: Object.assign( {}, this.state.data.options, { scales: newX, newY } )
+      options: Object.assign( {}, this.state.data.options.scales, { yAxes: newY, xAxes: newX } )
     }
 
     this.setState( { data: newObj } );

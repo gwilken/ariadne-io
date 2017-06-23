@@ -53946,6 +53946,8 @@
 	  function History(props) {
 	    _classCallCheck(this, History);
 
+	    //this.state.data.options.scales.xAxes.slice()
+
 	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
 
 	    _this.state = {
@@ -54068,7 +54070,7 @@
 	      var newObj = {
 	        labels: newLabels,
 	        datasets: newDatasets,
-	        options: Object.assign({}, this.state.data.options, { scales: newX, newY: newY })
+	        options: Object.assign({}, this.state.data.options.scales, { yAxes: newY, xAxes: newX })
 	      };
 
 	      this.setState({ data: newObj });
