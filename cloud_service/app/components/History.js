@@ -121,10 +121,13 @@ class History extends React.Component {
 
     return (
 
-      <div> <h3>Historical Data   <span className='backButton'> Back </span> </h3>
-      <h4>{this.state.name} - {this.state.field}</h4>
+      <div>
 
+        <h3>Historical Data
+          <span className='backButton' onClick={this.props.setView('all')}> Back </span> 
+        </h3>
 
+        <h4>{this.state.name} - {this.state.field}</h4>
 
         <div className="historyContainer">
 

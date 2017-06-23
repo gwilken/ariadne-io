@@ -54071,17 +54071,15 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        ' ',
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'Historical Data   ',
+	          'Historical Data',
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'backButton' },
+	            { className: 'backButton', onClick: this.props.setView('all') },
 	            ' Back '
-	          ),
-	          ' '
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'h4',
