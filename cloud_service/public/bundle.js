@@ -54016,6 +54016,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
 
 	      //console.log(this.props);
 
@@ -54081,7 +54082,9 @@
 	          'Historical Data',
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'backButton', onClick: this.props.setView('all') },
+	            { className: 'backButton', onClick: function onClick() {
+	                return _this2.props.setView('all');
+	              } },
 	            ' Back '
 	          )
 	        ),
