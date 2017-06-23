@@ -20900,7 +20900,7 @@
 	        field1: '',
 	        field2: ''
 	      },
-	      color: '',
+	      color: 'blue',
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -57856,8 +57856,8 @@
 	          data: data,
 	          color: color,
 	          name: name,
-	          field1: data.field1,
-	          field2: data.field2
+	          field1: field1,
+	          field2: field2
 	        });
 	      }.bind(this));
 	    }

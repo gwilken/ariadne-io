@@ -21,7 +21,7 @@ class Main extends React.Component {
         field1: '',
         field2: ''
       },
-      color: '',
+      color: 'blue',
       solar: null,
       house: null,
       enviro: null,
