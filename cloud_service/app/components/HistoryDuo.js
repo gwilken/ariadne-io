@@ -54,7 +54,7 @@ class HistoryDuo extends React.Component {
 
           console.log(data);
 
-          var newObj = Object.assign({}, this.state, {data: data}),
+          var newObj = Object.assign( {}, this.state, {data: data} );
 
           this.setState({
             data: newObj,
