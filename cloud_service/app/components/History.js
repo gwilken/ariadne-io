@@ -47,7 +47,7 @@ class History extends React.Component {
       chartData: [],
       chartLabels: [],
       chartColors: [],
-      time: 1080
+      time: 180
     }
 
     this.setTime = this.setTime.bind(this);
@@ -94,10 +94,10 @@ class History extends React.Component {
     }
 
     var xAxis = {
-      // ticks: {
-      //   min: 0,
-      //   max: 0,
-      // },
+      ticks: {
+        min: 0,
+        max: 1000,
+      },
       gridLines: {
         display: false,
         drawTicks: false,

@@ -53926,6 +53926,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53980,7 +53982,7 @@
 	      chartData: [],
 	      chartLabels: [],
 	      chartColors: [],
-	      time: 1080
+	      time: 180
 	    };
 
 	    _this.setTime = _this.setTime.bind(_this);
@@ -54030,22 +54032,21 @@
 	        }
 	      };
 
-	      var xAxis = {
-	        // ticks: {
-	        //   min: 0,
-	        //   max: 0,
-	        // },
+	      var xAxis = _defineProperty({
+	        ticks: {
+	          min: 0,
+	          max: 1000
+	        },
 	        gridLines: {
 	          display: false,
 	          drawTicks: false
 	        },
 	        scaleLabel: {
 	          display: false
-	        },
-	        ticks: {
-	          display: false
 	        }
-	      };
+	      }, 'ticks', {
+	        display: false
+	      });
 
 	      var yAxis = {
 	        position: 'right',
