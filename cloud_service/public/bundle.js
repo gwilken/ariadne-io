@@ -54089,8 +54089,8 @@
 	          }],
 	          xAxes: [_defineProperty({
 	            ticks: {
-	              min: 0,
-	              max: 0
+	              // min: 0,
+	              // max: 0,
 	            },
 	            gridLines: {
 	              display: false,
