@@ -53988,6 +53988,8 @@
 	        return res.json();
 	      }).then(function (docs) {
 
+	        console.log(docs);
+
 	        var data = docs.map(function (obj) {
 	          return obj.telemetry[name][field];
 	        });
