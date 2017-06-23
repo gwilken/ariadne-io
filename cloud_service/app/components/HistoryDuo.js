@@ -10,7 +10,7 @@ class HistoryDuo extends React.Component {
 
     this.state = {
       docs: [],
-      data: null,
+      data: {},
       color: '',
       name: '',
       field1: '',
