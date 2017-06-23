@@ -46,11 +46,17 @@ class History extends React.Component {
         }).then(function(data) {
 
           this.setState({
-            chartData: data,
-            chartColor: color
+            chartData: data
           });
 
         }.bind(this));
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if(nextProps.color) {
+      this.setState({chartColor: nextProps.color});
+    }
   }
 
   render() {

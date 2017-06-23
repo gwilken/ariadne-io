@@ -53982,10 +53982,17 @@
 	      }).then(function (data) {
 
 	        this.setState({
-	          chartData: data,
-	          chartColor: color
+	          chartData: data
 	        });
 	      }.bind(this));
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+
+	      if (nextProps.color) {
+	        this.setState({ chartColor: nextProps.color });
+	      }
 	    }
 	  }, {
 	    key: 'render',
