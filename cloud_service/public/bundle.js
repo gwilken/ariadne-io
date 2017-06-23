@@ -54078,6 +54078,7 @@
 	          easing: 'linear'
 	        },
 	        maintainAspectRatio: false,
+	        responsive: true,
 	        scales: {
 	          yAxes: [{
 	            position: 'right',
