@@ -54006,32 +54006,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        var labels = this.state.data.labels;
-	        labels.push(data);
-
-	        var datasets = this.state.data.datasets;
-
-	        // var dataset = {
-	        //   fill: true,
-	        //   backgroundColor: 'royalblue',
-	        //   borderWidth: 2,
-	        //   lineTension: 0.1,
-	        //   pointRadius: 0,
-	        //   data: []
-	        // };
-
-	        //this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
-
-	        dataset.data = data.slice();
-
-	        datasets.push(dataset);
-
-	        var newObj = {
-	          labels: labels,
-	          datasets: datasets
-	        };
-
-	        this.setState({ data: newObj });
+	        addDataset(data, data, 'blue');
 	      }.bind(this));
 	    }
 	  }, {
