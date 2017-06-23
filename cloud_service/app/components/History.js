@@ -40,9 +40,8 @@ class History extends React.Component {
 
           var dataArr = [];
 
-          dataArr.push(this.state.data);
+          dataArr.push(this.state.chartData);
           dataArr.push(data);
-
 
           this.setState( { chartData: dataArr, chartLabels: dataArr } );
 
