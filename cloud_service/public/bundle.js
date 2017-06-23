@@ -54017,6 +54017,8 @@
 	      var name = this.props.selected.name;
 	      var field = this.props.selected.field;
 
+	      console.log(name, field);
+
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
 	      }).then(function (docs) {

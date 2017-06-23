@@ -86,6 +86,8 @@ class History extends React.Component {
     var name = this.props.selected.name;
     var field = this.props.selected.field;
 
+    console.log(name, field);
+
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
         .then(function(docs) {
