@@ -13,154 +13,26 @@ class History extends React.Component {
   constructor(props) {
     super(props);
 
-//this.state.data.options.scales.xAxes.slice()
-
     this.state = {
       docs: [],
-      data: {
-        labels: [],
-        datasets: [],
-        options: {
-          layout: {
-            padding: {
-              left: 15,
-              right: 3,
-            },
-          },
-          tooltips: {
-            enabled: false,
-          },
-          legend: {
-            display: false,
-            position: 'top',
-          },
-          animation: {
-            easing: 'linear'
-          },
-          maintainAspectRatio: false,
-          scales: {
-            yAxes: [],
-            xAxes: [],
-          }
-        },
-      },
       chartData: [],
       chartLabels: [],
-      chartColors: [],
+      chartColor: gold,
       time: 180
     }
 
     this.setTime = this.setTime.bind(this);
-    this.addDataset = this.addDataset.bind(this);
   }
 
   setTime(newTime) {
     this.setState({time: newTime})
   }
 
-  addDataset(data, labels, id, color) {
-
-    var set = {
-      yAxisID: id,
-      fill: false,
-      backgroundColor: color,
-      borderWidth: 2,
-      lineTension: 0.1,
-      pointRadius: 1,
-      data: data
-    };
-
-    var options = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        easing: 'linear'
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [],
-        xAxes: [],
-      }
-    }
-
-    var xAxis = {
-      ticks: {
-        min: 0,
-        max: 0,
-      },
-      gridLines: {
-        display: false,
-        drawTicks: false,
-      },
-      scaleLabel: {
-        display: false,
-      },
-      ticks: {
-        display: false,
-      }
-    };
-
-    var yAxis = {
-      id: id,
-      position: 'left',
-      ticks: {
-        min: 1,
-        max: 1000,
-        mirror: false,
-       }
-    };
-
-    var newOptions = Object.assign( {}, this.state.data.options);
-
-    newOptions.scales.yAxes.push(yAxis);
-    newOptions.scales.xAxes.push(xAxis);
-
-    var newLabels = this.state.data.labels.slice();
-    newLabels.push(labels);
-
-    var newDatasets = this.state.data.datasets.slice();
-    newDatasets.push(set);
-
-    var newObj = {
-      labels: newLabels,
-      datasets: newDatasets,
-      options: newOptions
-    }
-
-    this.setState( { data: newObj } );
-  }
-
-
-  addData(name, field) {
-
-    fetch('/data/' + this.state.time)
-      .then((res) => res.json())
-        .then(function(docs) {
-
-          var data = docs.map(function(obj) {
-            return obj.telemetry[name][field];
-          })
-
-          this.addDataset(data, data, name+field, 'blue');
-
-        }.bind(this));
-  }
-
   componentDidMount() {
 
     var name = this.props.selected.name;
     var field = this.props.selected.field;
+    var color = this.props.color;
 
     console.log(name, field);
 
@@ -174,7 +46,7 @@ class History extends React.Component {
               return obj.telemetry[name][field];
             })
 
-            this.addDataset(data, data, name+field, 'yellow');
+            this.setState( {chartData: data, chartLabels: data, chartColor: color } );
 
         }.bind(this));
   }
@@ -187,13 +59,7 @@ class History extends React.Component {
 
         <div className="historyContainer">
 
-          <div className="historySelect">
-            <div onClick={ () => this.addData('Solar Controller Monitor', 'current') }>***select***</div>
-          </div>
-
-
-          <HistoryGraph data={this.state.data} />
-
+          <HistoryGraph data={this.state.chartData} labels={this.state.chartLabels} color={this.state.chartColor} />
 
           <div className="sliderContainer">
              <Slider min={0} max={200} defaultValue={3}  />

@@ -132,10 +132,9 @@ class Main extends React.Component {
     if(this.state.view === 'history') {
 
       return (
+
         <div className="mainContainer">
-
-          <History selected={this.state.selected} setView={this.setView} setSelected={this.setSelected} />
-
+          <History selected={this.state.selected} color={'green'} setView={this.setView} setSelected={this.setSelected} />
         </div>
       )
 

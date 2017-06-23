@@ -9,20 +9,78 @@ class HistoryGraph extends React.Component {
 
   render() {
 
-    console.log(this.props.datasets);
-
-    return (
-        <div className="historyGraph">
-
-          <Line data={this.props.data.datasets}
-              options={this.props.data.options}
-              width={800}
-              height={800}
-          />
-
-        </div>
-      )
+    var data = {
+      labels: this.props.chartLabels,
+      datasets: [
+          {
+            fill: true,
+            backgroundColor: this.props.color,
+            borderWidth: 2,
+            lineTension: 0.1,
+            pointRadius: 0,
+            data: this.props.chartData
+          }
+       ]
     }
+
+    var options = {
+      layout: {
+        padding: {
+          left: 15,
+          right: 3,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        // duration: 100,
+        easing: 'linear'
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          position: 'right',
+          ticks: {
+            // min: this.props.min,
+            // max: this.props.max,
+            mirror: false,
+           },
+          }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: false,
+          },
+          scaleLabel: {
+            display: true,
+          },
+          ticks: {
+            display: false,
+          },
+        },
+        ],
+      },
+    }
+
+  return (
+      <div className="historyGraph">
+        <Line data={data}
+            options={options}
+            width={800}
+            height={800}
+        />
+      </div>
+    )
+  }
 }
 
 export default HistoryGraph;

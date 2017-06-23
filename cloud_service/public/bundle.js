@@ -21016,7 +21016,7 @@
 	        return _react2.default.createElement(
 	          "div",
 	          { className: "mainContainer" },
-	          _react2.default.createElement(_History2.default, { selected: this.state.selected, setView: this.setView, setSelected: this.setSelected })
+	          _react2.default.createElement(_History2.default, { selected: this.state.selected, color: 'green', setView: this.setView, setSelected: this.setSelected })
 	        );
 	      } else {
 
@@ -53926,8 +53926,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53946,47 +53944,17 @@
 	  function History(props) {
 	    _classCallCheck(this, History);
 
-	    //this.state.data.options.scales.xAxes.slice()
-
 	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
 
 	    _this.state = {
 	      docs: [],
-	      data: {
-	        labels: [],
-	        datasets: [],
-	        options: {
-	          layout: {
-	            padding: {
-	              left: 15,
-	              right: 3
-	            }
-	          },
-	          tooltips: {
-	            enabled: false
-	          },
-	          legend: {
-	            display: false,
-	            position: 'top'
-	          },
-	          animation: {
-	            easing: 'linear'
-	          },
-	          maintainAspectRatio: false,
-	          scales: {
-	            yAxes: [],
-	            xAxes: []
-	          }
-	        }
-	      },
 	      chartData: [],
 	      chartLabels: [],
-	      chartColors: [],
+	      chartColor: gold,
 	      time: 180
 	    };
 
 	    _this.setTime = _this.setTime.bind(_this);
-	    _this.addDataset = _this.addDataset.bind(_this);
 	    return _this;
 	  }
 
@@ -53996,109 +53964,12 @@
 	      this.setState({ time: newTime });
 	    }
 	  }, {
-	    key: 'addDataset',
-	    value: function addDataset(data, labels, id, color) {
-
-	      var set = {
-	        yAxisID: id,
-	        fill: false,
-	        backgroundColor: color,
-	        borderWidth: 2,
-	        lineTension: 0.1,
-	        pointRadius: 1,
-	        data: data
-	      };
-
-	      var options = {
-	        layout: {
-	          padding: {
-	            left: 15,
-	            right: 3
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          easing: 'linear'
-	        },
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [],
-	          xAxes: []
-	        }
-	      };
-
-	      var xAxis = _defineProperty({
-	        ticks: {
-	          min: 0,
-	          max: 0
-	        },
-	        gridLines: {
-	          display: false,
-	          drawTicks: false
-	        },
-	        scaleLabel: {
-	          display: false
-	        }
-	      }, 'ticks', {
-	        display: false
-	      });
-
-	      var yAxis = {
-	        id: id,
-	        position: 'left',
-	        ticks: {
-	          min: 1,
-	          max: 1000,
-	          mirror: false
-	        }
-	      };
-
-	      var newOptions = Object.assign({}, this.state.data.options);
-
-	      newOptions.scales.yAxes.push(yAxis);
-	      newOptions.scales.xAxes.push(xAxis);
-
-	      var newLabels = this.state.data.labels.slice();
-	      newLabels.push(labels);
-
-	      var newDatasets = this.state.data.datasets.slice();
-	      newDatasets.push(set);
-
-	      var newObj = {
-	        labels: newLabels,
-	        datasets: newDatasets,
-	        options: newOptions
-	      };
-
-	      this.setState({ data: newObj });
-	    }
-	  }, {
-	    key: 'addData',
-	    value: function addData(name, field) {
-
-	      fetch('/data/' + this.state.time).then(function (res) {
-	        return res.json();
-	      }).then(function (docs) {
-
-	        var data = docs.map(function (obj) {
-	          return obj.telemetry[name][field];
-	        });
-
-	        this.addDataset(data, data, name + field, 'blue');
-	      }.bind(this));
-	    }
-	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
 	      var name = this.props.selected.name;
 	      var field = this.props.selected.field;
+	      var color = this.props.color;
 
 	      console.log(name, field);
 
@@ -54112,13 +53983,12 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, data, name + field, 'yellow');
+	        this.setState({ chartData: data, chartLabels: data, chartColor: color });
 	      }.bind(this));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        'div',
@@ -54132,18 +54002,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'historyContainer' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'historySelect' },
-	            _react2.default.createElement(
-	              'div',
-	              { onClick: function onClick() {
-	                  return _this2.addData('Solar Controller Monitor', 'current');
-	                } },
-	              '***select***'
-	            )
-	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.data }),
+	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.chartData, labels: this.state.chartLabels, color: this.state.chartColor }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sliderContainer' },
@@ -54212,7 +54071,7 @@
 /* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -54227,6 +54086,8 @@
 	var _reactChartjs = __webpack_require__(172);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -54244,16 +54105,72 @@
 	  }
 
 	  _createClass(HistoryGraph, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
-	      console.log(this.props.datasets);
+	      var data = {
+	        labels: this.props.chartLabels,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: this.props.color,
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: this.props.chartData
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              // min: this.props.min,
+	              // max: this.props.max,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
 
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "historyGraph" },
-	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.data.datasets,
-	          options: this.props.data.options,
+	        'div',
+	        { className: 'historyGraph' },
+	        _react2.default.createElement(_reactChartjs.Line, { data: data,
+	          options: options,
 	          width: 800,
 	          height: 800
 	        })
