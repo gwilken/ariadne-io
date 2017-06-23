@@ -129,10 +129,13 @@ class History extends React.Component {
     var newDatasets = this.state.data.datasets.slice();
     newDatasets.push(set);
 
+    var newOptions = Object.assign( {}, this.state.data.options.scales, { Axes: newY } );
+    newOptions = Object.assign( {}, this.state.data.options.scales, { xAxes: newX } );
+
     var newObj = {
       labels: newLabels,
       datasets: newDatasets,
-      options: Object.assign( {}, this.state.data.options.scales, { yAxes: newY, xAxes: newX } )
+      options:  newOptions
     }
 
     this.setState( { data: newObj } );
