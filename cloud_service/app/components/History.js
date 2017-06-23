@@ -94,10 +94,10 @@ class History extends React.Component {
     }
 
     var xAxis = {
-      ticks: {
-        min: 0,
-        max: 0,
-      },
+      // ticks: {
+      //   min: 0,
+      //   max: 0,
+      // },
       gridLines: {
         display: false,
         drawTicks: false,
