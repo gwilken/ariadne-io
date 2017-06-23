@@ -20895,6 +20895,7 @@
 	        name: 'Environmental',
 	        field: 'temperature'
 	      },
+	      color: 'green',
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -21016,7 +21017,7 @@
 	        return _react2.default.createElement(
 	          "div",
 	          { className: "mainContainer" },
-	          _react2.default.createElement(_History2.default, { selected: this.state.selected, color: 'green', setView: this.setView, setSelected: this.setSelected })
+	          _react2.default.createElement(_History2.default, { selected: this.state.selected, color: this.state.color, setView: this.setView, setSelected: this.setSelected })
 	        );
 	      } else {
 

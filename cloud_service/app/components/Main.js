@@ -18,6 +18,7 @@ class Main extends React.Component {
         name: 'Environmental',
         field: 'temperature',
       },
+      color: 'green',
       solar: null,
       house: null,
       enviro: null,
@@ -134,7 +135,7 @@ class Main extends React.Component {
       return (
 
         <div className="mainContainer">
-          <History selected={this.state.selected} color={'green'} setView={this.setView} setSelected={this.setSelected} />
+          <History selected={this.state.selected} color={this.state.color} setView={this.setView} setSelected={this.setSelected} />
         </div>
       )
 
