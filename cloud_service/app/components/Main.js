@@ -123,8 +123,9 @@ class Main extends React.Component {
 
         solar = (
           <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "current" }, 'gold')} >
-            <Solar data={this.state.solar}} />;
+            <Solar data={this.state.solar} />;
           </div>
+        )
     }
 
     if(this.state.house) {
