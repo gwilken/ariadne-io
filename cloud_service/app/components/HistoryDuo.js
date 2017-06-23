@@ -40,13 +40,18 @@ class HistoryDuo extends React.Component {
 
           //console.log(docs);
 
-            var data = docs.map( function(obj) {
-              var obj = {
-                data1: obj.telemetry[name][field1],
-                data2: obj.telemetry[name][field2]
-              }
-              return obj;
-            })
+            var data1 = docs.map( function(obj) {
+                return obj.telemetry[name][field1];
+              };
+
+            var data2 = docs.map( function(obj) {
+                  return obj.telemetry[name][field2];
+              };
+
+          var data = {
+            data1: data1,
+            data2: data2
+          }
 
             return data;
 
