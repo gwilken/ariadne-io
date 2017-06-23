@@ -53978,6 +53978,8 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
+	      console.log(this.props);
+
 	      var name = this.props.selected.name;
 	      var field = this.props.selected.field;
 	      var color = this.props.color;
@@ -54003,7 +54005,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      console.log(this.props);
+	      //console.log(this.props);
 
 	      var data = {
 	        labels: this.state.data,

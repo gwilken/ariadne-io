@@ -24,6 +24,8 @@ class History extends React.Component {
 
   componentDidMount() {
 
+    console.log(this.props);
+
     var name = this.props.selected.name;
     var field = this.props.selected.field;
     var color = this.props.color;
@@ -50,7 +52,7 @@ class History extends React.Component {
 
   render() {
 
-    console.log(this.props);
+    //console.log(this.props);
 
     var data = {
       labels: this.state.data,
