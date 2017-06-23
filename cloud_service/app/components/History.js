@@ -96,8 +96,6 @@ class History extends React.Component {
 
           console.log(docs);
 
-          this.setState( { docs: docs} );
-
             var data = docs.map( function(obj) {
               return obj.telemetry[name][field];
             })
@@ -129,7 +127,7 @@ class History extends React.Component {
               datasets: datasets
             }
 
-            this.setState( { data: newObj } );
+            this.setState( { docs: docs, data: newObj } );
 
         }.bind(this));
   }

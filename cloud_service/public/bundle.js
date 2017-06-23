@@ -54027,8 +54027,6 @@
 
 	        console.log(docs);
 
-	        this.setState({ docs: docs });
-
 	        var data = docs.map(function (obj) {
 	          return obj.telemetry[name][field];
 	        });
@@ -54060,7 +54058,7 @@
 	          datasets: datasets
 	        };
 
-	        this.setState({ data: newObj });
+	        this.setState({ docs: docs, data: newObj });
 	      }.bind(this));
 	    }
 	  }, {
