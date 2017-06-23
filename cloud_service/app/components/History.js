@@ -48,7 +48,8 @@ class History extends React.Component {
 
   componentDidMount() {
 
-    console.log(this.props);
+    var name = this.props.selected.name;
+    var field = this.props.selected.field;
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
@@ -58,7 +59,7 @@ class History extends React.Component {
           this.setState( { data: objs} );
 
             var data = objs.map( function(obj) {
-              return obj.telemetry[this.props.selected.name][this.props.selected.field];
+              return obj.telemetry[name][field];
             })
 
             this.setState({chartData: data, chartLabels: data })

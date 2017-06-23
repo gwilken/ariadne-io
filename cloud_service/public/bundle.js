@@ -53987,7 +53987,8 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
-	      console.log(this.props);
+	      var name = this.props.selected.name;
+	      var field = this.props.selected.field;
 
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
@@ -53997,7 +53998,7 @@
 	        this.setState({ data: objs });
 
 	        var data = objs.map(function (obj) {
-	          return obj.telemetry[this.props.selected.name][this.props.selected.field];
+	          return obj.telemetry[name][field];
 	        });
 
 	        this.setState({ chartData: data, chartLabels: data });
