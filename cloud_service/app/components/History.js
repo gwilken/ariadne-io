@@ -122,11 +122,11 @@ class History extends React.Component {
     return (
 
       <div> <h3>Historical Data</h3>
-      <div> <h4>{this.state.name} - {this.state.field}}</h4>
+      <h4>{this.state.name} - {this.state.field}}</h4>
 
         <div className="historyContainer">
 
-          <div className='backButton'>Back</div>
+          <div className='backButton'> Back </div>
 
           <div className="historyGraph">
 
