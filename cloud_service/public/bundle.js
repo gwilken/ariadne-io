@@ -53979,8 +53979,8 @@
 	      }).then(function (data) {
 
 	        this.setState({
-	          chartData: data,
-	          chartColor: color
+	          data: data,
+	          color: color
 	        });
 	      }.bind(this));
 	    }

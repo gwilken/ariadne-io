@@ -45,8 +45,8 @@ class History extends React.Component {
         }).then(function(data) {
 
           this.setState({
-            chartData: data,
-            chartColor: color
+            data: data,
+            color: color
           });
 
         }.bind(this));
@@ -130,11 +130,13 @@ class History extends React.Component {
         <div className="historyContainer">
 
           <div className="historyGraph">
+
             <Line data={data}
                 options={options}
                 width={800}
                 height={800}
             />
+
           </div>
 
           {/* <div className="sliderContainer">
