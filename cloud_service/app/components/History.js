@@ -21,16 +21,7 @@ class History extends React.Component {
       docs: [],
       data: {
         labels: [],
-        datasets: [
-            {
-              fill: true,
-              backgroundColor: 'royalblue',
-              borderWidth: 2,
-              lineTension: 0.1,
-              pointRadius: 0,
-              data: []
-            }
-         ]
+        datasets: [],
       },
       chartData: [],
       chartLabels: [],
@@ -39,11 +30,40 @@ class History extends React.Component {
     }
 
     this.setTime = this.setTime.bind(this);
+    this.addDataset = this.addDataset.bind(this);
   }
 
   setTime(newTime) {
     this.setState({time: newTime})
   }
+
+
+  addDataset(data, labels, color) {
+
+    var set = {
+      fill: true,
+      backgroundColor: color,
+      borderWidth: 2,
+      lineTension: 0.1,
+      pointRadius: 0,
+      data: data
+    };
+
+    var newLabels = this.state.data.labels.slice();
+    newLabels.push(label);
+
+    var newDatasets = this.state.data.datasets.slice();
+    newDatasets.push(set);
+
+    var newObj = {
+      labels: newLabels,
+      datasets: newDatasets
+    }
+
+    this.setState( { data: newObj } );
+
+  }
+
 
   addData(name, field) {
 
@@ -111,25 +131,7 @@ class History extends React.Component {
               return obj.telemetry[name][field];
             })
 
-            console.log('data', data);
-
-            dataset.data.push(data);
-
-            console.log('dataset', dataset);
-
-            var labels = this.state.data.labels;
-            labels.push(data);
-
-            var datasets = this.state.data.datasets;
-
-            datasets.push(dataset);
-
-            var newObj = {
-              labels: labels,
-              datasets: datasets
-            }
-
-            this.setState( { docs: docs, data: newObj } );
+            this.addDataset(data, data, 'yellow');
 
         }.bind(this));
   }

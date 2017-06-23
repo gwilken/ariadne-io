@@ -53950,14 +53950,7 @@
 	      docs: [],
 	      data: {
 	        labels: [],
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: 'royalblue',
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: []
-	        }]
+	        datasets: []
 	      },
 	      chartData: [],
 	      chartLabels: [],
@@ -53966,6 +53959,7 @@
 	    };
 
 	    _this.setTime = _this.setTime.bind(_this);
+	    _this.addDataset = _this.addDataset.bind(_this);
 	    return _this;
 	  }
 
@@ -53973,6 +53967,32 @@
 	    key: 'setTime',
 	    value: function setTime(newTime) {
 	      this.setState({ time: newTime });
+	    }
+	  }, {
+	    key: 'addDataset',
+	    value: function addDataset(data, labels, color) {
+
+	      var set = {
+	        fill: true,
+	        backgroundColor: color,
+	        borderWidth: 2,
+	        lineTension: 0.1,
+	        pointRadius: 0,
+	        data: data
+	      };
+
+	      var newLabels = this.state.data.labels.slice();
+	      newLabels.push(label);
+
+	      var newDatasets = this.state.data.datasets.slice();
+	      newDatasets.push(set);
+
+	      var newObj = {
+	        labels: newLabels,
+	        datasets: newDatasets
+	      };
+
+	      this.setState({ data: newObj });
 	    }
 	  }, {
 	    key: 'addData',
@@ -54042,25 +54062,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        console.log('data', data);
-
-	        dataset.data.push(data);
-
-	        console.log('dataset', dataset);
-
-	        var labels = this.state.data.labels;
-	        labels.push(data);
-
-	        var datasets = this.state.data.datasets;
-
-	        datasets.push(dataset);
-
-	        var newObj = {
-	          labels: labels,
-	          datasets: datasets
-	        };
-
-	        this.setState({ docs: docs, data: newObj });
+	        this.addDataset(data, data, 'yellow');
 	      }.bind(this));
 	    }
 	  }, {
