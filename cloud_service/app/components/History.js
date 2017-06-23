@@ -115,17 +115,16 @@ class History extends React.Component {
         <div className="historyContainer">
 
           <div className="historySelect">
-
             <div onClick={ () => this.getData('Solar Controller Monitor', 'current', 0, 4000 ) }>***select***</div>
-
           </div>
 
-          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} min={this.state.min} max={this.state.max} />
+
+          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} />
 
 
-          <div>**** SLIDER ****</div>
-
-             <Slider min={0} max={20} defaultValue={3}  />
+          <div className="sliderContainer">
+             <Slider min={0} max={200} defaultValue={3}  />
+          </div>
 
         </div>
 

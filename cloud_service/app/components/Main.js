@@ -15,8 +15,8 @@ class Main extends React.Component {
     this.state = {
       view: 'history',
       selected: {
-        name: 'Solar Controller Monitor',
-        field: 'current',
+        name: 'Environmental',
+        field: 'pressure',
       },
       solar: null,
       house: null,

@@ -20892,8 +20892,8 @@
 	    _this.state = {
 	      view: 'history',
 	      selected: {
-	        name: 'Solar Controller Monitor',
-	        field: 'current'
+	        name: 'Environmental',
+	        field: 'pressure'
 	      },
 	      solar: null,
 	      house: null,
@@ -54068,13 +54068,12 @@
 	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, min: this.state.min, max: this.state.max }),
+	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData }),
 	          _react2.default.createElement(
 	            'div',
-	            null,
-	            '**** SLIDER ****'
-	          ),
-	          _react2.default.createElement(_Slider2.default, { min: 0, max: 20, defaultValue: 3 })
+	            { className: 'sliderContainer' },
+	            _react2.default.createElement(_Slider2.default, { min: 0, max: 200, defaultValue: 3 })
+	          )
 	        )
 	      );
 	    }
