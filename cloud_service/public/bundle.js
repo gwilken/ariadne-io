@@ -57805,7 +57805,6 @@
 
 	    _this.state = {
 	      docs: [],
-	      data: {},
 	      color: '',
 	      name: '',
 	      field1: '',
