@@ -100,11 +100,13 @@ class Main extends React.Component {
   }
 
   gotoHistory(selected, color) {
+
     this.setState({
       view: 'history',
       color: color,
       selected: selected
      });
+
   }
 
   render() {
@@ -117,7 +119,7 @@ class Main extends React.Component {
     var geo;
 
     if(this.state.solar) {
-      solar = <Solar data={this.state.solar} onClick={ () => this.gotoHistory({name: "Solar Controller Monitor" , field: "current" }, 'gold') } />;
+      solar = <Solar data={this.state.solar} onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "current" }, 'gold') } />;
     }
 
     if(this.state.house) {

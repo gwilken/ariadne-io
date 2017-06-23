@@ -109,6 +109,8 @@ class History extends React.Component {
 
     return (
 
+      console.log('history comp');
+
       <div> <h3>Historical ***TESTING****</h3>
 
         <div className="historyContainer">
