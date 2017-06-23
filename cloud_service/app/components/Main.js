@@ -23,15 +23,15 @@ class Main extends React.Component {
       },
       color: 'blue',
       solar: '',
-      house: null,
-      enviro: null,
-      geo: null,
+      house: '',
+      enviro: '',
+      geo: '',
       motor: {
-        ey: null,
-        batt1: null,
-        batt2: null,
-        batt3: null,
-        batt4: null
+        ey: '',
+        batt1: '',
+        batt2: '',
+        batt3: '',
+        batt4: ''
       }
     }
 
