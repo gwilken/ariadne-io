@@ -50,7 +50,7 @@ class History extends React.Component {
     };
 
     var newLabels = this.state.data.labels.slice();
-    newLabels.push(label);
+    newLabels.push(labels);
 
     var newDatasets = this.state.data.datasets.slice();
     newDatasets.push(set);
