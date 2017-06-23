@@ -1,5 +1,6 @@
 import React from "react";
 import HistoryGraph from './HistoryGraph'
+import {Line} from 'react-chartjs-2';
 // //import Slider, { Range } from 'rc-slider';
 // // We can just import Slider or Range to reduce bundle size
 // import Slider from 'rc-slider/lib/Slider';
@@ -13,8 +14,8 @@ class History extends React.Component {
 
     this.state = {
       docs: [],
-      chartData: [0],
-      chartColor: "gold",
+      data: [],
+      color: "gold",
       time: 180
     }
 
@@ -59,13 +60,82 @@ class History extends React.Component {
 
   render() {
 
+    var data = {
+      labels: this.state.data,
+      datasets: [
+          {
+            fill: true,
+            backgroundColor: this.state.color,
+            borderWidth: 2,
+            lineTension: 0.1,
+            pointRadius: 0,
+            data: this.state.data
+          }
+       ]
+    }
+
+    var options = {
+      layout: {
+        padding: {
+          left: 15,
+          right: 3,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        // duration: 100,
+        easing: 'linear'
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          position: 'right',
+          ticks: {
+            // min: this.props.min,
+            // max: this.props.max,
+            mirror: false,
+           },
+          }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: false,
+          },
+          scaleLabel: {
+            display: true,
+          },
+          ticks: {
+            display: false,
+          },
+        },
+        ],
+      },
+    }
+
+
     return (
 
       <div> <h3>Historical ***TESTING****</h3>
 
         <div className="historyContainer">
 
-          <HistoryGraph data={this.state.chartData} color={this.state.chartColor} />
+          <div className="historyGraph">
+            <Line data={data}
+                options={options}
+                width={800}
+                height={800}
+            />
+          </div>
 
           {/* <div className="sliderContainer">
              <Slider min={0} max={200} defaultValue={3}  />

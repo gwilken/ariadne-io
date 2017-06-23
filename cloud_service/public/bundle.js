@@ -53901,7 +53901,7 @@
 /* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -53917,7 +53917,11 @@
 
 	var _HistoryGraph2 = _interopRequireDefault(_HistoryGraph);
 
+	var _reactChartjs = __webpack_require__(172);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -53941,8 +53945,8 @@
 
 	    _this.state = {
 	      docs: [],
-	      chartData: [0],
-	      chartColor: "gold",
+	      data: [],
+	      color: "gold",
 	      time: 180
 	    };
 
@@ -53951,12 +53955,12 @@
 	  }
 
 	  _createClass(History, [{
-	    key: "setTime",
+	    key: 'setTime',
 	    value: function setTime(newTime) {
 	      this.setState({ time: newTime });
 	    }
 	  }, {
-	    key: "componentDidMount",
+	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 
 	      var name = this.props.selected.name;
@@ -53981,29 +53985,95 @@
 	      }.bind(this));
 	    }
 	  }, {
-	    key: "componentWillReceiveProps",
+	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
 	      // if(nextProps.color) {
 	      //   this.setState({chartColor: nextProps.color});
 	      // }
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 
+	      var data = {
+	        labels: this.state.data,
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: this.state.color,
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: this.state.data
+	        }]
+	      };
+
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          // duration: 100,
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              // min: this.props.min,
+	              // max: this.props.max,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [_defineProperty({
+	            ticks: {
+	              min: 0,
+	              max: 0
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }, 'ticks', {
+	            display: false
+	          })]
+	        }
+	      };
+
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
-	        " ",
+	        ' ',
 	        _react2.default.createElement(
-	          "h3",
+	          'h3',
 	          null,
-	          "Historical ***TESTING****"
+	          'Historical ***TESTING****'
 	        ),
 	        _react2.default.createElement(
-	          "div",
-	          { className: "historyContainer" },
-	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.chartData, color: this.state.chartColor })
+	          'div',
+	          { className: 'historyContainer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'historyGraph' },
+	            _react2.default.createElement(_reactChartjs.Line, { data: data,
+	              options: options,
+	              width: 800,
+	              height: 800
+	            })
+	          )
 	        )
 	      );
 	    }
