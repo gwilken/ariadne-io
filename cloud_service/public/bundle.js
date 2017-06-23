@@ -53983,8 +53983,7 @@
 	      }).then(function (data) {
 
 	        this.setState({
-	          chartData: data,
-	          chartColor: color
+	          chartData: data
 	        });
 	      }.bind(this));
 	    }
