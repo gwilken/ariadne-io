@@ -20974,12 +20974,18 @@
 	  }, {
 	    key: "setView",
 	    value: function setView(newView) {
-	      this.setState({ view: str });
+	      this.setState({
+	        view: newView
+	      });
 	    }
 	  }, {
-	    key: "setSelected",
-	    value: function setSelected(newSelect) {
-	      this.setState({ selected: newSelect });
+	    key: "gotoHistory",
+	    value: function gotoHistory(selected, color) {
+	      this.setState({
+	        view: 'history',
+	        color: color,
+	        selected: selected
+	      });
 	    }
 	  }, {
 	    key: "render",
@@ -20993,7 +20999,7 @@
 	      var geo;
 
 	      if (this.state.solar) {
-	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar });
+	        solar = _react2.default.createElement(_Solar2.default, { data: this.state.solar, onClick: this.gotoHistory({ name: "Solar Controller Monitor", field: "current" }, 'gold') });
 	      }
 
 	      if (this.state.house) {
@@ -21017,11 +21023,12 @@
 	        return _react2.default.createElement(
 	          "div",
 	          { className: "mainContainer" },
-	          _react2.default.createElement(_History2.default, { selected: this.state.selected, color: this.state.color, setView: this.setView, setSelected: this.setSelected })
+	          _react2.default.createElement(_History2.default, { selected: this.state.selected, color: this.state.color, setView: this.setView })
 	        );
 	      } else {
 
 	        if (this.state.view === 'all') {
+
 	          return _react2.default.createElement(
 	            "div",
 	            { className: "mainContainer" },
@@ -53981,13 +53988,6 @@
 	      }.bind(this));
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      // if(nextProps.color) {
-	      //   this.setState({chartColor: nextProps.color});
-	      // }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 
@@ -54018,7 +54018,7 @@
 	          position: 'top'
 	        },
 	        animation: {
-	          // duration: 100,
+	          duration: 400,
 	          easing: 'linear'
 	        },
 	        maintainAspectRatio: false,
@@ -54026,16 +54026,10 @@
 	          yAxes: [{
 	            position: 'right',
 	            ticks: {
-	              // min: this.props.min,
-	              // max: this.props.max,
 	              mirror: false
 	            }
 	          }],
 	          xAxes: [{
-	            // ticks: {
-	            //   min: 0,
-	            //   max: 0,
-	            // },
 	            gridLines: {
 	              display: false,
 	              drawTicks: false

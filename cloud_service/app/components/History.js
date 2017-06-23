@@ -48,12 +48,6 @@ class History extends React.Component {
         }.bind(this));
   }
 
-  componentWillReceiveProps(nextProps) {
-    // if(nextProps.color) {
-    //   this.setState({chartColor: nextProps.color});
-    // }
-  }
-
   render() {
 
     var data = {
@@ -85,7 +79,7 @@ class History extends React.Component {
         position: 'top',
       },
       animation: {
-        // duration: 100,
+        duration: 400,
         easing: 'linear'
       },
       maintainAspectRatio: false,
@@ -93,16 +87,10 @@ class History extends React.Component {
         yAxes: [{
           position: 'right',
           ticks: {
-            // min: this.props.min,
-            // max: this.props.max,
             mirror: false,
            },
           }],
         xAxes: [{
-          // ticks: {
-          //   min: 0,
-          //   max: 0,
-          // },
           gridLines: {
             display: false,
             drawTicks: false,
@@ -133,12 +121,11 @@ class History extends React.Component {
                 height={800}
             />
 
-            
-                      <div className="sliderContainer">
-                         <Slider min={0} max={200} defaultValue={3}  />
-                      </div>
-          </div>
+            <div className="sliderContainer">
+               <Slider min={0} max={200} defaultValue={3}  />
+            </div>
 
+          </div>
 
         </div>
 
