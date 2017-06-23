@@ -20890,7 +20890,7 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
 
 	    _this.state = {
-	      single: true,
+	      view: 'history',
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -20967,6 +20967,12 @@
 	      }.bind(this);
 	    }
 	  }, {
+	    key: "setView",
+	    value: function setView(newView) {
+
+	      this.setState({ view: str });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 
@@ -20997,23 +21003,26 @@
 	        geo = _react2.default.createElement(_Geo2.default, { data: this.state.geo });
 	      }
 
-	      if (this.state.single) {
+	      if (this.state.view === 'history') {
 
 	        return _react2.default.createElement(
 	          "div",
 	          { className: "mainContainer" },
-	          _react2.default.createElement(_History2.default, { selected: "solarcurrent" })
+	          _react2.default.createElement(_History2.default, null)
 	        );
 	      } else {
-	        return _react2.default.createElement(
-	          "div",
-	          { className: "mainContainer" },
-	          house,
-	          solar,
-	          motor,
-	          enviro,
-	          geo
-	        );
+
+	        if (this.state.view === 'all') {
+	          return _react2.default.createElement(
+	            "div",
+	            { className: "mainContainer" },
+	            house,
+	            solar,
+	            motor,
+	            enviro,
+	            geo
+	          );
+	        }
 	      }
 	    }
 	  }]);

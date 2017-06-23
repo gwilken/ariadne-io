@@ -13,7 +13,7 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      single: true,
+      view: 'history',
       solar: null,
       house: null,
       enviro: null,
@@ -88,6 +88,12 @@ class Main extends React.Component {
     }.bind(this);
   }
 
+  setView(newView) {
+
+    this.setState({view: str});
+
+  }
+
   render() {
 
     var content;
@@ -117,17 +123,19 @@ class Main extends React.Component {
       geo = <Geo data={this.state.geo} />;
     }
 
-    if(this.state.single) {
+    if(this.state.view === 'history') {
 
       return (
         <div className="mainContainer">
 
-          <History selected="solarcurrent"/>
+          <History />
 
         </div>
       )
 
       } else {
+
+        if(this.state.view === 'all') {
           return (
             <div className="mainContainer">
                     {house}
@@ -139,5 +147,6 @@ class Main extends React.Component {
           )
         }
       }
+    }
 }
 export default Main;
