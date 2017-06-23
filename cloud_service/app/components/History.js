@@ -50,6 +50,8 @@ class History extends React.Component {
 
   render() {
 
+          console.log('history comp');
+
     var data = {
       labels: this.state.data,
       datasets: [
@@ -108,8 +110,6 @@ class History extends React.Component {
 
 
     return (
-
-      console.log('history comp');
 
       <div> <h3>Historical ***TESTING****</h3>
 
