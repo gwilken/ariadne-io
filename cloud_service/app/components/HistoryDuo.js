@@ -13,7 +13,8 @@ class HistoryDuo extends React.Component {
       data: {},
       color: null,
       name: '',
-      field: '',
+      field1: '',
+      field2: '',
       time: 180
     }
 
@@ -57,7 +58,8 @@ class HistoryDuo extends React.Component {
             data: data,
             color: color,
             name: name,
-            field: field
+            field1: field1,
+            field2: field2
           });
 
         }.bind(this));
