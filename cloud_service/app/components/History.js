@@ -28,7 +28,7 @@ class History extends React.Component {
               borderWidth: 2,
               lineTension: 0.1,
               pointRadius: 0,
-              data: null
+              data: []
             }
          ]
       },
@@ -60,14 +60,16 @@ class History extends React.Component {
 
           var datasets = this.state.data.datasets;
 
-          var dataset = {
-            fill: true,
-            backgroundColor: 'royalblue',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: []
-          };
+          // var dataset = {
+          //   fill: true,
+          //   backgroundColor: 'royalblue',
+          //   borderWidth: 2,
+          //   lineTension: 0.1,
+          //   pointRadius: 0,
+          //   data: []
+          // };
+
+  //this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
 
           dataset.data = data.slice();
 
@@ -84,6 +86,15 @@ class History extends React.Component {
   }
 
   componentDidMount() {
+
+    var dataset = {
+      fill: true,
+      backgroundColor: 'royalblue',
+      borderWidth: 2,
+      lineTension: 0.1,
+      pointRadius: 0,
+      data: []
+    };
 
     var name = this.props.selected.name;
     var field = this.props.selected.field;
@@ -102,14 +113,7 @@ class History extends React.Component {
 
             console.log('data', data);
 
-            var dataset = {
-              fill: true,
-              backgroundColor: 'royalblue',
-              borderWidth: 2,
-              lineTension: 0.1,
-              pointRadius: 0,
-              data: data.slice();
-            };
+            dataset.data = data;
 
             console.log('dataset', dataset);
 
