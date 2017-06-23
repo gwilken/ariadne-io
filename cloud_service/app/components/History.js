@@ -103,7 +103,7 @@ class History extends React.Component {
         drawTicks: false,
       },
       scaleLabel: {
-        display: true,
+        display: false,
       },
       ticks: {
         display: false,
@@ -154,15 +154,6 @@ class History extends React.Component {
   }
 
   componentDidMount() {
-
-    var dataset = {
-      fill: true,
-      backgroundColor: 'royalblue',
-      borderWidth: 2,
-      lineTension: 0.1,
-      pointRadius: 0,
-      data: []
-    };
 
     var name = this.props.selected.name;
     var field = this.props.selected.field;
