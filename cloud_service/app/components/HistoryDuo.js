@@ -98,7 +98,7 @@ class HistoryDuo extends React.Component {
         position: 'top',
       },
       animation: {
-        duration: 400,
+        // duration: 400,
         easing: 'linear'
       },
       maintainAspectRatio: false,
