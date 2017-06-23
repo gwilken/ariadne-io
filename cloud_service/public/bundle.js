@@ -54055,20 +54055,16 @@
 	        }
 	      };
 
-	      var newX = this.state.data.options.scales.xAxes.slice();
-	      var newY = this.state.data.options.scales.yAxes.slice();
+	      var newOptions = this.state.data.options;
 
-	      newX.push(xAxis);
-	      newY.push(yAxis);
+	      options.scales.yAxes.push(yAxis);
+	      options.scales.xAxes.push(xAxis);
 
 	      var newLabels = this.state.data.labels.slice();
 	      newLabels.push(labels);
 
 	      var newDatasets = this.state.data.datasets.slice();
 	      newDatasets.push(set);
-
-	      var newOptions = Object.assign({}, this.state.data.options.scales, { Axes: newY });
-	      newOptions = Object.assign({}, this.state.data.options.scales, { xAxes: newX });
 
 	      var newObj = {
 	        labels: newLabels,
