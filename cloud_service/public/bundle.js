@@ -20893,7 +20893,7 @@
 	      view: 'history',
 	      selected: {
 	        name: 'Environmental',
-	        field: 'pressure'
+	        field: 'temperature'
 	      },
 	      solar: null,
 	      house: null,
