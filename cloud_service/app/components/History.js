@@ -48,21 +48,22 @@ class History extends React.Component {
 
   componentDidMount() {
 
+    console.log(this.props);
+
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
         .then(function(objs) {
           console.log(objs);
+
           this.setState( { data: objs} );
 
-          if(this.props.selected) {
-
-            var data = objs.map(function(obj) {
+            var data = objs.map( function(obj) {
               return obj.telemetry[this.props.selected.name][this.props.selected.field];
             })
 
             this.setState({chartData: data, chartLabels: data })
 
-          }
+
 
         }.bind(this));
   }
