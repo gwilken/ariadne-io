@@ -53,6 +53,17 @@ class History extends React.Component {
         .then(function(objs) {
           console.log(objs);
           this.setState( { data: objs} );
+
+          if(this.props.selected) {
+
+            var data = objs.map(function(obj) {
+              return obj.telemetry[this.props.selected.name][this.props.selected.field];
+            })
+
+            this.setState({chartData: data, chartLabels: data })
+
+          }
+
         }.bind(this));
   }
 
@@ -132,8 +143,8 @@ class History extends React.Component {
         yAxes: [{
           position: 'right',
           ticks: {
-            min: 0,
-            max: this.state.max,
+            // min: 0,
+            // max: this.state.max,
             mirror: false,
            },
           }],
