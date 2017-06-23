@@ -152,7 +152,7 @@ class History extends React.Component {
             return obj.telemetry[name][field];
           })
 
-          this.addDataset(data, [], name+field, 'blue');
+          this.addDataset(data, data, name+field, 'blue');
 
         }.bind(this));
   }
@@ -174,7 +174,7 @@ class History extends React.Component {
               return obj.telemetry[name][field];
             })
 
-            this.addDataset(data, [], name+field, 'yellow');
+            this.addDataset(data, data, name+field, 'yellow');
 
         }.bind(this));
   }
