@@ -20895,7 +20895,7 @@
 	        name: 'House Battery Bank',
 	        field: 'current'
 	      },
-	      color: 'green',
+	      color: '',
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -20985,15 +20985,16 @@
 	  }, {
 	    key: "gotoHistory",
 	    value: function gotoHistory(selected, color) {
-
 	      console.log(selected);
-
 	      this.setState({
 	        view: 'history',
 	        color: color,
 	        selected: selected
 	      });
 	    }
+	  }, {
+	    key: "gotoMap",
+	    value: function gotoMap() {}
 	  }, {
 	    key: "render",
 	    value: function render() {
@@ -21007,31 +21008,57 @@
 	      var geo;
 
 	      if (this.state.solar) {
-
 	        solar = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
 	              return _this2.gotoHistory({ name: "Solar Controller Monitor", field: "busvoltage" }, 'gold');
 	            } },
-	          _react2.default.createElement(_Solar2.default, { data: this.state.solar }),
-	          ";"
+	          _react2.default.createElement(_Solar2.default, { data: this.state.solar })
 	        );
 	      }
 
 	      if (this.state.house) {
-	        house = _react2.default.createElement(_House2.default, { data: this.state.house });
+	        _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory({ name: "House Battery Bank", field: "current" }, 'royalblue');
+	            } },
+	          "house = ",
+	          _react2.default.createElement(_House2.default, { data: this.state.house })
+	        );
 	      }
 
 	      if (this.state.motor) {
-	        motor = _react2.default.createElement(_Motor2.default, { data: this.state.motor });
+	        _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory({ name: "Electric Yacht 10kW Motor", field: "volts" }, 'firebrick');
+	            } },
+	          "motor = ",
+	          _react2.default.createElement(_Motor2.default, { data: this.state.motor })
+	        );
 	      }
 
 	      if (this.state.enviro) {
-	        enviro = _react2.default.createElement(_Enviro2.default, { data: this.state.enviro });
+	        _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory({ name: "Environmental", field: "temperature" }, 'darkviolet');
+	            } },
+	          "enviro = ",
+	          _react2.default.createElement(_Enviro2.default, { data: this.state.enviro })
+	        );
 	      }
 
 	      if (this.state.geo) {
-	        geo = _react2.default.createElement(_Geo2.default, { data: this.state.geo });
+	        _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoMap();
+	            } },
+	          "geo = ",
+	          _react2.default.createElement(_Geo2.default, { data: this.state.geo })
+	        );
 	      }
 
 	      if (this.state.view === 'history') {
@@ -52729,7 +52756,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'title' },
-	                'Panel Voltage:'
+	                'Panel Voltage'
 	              ),
 	              _react2.default.createElement(
 	                'div',
@@ -52754,7 +52781,7 @@
 	              _react2.default.createElement(
 	                'div',
 	                { className: 'title' },
-	                'Current:'
+	                'Current'
 	              ),
 	              _react2.default.createElement(
 	                'div',

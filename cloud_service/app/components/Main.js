@@ -18,7 +18,7 @@ class Main extends React.Component {
         name: 'House Battery Bank',
         field: 'current',
       },
-      color: 'green',
+      color: '',
       solar: null,
       house: null,
       enviro: null,
@@ -104,16 +104,15 @@ class Main extends React.Component {
   }
 
   gotoHistory(selected, color) {
-
     console.log(selected);
-
     this.setState({
       view: 'history',
       color: color,
       selected: selected
      });
-
   }
+
+  gotoMap() {}
 
   render() {
 
@@ -125,29 +124,36 @@ class Main extends React.Component {
     var geo;
 
     if(this.state.solar) {
-
-
-        solar = (
-          <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "busvoltage" }, 'gold')} >
-            <Solar data={this.state.solar} />;
-          </div>
-        )
+      solar = (
+        <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "busvoltage" }, 'gold')} >
+          <Solar data={this.state.solar} />
+        </div>
+      )
     }
 
     if(this.state.house) {
-      house = <House data={this.state.house} />;
+      <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field: "current" }, 'royalblue')} >
+        house = <House data={this.state.house} />
+      </div>
     }
 
     if(this.state.motor) {
-      motor = <Motor data={this.state.motor} />;
+      <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field: "volts" }, 'firebrick')} >
+        motor = <Motor data={this.state.motor} />
+      </div>
     }
 
     if(this.state.enviro) {
-      enviro = <Enviro data={this.state.enviro} />;
+      <div onClick={ () => this.gotoHistory( { name: "Environmental" , field: "temperature" }, 'darkviolet')} >
+        enviro = <Enviro data={this.state.enviro} />
+      </div>
     }
 
     if(this.state.geo) {
-      geo = <Geo data={this.state.geo} />;
+      <div onClick={ () => this.gotoMap()} >
+        geo = <Geo data={this.state.geo} />
+      </div>
+
     }
 
     if(this.state.view === 'history') {
