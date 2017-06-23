@@ -53933,6 +53933,12 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	//import Slider, { Range } from 'rc-slider';
+	// We can just import Slider or Range to reduce bundle size
+
+
+	// import Range from 'rc-slider/lib/Range';
+
 
 	var History = function (_React$Component) {
 	  _inherits(History, _React$Component);
@@ -53940,13 +53946,38 @@
 	  function History(props) {
 	    _classCallCheck(this, History);
 
+	    //this.state.data.options.scales.xAxes.slice()
+
 	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
 
 	    _this.state = {
 	      docs: [],
 	      data: {
+	        labels: [],
 	        datasets: [],
-	        options: {}
+	        options: {
+	          layout: {
+	            padding: {
+	              left: 15,
+	              right: 3
+	            }
+	          },
+	          tooltips: {
+	            enabled: false
+	          },
+	          legend: {
+	            display: false,
+	            position: 'top'
+	          },
+	          animation: {
+	            easing: 'linear'
+	          },
+	          maintainAspectRatio: false,
+	          scales: {
+	            yAxes: [],
+	            xAxes: []
+	          }
+	        }
 	      },
 	      chartData: [],
 	      chartLabels: [],
@@ -53966,18 +53997,16 @@
 	    }
 	  }, {
 	    key: 'addDataset',
-	    value: function addDataset(data, labels, color) {
+	    value: function addDataset(data, labels, id, color) {
 
-	      var datasets = {
-	        labels: labels,
-	        datasets: [{
-	          fill: true,
-	          borderWidth: 2,
-	          backgroundColor: color,
-	          lineTension: 0.3,
-	          pointRadius: 0,
-	          data: [12, 11.5, 13, 14]
-	        }]
+	      var set = {
+	        yAxisID: id,
+	        fill: false,
+	        backgroundColor: color,
+	        borderWidth: 2,
+	        lineTension: 0.1,
+	        pointRadius: 1,
+	        data: data
 	      };
 
 	      var options = {
@@ -53995,38 +54024,56 @@
 	          position: 'top'
 	        },
 	        animation: {
-	          // duration: 100,
 	          easing: 'linear'
 	        },
 	        maintainAspectRatio: false,
 	        scales: {
-	          yAxes: [{
-	            position: 'right',
-	            ticks: {
-	              mirror: false
-	            }
-	          }],
-	          xAxes: [_defineProperty({
-	            ticks: {
-	              min: 0,
-	              max: 0
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: false
-	            },
-	            scaleLabel: {
-	              display: true
-	            }
-	          }, 'ticks', {
-	            display: false
-	          })]
+	          yAxes: [],
+	          xAxes: []
 	        }
 	      };
 
+	      var xAxis = _defineProperty({
+	        ticks: {
+	          min: 0,
+	          max: 0
+	        },
+	        gridLines: {
+	          display: false,
+	          drawTicks: false
+	        },
+	        scaleLabel: {
+	          display: false
+	        }
+	      }, 'ticks', {
+	        display: false
+	      });
+
+	      var yAxis = {
+	        id: id,
+	        position: 'left',
+	        ticks: {
+	          min: 1,
+	          max: 1000,
+	          mirror: false
+	        }
+	      };
+
+	      var newOptions = this.state.data.options;
+
+	      newOptions.scales.yAxes.push(yAxis);
+	      newOptions.scales.xAxes.push(xAxis);
+
+	      var newLabels = this.state.data.labels.slice();
+	      newLabels.push(labels);
+
+	      var newDatasets = this.state.data.datasets.slice();
+	      newDatasets.push(set);
+
 	      var newObj = {
-	        datasets: datasets,
-	        options: options
+	        labels: newLabels,
+	        datasets: newDatasets,
+	        options: newOptions
 	      };
 
 	      this.setState({ data: newObj });
@@ -54043,7 +54090,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, data, 'blue');
+	        this.addDataset(data, data, name + field, 'blue');
 	      }.bind(this));
 	    }
 	  }, {
@@ -54065,7 +54112,7 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.addDataset(data, data, 'yellow');
+	        this.addDataset(data, data, name + field, 'yellow');
 	      }.bind(this));
 	    }
 	  }, {
@@ -54096,7 +54143,7 @@
 	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { datasets: this.state.data }),
+	          _react2.default.createElement(_HistoryGraph2.default, { data: this.state.data }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sliderContainer' },
@@ -54205,8 +54252,8 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "historyGraph" },
-	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.datasets.datasets,
-	          options: this.props.datasets.options,
+	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.data.datasets,
+	          options: this.props.data.options,
 	          width: 800,
 	          height: 800
 	        })
