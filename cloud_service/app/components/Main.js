@@ -22,7 +22,7 @@ class Main extends React.Component {
         field2: ''
       },
       color: 'blue',
-      solar: null,
+      solar: '',
       house: null,
       enviro: null,
       geo: null,
