@@ -50,7 +50,7 @@ class History extends React.Component {
 
   render() {
 
-          console.log('history comp');
+    console.log(this.props);
 
     var data = {
       labels: this.state.data,

@@ -54003,7 +54003,7 @@
 	    key: 'render',
 	    value: function render() {
 
-	      console.log('history comp');
+	      console.log(this.props);
 
 	      var data = {
 	        labels: this.state.data,
