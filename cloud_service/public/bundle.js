@@ -53956,7 +53956,7 @@
 	          borderWidth: 2,
 	          lineTension: 0.1,
 	          pointRadius: 0,
-	          data: []
+	          data: null
 	        }]
 	      },
 	      chartData: [],
