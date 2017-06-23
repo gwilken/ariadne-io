@@ -53926,6 +53926,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -53950,7 +53952,30 @@
 	      docs: [],
 	      data: {
 	        labels: [],
-	        datasets: []
+	        datasets: [],
+	        options: {
+	          layout: {
+	            padding: {
+	              left: 15,
+	              right: 3
+	            }
+	          },
+	          tooltips: {
+	            enabled: false
+	          },
+	          legend: {
+	            display: false,
+	            position: 'top'
+	          },
+	          animation: {
+	            easing: 'linear'
+	          },
+	          maintainAspectRatio: false,
+	          scales: {
+	            yAxes: [],
+	            xAxes: []
+	          }
+	        }
 	      },
 	      chartData: [],
 	      chartLabels: [],
@@ -53981,6 +54006,59 @@
 	        data: data
 	      };
 
+	      var options = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [],
+	          xAxes: []
+	        }
+	      };
+
+	      var xAxis = _defineProperty({
+	        ticks: {
+	          min: 0,
+	          max: 0
+	        },
+	        gridLines: {
+	          display: false,
+	          drawTicks: false
+	        },
+	        scaleLabel: {
+	          display: true
+	        }
+	      }, 'ticks', {
+	        display: false
+	      });
+
+	      var yAxis = {
+	        position: 'right',
+	        ticks: {
+	          mirror: false
+	        }
+	      };
+
+	      var newX = this.state.data.options.scales.xAxes.slice();
+	      var newY = this.state.data.options.scales.yAxes.slice();
+
+	      newX.push(xAxis);
+	      newY.push(yAxis);
+
 	      var newLabels = this.state.data.labels.slice();
 	      newLabels.push(labels);
 
@@ -53989,7 +54067,8 @@
 
 	      var newObj = {
 	        labels: newLabels,
-	        datasets: newDatasets
+	        datasets: newDatasets,
+	        options: Object.assign({}, this.state.data.options, { scales: newX, newY: newY })
 	      };
 
 	      this.setState({ data: newObj });
@@ -54137,7 +54216,7 @@
 /* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -54152,8 +54231,6 @@
 	var _reactChartjs = __webpack_require__(172);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -54171,60 +54248,16 @@
 	  }
 
 	  _createClass(HistoryGraph, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 
 	      console.log(this.props.datasets);
 
-	      var options = {
-	        layout: {
-	          padding: {
-	            left: 15,
-	            right: 3
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          // duration: 100,
-	          easing: 'linear'
-	        },
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            position: 'right',
-	            ticks: {
-	              mirror: false
-	            }
-	          }],
-	          xAxes: [_defineProperty({
-	            ticks: {
-	              min: 0,
-	              max: 0
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: false
-	            },
-	            scaleLabel: {
-	              display: true
-	            }
-	          }, 'ticks', {
-	            display: false
-	          })]
-	        }
-	      };
-
 	      return _react2.default.createElement(
-	        'div',
-	        { className: 'historyGraph' },
+	        "div",
+	        { className: "historyGraph" },
 	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.datasets,
-	          options: options,
+	          options: this.props.options,
 	          width: 800,
 	          height: 800
 	        })

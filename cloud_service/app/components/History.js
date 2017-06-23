@@ -8,10 +8,6 @@ import Slider from 'rc-slider/lib/Slider';
 // import Range from 'rc-slider/lib/Range';
 
 
-
-
-
-
 class History extends React.Component {
 
   constructor(props) {
@@ -22,6 +18,29 @@ class History extends React.Component {
       data: {
         labels: [],
         datasets: [],
+        options: {
+          layout: {
+            padding: {
+              left: 15,
+              right: 3,
+            },
+          },
+          tooltips: {
+            enabled: false,
+          },
+          legend: {
+            display: false,
+            position: 'top',
+          },
+          animation: {
+            easing: 'linear'
+          },
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [],
+            xAxes: [],
+          }
+        },
       },
       chartData: [],
       chartLabels: [],
@@ -48,6 +67,60 @@ class History extends React.Component {
       data: data
     };
 
+    var options = {
+      layout: {
+        padding: {
+          left: 15,
+          right: 3,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        easing: 'linear'
+      },
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [],
+        xAxes: [],
+      }
+    }
+
+    var xAxis = {
+      ticks: {
+        min: 0,
+        max: 0,
+      },
+      gridLines: {
+        display: false,
+        drawTicks: false,
+      },
+      scaleLabel: {
+        display: true,
+      },
+      ticks: {
+        display: false,
+      }
+    };
+
+    var yAxis = {
+      position: 'right',
+      ticks: {
+        mirror: false,
+       }
+    };
+
+    var newX = this.state.data.options.scales.xAxes.slice();
+    var newY = this.state.data.options.scales.yAxes.slice();
+
+    newX.push(xAxis);
+    newY.push(yAxis);
+
     var newLabels = this.state.data.labels.slice();
     newLabels.push(labels);
 
@@ -56,7 +129,8 @@ class History extends React.Component {
 
     var newObj = {
       labels: newLabels,
-      datasets: newDatasets
+      datasets: newDatasets,
+      options: Object.assign( {}, this.state.data.options, { scales: newX, newY } )
     }
 
     this.setState( { data: newObj } );
