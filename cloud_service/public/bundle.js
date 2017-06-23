@@ -54057,8 +54057,8 @@
 
 	      var newOptions = this.state.data.options;
 
-	      options.scales.yAxes.push(yAxis);
-	      options.scales.xAxes.push(xAxis);
+	      newOptions.scales.yAxes.push(yAxis);
+	      newOptions.scales.xAxes.push(xAxis);
 
 	      var newLabels = this.state.data.labels.slice();
 	      newLabels.push(labels);
