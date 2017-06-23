@@ -17,7 +17,7 @@ class History extends React.Component {
       docs: [],
       chartData: [],
       chartLabels: [],
-      chartColor: gold,
+      chartColor: "gold",
       time: 180
     }
 

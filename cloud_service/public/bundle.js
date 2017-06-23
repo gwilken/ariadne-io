@@ -53950,7 +53950,7 @@
 	      docs: [],
 	      chartData: [],
 	      chartLabels: [],
-	      chartColor: gold,
+	      chartColor: "gold",
 	      time: 180
 	    };
 
