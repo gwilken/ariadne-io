@@ -31,6 +31,10 @@ class Main extends React.Component {
         batt4: null
       }
     }
+
+    this.setView = this.setView.bind(this);
+    this.gotoHistory = this.gotoHistory.bind(this);
+
   }
 
   componentDidMount() {

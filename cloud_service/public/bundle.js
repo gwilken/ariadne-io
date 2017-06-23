@@ -20908,6 +20908,10 @@
 	        batt4: null
 	      }
 	    };
+
+	    _this.setView = _this.setView.bind(_this);
+	    _this.gotoHistory = _this.gotoHistory.bind(_this);
+
 	    return _this;
 	  }
 
