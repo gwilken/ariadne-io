@@ -109,8 +109,9 @@ class History extends React.Component {
               borderWidth: 2,
               lineTension: 0.1,
               pointRadius: 0,
-              data: data
             };
+
+            dataset.data = data;
 
             console.log('dataset', dataset);
 
