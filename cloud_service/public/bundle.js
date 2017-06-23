@@ -21054,7 +21054,7 @@
 	        _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoMap();
+	              return _this2.gotoMap;
 	            } },
 	          "geo = ",
 	          _react2.default.createElement(_Geo2.default, { data: this.state.geo })

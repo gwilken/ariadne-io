@@ -112,7 +112,9 @@ class Main extends React.Component {
      });
   }
 
-  gotoMap() {}
+  gotoMap() {
+
+  }
 
   render() {
 
@@ -150,7 +152,7 @@ class Main extends React.Component {
     }
 
     if(this.state.geo) {
-      <div onClick={ () => this.gotoMap()} >
+      <div onClick={ () => this.gotoMap} >
         geo = <Geo data={this.state.geo} />
       </div>
     }
