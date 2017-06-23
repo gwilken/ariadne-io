@@ -47,7 +47,7 @@ class History extends React.Component {
       chartData: [],
       chartLabels: [],
       chartColors: [],
-      time: 180
+      time: 1080
     }
 
     this.setTime = this.setTime.bind(this);

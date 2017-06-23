@@ -53980,7 +53980,7 @@
 	      chartData: [],
 	      chartLabels: [],
 	      chartColors: [],
-	      time: 180
+	      time: 1080
 	    };
 
 	    _this.setTime = _this.setTime.bind(_this);
