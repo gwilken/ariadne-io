@@ -21026,7 +21026,7 @@
 	        house = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "House Battery Bank", field: "current" }, 'royalblue');
+	              return _this2.gotoHistory({ name: "House Battery Bank", field1: "current", feild2: "busvoltage" }, 'royalblue');
 	            } },
 	          _react2.default.createElement(_House2.default, { data: this.state.house })
 	        );
@@ -21036,7 +21036,7 @@
 	        motor = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Electric Yacht 10kW Motor", field: "volts" }, 'firebrick');
+	              return _this2.gotoHistory({ name: "Electric Yacht 10kW Motor", field1: "volts", field2: "current" }, 'firebrick');
 	            } },
 	          _react2.default.createElement(_Motor2.default, { data: this.state.motor })
 	        );
@@ -21046,7 +21046,7 @@
 	        enviro = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Environmental", field: "temperature" }, 'darkviolet');
+	              return _this2.gotoHistory({ name: "Environmental", field1: "temperature", field2: "pressure" }, 'darkviolet');
 	            } },
 	          _react2.default.createElement(_Enviro2.default, { data: this.state.enviro })
 	        );
@@ -57937,7 +57937,7 @@
 	        graph1 = _react2.default.createElement(_reactChartjs.Line, { data: data1,
 	          options: options,
 	          width: 800,
-	          height: 450
+	          height: 465
 	        });
 	      }
 
@@ -57957,7 +57957,7 @@
 	        graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
 	          options: options,
 	          width: 800,
-	          height: 450
+	          height: 465
 	        });
 	      }
 

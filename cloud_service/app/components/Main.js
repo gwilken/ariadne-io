@@ -138,7 +138,7 @@ class Main extends React.Component {
 
     if(this.state.house) {
       house = (
-        <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field: "current" }, 'royalblue')} >
+        <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", feild2: "busvoltage" }, 'royalblue')} >
            <House data={this.state.house} />
         </div>
       )
@@ -146,7 +146,7 @@ class Main extends React.Component {
 
     if(this.state.motor) {
       motor = (
-        <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field: "volts" }, 'firebrick')} >
+        <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
           <Motor data={this.state.motor} />
         </div>
       )
@@ -154,7 +154,7 @@ class Main extends React.Component {
 
     if(this.state.enviro) {
       enviro = (
-        <div onClick={ () => this.gotoHistory( { name: "Environmental" , field: "temperature" }, 'darkviolet')} >
+        <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
           <Enviro data={this.state.enviro} />
         </div>
       )
