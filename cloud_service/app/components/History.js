@@ -38,15 +38,18 @@ class History extends React.Component {
       .then((res) => res.json())
         .then(function(docs) {
 
-            var data = docs.map( function(obj) {
+          return(
+            data = docs.map( function(obj) {
               return obj.telemetry[name][field];
             })
+          )
+        }).then(function(data) {
 
-            this.setState({
-              docs: docs
-            });
+          this.setState({
+            chartData: data
+          });
 
-        }.bind(this));
+        });
   }
 
   render() {

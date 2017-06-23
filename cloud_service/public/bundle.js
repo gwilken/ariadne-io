@@ -53975,14 +53975,15 @@
 	        return res.json();
 	      }).then(function (docs) {
 
-	        var data = docs.map(function (obj) {
+	        return data = docs.map(function (obj) {
 	          return obj.telemetry[name][field];
 	        });
+	      }).then(function (data) {
 
 	        this.setState({
-	          docs: docs
+	          chartData: data
 	        });
-	      }.bind(this));
+	      });
 	    }
 	  }, {
 	    key: 'render',
