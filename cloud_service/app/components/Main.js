@@ -101,6 +101,8 @@ class Main extends React.Component {
 
   gotoHistory(selected, color) {
 
+    console.log(selected);
+
     this.setState({
       view: 'history',
       color: color,

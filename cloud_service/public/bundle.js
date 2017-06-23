@@ -20982,6 +20982,8 @@
 	    key: "gotoHistory",
 	    value: function gotoHistory(selected, color) {
 
+	      console.log(selected);
+
 	      this.setState({
 	        view: 'history',
 	        color: color,
