@@ -6,6 +6,8 @@ import Motor from "./Motor";
 import Enviro from "./Enviro";
 import Geo from "./Geo";
 import History from "./History";
+import HistoryDuo from "./HistoryDuo";
+
 
 class Main extends React.Component {
 
@@ -15,8 +17,9 @@ class Main extends React.Component {
     this.state = {
       view: 'all',
       selected: {
-        name: 'House Battery Bank',
-        field: 'current',
+        name: '',
+        field1: '',
+        field2: ''
       },
       color: '',
       solar: null,
@@ -127,7 +130,7 @@ class Main extends React.Component {
 
     if(this.state.solar) {
       solar = (
-        <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "busvoltage" }, 'gold')} >
+        <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
           <Solar data={this.state.solar} />
         </div>
       )
@@ -170,7 +173,7 @@ class Main extends React.Component {
       return (
 
         <div className="mainContainer">
-          <History selected={this.state.selected} color={this.state.color} setView={this.setView}/>
+          <HistoryDuo selected={this.state.selected} color={this.state.color} setView={this.setView}/>
         </div>
 
       )
