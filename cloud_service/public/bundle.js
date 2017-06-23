@@ -54042,7 +54042,7 @@
 	          pointRadius: 0
 	        };
 
-	        dataset.data = data;
+	        dataset.data = data.slice();
 
 	        console.log('dataset', dataset);
 
