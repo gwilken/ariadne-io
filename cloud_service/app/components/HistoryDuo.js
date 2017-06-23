@@ -78,7 +78,7 @@ class HistoryDuo extends React.Component {
 
   render() {
 
-    //console.log(this.state);
+    console.log(this.state);
 
     var graph1 = null;
     var graph2 = null;
@@ -123,10 +123,9 @@ class HistoryDuo extends React.Component {
         },
         ],
       },
-    }
+    };
 
     if(this.state.data.data1) {
-
       var data1 = {
         labels: this.state.data.data1,
         datasets: [
@@ -151,7 +150,6 @@ class HistoryDuo extends React.Component {
     }
 
     if(this.state.data.data2) {
-
       var data2 = {
         labels: this.state.data.data2,
         datasets: [
@@ -170,7 +168,7 @@ class HistoryDuo extends React.Component {
         <Line data={data2}
             options={options}
             width={800}
-            height={500}
+            height={400}
         />
       )
   }

@@ -57877,7 +57877,7 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      //console.log(this.state);
+	      console.log(this.state);
 
 	      var graph1 = null;
 	      var graph2 = null;
@@ -57924,7 +57924,6 @@
 	      };
 
 	      if (this.state.data.data1) {
-
 	        var data1 = {
 	          labels: this.state.data.data1,
 	          datasets: [{
@@ -57945,7 +57944,6 @@
 	      }
 
 	      if (this.state.data.data2) {
-
 	        var data2 = {
 	          labels: this.state.data.data2,
 	          datasets: [{
@@ -57961,7 +57959,7 @@
 	        graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
 	          options: options,
 	          width: 800,
-	          height: 500
+	          height: 400
 	        });
 	      }
 
