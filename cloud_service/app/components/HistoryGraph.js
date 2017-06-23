@@ -46,8 +46,8 @@ class HistoryGraph extends React.Component {
         yAxes: [{
           position: 'right',
           ticks: {
-            min: this.props.min,
-            max: this.props.max,
+            // min: this.props.min,
+            // max: this.props.max,
             mirror: false,
            },
           }],

@@ -54045,65 +54045,6 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      var data = {
-	        labels: this.state.chartLabels,
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: 'royalblue',
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: this.state.chartData
-	        }]
-	      };
-
-	      var options = {
-	        layout: {
-	          padding: {
-	            left: 15,
-	            right: 3
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          // duration: 100,
-	          easing: 'linear'
-	        },
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            position: 'right'
-	            // ticks: {
-	            //   // min: 0,
-	            //   // max: this.state.max,
-	            //   mirror: false,
-	            //  },
-	          }],
-	          xAxes: [{
-	            // ticks: {
-	            //   // min: 0,
-	            //   // max: 0,
-	            // },
-	            gridLines: {
-	              display: false,
-	              drawTicks: false
-	            },
-	            scaleLabel: {
-	              display: true
-	            },
-	            ticks: {
-	              display: false
-	            }
-	          }]
-	        }
-	      };
-
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -54269,8 +54210,8 @@
 	          yAxes: [{
 	            position: 'right',
 	            ticks: {
-	              min: this.props.min,
-	              max: this.props.max,
+	              // min: this.props.min,
+	              // max: this.props.max,
 	              mirror: false
 	            }
 	          }],
