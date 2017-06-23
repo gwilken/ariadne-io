@@ -138,7 +138,7 @@ class Main extends React.Component {
 
     if(this.state.house) {
       house = (
-        <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", feild2: "busvoltage" }, 'royalblue')} >
+        <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
            <House data={this.state.house} />
         </div>
       )

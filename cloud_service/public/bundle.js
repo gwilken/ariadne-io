@@ -21026,7 +21026,7 @@
 	        house = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "House Battery Bank", field1: "current", feild2: "busvoltage" }, 'royalblue');
+	              return _this2.gotoHistory({ name: "House Battery Bank", field1: "current", field2: "busvoltage" }, 'royalblue');
 	            } },
 	          _react2.default.createElement(_House2.default, { data: this.state.house })
 	        );
