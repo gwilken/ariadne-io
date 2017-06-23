@@ -54187,6 +54187,8 @@
 	    key: 'render',
 	    value: function render() {
 
+	      console.log(this.props.datasets);
+
 	      var options = {
 	        layout: {
 	          padding: {

@@ -9,6 +9,8 @@ class HistoryGraph extends React.Component {
 
   render() {
 
+    console.log(this.props.datasets);
+
     var options = {
       layout: {
         padding: {
