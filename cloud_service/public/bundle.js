@@ -21018,45 +21018,41 @@
 	      }
 
 	      if (this.state.house) {
-	        _react2.default.createElement(
+	        house = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
 	              return _this2.gotoHistory({ name: "House Battery Bank", field: "current" }, 'royalblue');
 	            } },
-	          "house = ",
 	          _react2.default.createElement(_House2.default, { data: this.state.house })
 	        );
 	      }
 
 	      if (this.state.motor) {
-	        _react2.default.createElement(
+	        motor = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
 	              return _this2.gotoHistory({ name: "Electric Yacht 10kW Motor", field: "volts" }, 'firebrick');
 	            } },
-	          "motor = ",
 	          _react2.default.createElement(_Motor2.default, { data: this.state.motor })
 	        );
 	      }
 
 	      if (this.state.enviro) {
-	        _react2.default.createElement(
+	        enviro = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
 	              return _this2.gotoHistory({ name: "Environmental", field: "temperature" }, 'darkviolet');
 	            } },
-	          "enviro = ",
 	          _react2.default.createElement(_Enviro2.default, { data: this.state.enviro })
 	        );
 	      }
 
 	      if (this.state.geo) {
-	        _react2.default.createElement(
+	        geo = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
 	              return _this2.gotoMap;
 	            } },
-	          "geo = ",
 	          _react2.default.createElement(_Geo2.default, { data: this.state.geo })
 	        );
 	      }
