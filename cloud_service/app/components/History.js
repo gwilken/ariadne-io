@@ -144,17 +144,17 @@ class History extends React.Component {
       scales: {
         yAxes: [{
           position: 'right',
-          ticks: {
-            // min: 0,
-            // max: this.state.max,
-            mirror: false,
-           },
+          // ticks: {
+          //   // min: 0,
+          //   // max: this.state.max,
+          //   mirror: false,
+          //  },
           }],
         xAxes: [{
-          ticks: {
-            // min: 0,
-            // max: 0,
-          },
+          // ticks: {
+          //   // min: 0,
+          //   // max: 0,
+          // },
           gridLines: {
             display: false,
             drawTicks: false,
