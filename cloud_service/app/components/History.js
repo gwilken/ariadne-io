@@ -36,14 +36,9 @@ class History extends React.Component {
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
-        .then(function(docs) {
-
-          return(
-            data = docs.map( function(obj) {
+        .then((docs) => docs.map( function(obj) {
               return obj.telemetry[name][field];
-            })
-          )
-        }).then(function(data) {
+            }).then(function(data) {
 
           this.setState({
             chartData: data
