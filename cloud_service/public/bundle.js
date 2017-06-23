@@ -53947,7 +53947,18 @@
 	    var _this = _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).call(this, props));
 
 	    _this.state = {
-	      data: [],
+	      docs: [],
+	      data: {
+	        labels: [],
+	        datasets: [{
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: []
+	        }]
+	      },
 	      chartData: [],
 	      chartLabels: [],
 	      chartColors: [],
@@ -53969,18 +53980,34 @@
 
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
-	      }).then(function (objs) {
+	      }).then(function (docs) {
 
-	        var data = objs.map(function (obj) {
+	        var data = docs.map(function (obj) {
 	          return obj.telemetry[name][field];
 	        });
 
-	        var dataArr = [];
+	        var labels = this.state.data.labels;
+	        labels.push(data);
 
-	        dataArr.push(this.state.chartData);
-	        dataArr.push(data);
+	        var datasets = this.state.data.datasets;
 
-	        this.setState({ chartData: dataArr, chartLabels: dataArr });
+	        var dataset = {
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: data
+	        };
+
+	        datasets.push(dataset);
+
+	        var newObj = {
+	          labels: labels,
+	          datasets: datasets
+	        };
+
+	        this.setState({ data: newObj });
 	      }.bind(this));
 	    }
 	  }, {
@@ -53992,16 +54019,38 @@
 
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
-	      }).then(function (objs) {
+	      }).then(function (docs) {
+
 	        console.log(objs);
 
-	        this.setState({ data: objs });
+	        this.setState({ docs: docs });
 
 	        var data = objs.map(function (obj) {
 	          return obj.telemetry[name][field];
 	        });
 
-	        this.setState({ chartData: data, chartLabels: data });
+	        var labels = this.state.data.labels;
+	        labels.push(data);
+
+	        var datasets = this.state.data.datasets;
+
+	        var dataset = {
+	          fill: true,
+	          backgroundColor: 'royalblue',
+	          borderWidth: 2,
+	          lineTension: 0.1,
+	          pointRadius: 0,
+	          data: data
+	        };
+
+	        datasets.push(dataset);
+
+	        var newObj = {
+	          labels: labels,
+	          datasets: datasets
+	        };
+
+	        this.setState({ data: newObj });
 	      }.bind(this));
 	    }
 	  }, {
@@ -54032,7 +54081,7 @@
 	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, chartColors: this.state.chartColors }),
+	          _react2.default.createElement(_HistoryGraph2.default, { datasets: this.state.data }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sliderContainer' },
@@ -54138,18 +54187,6 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var data = {
-	        labels: this.props.chartLabels,
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: 'royalblue',
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: this.props.chartData
-	        }]
-	      };
-
 	      var options = {
 	        layout: {
 	          padding: {
@@ -54173,8 +54210,6 @@
 	          yAxes: [{
 	            position: 'right',
 	            ticks: {
-	              // min: this.props.min,
-	              // max: this.props.max,
 	              mirror: false
 	            }
 	          }],
@@ -54199,7 +54234,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'historyGraph' },
-	        _react2.default.createElement(_reactChartjs.Line, { data: data,
+	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.datasets,
 	          options: options,
 	          width: 800,
 	          height: 800

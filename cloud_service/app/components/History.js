@@ -8,13 +8,30 @@ import Slider from 'rc-slider/lib/Slider';
 // import Range from 'rc-slider/lib/Range';
 
 
+
+
+
+
 class History extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      data: [],
+      docs: [],
+      data: {
+        labels: [],
+        datasets: [
+            {
+              fill: true,
+              backgroundColor: 'royalblue',
+              borderWidth: 2,
+              lineTension: 0.1,
+              pointRadius: 0,
+              data: []
+            }
+         ]
+      },
       chartData: [],
       chartLabels: [],
       chartColors: [],
@@ -32,18 +49,34 @@ class History extends React.Component {
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
-        .then(function(objs) {
+        .then(function(docs) {
 
-          var data = objs.map(function(obj) {
+          var data = docs.map(function(obj) {
             return obj.telemetry[name][field];
           })
 
-          var dataArr = [];
+          var labels = this.state.data.labels;
+          labels.push(data);
 
-          dataArr.push(this.state.chartData);
-          dataArr.push(data);
+          var datasets = this.state.data.datasets;
 
-          this.setState( { chartData: dataArr, chartLabels: dataArr } );
+          var dataset = {
+            fill: true,
+            backgroundColor: 'royalblue',
+            borderWidth: 2,
+            lineTension: 0.1,
+            pointRadius: 0,
+            data: data
+          };
+
+          datasets.push(dataset);
+
+          var newObj = {
+            labels: labels,
+            datasets: datasets
+          }
+
+          this.setState( { data: newObj } );
 
         }.bind(this));
   }
@@ -55,18 +88,38 @@ class History extends React.Component {
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
-        .then(function(objs) {
+        .then(function(docs) {
+
           console.log(objs);
 
-          this.setState( { data: objs} );
+          this.setState( { docs: docs} );
 
             var data = objs.map( function(obj) {
               return obj.telemetry[name][field];
             })
 
-            this.setState({chartData: data, chartLabels: data })
+            var labels = this.state.data.labels;
+            labels.push(data);
 
+            var datasets = this.state.data.datasets;
 
+            var dataset = {
+              fill: true,
+              backgroundColor: 'royalblue',
+              borderWidth: 2,
+              lineTension: 0.1,
+              pointRadius: 0,
+              data: data
+            };
+
+            datasets.push(dataset);
+
+            var newObj = {
+              labels: labels,
+              datasets: datasets
+            }
+
+            this.setState( { data: newObj } );
 
         }.bind(this));
   }
@@ -84,7 +137,7 @@ class History extends React.Component {
           </div>
 
 
-          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} chartColors={this.state.chartColors} />
+          <HistoryGraph datasets={this.state.data} />
 
 
           <div className="sliderContainer">

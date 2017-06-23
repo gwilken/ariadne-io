@@ -9,20 +9,6 @@ class HistoryGraph extends React.Component {
 
   render() {
 
-    var data = {
-      labels: this.props.chartLabels,
-      datasets: [
-          {
-            fill: true,
-            backgroundColor: 'royalblue',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: this.props.chartData
-          }
-       ]
-    }
-
     var options = {
       layout: {
         padding: {
@@ -46,8 +32,6 @@ class HistoryGraph extends React.Component {
         yAxes: [{
           position: 'right',
           ticks: {
-            // min: this.props.min,
-            // max: this.props.max,
             mirror: false,
            },
           }],
@@ -74,11 +58,13 @@ class HistoryGraph extends React.Component {
 
   return (
       <div className="historyGraph">
-        <Line data={data}
+
+        <Line data={this.props.datasets}
             options={options}
             width={800}
             height={800}
         />
+
       </div>
     )
   }
