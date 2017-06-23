@@ -20891,6 +20891,10 @@
 
 	    _this.state = {
 	      view: 'history',
+	      selected: {
+	        name: 'Solar Controller Monitor',
+	        field: 'current'
+	      },
 	      solar: null,
 	      house: null,
 	      enviro: null,
@@ -20969,8 +20973,12 @@
 	  }, {
 	    key: "setView",
 	    value: function setView(newView) {
-
 	      this.setState({ view: str });
+	    }
+	  }, {
+	    key: "setSelected",
+	    value: function setSelected(newSelect) {
+	      this.setState({ selected: newSelect });
 	    }
 	  }, {
 	    key: "render",
@@ -21008,7 +21016,7 @@
 	        return _react2.default.createElement(
 	          "div",
 	          { className: "mainContainer" },
-	          _react2.default.createElement(_History2.default, null)
+	          _react2.default.createElement(_History2.default, { selected: this.state.selected, setView: this.setView, setSelected: this.setSelected })
 	        );
 	      } else {
 

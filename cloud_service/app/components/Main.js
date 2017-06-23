@@ -14,6 +14,10 @@ class Main extends React.Component {
 
     this.state = {
       view: 'history',
+      selected: {
+        name: 'Solar Controller Monitor',
+        field: 'current',
+      },
       solar: null,
       house: null,
       enviro: null,
@@ -89,9 +93,11 @@ class Main extends React.Component {
   }
 
   setView(newView) {
+    this.setState({ view: str });
+  }
 
-    this.setState({view: str});
-
+  setSelected(newSelect) {
+    this.setState({ selected: newSelect });
   }
 
   render() {
@@ -128,7 +134,7 @@ class Main extends React.Component {
       return (
         <div className="mainContainer">
 
-          <History />
+          <History selected={this.state.selected} setView={this.setView} setSelected={this.setSelected} />
 
         </div>
       )
