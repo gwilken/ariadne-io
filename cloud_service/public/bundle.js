@@ -53996,10 +53996,11 @@
 	          backgroundColor: 'royalblue',
 	          borderWidth: 2,
 	          lineTension: 0.1,
-	          pointRadius: 0
+	          pointRadius: 0,
+	          data: []
 	        };
 
-	        dataset.data = data;
+	        dataset.data = data.slice();
 
 	        datasets.push(dataset);
 
@@ -54039,7 +54040,8 @@
 	          backgroundColor: 'royalblue',
 	          borderWidth: 2,
 	          lineTension: 0.1,
-	          pointRadius: 0
+	          pointRadius: 0,
+	          data: []
 	        };
 
 	        dataset.data = data.slice();
