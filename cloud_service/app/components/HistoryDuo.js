@@ -55,7 +55,7 @@ class HistoryDuo extends React.Component {
           console.log(data);
 
           this.setState({
-            data: data,
+            data: Object.assign({}, this.state, {data: data}),
             color: this.props.color,
             name: name,
             field1: field1,
