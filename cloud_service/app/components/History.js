@@ -61,11 +61,11 @@ class History extends React.Component {
   addDataset(data, labels, color) {
 
     var set = {
-      fill: true,
+      fill: false,
       backgroundColor: color,
       borderWidth: 2,
       lineTension: 0.1,
-      pointRadius: 0,
+      pointRadius: 1,
       data: data
     };
 
