@@ -57937,7 +57937,7 @@
 	        graph1 = _react2.default.createElement(_reactChartjs.Line, { data: data1,
 	          options: options,
 	          width: 800,
-	          height: 425
+	          height: 450
 	        });
 	      }
 
@@ -57957,7 +57957,7 @@
 	        graph2 = _react2.default.createElement(_reactChartjs.Line, { data: data2,
 	          options: options,
 	          width: 800,
-	          height: 425
+	          height: 450
 	        });
 	      }
 

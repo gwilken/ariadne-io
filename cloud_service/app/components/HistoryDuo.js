@@ -144,7 +144,7 @@ class HistoryDuo extends React.Component {
         <Line data={data1}
             options={options}
             width={800}
-            height={425}
+            height={450}
         />
       )
     }
@@ -168,7 +168,7 @@ class HistoryDuo extends React.Component {
         <Line data={data2}
             options={options}
             width={800}
-            height={425}
+            height={450}
         />
       )
   }
