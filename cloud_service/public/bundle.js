@@ -54205,8 +54205,8 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "historyGraph" },
-	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.datasets,
-	          options: this.props.options,
+	        _react2.default.createElement(_reactChartjs.Line, { data: this.props.datasets.datasets,
+	          options: this.props.datasets.options,
 	          width: 800,
 	          height: 800
 	        })

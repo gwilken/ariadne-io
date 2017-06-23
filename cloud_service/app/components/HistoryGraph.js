@@ -14,16 +14,15 @@ class HistoryGraph extends React.Component {
     return (
         <div className="historyGraph">
 
-          <Line data={this.props.datasets}
-              options={this.props.options}
+          <Line data={this.props.datasets.datasets}
+              options={this.props.datasets.options}
               width={800}
               height={800}
           />
 
         </div>
       )
-
-  }
+    }
 }
 
 export default HistoryGraph;
