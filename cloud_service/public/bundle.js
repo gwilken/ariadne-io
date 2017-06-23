@@ -54075,7 +54075,13 @@
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'Historical Data'
+	          'Historical Data   ',
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'backButton' },
+	            ' Back '
+	          ),
+	          ' '
 	        ),
 	        _react2.default.createElement(
 	          'h4',
@@ -54083,11 +54089,6 @@
 	          this.state.name,
 	          ' - ',
 	          this.state.field
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'backButton' },
-	          ' Back '
 	        ),
 	        _react2.default.createElement(
 	          'div',
