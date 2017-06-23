@@ -57806,6 +57806,7 @@
 	    _this.state = {
 	      docs: [],
 	      color: '',
+	      data: {},
 	      name: '',
 	      field1: '',
 	      field2: '',
@@ -57863,7 +57864,7 @@
 	        console.log('newobj:', newObj);
 
 	        this.setState({
-	          data: newObj,
+	          data: data,
 	          color: color,
 	          name: name,
 	          field1: field1,
