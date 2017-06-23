@@ -10,7 +10,7 @@ class HistoryDuo extends React.Component {
 
     this.state = {
       docs: [],
-      data: {},
+      data: null,
       color: '',
       name: '',
       field1: '',
@@ -56,10 +56,10 @@ class HistoryDuo extends React.Component {
 
           this.setState({
             data: data,
-            color: this.props.color
-          //  name: name
-            // field1: field1,
-            // field2: field2
+            color: this.props.color,
+            name: name,
+            field1: field1,
+            field2: field2
           });
 
         }.bind(this));
@@ -67,7 +67,7 @@ class HistoryDuo extends React.Component {
 
   render() {
 
-    //console.log(this.props);
+    console.log(this.state);
 
     var data1 = {
       labels: this.state.data.data1,

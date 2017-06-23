@@ -57805,7 +57805,7 @@
 
 	    _this.state = {
 	      docs: [],
-	      data: {},
+	      data: null,
 	      color: '',
 	      name: '',
 	      field1: '',
@@ -57854,10 +57854,10 @@
 
 	        this.setState({
 	          data: data,
-	          color: this.props.color
-	          //  name: name
-	          // field1: field1,
-	          // field2: field2
+	          color: this.props.color,
+	          name: name,
+	          field1: field1,
+	          field2: field2
 	        });
 	      }.bind(this));
 	    }
@@ -57866,7 +57866,7 @@
 	    value: function render() {
 	      var _this2 = this;
 
-	      //console.log(this.props);
+	      console.log(this.state);
 
 	      var data1 = {
 	        labels: this.state.data.data1,
