@@ -134,6 +134,8 @@ h3 {
   margin: 1% 1%;
 }
 .sliderContainer {
+  position: absolute;
+  bottom: 1%;
   width: 40%;
   margin: 0% 0%;
 }
