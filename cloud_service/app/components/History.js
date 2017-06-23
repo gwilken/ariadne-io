@@ -2,10 +2,10 @@ import React from "react";
 
 import Select from './Select';
 import HistoryGraph from './HistoryGraph'
-//import Slider, { Range } from 'rc-slider';
-// We can just import Slider or Range to reduce bundle size
-import Slider from 'rc-slider/lib/Slider';
-// import Range from 'rc-slider/lib/Range';
+// //import Slider, { Range } from 'rc-slider';
+// // We can just import Slider or Range to reduce bundle size
+// import Slider from 'rc-slider/lib/Slider';
+// // import Range from 'rc-slider/lib/Range';
 
 
 class History extends React.Component {
@@ -69,9 +69,9 @@ class History extends React.Component {
 
           <HistoryGraph data={this.state.chartData} color={this.state.chartColor} />
 
-          <div className="sliderContainer">
+          {/* <div className="sliderContainer">
              <Slider min={0} max={200} defaultValue={3}  />
-          </div>
+          </div> */}
 
         </div>
 
