@@ -21007,7 +21007,7 @@
 	        solar = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Solar Controller Monitor", field: "current" }, 'gold');
+	              return _this2.gotoHistory({ name: "Solar Controller Monitor", field: "busvoltage" }, 'gold');
 	            } },
 	          _react2.default.createElement(_Solar2.default, { data: this.state.solar }),
 	          ";"

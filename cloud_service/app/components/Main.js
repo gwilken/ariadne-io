@@ -124,7 +124,7 @@ class Main extends React.Component {
 
 
         solar = (
-          <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "current" }, 'gold')} >
+          <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "busvoltage" }, 'gold')} >
             <Solar data={this.state.solar} />;
           </div>
         )
