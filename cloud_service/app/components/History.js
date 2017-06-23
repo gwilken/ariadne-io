@@ -92,7 +92,7 @@ class History extends React.Component {
       .then((res) => res.json())
         .then(function(docs) {
 
-        //  console.log(objs);
+          console.log(docs);
 
           this.setState( { docs: docs} );
 
@@ -100,10 +100,7 @@ class History extends React.Component {
               return obj.telemetry[name][field];
             })
 
-            var labels = this.state.data.labels;
-            labels.push(data);
-
-            var datasets = this.state.data.datasets;
+            console.log('data', data);
 
             var dataset = {
               fill: true,
@@ -113,6 +110,13 @@ class History extends React.Component {
               pointRadius: 0,
               data: data
             };
+
+            console.log('dataset', dataset);
+
+            var labels = this.state.data.labels;
+            labels.push(data);
+
+            var datasets = this.state.data.datasets;
 
             datasets.push(dataset);
 
