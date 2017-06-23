@@ -17,8 +17,7 @@ class History extends React.Component {
       data: [],
       chartData: [],
       chartLabels: [],
-      min: 0,
-      max: 15,
+      chartColors: [],
       time: 180
     }
 
@@ -29,7 +28,7 @@ class History extends React.Component {
     this.setState({time: newTime})
   }
 
-  getData(name, field, newMin, newMax) {
+  addData(name, field) {
 
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
@@ -39,9 +38,13 @@ class History extends React.Component {
             return obj.telemetry[name][field];
           })
 
-          console.log(data);
+          var dataArr = [];
 
-          this.setState( { chartData: data, chartLabels: data , min: newMin, max: newMax } );
+          dataArr.push(this.state.data);
+          dataArr.push(data);
+
+
+          this.setState( { chartData: dataArr, chartLabels: dataArr } );
 
         }.bind(this));
   }
@@ -69,57 +72,20 @@ class History extends React.Component {
         }.bind(this));
   }
 
-  componentWillReceiveProps(nextProps) {
-
-    // if(nextProps.selected === 'temp') {
-    //
-    //   var data = this.state.data.map(function(obj) {
-    //     return obj.telemetry.Environmental.temperature * 9/5 + 32;
-    //     //console.log(obj.Environmental);
-    //   })
-    //
-    //   this.setState( { chartData: data, chartLabels: data, max: 120 } );
-    //
-    //   // var labels = this.state.data.map(function(obj) {
-    //   //   return obj.Environmental.temperature;
-    //   // })
-    //   //
-    //   // this.setState( { chartData: data} );
-    // }
-    //
-    // if(nextProps.selected === 'solarcurrent') {
-    //
-    //   var data = this.state.data.map(function(obj) {
-    //     return obj.telemetry["Solar Controller Monitor"].current;
-    //     //console.log(obj.Environmental);
-    //   })
-    //
-    //   this.setState( { chartData: data, chartLabels: data, max: 5000 } );
-    //
-    //   // var labels = this.state.data.map(function(obj) {
-    //   //   return obj.Environmental.temperature;
-    //   // })
-    //   //
-    //   // this.setState( { chartData: data} );
-    // }
-
-
-  }
-
   render() {
 
-  return (
+    return (
 
       <div> <h3>Historical ***TESTING****</h3>
 
         <div className="historyContainer">
 
           <div className="historySelect">
-            <div onClick={ () => this.getData('Solar Controller Monitor', 'current', 0, 4000 ) }>***select***</div>
+            <div onClick={ () => this.addData('Solar Controller Monitor', 'current') }>***select***</div>
           </div>
 
 
-          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} />
+          <HistoryGraph chartLabels={this.state.chartLabels} chartData={this.state.chartData} chartColors={this.state.chartColors} />
 
 
           <div className="sliderContainer">
@@ -131,5 +97,6 @@ class History extends React.Component {
       </div>
     )
   }
+
 }
 export default History;

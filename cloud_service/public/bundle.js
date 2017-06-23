@@ -53950,8 +53950,7 @@
 	      data: [],
 	      chartData: [],
 	      chartLabels: [],
-	      min: 0,
-	      max: 15,
+	      chartColors: [],
 	      time: 180
 	    };
 
@@ -53965,8 +53964,8 @@
 	      this.setState({ time: newTime });
 	    }
 	  }, {
-	    key: 'getData',
-	    value: function getData(name, field, newMin, newMax) {
+	    key: 'addData',
+	    value: function addData(name, field) {
 
 	      fetch('/data/' + this.state.time).then(function (res) {
 	        return res.json();
@@ -53976,9 +53975,12 @@
 	          return obj.telemetry[name][field];
 	        });
 
-	        console.log(data);
+	        var dataArr = [];
 
-	        this.setState({ chartData: data, chartLabels: data, min: newMin, max: newMax });
+	        dataArr.push(this.state.data);
+	        dataArr.push(data);
+
+	        this.setState({ chartData: dataArr, chartLabels: dataArr });
 	      }.bind(this));
 	    }
 	  }, {
@@ -54003,44 +54005,6 @@
 	      }.bind(this));
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-
-	      // if(nextProps.selected === 'temp') {
-	      //
-	      //   var data = this.state.data.map(function(obj) {
-	      //     return obj.telemetry.Environmental.temperature * 9/5 + 32;
-	      //     //console.log(obj.Environmental);
-	      //   })
-	      //
-	      //   this.setState( { chartData: data, chartLabels: data, max: 120 } );
-	      //
-	      //   // var labels = this.state.data.map(function(obj) {
-	      //   //   return obj.Environmental.temperature;
-	      //   // })
-	      //   //
-	      //   // this.setState( { chartData: data} );
-	      // }
-	      //
-	      // if(nextProps.selected === 'solarcurrent') {
-	      //
-	      //   var data = this.state.data.map(function(obj) {
-	      //     return obj.telemetry["Solar Controller Monitor"].current;
-	      //     //console.log(obj.Environmental);
-	      //   })
-	      //
-	      //   this.setState( { chartData: data, chartLabels: data, max: 5000 } );
-	      //
-	      //   // var labels = this.state.data.map(function(obj) {
-	      //   //   return obj.Environmental.temperature;
-	      //   // })
-	      //   //
-	      //   // this.setState( { chartData: data} );
-	      // }
-
-
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -54063,12 +54027,12 @@
 	            _react2.default.createElement(
 	              'div',
 	              { onClick: function onClick() {
-	                  return _this2.getData('Solar Controller Monitor', 'current', 0, 4000);
+	                  return _this2.addData('Solar Controller Monitor', 'current');
 	                } },
 	              '***select***'
 	            )
 	          ),
-	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData }),
+	          _react2.default.createElement(_HistoryGraph2.default, { chartLabels: this.state.chartLabels, chartData: this.state.chartData, chartColors: this.state.chartColors }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'sliderContainer' },
