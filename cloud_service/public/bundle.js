@@ -57783,10 +57783,6 @@
 
 	var _reactChartjs = __webpack_require__(172);
 
-	var _Slider = __webpack_require__(350);
-
-	var _Slider2 = _interopRequireDefault(_Slider);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -57794,6 +57790,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// import Slider from 'rc-slider/lib/Slider';
 
 	var HistoryDuo = function (_React$Component) {
 	  _inherits(HistoryDuo, _React$Component);
@@ -57883,12 +57881,12 @@
 	      var graph2 = null;
 
 	      var options = {
-	        // layout: {
-	        //   padding: {
-	        //     left: 15,
-	        //     right: 3,
-	        //   },
-	        // },
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        }
 	        // tooltips: {
 	        //   enabled: false,
 	        // },
@@ -57995,12 +57993,7 @@
 	            'div',
 	            { className: 'historyGraph' },
 	            graph1,
-	            graph2,
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'sliderContainer' },
-	              _react2.default.createElement(_Slider2.default, { min: 0, max: 200, defaultValue: 3 })
-	            )
+	            graph2
 	          )
 	        )
 	      );

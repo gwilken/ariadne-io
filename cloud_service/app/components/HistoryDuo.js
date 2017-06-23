@@ -1,7 +1,7 @@
 import React from "react";
 import HistoryGraph from './HistoryGraph'
 import {Line} from 'react-chartjs-2';
-import Slider from 'rc-slider/lib/Slider';
+// import Slider from 'rc-slider/lib/Slider';
 
 class HistoryDuo extends React.Component {
 
@@ -84,12 +84,12 @@ class HistoryDuo extends React.Component {
     var graph2 = null;
 
     var options = {
-      // layout: {
-      //   padding: {
-      //     left: 15,
-      //     right: 3,
-      //   },
-      // },
+      layout: {
+        padding: {
+          left: 15,
+          right: 3,
+        },
+      },
       // tooltips: {
       //   enabled: false,
       // },
@@ -190,10 +190,6 @@ class HistoryDuo extends React.Component {
             {graph1}
 
             {graph2}
-
-            <div className="sliderContainer">
-               <Slider min={0} max={200} defaultValue={3}  />
-            </div>
 
           </div>
 
