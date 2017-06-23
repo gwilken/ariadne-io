@@ -1,6 +1,4 @@
 import React from "react";
-
-import Select from './Select';
 import HistoryGraph from './HistoryGraph'
 // //import Slider, { Range } from 'rc-slider';
 // // We can just import Slider or Range to reduce bundle size
@@ -15,7 +13,7 @@ class History extends React.Component {
 
     this.state = {
       docs: [],
-      chartData: [],
+      chartData: [0],
       chartColor: "gold",
       time: 180
     }
@@ -46,17 +44,17 @@ class History extends React.Component {
         }).then(function(data) {
 
           this.setState({
-            chartData: data
+            chartData: data,
+            chartColor: color
           });
 
         }.bind(this));
   }
 
   componentWillReceiveProps(nextProps) {
-
-    if(nextProps.color) {
-      this.setState({chartColor: nextProps.color});
-    }
+    // if(nextProps.color) {
+    //   this.setState({chartColor: nextProps.color});
+    // }
   }
 
   render() {
