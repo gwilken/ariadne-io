@@ -30,7 +30,7 @@ class HistoryDuo extends React.Component {
     console.log(this.props);
 
     var name = this.props.selected.name;
-    var field1 = this.props.selected.field;
+    var field1 = this.props.selected.field1;
     var field2 = this.props.selected.field2;
     var color = this.props.color;
 
@@ -47,6 +47,8 @@ class HistoryDuo extends React.Component {
               }
               return obj;
             })
+
+            console.log(data);
 
             return data;
 
