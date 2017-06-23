@@ -54082,17 +54082,16 @@
 	          null,
 	          this.state.name,
 	          ' - ',
-	          this.state.field,
-	          '}'
+	          this.state.field
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'backButton' },
+	          ' Back '
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'historyContainer' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'backButton' },
-	            ' Back '
-	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'historyGraph' },
