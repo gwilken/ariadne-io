@@ -7,7 +7,7 @@ var app = express();
 const routes = require("./routes/expressroutes");
 const mongo = require("./model/mongo");
 
-var PORT = 80;
+var PORT = 8080;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
