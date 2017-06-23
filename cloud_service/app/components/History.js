@@ -34,19 +34,20 @@ class History extends React.Component {
     var field = this.props.selected.field;
     var color = this.props.color;
 
-    console.log(name, field);
-
     fetch('/data/' + this.state.time)
       .then((res) => res.json())
         .then(function(docs) {
-
-          console.log(docs);
 
             var data = docs.map( function(obj) {
               return obj.telemetry[name][field];
             })
 
-            this.setState( {chartData: data, chartLabels: data, chartColor: color } );
+            this.setState({
+              docs: docs,
+              chartData: data,
+              chartLabels: data,
+              chartColor: color
+            });
 
         }.bind(this));
   }
