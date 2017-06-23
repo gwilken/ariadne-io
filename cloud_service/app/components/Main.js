@@ -153,7 +153,6 @@ class Main extends React.Component {
       <div onClick={ () => this.gotoMap()} >
         geo = <Geo data={this.state.geo} />
       </div>
-
     }
 
     if(this.state.view === 'history') {
