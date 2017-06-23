@@ -47,7 +47,9 @@ class History extends React.Component {
         }).then(function(data) {
 
           this.setState({
-            chartData: data
+            chartData: data,
+            chartLabels: data,
+            chartColor: color
           });
 
         }.bind(this));
