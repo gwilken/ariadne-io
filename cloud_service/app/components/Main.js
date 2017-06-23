@@ -119,7 +119,12 @@ class Main extends React.Component {
     var geo;
 
     if(this.state.solar) {
-      solar = <Solar data={this.state.solar} onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "current" }, 'gold') } />;
+
+
+        solar = (
+          <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field: "current" }, 'gold')} >
+            <Solar data={this.state.solar}} />;
+          </div>
     }
 
     if(this.state.house) {
