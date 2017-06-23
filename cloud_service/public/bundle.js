@@ -53988,7 +53988,7 @@
 	        return res.json();
 	      }).then(function (docs) {
 
-	        console.log(docs);
+	        //console.log(docs);
 
 	        var data = docs.map(function (obj) {
 	          return obj.telemetry[name][field];
@@ -53996,6 +53996,8 @@
 
 	        return data;
 	      }).then(function (data) {
+
+	        console.log(data);
 
 	        this.setState({
 	          data: data,
