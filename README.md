@@ -15,4 +15,4 @@ The project consists of three major components:
 
 A fast, single page app that gives us real time updates of 16 data points.
 
-![ariadne-io-mainpage](/public/images/ariadne-09.jpeg)
+![ariadne-io-mainpage](/public/images/ariadne-main.jpeg)
