@@ -16,3 +16,9 @@ The project consists of three major components:
 A fast, single page app that gives us real time updates of 16 data points.
 
 ![ariadne-io-mainpage](/public/images/ariadne-main.jpeg)
+
+## Historical Data
+
+Access any data points history over time. Here we have 180 minutes of solar panel output, current and voltage:
+
+![solar-panel-historical](/public/images/ariadne-12.jpeg)
