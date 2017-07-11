@@ -1,5 +1,5 @@
 # Ariadne-IO
-A wireless hardware and software IoT project that monitors multiple streams of realtime data from a sailboat. Access data over the internet or locally. Designed for easy and quick viewing on an iPad.
+A wireless hardware and software IoT project that monitors multiple streams of realtime data from a sailboat. Access data over the internet or locally. Designed for easy and quick viewing on an iPad. This project also taps into an open comm port of the Electric Yacht electric motor installed on the boat and decodes motor status messages, giving us a wealth of real time motor data.
 
 ### Project Overview
 
@@ -17,8 +17,22 @@ A fast, single page app that gives us real time updates of 16 data points.
 
 ![ariadne-io-mainpage](/public/images/ariadne-main.jpeg)
 
-## Historical Data
+### Historical Data
 
 Access any data points history over time. Here we have 180 minutes of solar panel output, current and voltage:
 
 ![solar-panel-historical](/public/images/ariadne-12.jpeg)
+
+## Building the Sensors
+
+#### House current/voltage and Solar Panel current/voltage
+
+#### Environmental Sensor
+
+
+
+## Wired data
+
+#### Tapping into the motor
+
+#### GPS data
