@@ -23,7 +23,22 @@ Access any data points history over time. Here we have 180 minutes of solar pane
 
 ![solar-panel-historical](/public/images/ariadne-12.jpeg)
 
-## Building the Sensors
+## Sensors
+
+The sensors are built around the ESP8266 module. Code for the sensors is available in this repo.
+
+![sensor-family](/public/images/ariadne-sensor-fam.jpeg)
+
+Each sensor is housed in a weatherproof box with waterproof wiring glands for cable pass through.
+
+![sensor-closeup](/public/images/ariadne-closeup.jpeg)
+
+Installed on two motor batteries:
+
+![sensor-installed](/public/images/ariadne-batts.jpeg)
+
+
+
 
 #### House current/voltage and Solar Panel current/voltage
 
