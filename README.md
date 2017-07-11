@@ -10,3 +10,9 @@ The project consists of three major components:
 * Hub: A Raspberry Pi, local to the boat, running Node.js and MongoDB that receives and manages data from the sensors and transmits it to a server visible to the internet.
 
 * Cloud Service: A VPS server running a MERN stack that receives incoming data from the hub and renders a page with realtime info with access to historical data.
+
+### The Result
+
+A fast, single page app that gives us real time updates of 16 data points.
+
+![ariadne-io-mainpage](/public/images/ariadne-09.jpeg)
