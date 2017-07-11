@@ -25,7 +25,7 @@ Access any data points history over time. Here we have 180 minutes of solar pane
 
 ## Sensors
 
-The sensors are built around the ESP8266 module. Code for the sensors is available in this repo.
+The sensors are built around the ESP8266 module, a low cost microcontroller with wifi and a full tcp/ip stack. Programming was done via the Arduino IDE. Each sensor transmits JSON data to the local hub via wifi. The code for each sensor is available in this repo.
 
 ![sensor-family](/public/images/ariadne-sensor-fam.jpeg)
 
