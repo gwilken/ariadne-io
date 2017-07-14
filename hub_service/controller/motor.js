@@ -4,17 +4,17 @@ var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
 
 var motor = {
-  family: "Motor",
-  name: "Electric Yacht 10kW Motor",
-  id: 9,
-  soc: null,
-  ttd: null,
-  current: null,
-  volts: null,
-  rpm: null,
-  tempAlarm: null
+  family: "motor",
+  displayName: "Electric Yacht 10kW Motor",
+  data: [{
+    soc: null,
+    ttd: null,
+    current: null,
+    volts: null,
+    rpm: null,
+    tempAlarm: null
+  }]
 }
-
 
 var motorPort = new SerialPort("/dev/MOTOR", {
   baudRate: 19200,
@@ -31,30 +31,30 @@ motorPort.on('data', function (data) {
     if(data[i] === 0 && data[i+1] === 1 && data[i+2] === 255) {
 
       data.copy(displayData, 0, i);
-      motor.soc = displayData[6];
-      motor.ttd = ((displayData[8] << 8) + displayData[7]) / 10;  //Time To Discharge in xxx.x hours
+      motor.data[0].soc = displayData[6];
+      motor.data[0].ttd = ((displayData[8] << 8) + displayData[7]) / 10;  //Time To Discharge in xxx.x hours
     };
 
     if(data[i] === 4 && data[i+1] === 4 && data[i+2] === 1) {
 
       data.copy(motorData, 0, i);
-      motor.current = ((motorData[9] << 8) + motorData[8]) / 10;
-      motor.volts = ((motorData.readUInt8(13) << 8) + motorData.readUInt8(12)) / 100;
-      motor.rpm = ((motorData[16] << 8) + motorData[15]) / 100;
-      motor.tempAlarm = motorData[19];
+      motor.data[0].current = ((motorData[9] << 8) + motorData[8]) / 10;
+      motor.data[0].volts = ((motorData.readUInt8(13) << 8) + motorData.readUInt8(12)) / 100;
+      motor.data[0].rpm = ((motorData[16] << 8) + motorData[15]) / 100;
+      motor.data[0].tempAlarm = motorData[19];
     };
 
   };
 });
 
 motorPort.on('close', function() {
-  motor.status = 0;
-  motor.current = 0;
-  motor.volts = 0;
-  motor.rpm = 0;
-  motor.power = 0;
-  motor.soc = 0;
-  motor.ttd = 0;
+  motor.data[0].status = 0;
+  motor.data[0].current = 0;
+  motor.data[0].volts = 0;
+  motor.data[0].rpm = 0;
+  motor.data[0].power = 0;
+  motor.data[0].soc = 0;
+  motor.data[0].ttd = 0;
 
   console.log('Motor serialport closed.');
 });
