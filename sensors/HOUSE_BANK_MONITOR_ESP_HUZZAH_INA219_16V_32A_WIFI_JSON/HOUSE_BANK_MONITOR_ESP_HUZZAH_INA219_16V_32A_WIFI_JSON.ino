@@ -12,20 +12,15 @@ const char* password = "raspberry";
 
 Adafruit_INA219 ina219;
 
-String family = "Battery";
-String name = "House Battery Bank";
-int id = 1;
 float shuntvoltage;
 float busvoltage;
-float current;
+float curr;
 float loadvoltage;
-
 
 void setup()   {
   client.setNoDelay(1);
 
   Serial.begin(115200);
-
 
   ina219.begin();
   ina219.setCalibration_16V_32A();
@@ -47,7 +42,6 @@ void setup()   {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-
   while ( !client.connected() ) {
       Serial.print("Looking for hub");
       connectToHub();
@@ -64,24 +58,41 @@ void loop() {
 
    if (client.connected()) {
 
-    measureCurrent();
-
     delay(1000);
 
-    StaticJsonBuffer<200> jsonBuffer;
+    measureCurrent();
+
+    DynamicJsonBuffer jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
 
-    root["family"] = family;
-    root["name"] = name;
-    root["shuntvoltage"] = shuntvoltage;
-    root["busvoltage"] = busvoltage;
-    root["current"] = current;
-    root["loadvoltage"] = loadvoltage;
+    root["family"] = "house";
+    root["displayName"] = "House";
 
-    WiFiClientPrint<200> p(client);
+    JsonArray& data = root.createNestedArray("data");
 
-    root.printTo(p);
-    p.stop();
+    JsonObject& voltage = data.createNestedObject();
+    voltage["sensor"] = "voltage";
+    voltage["displayName"] = "Battery Voltage";
+    voltage["data"] = busvoltage;
+    voltage["unit"] = "V";
+    
+    JsonObject& current = data.createNestedObject();
+    current["sensor"] = "current";
+    current["displayName"] = "Current Usage";
+    current["data"] = curr;
+    current["unit"] = "mA";
+    
+    char buffer[250];
+    root.printTo(buffer, sizeof(buffer));
+    
+    client.print(buffer);
+  
+    delay(100);
+        
+    root.printTo(Serial);  
+    delay(100);
+        
+    root.printTo(Serial);
 
     } else {
         Serial.println("Attempting reconnect to hub");
@@ -105,16 +116,16 @@ void measureCurrent() {
 
   shuntvoltage = ina219.getShuntVoltage_mV();
   busvoltage = ina219.getBusVoltage_V();
-  current = ina219.getCurrent_mA();
+  curr = ina219.getCurrent_mA();
   loadvoltage = busvoltage + (shuntvoltage / 1000);
 
   Serial.print("Bus Voltage:   "); Serial.print(busvoltage); Serial.println(" V");
   Serial.print("Shunt Voltage: "); Serial.print(shuntvoltage); Serial.println(" mV");
   Serial.print("Load Voltage:  "); Serial.print(loadvoltage); Serial.println(" V");
-  Serial.print("Current:       "); Serial.print(current); Serial.println(" mA");
+  Serial.print("Current:       "); Serial.print(curr); Serial.println(" mA");
   Serial.println("");
 
-  if (current < 0) {
-    current = 0.0;
+  if (curr < 0) {
+    curr = 0.0;
   }
 }
