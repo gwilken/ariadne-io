@@ -1,0 +1,148 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+h3 {
+  margin: 1% 1%;
+}
+
+.mainContainer {
+  margin: 3% 1%;
+}
+
+.graphContainer {
+  position: relative;
+  margin-top: 0%;
+  margin-bottom: 2%;
+  margin-right: 2%;
+}
+
+.titlebar {
+  width: 90%;
+  position: absolute;
+  bottom: 25%;
+  left: 1%;
+  margin: 0% 2%;
+}
+
+.title {
+  display: inline;
+  font-size: 19px;
+  float: left;
+  color: white;
+  /*mix-blend-mode: exclusion;*/
+}
+
+.rtData {
+  display: inline;
+  margin-left: 3%;
+  float: right;
+  font-size: 48px;
+  color: white;
+  /*mix-blend-mode: exclusion;*/
+}
+
+.motorBattBar {
+  display: flex;
+  bottom: 35%;
+  position: absolute;
+  width: 92%;
+}
+
+.motorBattData {
+  position: relative;
+  margin-left: 11%;
+  font-size: 28px;
+  flex: 1;
+}
+
+.gaugeContainer {
+  position: relative;
+  min-height: 140px;
+}
+
+.gaugeLeft {
+  position: absolute;
+  left: 5%;
+}
+
+.gaugeRight {
+  position: absolute;
+  left: 51%;
+}
+
+.motorGauageBar {
+  margin: 3% 0;
+  display: flex;
+  width: 90%;
+}
+
+.motorGaugeData {
+  flex: 1;
+  font-size: 19px;
+}
+
+.ttdLabel {
+  margin-left: 15%;
+  font-size: 19px;
+}
+
+.rpmLabel {
+  margin-left: 33%;
+  font-size: 19px;
+}
+
+.geoContainer {
+  position: relative;
+  min-height: 140px;
+}
+
+.geoSpeed {
+  position: absolute;
+  left: 5%;
+}
+
+.geoLocation {
+  position: absolute;
+  left: 51%;
+  background-color: lightseagreen;
+  min-height: 110px;
+  width: 40%;
+}
+
+.geoLocLabel {
+  margin: 5% 5%;
+  font-size: 24px;
+}
+
+.historyContainer {
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  right: 0;
+  margin: 0 7%;
+  font-size: 30px;
+}
+
+.historySelect {
+  position: relative;
+  float: left;
+  width: 17%;
+  margin: 2% 0%;
+}
+
+.historyGraph {
+  position: relative;
+  float: right;
+  width: 100%;
+  margin: 1% 1%;
+}
+.sliderContainer {
+  position: absolute;
+  bottom: 1%;
+  width: 50%;
+  margin: -3% 5%;
+}

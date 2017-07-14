@@ -12,14 +12,10 @@ const char* password = "raspberry";
 
 Adafruit_INA219 ina219;
 
-String family = "Battery";
-String name = "Motor Battery #4";
-int id = 7;
 float shuntvoltage;
 float busvoltage;
 float current;
 float loadvoltage;
-
 
 void setup()   {
   client.setNoDelay(1);
@@ -65,24 +61,35 @@ void loop() {
 
    if (client.connected()) {
 
-    measureCurrent();
-
     delay(1000);
 
-    StaticJsonBuffer<200> jsonBuffer;
+    measureCurrent();
+
+    DynamicJsonBuffer jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
 
-    root["family"] = family;
-    root["name"] = name;
-    root["shuntvoltage"] = shuntvoltage;
-    root["busvoltage"] = busvoltage;
-    root["current"] = current;
-    root["loadvoltage"] = loadvoltage;
+    root["family"] = "motor";
+    root["displayName"] = "Battery 4";
 
-    WiFiClientPrint<200> p(client);
+    JsonArray& data = root.createNestedArray("data");
 
-    root.printTo(p);
-    p.stop();
+    JsonObject& voltage = data.createNestedObject();
+    voltage["sensor"] = "voltage";
+    voltage["displayName"] = "Battery Voltage";
+    voltage["data"] = busvoltage;
+    voltage["unit"] = "V";
+    
+    char buffer[250];
+    root.printTo(buffer, sizeof(buffer));
+    
+    client.print(buffer);
+  
+    delay(100);
+        
+    root.printTo(Serial);  
+    delay(100);
+        
+    root.printTo(Serial);
 
     } else {
         Serial.println("Attempting reconnect to hub");
