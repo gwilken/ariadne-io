@@ -42,11 +42,12 @@ var connect = function () {
 
 connect();
 
-
     setInterval(function() {
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
         ws.send( JSON.stringify( motor ) );
+        console.log(gps);
+        console.log(motor);
       };
     }, 1000);
 
@@ -56,6 +57,8 @@ connect();
 
         try {
           sensor = JSON.parse(data);
+
+          console.log(sensor);
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( sensor ) );
@@ -67,54 +70,3 @@ connect();
     });
 
     sensorServer.listen(3215, '192.168.10.1');
-
-  //
-  // if (ws.readyState !== WebSocket.OPEN) {
-  //
-  //   console.log('Attempting to reconnect to external server...');
-  //
-  //   ws = new WebSocket('ws://www.rednightsky.com:8080');
-  //
-  //   ws.on('error', function() {
-  //     console.log('Server not found.');
-  //   })
-  //
-  //   setTimeout(reconnect, 3000);
-  //
-  // } else
-  //
-  //     if (ws.readyState === WebSocket.OPEN) {
-  //       console.log('Reconnected.');
-  //     }
-
-
-  // wss.on('connection', (ws) => {
-  //   console.log('Websocket client connected...');
-  //
-  //   wss.on('error', function(err) {
-  //     console.log('error at web socket server:', err);
-  //   });
-  //
-
-  //
-
-  // });
-
-
-
-
-  //
-  // setInterval(function() {
-  //
-  //   wss.clients.forEach((client) => {
-  //     if (client.readyState === WebSocket.OPEN) {
-  //       client.send( JSON.stringify( sensor ) );
-  //     };
-  //   });
-  //
-  //     if (relayWs.readyState === WebSocket.OPEN) {
-  //       relayWs.send( JSON.stringify( sensor ) );
-  //     };
-  //
-  //
-  // }, realTimeInterval);
