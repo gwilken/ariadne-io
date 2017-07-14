@@ -12,12 +12,14 @@ var gps = {
     {
       sensor: 'speed',
       displayName: 'Speed',
-      data: null
+      data: null,
+      unit: 'Knots'
     },
     {
       sensor: 'tmg',
       displayName: 'Track Made Good',
-      data: null
+      data: null,
+      unit: '&deg;'
     },
     {
       sensor: 'siv',

@@ -10,22 +10,26 @@ var motor = {
     {
       sensor: "soc",
       displayName: "State of Charge",
-      data: null
+      data: null,
+      unit: '%'
     },
     {
       sensor: 'ttd',
       displayName: "Time to Discharge",
-      data: null
+      data: null,
+      unit: 'Hours'
     },
     {
       sensor: 'current',
       displayName: 'Current',
-      data: null
+      data: null,
+      unit: 'Amps'
     },
     {
       sensor: 'volts',
       displayName: 'Volts',
-      data: null
+      data: null,
+      unit: 'V'
     },
     {
       sensor: 'rpm',
