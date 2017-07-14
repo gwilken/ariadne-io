@@ -1,6 +1,6 @@
 
 const WebSocket = require('ws');
-const mongo = require("../model/mongo.js");
+//const mongo = require("../model/mongo.js");
 const url = require('url');
 const net = require("net");
 
@@ -27,7 +27,6 @@ var connect = function () {
 
   ws.on('error', function(err) {
     console.log('error at web socket.');
-    setTimeout(connect, 3000);
   });
 
   ws.on('close', () => {
@@ -35,8 +34,8 @@ var connect = function () {
   });
 
   ws.onclose = function() {
-    console.log('Connection to external server closed.');
-    setTimeout(connect, 3000);
+    console.log('Connection to external server closed. Attempting reconnect in 5 sec');
+    setTimeout(connect, 5000);
   };
 }
 
@@ -44,24 +43,33 @@ connect();
 
 
     setInterval(function() {
+
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
         ws.send( JSON.stringify( motor ) );
       };
-    }, 1000);
+    
+    }, 3000);
 
 
     const sensorServer = net.createServer(function(socket) {
       socket.on("data", function(data) {
 
+        //console.log(data.toString());
+
         try {
           sensor = JSON.parse(data);
+          console.log( sensor );
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( sensor ) );
+    
           };
 
-        } catch(err) {}
+        } catch(err) {
+
+          console.log(err);
+        }
 
       })
     });
