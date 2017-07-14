@@ -8,32 +8,32 @@ var motor = {
   displayName: "Electric Yacht 10kW Motor",
   data: [
     {
-      name: "soc",
+      sensor: "soc",
       displayName: "State of Charge",
       data: null
     },
     {
-      name: 'ttd',
+      sensor: 'ttd',
       displayName: "Time to Discharge",
       data: null
     },
     {
-      name: 'current',
+      sensor: 'current',
       displayName: 'Current',
       data: null
     },
     {
-      name: 'volts',
+      sensor: 'volts',
       displayName: 'Volts',
       data: null
     },
     {
-      name: 'rpm',
+      sensor: 'rpm',
       displayName: 'RPM',
       data: null
     },
     {
-      name: 'tempAlarm',
+      sensor: 'tempAlarm',
       displayName: 'Temperature Alarm',
       data: null
     }
