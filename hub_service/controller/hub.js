@@ -9,8 +9,10 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var ws;
+
 var packet = {};
-var record = {};
+var telemetry = {};
+var count = 0;
 const realTimeInterval = 3000;
 
 
@@ -57,10 +59,15 @@ connect();
 
         try {
           packet = JSON.parse(data);
+          Object.assign(telemetry, data);
 
-          if (mongo.collection) {
-            packet.createdAt = Date.now();
-            mongo.collection.insert(packet, function(err) {
+          count++;
+
+          if (count > 100 && mongo.collection) {
+            telemetry.createdAt = Date.now();
+            mongo.collection.insert(telemetry, function(err) {
+              count = 0;
+              console.log('telemetry added');
               if(err) console.log(err);
             });
           }
