@@ -48,10 +48,10 @@ connect();
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
         ws.send( JSON.stringify( motor ) );
-        console.log(gps);
-        console.log(motor);
+      //  console.log(gps);
+      //  console.log(motor);
       };
-    }, 3000);
+    }, 1000);
 
 
     const sensorServer = net.createServer(function(socket) {
