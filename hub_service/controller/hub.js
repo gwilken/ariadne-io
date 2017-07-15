@@ -59,17 +59,19 @@ connect();
 
         try {
           packet = JSON.parse(data);
-          Object.assign(telemetry, data);
+          Object.assign(telemetry, data, gps, motor);
 
           count++;
+
+          console.log(count);
 
           if (count > 100 && mongo.collection) {
             telemetry.createdAt = Date.now();
             mongo.collection.insert(telemetry, function(err) {
-              count = 0;
               console.log('telemetry added');
               if(err) console.log(err);
             });
+            count = 0;
           }
 
           if (ws.readyState === WebSocket.OPEN) {
