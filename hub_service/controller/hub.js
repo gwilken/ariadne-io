@@ -42,35 +42,27 @@ var connect = function () {
 connect();
 
     setInterval(function() {
-
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
         ws.send( JSON.stringify( motor ) );
         console.log(gps);
         console.log(motor);
       };
-    
     }, 3000);
 
 
     const sensorServer = net.createServer(function(socket) {
       socket.on("data", function(data) {
 
-        //console.log(data.toString());
-
         try {
           sensor = JSON.parse(data);
-          console.log( sensor );
-
-          console.log(sensor);
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( sensor ) );
-    
+
           };
 
         } catch(err) {
-
           console.log(err);
         }
 

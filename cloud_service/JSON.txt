@@ -1,0 +1,663 @@
+Motor connected.
+GPS connected via Kplex at port 101110.
+Websocket connection open.
+{ family: 'gps',
+  displayName: 'Geospatial',
+  data: 
+   [ { sensor: 'position', displayName: 'Position', data: [Object] },
+     { sensor: 'speed',
+       displayName: 'Speed',
+       data: null,
+       unit: 'Knots' },
+     { sensor: 'tmg',
+       displayName: 'Track Made Good',
+       data: null,
+       unit: '&deg;' },
+     { sensor: 'siv', displayName: 'Satellites in View', data: null } ] }
+{ family: 'motor',
+  displayName: 'Electric Yacht 10kW Motor',
+  data: 
+   [ { sensor: 'soc',
+       displayName: 'State of Charge',
+       data: 255,
+       unit: '%' },
+     { sensor: 'ttd',
+       displayName: 'Time to Discharge',
+       data: 99.9,
+       unit: 'Hours' },
+     { sensor: 'current',
+       displayName: 'Current',
+       data: 0.9,
+       unit: 'Amps' },
+     { sensor: 'volts', displayName: 'Volts', data: 52.61, unit: 'V' },
+     { sensor: 'rpm', displayName: 'RPM', data: 0 },
+     { sensor: 'tempAlarm',
+       displayName: 'Temperature Alarm',
+       data: 0 } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.172,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.172,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.172,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.172,
+       unit: 'V' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 13.004,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1795,
+       unit: 'mA' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 13.004,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1795,
+       unit: 'mA' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.744,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 2986.5,
+       unit: 'mA' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.744,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 2986.5,
+       unit: 'mA' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.52,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.59375,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.068604,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.624962,
+       unit: 'm/s' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.52,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.59375,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.068604,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.624962,
+       unit: 'm/s' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.98,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1868,
+       unit: 'mA' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.98,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1868,
+       unit: 'mA' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'gps',
+  displayName: 'Geospatial',
+  data: 
+   [ { sensor: 'position', displayName: 'Position', data: [Object] },
+     { sensor: 'speed',
+       displayName: 'Speed',
+       data: null,
+       unit: 'Knots' },
+     { sensor: 'tmg',
+       displayName: 'Track Made Good',
+       data: null,
+       unit: '&deg;' },
+     { sensor: 'siv', displayName: 'Satellites in View', data: null } ] }
+{ family: 'motor',
+  displayName: 'Electric Yacht 10kW Motor',
+  data: 
+   [ { sensor: 'soc',
+       displayName: 'State of Charge',
+       data: 255,
+       unit: '%' },
+     { sensor: 'ttd',
+       displayName: 'Time to Discharge',
+       data: 99.9,
+       unit: 'Hours' },
+     { sensor: 'current',
+       displayName: 'Current',
+       data: 0.9,
+       unit: 'Amps' },
+     { sensor: 'volts', displayName: 'Volts', data: 52.61, unit: 'V' },
+     { sensor: 'rpm', displayName: 'RPM', data: 0 },
+     { sensor: 'tempAlarm',
+       displayName: 'Temperature Alarm',
+       data: 0 } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.728,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 5023,
+       unit: 'mA' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.728,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 5023,
+       unit: 'mA' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.509998,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.592773,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.06073,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.927678,
+       unit: 'm/s' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.509998,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.592773,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.06073,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.927678,
+       unit: 'm/s' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.988,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1935,
+       unit: 'mA' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.988,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1935,
+       unit: 'mA' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.732,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 4138,
+       unit: 'mA' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.732,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 4138,
+       unit: 'mA' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.509998,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.592773,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.009399,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.927678,
+       unit: 'm/s' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.509998,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.592773,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.009399,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.927678,
+       unit: 'm/s' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 1',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.136,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 2',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.176,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 3',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.164,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'motor',
+  displayName: 'Battery 4',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 13.14,
+       unit: 'V' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.992,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1936.5,
+       unit: 'mA' } ] }
+{ family: 'solar',
+  displayName: 'Solar',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Panel Voltage',
+       data: 12.992,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Ouput',
+       data: 1936.5,
+       unit: 'mA' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.736,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 3679.5,
+       unit: 'mA' } ] }
+{ family: 'house',
+  displayName: 'House',
+  data: 
+   [ { sensor: 'voltage',
+       displayName: 'Battery Voltage',
+       data: 12.736,
+       unit: 'V' },
+     { sensor: 'current',
+       displayName: 'Current Usage',
+       data: 3679.5,
+       unit: 'mA' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.52,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.59375,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.058777,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.410131,
+       unit: 'm/s' } ] }
+{ family: 'enviro',
+  displayName: 'Environmental',
+  data: 
+   [ { sensor: 'temp',
+       displayName: 'Temperature',
+       data: 32.52,
+       unit: 'C' },
+     { sensor: 'humidity',
+       displayName: 'Humidity',
+       data: 46.59375,
+       unit: '%' },
+     { sensor: 'pressure',
+       displayName: 'Barometric Pressure',
+       data: 1014.058777,
+       unit: 'hPa' },
+     { sensor: 'windspeed',
+       displayName: 'Wind Speed',
+       data: 0.410131,
+       unit: 'm/s' } ] }

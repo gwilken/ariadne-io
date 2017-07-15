@@ -14,12 +14,9 @@ wss.on('connection', function connection(ws) {
 
     if(mongo.collection) {
 
-        if(data.name) {
-          telemetry[data.name] = data;
-        } else
-
         if(data.family) {
           telemetry[data.family] = data;
+          telemetry.createdAt = Date.now();
         }
 
         count++;

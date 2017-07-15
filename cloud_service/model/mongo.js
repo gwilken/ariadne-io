@@ -4,9 +4,7 @@ const assert = require('assert');
 const url = 'mongodb://localhost:27017/ariadneIO';
 
 var mongo = {
-
     db: null,
-
     collection: null,
 
     connect: function() {
