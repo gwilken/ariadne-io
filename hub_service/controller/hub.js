@@ -1,6 +1,6 @@
 
 const WebSocket = require('ws');
-//const mongo = require("../model/mongo.js");
+const mongo = require("../model/mongo.js");
 const url = require('url');
 const net = require("net");
 
@@ -9,7 +9,8 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var ws;
-var sensor = {};
+var packet = {};
+var record = {};
 const realTimeInterval = 3000;
 
 
@@ -55,12 +56,20 @@ connect();
       socket.on("data", function(data) {
 
         try {
-          sensor = JSON.parse(data);
+          packet = JSON.parse(data);
+
+          if (mongo.collection) {
+            packet.createdAt = Date.now();
+            mongo.collection.insert(packet, function(err) {
+              if(err) console.log(err);
+            });
+          }
 
           if (ws.readyState === WebSocket.OPEN) {
-            ws.send( JSON.stringify( sensor ) );
-
+            ws.send( JSON.stringify( packet ) );
           };
+
+
 
         } catch(err) {
           console.log(err);
