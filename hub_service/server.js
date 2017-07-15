@@ -16,7 +16,7 @@ require("./controller/hub");
 // app.use(express.static("./public"));
 // app.use("/", routes);
 
-// //mongo.connect();
+mongo.connect();
 
 // app.listen(PORT, function() {
 //   console.log("Server listening on port", PORT);
