@@ -10,7 +10,9 @@ const motor = require("./motor");
 const sensor = require("./wifisensors");
 
 var ws;
-var telemetry = [];
+var sensorsArr = [];
+var gpsArr = [];
+var motorArr = [];
 
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
@@ -44,18 +46,7 @@ setInterval(function() {
     ws.send( JSON.stringify( sensor ) );
   };
 
-  telemetry.push(gps);
-  telemetry.push(motor);
-  telemetry.push(sensor);
-
 }, 1000);
-
-setInterval(function() {
-
-  console.log(telemetry);
-
-}, 5000)
-
 
 
 connect();

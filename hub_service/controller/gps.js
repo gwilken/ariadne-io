@@ -1,5 +1,8 @@
 const net = require("net");
 const nmea = require("nmea-simple");
+const mongo = require("../model/mongo.js");
+
+var count = 0;
 
 var gps = {
   family: 'gps',
@@ -53,6 +56,16 @@ gpsSocket.on("data", function(data) {
     };
 
   } catch (error) { }   //catch AIS messages that would otherwise break the parser.
+
+  count++;
+
+  if(count === 60) {
+    mongo.collection.insert(gps, function(err) {
+      if(err) console.log('error at gps mongo insert', err);
+      console.log('gps data inserted');
+    })
+    count = 0;
+  }
 
 });
 
