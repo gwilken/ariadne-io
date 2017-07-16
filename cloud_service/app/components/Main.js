@@ -34,8 +34,7 @@ class Main extends React.Component {
     var ws = new WebSocket('ws://www.rednightsky.com:8080');
 
     ws.onmessage = function(event) {
-      var telemetry = JSON.parse(event.data);
-      this.setState({telemetry: telemetry});
+      this.setState({telemetry: event.data});
     }.bind(this);
   }
 
