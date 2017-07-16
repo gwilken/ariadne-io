@@ -67,6 +67,10 @@ router.get('/data/:time', function(req, res) {
 
 router.get('/telemetry/:family/:time', function(req, res) {
 
+  console.log(req.params.family);
+
+  console.log(req.params.time);
+
   var secs = Date.now() - (req.params.time * 60000);
   var objID = ObjectId.createFromTime(secs/1000);
 
@@ -76,7 +80,7 @@ router.get('/telemetry/:family/:time', function(req, res) {
       res.end();
     } else {
 
-        var filteredDocs = docs.filter((elem) => {
+        var filteredDocs = docs.filter( (elem) => {
           return elem.family === req.params.family;
         })
 
