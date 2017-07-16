@@ -111,6 +111,8 @@ class Main extends React.Component {
 
   render() {
 
+    var list = this.state.telemetry.map((elem) => { return elem.family; })
+
     var content;
     var solar;
     var house;
@@ -118,7 +120,7 @@ class Main extends React.Component {
     var enviro;
     var geo;
 
-    if(this.state.solar) {
+    if(list.includes('solar')) {
       solar = (
         <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
           <Solar data={this.state.solar} />

@@ -20995,6 +20995,10 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      var list = this.state.telemetry.map(function (elem) {
+	        return elem.family;
+	      });
+
 	      var content;
 	      var solar;
 	      var house;
@@ -21002,7 +21006,7 @@
 	      var enviro;
 	      var geo;
 
-	      if (this.state.solar) {
+	      if (list.includes('solar')) {
 	        solar = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
