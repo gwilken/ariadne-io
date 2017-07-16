@@ -12,19 +12,28 @@ const sensorServer = net.createServer(function(socket) {
     try {
       packet = JSON.parse(data);
 
-      //Object.assign(sensor, packet);
+      var list = telemetry.map((elem) => { return elem.displayName; })
 
+      if(list.indexOf(packet.displayName) === -1) {
 
+        telemetry.push(packet);
 
-        var list = telemetry.map((elem) => { return elem.displayName; })
+      } else {
 
-        if(list.indexOf(packet.displayName) === -1) {
-
-          telemetry.push(packet);
-
-        } else {
+        if(telemetry[list.indexOf(packet.displayName] !== packet) {
 
           telemetry.splice(list.indexOf(packet.displayName), 1, packet);
+
+          console.log('difference: ');
+          console.log(telemetry[list.indexOf(packet.displayName]);
+          console.log(packet);
+
+        } else {
+          console.log('no difference: ');
+          console.log(telemetry[list.indexOf(packet.displayName]);
+          console.log(packet);
+          }
+
 
         }
 
