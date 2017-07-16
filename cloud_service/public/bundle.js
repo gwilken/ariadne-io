@@ -21038,7 +21038,7 @@
 	            solar,
 	            motor,
 	            enviro,
-	            geo
+	            gps
 	          );
 	        }
 	      }

@@ -150,7 +150,7 @@ class Main extends React.Component {
                     {solar}
                     {motor}
                     {enviro}
-                    {geo}
+                    {gps}
             </div>
           )
         }
