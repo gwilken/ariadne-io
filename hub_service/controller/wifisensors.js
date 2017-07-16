@@ -18,9 +18,10 @@ const sensorServer = net.createServer(function(socket) {
           element.displayName === packet.displayName;
         })) {
 
-        telemetry.push(packet);
+          telemetry.splice(telemetry.indexOf(packet.displayName), 1, packet);
+
       } else {
-        telemetry.splice(telemetry.indexOf(packet.displayName), 1, packet);
+        telemetry.push(packet);
       }
 
 
