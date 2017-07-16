@@ -42,19 +42,21 @@ var connect = function () {
 setInterval(function() {
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( motor ) );
-  };
-}, 5000);
-
-setInterval(function() {
-  if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( gps ) );
-  };
-}, 5000);
-
-setInterval(function() {
-  if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( sensor ) );
   };
-}, 1500);
+}, 1000);
+
+// setInterval(function() {
+//   if (ws.readyState === WebSocket.OPEN) {
+//     ws.send( JSON.stringify( gps ) );
+//   };
+// }, 1000);
+//
+// setInterval(function() {
+//   if (ws.readyState === WebSocket.OPEN) {
+//     ws.send( JSON.stringify( sensor ) );
+//   };
+// }, 1000);
 
 connect();
