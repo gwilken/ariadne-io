@@ -1,10 +1,6 @@
 const SerialPort = require("serialport");
-const mongo = require("../model/mongo.js");
-const ObjectID = require('mongodb').ObjectID;
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
-
-var count = 0;
 
 var motor = {
   family: "motor",
@@ -75,21 +71,7 @@ motorPort.on('data', function (data) {
       motor.data[4].data = ((motorData[16] << 8) + motorData[15]) / 100;
       motor.data[5].data = motorData[19];
     };
-
   };
-
-  count++;
-
-  if(count === 1000) {
-    var motorObj = Object.assign({}, motor);
-    motorObj._id = new ObjectID();
-    mongo.collection.insert(motorObj, function(err) {
-      if(err) console.log('error at motor mongo insert', err);
-      console.log('motor data inserted');
-    })
-    count = 0;
-  }
-
 });
 
 motorPort.on('close', function() {

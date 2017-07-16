@@ -37,7 +37,6 @@ var connect = function () {
 }
 
 setInterval(function() {
-
   var list = telemetry.map((elem) => { return elem.displayName; })
 
   if(list.indexOf(motor.displayName) === -1) {
@@ -57,12 +56,10 @@ setInterval(function() {
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( telemetry ) );
   };
-
 }, 1000);
 
 
 setInterval(function() {
-
   var doc = {};
   doc.telemetry = telemetry;
   doc.createdAt = Date.now();
@@ -70,7 +67,6 @@ setInterval(function() {
   mongo.collection.insert(doc, function(err) {
     if(err) console.log('error at mongo insert telemetry', err);
   })
-
-}, 5000)
+}, 30000)
 
 connect();

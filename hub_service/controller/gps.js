@@ -1,9 +1,5 @@
 const net = require("net");
 const nmea = require("nmea-simple");
-const mongo = require("../model/mongo.js");
-const ObjectID = require('mongodb').ObjectID;
-
-var count = 0;
 
 var gps = {
   family: 'gps',
@@ -57,18 +53,6 @@ gpsSocket.on("data", function(data) {
     };
 
   } catch (error) { }   //catch AIS messages that would otherwise break the parser.
-
-  count++;
-
-  if(count === 200) {
-    var gpsData = Object.assign({}, gps);
-    gpsData._id = new ObjectID();
-    mongo.collection.insert(gpsData, function(err) {
-      if(err) console.log('error at gps mongo insert', err);
-      console.log('gps data inserted');
-    })
-    count = 0;
-  }
 
 });
 
