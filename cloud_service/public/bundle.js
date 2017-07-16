@@ -57571,6 +57571,31 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: socData,
+	            options: socOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'State of Charge'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              motorSOC[0].data.mapRange(0, 255, 0, 100),
+	              '%'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
 	          _react2.default.createElement(_reactChartjs.Bar, { data: batteryGroupData,
 	            options: batteryGroupOptions,
 	            width: 800,

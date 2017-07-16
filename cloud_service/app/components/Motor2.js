@@ -351,7 +351,18 @@ class Motor extends React.Component {
 
 
 
+          <div className="graphContainer">
+            <HorizontalBar data={socData}
+              options={socOptions}
+                width={800}
+                height={140}
+            />
 
+            <div className="titlebar">
+              <div className="title">State of Charge</div>
+              <div className="rtData"> {motorSOC[0].data.mapRange(0,255,0,100)}%</div>
+            </div>
+          </div>
 
 
         <div className="graphContainer">
