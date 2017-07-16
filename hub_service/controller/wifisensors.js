@@ -20,8 +20,8 @@ const sensorServer = net.createServer(function(socket) {
     count++;
 
     if(count === 100) {
-      sensor._id = new ObjectID();
-      mongo.collection.insert(sensor, function(err) {
+      packet._id = new ObjectID();
+      mongo.collection.insert(packet, function(err) {
         if(err) console.log('error at sensor mongo insert', err);
         console.log('sensor data inserted');
       })

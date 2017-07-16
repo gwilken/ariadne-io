@@ -80,8 +80,9 @@ motorPort.on('data', function (data) {
   count++;
 
   if(count === 1000) {
-    motor._id = new ObjectID();
-    mongo.collection.insert(motor, function(err) {
+    var motorData = Object.assign({}, motor);
+    motorData._id = new ObjectID();
+    mongo.collection.insert(motorData, function(err) {
       if(err) console.log('error at motor mongo insert', err);
       console.log('motor data inserted');
     })
