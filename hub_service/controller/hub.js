@@ -10,7 +10,7 @@ const motor = require("./motor");
 
 var ws;
 var packet = {};
-var telemetry = {};
+var documents = [];
 var count = 0;
 const realTimeInterval = 3000;
 
@@ -44,11 +44,13 @@ var connect = function () {
 connect();
 
     setInterval(function() {
+
+      documents.push(gps);
+      documents.push(motor);
+
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
         ws.send( JSON.stringify( motor ) );
-      //  console.log(gps);
-      //  console.log(motor);
       };
     }, 1000);
 
@@ -58,19 +60,17 @@ connect();
 
         try {
           packet = JSON.parse(data);
-          Object.assign(telemetry, {packet}, {gps}, {motor});
 
-          count++;
+          documents.push(packet);
 
-          console.log(count);
+          if (documents.length > 20 && mongo.collection) {
 
-          if (count > 100 && mongo.collection) {
-            telemetry.createdAt = Date.now();
-            mongo.collection.insert(telemetry, function(err) {
-              console.log('telemetry added');
+            mongo.collection.insertMany(documents, function(err) {
+              console.log('docs added');
               if(err) console.log(err);
             });
-            count = 0;
+
+            documents = [];
           }
 
           if (ws.readyState === WebSocket.OPEN) {
