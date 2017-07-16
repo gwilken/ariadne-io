@@ -45,9 +45,9 @@ h3 {
 
 .motorBattBar {
   display: flex;
-  bottom: 35%;
+  bottom: 20%;
   position: absolute;
-  width: 92%;
+  width: 93%;
 }
 
 .motorBattData {

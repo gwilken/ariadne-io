@@ -52501,9 +52501,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        ' ',
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          this.props.data[0].displayName
 	        ),
@@ -52713,9 +52712,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        ' ',
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          this.props.data[0].displayName
 	        ),
@@ -57247,6 +57245,10 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
+	  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+	};
+
 	var Motor = function (_React$Component) {
 	  _inherits(Motor, _React$Component);
 
@@ -57292,14 +57294,19 @@
 	        var bankVoltage = motorData[0].data.filter(function (elem) {
 	          return elem.sensor === "volts";
 	        });
+	        var motorSOC = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "soc";
+	        });
+	        var motorCurrent = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "current";
+	        });
+	        var motorTTD = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "ttd";
+	        });
+	        var motorRPM = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "rpm";
+	        });
 	      }
-	      //
-	      //
-	      // var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
-	      // var rpm = this.state.ey.rpm + ' RPM';
-	      //
-	      // var rtCurrent = this.state.ey.current + ' Ah';
-	      // var rtBankVolt = this.state.ey.volts + ' v';
 
 	      var batteryGroupData = {
 	        labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
@@ -57474,6 +57481,52 @@
 	            }
 	          }]
 	        }
+	      };
+
+	      var socData = {
+	        labels: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
+	        datasets: [{
+	          labels: '',
+	          data: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var socOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 100
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
 
 	        //   var rpmData = {
 	        //     labels: ["Red", "darker red"],
@@ -57511,7 +57564,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          'Motor'
 	        ),
@@ -57531,28 +57584,28 @@
 	              { className: 'motorBattData' },
 	              ' ',
 	              battery1_volts,
-	              ' '
+	              ' V'
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'motorBattData' },
 	              ' ',
 	              battery2_volts,
-	              ' '
+	              ' V'
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'motorBattData' },
 	              ' ',
 	              battery3_volts,
-	              ' '
+	              ' V'
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'motorBattData' },
 	              ' ',
 	              battery4_volts,
-	              ' '
+	              ' V'
 	            )
 	          )
 	        ),
@@ -57577,7 +57630,7 @@
 	              { className: 'rtData' },
 	              ' ',
 	              bankVoltage[0].data.toFixed(2),
-	              ' '
+	              ' V'
 	            )
 	          )
 	        )

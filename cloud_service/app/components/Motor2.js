@@ -3,6 +3,10 @@ import {Bar} from 'react-chartjs-2';
 import {Doughnut} from 'react-chartjs-2';
 import {HorizontalBar} from 'react-chartjs-2';
 
+Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
+  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 class Motor extends React.Component {
 
   constructor(props) {
@@ -30,16 +34,11 @@ class Motor extends React.Component {
 
     if(motorData.length > 0) {
       var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
-
-
+      var motorSOC = motorData[0].data.filter((elem) => {return elem.sensor === "soc"});
+      var motorCurrent = motorData[0].data.filter((elem) => {return elem.sensor === "current"});
+      var motorTTD = motorData[0].data.filter((elem) => {return elem.sensor === "ttd"});
+      var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
-      //
-      //
-      // var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
-      // var rpm = this.state.ey.rpm + ' RPM';
-      //
-      // var rtCurrent = this.state.ey.current + ' Ah';
-      // var rtBankVolt = this.state.ey.volts + ' v';
 
       var batteryGroupData = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
@@ -220,6 +219,54 @@ class Motor extends React.Component {
     }
   }
 
+  var socData = {
+      labels: [motorSOC[0].data.mapRange(0,255,0,100)],
+      datasets: [
+          {
+            labels: '',
+            data: [motorSOC[0].data.mapRange(0,255,0,100)],
+            backgroundColor: ['firebrick']
+          }
+       ]
+     };
+
+  var socOptions = {
+  layout: {
+    padding: {
+      left: 15,
+    },
+  },
+  tooltips: {
+    enabled: false,
+  },
+  legend: {
+    display: false,
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    yAxes: [{
+      ticks: {
+        min: 0,
+        max: 0,
+        display: false,
+      },
+      barThickness: 120,
+      display: false,
+    }],
+    xAxes: [{
+      ticks: {
+        min: 0,
+        max: 100,
+      },
+      gridLines: {
+        display: false,
+        drawTicks: true,
+      },
+    }]
+  }
+  }
+
   //   var rpmData = {
   //     labels: ["Red", "darker red"],
   //     datasets: [{
@@ -256,7 +303,7 @@ class Motor extends React.Component {
 
       <div>
 
-        <h3>Motor</h3>
+        <h2>Motor</h2>
 
 
          {/* <div className="graphContainer">
@@ -315,10 +362,10 @@ class Motor extends React.Component {
             />
 
           <div className="motorBattBar">
-            <div className="motorBattData"> {battery1_volts} </div>
-            <div className="motorBattData"> {battery2_volts} </div>
-            <div className="motorBattData"> {battery3_volts} </div>
-            <div className="motorBattData"> {battery4_volts} </div>
+            <div className="motorBattData"> {battery1_volts} V</div>
+            <div className="motorBattData"> {battery2_volts} V</div>
+            <div className="motorBattData"> {battery3_volts} V</div>
+            <div className="motorBattData"> {battery4_volts} V</div>
           </div>
         </div>
 
@@ -331,23 +378,9 @@ class Motor extends React.Component {
 
           <div className="titlebar">
             <div className="title">Total Bank Voltage</div>
-            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} </div>
+            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} V</div>
           </div>
         </div>
-
-          {/* <div className="graphContainer">
-            <Line data={voltGraphData}
-                options={voltChartOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title"> Volts</div>
-              <div className="rtData"> {this.props.data.loadvoltage} V </div>
-            </div>
-          </div> */}
-
 
       </div>
       )

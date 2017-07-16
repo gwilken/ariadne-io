@@ -115,7 +115,10 @@ class Solar extends React.Component {
 
     return (
 
-      <div> <h3>{this.props.data[0].displayName}</h3>
+      <div>
+
+        <h2>{this.props.data[0].displayName}</h2>
+
         <div>
 
           <div className="graphContainer">
