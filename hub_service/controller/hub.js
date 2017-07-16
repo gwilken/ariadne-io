@@ -52,13 +52,13 @@ setInterval(function() {
   packets.push(sensor);
   console.log(sensor);
 
-  if (packets.length >= 20 && mongo.collection) {
-    mongo.collection.insertMany(packets, function(err) {
-      if(err) console.log(err);
-      console.log('packets added to db');
-    });
-    packets = [];
-  }
+  // if (packets.length >= 20 && mongo.collection) {
+  //   mongo.collection.insertMany(packets, function(err) {
+  //     if(err) console.log(err);
+  //     console.log('packets added to db');
+  //   });
+  //   packets = [];
+  // }
 
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( gps ) );
