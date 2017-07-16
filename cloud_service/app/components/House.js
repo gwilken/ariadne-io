@@ -12,7 +12,7 @@ class House extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/telemetry/house/20')
+    fetch('/telemetry/house/100')
       .then((res) => res.json())
         .then(function(objs) {
           console.log(objs);
