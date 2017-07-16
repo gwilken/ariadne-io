@@ -18,10 +18,12 @@ class Motor extends React.Component {
 
 
     var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+    var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
+    var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
+    var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
+    var battery5 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 5'});
 
-    console.log(battery1);
-
-
+console.log(battery5);
 
       var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
       var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
