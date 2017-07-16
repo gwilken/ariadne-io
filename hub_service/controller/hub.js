@@ -79,11 +79,12 @@ const sensorServer = net.createServer(function(socket) {
 });
 
 
-if (packets.length >= 300 && mongo.collection) {
+if (packets.length >= 50 && mongo.collection) {
   var documents = packets.slice();
   packets = [];
   mongo.collection.insertMany(documents, function(err) {
     if(err) console.log(err);
+    console.log('packets added to db');
   });
 }
 
