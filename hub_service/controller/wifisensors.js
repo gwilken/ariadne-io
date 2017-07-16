@@ -1,4 +1,6 @@
 const net = require("net");
+const ObjectID = require('mongodb').ObjectID;
+const mongo = require("../model/mongo.js");
 
 var packet = {};
 var sensor = {};
@@ -17,7 +19,7 @@ const sensorServer = net.createServer(function(socket) {
 
     count++;
 
-    if(count === 500) {
+    if(count === 100) {
       sensor._id = new ObjectID();
       mongo.collection.insert(sensor, function(err) {
         if(err) console.log('error at sensor mongo insert', err);
