@@ -57642,7 +57642,21 @@
 	              options: rpmOptions,
 	              width: 400,
 	              height: 280
-	            })
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rpm-label-container' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rpm-label-data' },
+	                motorRPM[0].data
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rpm-label' },
+	                'RPM'
+	              )
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(

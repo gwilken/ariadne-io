@@ -359,6 +359,12 @@ class Motor extends React.Component {
                   width={400}
                   height={280}
               />
+
+              <div className="rpm-label-container">
+                <div className="rpm-label-data">{motorRPM[0].data}</div>
+                <div className="rpm-label">RPM</div>
+              </div>
+
             </div>
 
           </div>
