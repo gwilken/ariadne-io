@@ -61,9 +61,8 @@ setInterval(function() {
       if(err) console.log(err);
       console.log('packets added to db');
     });
-  }, 5000);
+}, 5000);
 
-})
 
 
 connect();
