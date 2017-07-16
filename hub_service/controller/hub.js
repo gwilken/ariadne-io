@@ -10,7 +10,7 @@ const motor = require("./motor");
 const sensor = require("./wifisensors");
 
 var ws;
-var telemetry = {};
+var telemetry = [];
 
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
@@ -44,11 +44,19 @@ setInterval(function() {
     ws.send( JSON.stringify( sensor ) );
   };
 
-if(gps.displayName) Object.assign(telemetry[gps.displayName], gps);
-if(motor.displayName) Object.assign(telemetry[motor.displayName], motor);
-if(sensor.displayName) Object.assign(telemetry[sensor.displayName], sensor);
+  telemetry.push(gps);
+  telemetry.push(motor);
+  telemetry.push(sensor);
 
-  console.log(telemetry);
+  if(telemetry.length > 100) {
+
+    mongo.collection.insert(telemetry, function(err) {
+      if(err) console.log(err);
+    })
+
+    telemetry = [];
+    
+  }
 
 }, 1000);
 
