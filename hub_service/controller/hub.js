@@ -55,6 +55,6 @@ setInterval(function() {
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( sensor ) );
   };
-}, 1000);
+}, 1500);
 
 connect();
