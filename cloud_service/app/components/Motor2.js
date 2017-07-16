@@ -21,20 +21,30 @@ class Motor extends React.Component {
     var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
-    var battery5 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 5'});
 
-console.log(battery5);
+    if(battery1.length > 0) {
+      var battery1_volts = battery1[0].data[0].data;
+    }
 
-      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
-      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
-      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
-      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
+    if(battery2.length > 0) {
+      var battery2_volts = battery2[0].data[0].data;
+    }
 
-      var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
-      var rpm = this.state.ey.rpm + ' RPM';
+    if(battery3.length > 0) {
+      var battery3_volts = battery3[0].data[0].data;
+    }
 
-      var rtCurrent = this.state.ey.current + ' Ah';
-      var rtBankVolt = this.state.ey.volts + ' v';
+    if(battery4.length > 0) {
+      var battery4_volts = battery4[0].data[0].data;
+    }
+
+      //
+      //
+      // var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
+      // var rpm = this.state.ey.rpm + ' RPM';
+      //
+      // var rtCurrent = this.state.ey.current + ' Ah';
+      // var rtBankVolt = this.state.ey.volts + ' v';
 
       var data = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
@@ -45,7 +55,7 @@ console.log(battery5);
             borderWidth: 1,
             // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
             // hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
+            data: [battery1_volts, battery2_volts, battery3_volts, battery4_volts]
           }
         ]
       };
@@ -91,165 +101,165 @@ console.log(battery5);
           ]
         }
       }
-      var ttdData = {
-        labels: ["Red", "darker red"],
-        datasets: [{
-            label: '',
-            data: [ this.state.ey.ttd ],
-            backgroundColor: [
-                'firebrick',
-                'rgb(0,0,0)'
-            ],
-            borderColor: ['firebrick', 'firebrick'],
-
-            borderWidth: 1
-        }]
-      };
-
-      var ttdOptions = {
-        rotation: 1 * Math.PI,
-        circumference: 1 * Math.PI,
-        tooltips: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-          position: 'top',
-        },
-        animation: {
-          // duration: 100,
-          easing: 'linear'
-        },
-        maintainAspectRatio: false
-      };
-
-      var currentData = {
-          labels: [this.state.ey.current],
-          datasets: [
-              {
-                labels: '',
-                data: [this.state.ey.current],
-                backgroundColor: ['firebrick']
-              }
-           ]
-         };
-
-      var currentOptions = {
-      layout: {
-        padding: {
-          left: 15,
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-            display: false,
-          },
-          barThickness: 120,
-          display: false,
-        }],
-        xAxes: [{
-          ticks: {
-            min: 0,
-            max: 10,
-          },
-          gridLines: {
-            display: false,
-            drawTicks: true,
-          },
-        }]
-      }
-    }
-
-    var voltBankData = {
-        labels: [this.state.ey.volts],
-        datasets: [
-            {
-              labels: '',
-              data: [this.state.ey.volts],
-              backgroundColor: ['firebrick']
-            }
-         ]
-       };
-
-    var voltBankOptions = {
-    layout: {
-      padding: {
-        left: 15,
-      },
-    },
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 0,
-          display: false,
-        },
-        barThickness: 120,
-        display: false,
-      }],
-      xAxes: [{
-        ticks: {
-          min: 0,
-          max: 60,
-        },
-        gridLines: {
-          display: false,
-          drawTicks: true,
-        },
-      }]
-    }
-  }
-
-    var rpmData = {
-      labels: ["Red", "darker red"],
-      datasets: [{
-          label: '',
-          data: [ this.state.ey.rpm, 9 ],
-          backgroundColor: [
-              'firebrick',
-              'rgb(0,0,0)'
-          ],
-          borderColor: ['firebrick', 'firebrick'],
-
-          borderWidth: 1
-      }]
-    };
-
-    var rpmOptions = {
-      rotation: 1 * Math.PI,
-      circumference: 1 * Math.PI,
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        // duration: 100,
-        easing: 'linear'
-      },
-      maintainAspectRatio: false
-    };
+  //     var ttdData = {
+  //       labels: ["Red", "darker red"],
+  //       datasets: [{
+  //           label: '',
+  //           data: [ this.state.ey.ttd ],
+  //           backgroundColor: [
+  //               'firebrick',
+  //               'rgb(0,0,0)'
+  //           ],
+  //           borderColor: ['firebrick', 'firebrick'],
+  //
+  //           borderWidth: 1
+  //       }]
+  //     };
+  //
+  //     var ttdOptions = {
+  //       rotation: 1 * Math.PI,
+  //       circumference: 1 * Math.PI,
+  //       tooltips: {
+  //         enabled: false,
+  //       },
+  //       legend: {
+  //         display: false,
+  //         position: 'top',
+  //       },
+  //       animation: {
+  //         // duration: 100,
+  //         easing: 'linear'
+  //       },
+  //       maintainAspectRatio: false
+  //     };
+  //
+  //     var currentData = {
+  //         labels: [this.state.ey.current],
+  //         datasets: [
+  //             {
+  //               labels: '',
+  //               data: [this.state.ey.current],
+  //               backgroundColor: ['firebrick']
+  //             }
+  //          ]
+  //        };
+  //
+  //     var currentOptions = {
+  //     layout: {
+  //       padding: {
+  //         left: 15,
+  //       },
+  //     },
+  //     tooltips: {
+  //       enabled: false,
+  //     },
+  //     legend: {
+  //       display: false,
+  //     },
+  //     responsive: true,
+  //     maintainAspectRatio: false,
+  //     scales: {
+  //       yAxes: [{
+  //         ticks: {
+  //           min: 0,
+  //           max: 0,
+  //           display: false,
+  //         },
+  //         barThickness: 120,
+  //         display: false,
+  //       }],
+  //       xAxes: [{
+  //         ticks: {
+  //           min: 0,
+  //           max: 10,
+  //         },
+  //         gridLines: {
+  //           display: false,
+  //           drawTicks: true,
+  //         },
+  //       }]
+  //     }
+  //   }
+  //
+  //   var voltBankData = {
+  //       labels: [this.state.ey.volts],
+  //       datasets: [
+  //           {
+  //             labels: '',
+  //             data: [this.state.ey.volts],
+  //             backgroundColor: ['firebrick']
+  //           }
+  //        ]
+  //      };
+  //
+  //   var voltBankOptions = {
+  //   layout: {
+  //     padding: {
+  //       left: 15,
+  //     },
+  //   },
+  //   tooltips: {
+  //     enabled: false,
+  //   },
+  //   legend: {
+  //     display: false,
+  //   },
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  //   scales: {
+  //     yAxes: [{
+  //       ticks: {
+  //         min: 0,
+  //         max: 0,
+  //         display: false,
+  //       },
+  //       barThickness: 120,
+  //       display: false,
+  //     }],
+  //     xAxes: [{
+  //       ticks: {
+  //         min: 0,
+  //         max: 60,
+  //       },
+  //       gridLines: {
+  //         display: false,
+  //         drawTicks: true,
+  //       },
+  //     }]
+  //   }
+  // }
+  //
+  //   var rpmData = {
+  //     labels: ["Red", "darker red"],
+  //     datasets: [{
+  //         label: '',
+  //         data: [ this.state.ey.rpm, 9 ],
+  //         backgroundColor: [
+  //             'firebrick',
+  //             'rgb(0,0,0)'
+  //         ],
+  //         borderColor: ['firebrick', 'firebrick'],
+  //
+  //         borderWidth: 1
+  //     }]
+  //   };
+  //
+  //   var rpmOptions = {
+  //     rotation: 1 * Math.PI,
+  //     circumference: 1 * Math.PI,
+  //     tooltips: {
+  //       enabled: false,
+  //     },
+  //     legend: {
+  //       display: false,
+  //       position: 'top',
+  //     },
+  //     animation: {
+  //       // duration: 100,
+  //       easing: 'linear'
+  //     },
+  //     maintainAspectRatio: false
+  //   };
 
     return (
 
@@ -258,7 +268,7 @@ console.log(battery5);
         <h3>Motor</h3>
 
 
-        <div className="graphContainer">
+        {/* <div className="graphContainer">
 
           <HorizontalBar data={currentData}
             options={currentOptions}
@@ -296,7 +306,7 @@ console.log(battery5);
 
           <div className="motorGauageBar">
             {/* <div className="title">Motor Batts</div> */}
-            <div className="ttdLabel"> {ttd} </div>
+            {/* <div className="ttdLabel"> {ttd} </div>
             <div className="rpmLabel"> {rpm} </div>
           </div>
 
@@ -314,23 +324,24 @@ console.log(battery5);
             <div className="title">Total Bank Voltage</div>
             <div className="rtData"> {rtBankVolt} </div>
           </div>
-        </div>
+        </div> */} */}
 
 
         <div className="graphContainer">
             <Bar data={data}
               options={options}
                 width={800}
-                height={140}
+                height={280}
             />
 
           <div className="motorBattBar">
             {/* <div className="title">Motor Batts</div> */}
-            <div className="motorBattData"> {rtBatt1} </div>
-            <div className="motorBattData"> {rtBatt2} </div>
-            <div className="motorBattData"> {rtBatt3} </div>
-            <div className="motorBattData"> {rtBatt4} </div>
+            <div className="motorBattData"> {battery1_volts} </div>
+            <div className="motorBattData"> {battery2_volts} </div>
+            <div className="motorBattData"> {battery3_volts} </div>
+            <div className="motorBattData"> {battery4_volts} </div>
           </div>
+
         </div>
 
           {/* <div className="graphContainer">
