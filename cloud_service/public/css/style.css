@@ -72,6 +72,18 @@ h3 {
   left: 60%;
 }
 
+.rpm-label-container {
+  position: absolute;
+}
+
+.rpm-label-data {
+  position: absolute;
+}
+
+.rpm-label {
+  position: absolute;
+}
+
 .motorGauageBar {
   margin: 3% 0;
   display: flex;
