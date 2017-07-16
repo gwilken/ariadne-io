@@ -3,6 +3,8 @@ const SerialPort = require("serialport");
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
 
+var count = 0;
+
 var motor = {
   family: "motor",
   displayName: "Electric Yacht 10kW Motor",
@@ -73,6 +75,17 @@ motorPort.on('data', function (data) {
     };
 
   };
+
+  count++;
+
+  if(count === 60) {
+    mongo.collection.insert(motor, function(err) {
+      if(err) console.log('error at motor mongo insert', err);
+      console.log('motor data inserted');
+    })
+    count = 0;
+  }
+
 });
 
 motorPort.on('close', function() {
