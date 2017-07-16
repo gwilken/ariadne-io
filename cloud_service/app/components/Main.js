@@ -79,17 +79,17 @@ class Main extends React.Component {
         </div>
       )
     }
-    //
-    // if(list.includes('solar')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
-    //
-    //   solar = (
-    //     <div onClick={ () => this.gotoHistory('gold') } >
-    //       <Solar data={data} />
-    //     </div>
-    //   )
-    // }
-    //
+
+    if(list.includes('solar')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
+    
+      solar = (
+        <div onClick={ () => this.gotoHistory('gold') } >
+          <Solar data={data} />
+        </div>
+      )
+    }
+
     // if(list.includes('motor')) {
     //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
     //
