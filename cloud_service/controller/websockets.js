@@ -5,15 +5,19 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 var telemetry = {};
 var count = 0;
+var data;
 
 wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(packet) {
 
-    var data = JSON.parse(packet);
+    try {
+      data = JSON.parse(packet);
+    } catch(err) {
+      console.log('error at parse incoming json', err);
+    }
 
     if(mongo.collection) {
-
       data.createdAt = Date.now();
 
       count++;
