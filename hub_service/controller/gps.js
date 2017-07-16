@@ -60,7 +60,7 @@ gpsSocket.on("data", function(data) {
 
   count++;
 
-  if(count === 100) {
+  if(count === 200) {
     gps._id = new ObjectID();
     mongo.collection.insert(gps, function(err) {
       if(err) console.log('error at gps mongo insert', err);

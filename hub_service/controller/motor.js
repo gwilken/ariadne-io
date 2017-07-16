@@ -79,7 +79,7 @@ motorPort.on('data', function (data) {
 
   count++;
 
-  if(count === 100) {
+  if(count === 1000) {
     motor._id = new ObjectID();
     mongo.collection.insert(motor, function(err) {
       if(err) console.log('error at motor mongo insert', err);
