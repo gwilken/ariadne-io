@@ -81,10 +81,10 @@ router.get('/telemetry/:family/:time', function(req, res) {
         var newDocs = docs
         .map( (elem) => {
           return elem.telemetry;
-        })
-          .filter((elem) => {
-            return elem.family === req.params.family;
-          })
+        });
+          // .filter((elem) => {
+          //   return elem.family === req.params.family;
+          // })
 
         res.json(newDocs);
       }
