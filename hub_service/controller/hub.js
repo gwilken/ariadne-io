@@ -58,7 +58,7 @@ connect();
 
         try {
           packet = JSON.parse(data);
-          Object.assign(telemetry, {data}, {gps}, {motor});
+          Object.assign(telemetry, {packet}, {gps}, {motor});
 
           count++;
 
