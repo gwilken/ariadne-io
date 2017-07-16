@@ -55,7 +55,7 @@ setInterval(function() {
       }
 
 
-  console.log(telemetry);
+  console.log(telemetry.length);
 
   // if (ws.readyState === WebSocket.OPEN) {
   //   ws.send( JSON.stringify( motor ) );
