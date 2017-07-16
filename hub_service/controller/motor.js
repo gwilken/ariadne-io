@@ -1,9 +1,8 @@
 const SerialPort = require("serialport");
-
+const mongo = require("../model/mongo.js");
+const ObjectID = require('mongodb').ObjectID;
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
-const mongo = require("../model/mongo.js");
-
 
 var count = 0;
 
@@ -81,6 +80,7 @@ motorPort.on('data', function (data) {
   count++;
 
   if(count === 60) {
+    motor._id = new ObjectID();
     mongo.collection.insert(motor, function(err) {
       if(err) console.log('error at motor mongo insert', err);
       console.log('motor data inserted');
