@@ -1,7 +1,7 @@
 
 const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
-const ObjectID = require('mongodb').ObjectID,
+const ObjectID = require('mongodb').ObjectID;
 const url = require('url');
 const net = require("net");
 
