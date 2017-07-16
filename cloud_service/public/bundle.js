@@ -20913,61 +20913,11 @@
 	  _createClass(Main, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-
 	      var ws = new WebSocket('ws://www.rednightsky.com:8080');
 
 	      ws.onmessage = function (event) {
-
 	        var telemetry = JSON.parse(event.data);
-
 	        this.setState({ telemetry: telemetry });
-
-	        //     if(msg.name === 'House Battery Bank') {
-	        //       this.setState( {house: msg } );
-	        //     }
-	        //
-	        //     if(msg.name === 'Solar Controller Monitor') {
-	        //       this.setState( {solar: msg } );
-	        //     }
-	        //
-	        //     if(msg.name === 'Motor Battery #1') {
-	        //       var obj = {};
-	        //       this.setState( { motor: Object.assign( {}, this.state.motor, { batt1: msg } ) } );
-	        //       //console.log('motor 1 state', this.state.motor);
-	        //     }
-	        //
-	        //     if(msg.name === 'Motor Battery #2') {
-	        //       var obj = {};
-	        //       this.setState( { motor: Object.assign( {}, this.state.motor, {batt2: msg} ) } );
-	        //     }
-	        //
-	        //     if(msg.name === 'Motor Battery #3') {
-	        //       var obj = {};
-	        //       this.setState( { motor: Object.assign( {}, this.state.motor, {batt3: msg} ) } );
-	        //     }
-	        //
-	        //     if(msg.name === 'Motor Battery #4') {
-	        //       var obj = {};
-	        //       this.setState( { motor: Object.assign( {}, this.state.motor, {batt4: msg} ) } );
-	        //     }
-	        //
-	        //     if(msg.name === 'Electric Yacht 10kW Motor') {
-	        //       var obj = {};
-	        // //      console.log('at main: ', msg);
-	        //       this.setState( { motor: Object.assign( {}, this.state.motor, {ey: msg} ) } );
-	        //     }
-	        //
-	        //     if(msg.family === 'Environmental') {
-	        //       var obj = {};
-	        //       //console.log('at main: ', msg);
-	        //       this.setState( { enviro: msg } );
-	        //     }
-	        //
-	        //     if(msg.family === 'navigation') {
-	        //       var obj = {};
-	        //       //console.log('at main: ', msg);
-	        //       this.setState( { geo: msg } );
-	        //     }
 	      }.bind(this);
 	    }
 	  }, {
@@ -20993,7 +20943,6 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var _this2 = this;
 
 	      var list = this.state.telemetry.map(function (elem) {
 	        return elem.family;
@@ -21007,15 +20956,30 @@
 	      var geo;
 
 	      if (list.includes('solar')) {
-	        console.log('solar');
+	        console.log('solar at main');
+
+	        var data = this.state.telemetry.map(function (elem) {
+	          return elem.family = 'solar';
+	        });
+
 	        solar = _react2.default.createElement(
 	          "div",
-	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Solar Controller Monitor", field1: "current", field2: "busvoltage" }, 'gold');
-	            } },
-	          _react2.default.createElement(_Solar2.default, { data: this.state.solar })
+	          null,
+	          _react2.default.createElement(_Test2.default, { data: data })
 	        );
 	      }
+
+	      // if(list.includes('solar')) {
+	      //   console.log('solar');
+	      //
+	      //   var data = this.state.telemetry.map((elem) => {return elem.family = 'solar'});
+	      //
+	      //   solar = (
+	      //     <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
+	      //       <Solar data={data} />
+	      //     </div>
+	      //   )
+	      // }
 
 	      // if(this.state.house) {
 	      //   house = (
@@ -21083,7 +21047,7 @@
 /* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21095,11 +21059,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactChartjs = __webpack_require__(172);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21116,159 +21076,30 @@
 	    var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
 
 	    _this.state = {
-	      current: []
+	      data: []
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Test, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      fetch('/history/solar/current').then(function (res) {
-	        return res.json();
-	      }).then(function (data) {
-
-	        var arr = [];
-	        arr = data.slice();
-
-	        this.setState({ current: arr });
-	      }.bind(this));
-	    }
+	    key: "componentDidMount",
+	    value: function componentDidMount() {}
 	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.data.current) {
-
-	        var newCurrent = this.state.current.slice();
-	        newCurrent.push(nextProps.data.current);
-	        newCurrent.shift();
-
-	        this.setState({ current: newCurrent });
-	      }
-	    }
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps() {}
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 
-	      // var graphData = {
-	      //   labels: this.state.current,
-	      //   datasets: [
-	      //     {
-	      //       label: 'Current In',
-	      //       data: this.state.current,
-	      //       backgroundColor: 'yellow',
-	      //       borderWidth: 1
-	      //     }
-	      //   ]
-	      // }
-	      //
-	      // const chartOptions = {
-	      //   maintainAspectRatio: false,
-	      //   hover: {
-	      //     animationDuration: 0
-	      //   },
-	      //   legend: {
-	      //     display: false
-	      //   },
-	      //   scales: {
-	      //     yAxes: [{
-	      //       ticks: {
-	      //         beginAtZero: true
-	      //       },
-	      //       display: false
-	      //   }],
-	      //   xAxes: [{
-	      //     display: false
-	      //   }]
-	      //   }
-	      // }
-
-	      var graphData = {
-	        labels: this.state.current,
-	        datasets: [{
-	          fill: true,
-	          backgroundColor: 'blue',
-	          borderWidth: 2,
-	          lineTension: 0.1,
-	          pointRadius: 0,
-	          data: this.state.current
-	        }]
-	      };
-
-	      var chartOptions = {
-	        layout: {
-	          padding: {
-	            left: 15,
-	            right: 3
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          duration: 100,
-	          easing: 'linear'
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            position: 'right',
-	            ticks: {
-	              min: 0,
-	              max: 7500,
-	              mirror: false
-	            }
-	          }],
-	          xAxes: [_defineProperty({
-	            ticks: {
-	              min: 0,
-	              max: 0
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: false
-	            },
-	            scaleLabel: {
-	              display: true
-	            }
-	          }, 'ticks', {
-	            display: false
-	          })]
-	        }
-	      };
+	      console.log(this.props);
 
 	      return _react2.default.createElement(
-	        'div',
+	        "div",
 	        null,
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.Line, { data: graphData,
-	            options: chartOptions,
-	            width: 800,
-	            height: 150
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'titlebar' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'title' },
-	            ' House Energy Use'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'rtData' },
-	            ' ',
-	            this.props.data.current,
-	            ' mA '
-	          )
+	          "h1",
+	          null,
+	          "TEST COMPONENT"
 	        )
 	      );
 	    }
@@ -52565,24 +52396,24 @@
 	  _createClass(Solar, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      fetch('/sensor/Solar Controller Monitor/10').then(function (res) {
-	        return res.json();
-	      }).then(function (objs) {
-	        //console.log(objs);
-	        this.setState({ data: objs });
-	      }.bind(this));
+	      // fetch('/sensor/Solar Controller Monitor/10')
+	      //   .then((res) => res.json())
+	      //     .then(function(objs) {
+	      //       //console.log(objs);
+	      //       this.setState( { data: objs} );
+	      //     }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-	      if (nextProps.data) {
-
-	        var newState = this.state.data.slice();
-	        newState.push(nextProps.data);
-	        newState.shift();
-
-	        this.setState({ data: newState });
-	      }
+	      // if(nextProps.data) {
+	      //
+	      //   var newState = this.state.data.slice();
+	      //   newState.push(nextProps.data);
+	      //   newState.shift();
+	      // 
+	      // this.setState({data: newState});
+	      // }
 	    }
 	  }, {
 	    key: 'render',

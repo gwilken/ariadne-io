@@ -12,23 +12,23 @@ class Solar extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/sensor/Solar Controller Monitor/10')
-      .then((res) => res.json())
-        .then(function(objs) {
-          //console.log(objs);
-          this.setState( { data: objs} );
-        }.bind(this));
+    // fetch('/sensor/Solar Controller Monitor/10')
+    //   .then((res) => res.json())
+    //     .then(function(objs) {
+    //       //console.log(objs);
+    //       this.setState( { data: objs} );
+    //     }.bind(this));
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.data) {
-
-      var newState = this.state.data.slice();
-      newState.push(nextProps.data);
-      newState.shift();
-
-    this.setState({data: newState});
-    }
+    // if(nextProps.data) {
+    //
+    //   var newState = this.state.data.slice();
+    //   newState.push(nextProps.data);
+    //   newState.shift();
+    // 
+    // this.setState({data: newState});
+    // }
   }
 
   render() {
