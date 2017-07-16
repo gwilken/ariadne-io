@@ -301,7 +301,7 @@ class House extends React.Component {
             <div className="titlebar">
 
               <div className="title">Battery Voltage</div>
-              <div className="rtData"> {volts} </div>
+              <div className="rtData"> {volts} V</div>
 
             </div>
           </div>
@@ -315,7 +315,7 @@ class House extends React.Component {
 
             <div className="titlebar">
               <div className="title">Current Usage</div>
-              <div className="rtData"> {current}</div>
+              <div className="rtData"> {current} mA</div>
             </div>
           </div>
 

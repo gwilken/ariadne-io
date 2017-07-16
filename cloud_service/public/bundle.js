@@ -52965,7 +52965,7 @@
 	                { className: 'rtData' },
 	                ' ',
 	                volts,
-	                ' '
+	                ' V'
 	              )
 	            )
 	          ),
@@ -52989,7 +52989,8 @@
 	                'div',
 	                { className: 'rtData' },
 	                ' ',
-	                current
+	                current,
+	                ' mA'
 	              )
 	            )
 	          )
