@@ -15,6 +15,8 @@ const sensorServer = net.createServer(function(socket) {
       console.log('error at wireless sensor', err);
     }
 
+    count++;
+
     if(count === 500) {
       sensor._id = new ObjectID();
       mongo.collection.insert(sensor, function(err) {
