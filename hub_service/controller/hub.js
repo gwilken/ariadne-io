@@ -64,7 +64,7 @@ setInterval(function() {
 }, 10000);
 
 setInterval(function() {
-    mongo.collection.insert([gps, motor, sensor], function(err) {
+    mongo.collection.insert(sensor, function(err) {
       if(err) console.log(err);
       console.log('packets added to db');
     });
