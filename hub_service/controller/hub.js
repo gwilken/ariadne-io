@@ -48,17 +48,14 @@ setInterval(function() {
   telemetry.push(motor);
   telemetry.push(sensor);
 
-  if(telemetry.length > 100) {
-
-    mongo.collection.insert(telemetry, function(err) {
-      if(err) console.log(err);
-    })
-
-    telemetry = [];
-    
-  }
-
 }, 1000);
+
+setInterval(function() {
+
+  console.log(telemetry);
+
+}, 5000)
+
 
 
 connect();
