@@ -334,18 +334,11 @@ class Motor extends React.Component {
               <Doughnut data={rpmData}
                 options={rpmOptions}
                   width={400}
-                  height={140}
+                  height={280}
               />
             </div>
 
           </div>
-
-
-          <div className="motorGauageBar">
-            <div className="rpmLabel"> {motorRPM[0].data} </div>
-          </div>
-
-
 
 
           <div className="graphContainer">

@@ -57574,19 +57574,8 @@
 	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
 	              options: rpmOptions,
 	              width: 400,
-	              height: 140
+	              height: 280
 	            })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'motorGauageBar' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'rpmLabel' },
-	            ' ',
-	            motorRPM[0].data,
-	            ' '
 	          )
 	        ),
 	        _react2.default.createElement(
