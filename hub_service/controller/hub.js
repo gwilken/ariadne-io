@@ -61,16 +61,16 @@ connect();
         try {
           packet = JSON.parse(data);
 
-          // documents.push(packet);
-          //
-          // if (documents.length > 100 && mongo.collection) {
-          //   mongo.collection.insertMany(documents, function(err) {
-          //     console.log('docs added');
-          //     if(err) console.log(err);
-          //   });
-          //
-          //   documents = [];
-          // }
+          documents.push(packet);
+
+          if (documents.length > 100 && mongo.collection) {
+            mongo.collection.insertMany(documents, function(err) {
+              console.log('docs added');
+              if(err) console.log(err);
+            });
+
+            documents = [];
+          }
 
           console.log(packet);
 
