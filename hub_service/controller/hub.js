@@ -49,7 +49,7 @@ connect();
       gps._id = new ObjectID()
       documents.push(gps);
 
-      motor._id = new ObejctID();
+      motor._id = new ObjectID();
       documents.push(motor);
 
       if (ws.readyState === WebSocket.OPEN) {
