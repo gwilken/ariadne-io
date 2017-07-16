@@ -73,13 +73,14 @@ router.get('/telemetry/:family/:time', function(req, res) {
     if(err) {
       console.log(err);
       res.end();
-    }
+    } else {
 
-    var filteredDocs = docs.filter((elem) => {
-      return elem.family === req.params.family;
-    })
+        var filteredDocs = docs.filter((elem) => {
+          return elem.family === req.params.family;
+        })
 
-    else res.json(filteredDocsdocs);
+        res.json(filteredDocsdocs);
+      }
   });
 
 })
