@@ -258,7 +258,7 @@ class Motor extends React.Component {
         <h3>Motor</h3>
 
 
-        {/* <div className="graphContainer">
+         {/* <div className="graphContainer">
 
           <HorizontalBar data={currentData}
             options={currentOptions}
@@ -295,8 +295,8 @@ class Motor extends React.Component {
 
 
           <div className="motorGauageBar">
-            {/* <div className="title">Motor Batts</div>
-            /* <div className="ttdLabel"> {ttd} </div>
+             <div className="title">Motor Batts</div>
+             <div className="ttdLabel"> {ttd} </div>
             <div className="rpmLabel"> {rpm} </div>
           </div>
 
@@ -314,7 +314,7 @@ class Motor extends React.Component {
             <div className="title">Total Bank Voltage</div>
             <div className="rtData"> {rtBankVolt} </div>
           </div>
-        </div> */
+        </div>  */}
 
 
         <div className="graphContainer">
