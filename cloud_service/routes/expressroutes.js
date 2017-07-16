@@ -65,10 +65,7 @@ router.get('/data/:time', function(req, res) {
 
 })
 
-router.get('/telemetry/:family/:time', function(req, res) {
-
-  console.log(req.params.family);
-  console.log(req.params.time);
+router.get('/telemetry/:time', function(req, res) {
 
   var time = Date.now() - (req.params.time * 60000);
 
@@ -77,16 +74,7 @@ router.get('/telemetry/:family/:time', function(req, res) {
       console.log(err);
       res.end();
     } else {
-
-        var newDocs = docs
-        .map( (elem) => {
-          return elem.telemetry;
-        });
-          // .filter((elem) => {
-          //   return elem.family === req.params.family;
-          // })
-
-        res.json(newDocs);
+        res.json(docs);
       }
 
   });
