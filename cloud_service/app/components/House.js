@@ -12,29 +12,31 @@ class House extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/sensor/House Battery Bank/10')
-      .then((res) => res.json())
-        .then(function(objs) {
-          //console.log(objs);
-          this.setState( { data: objs} );
-        }.bind(this));
+    // fetch('/sensor/House Battery Bank/10')
+    //   .then((res) => res.json())
+    //     .then(function(objs) {
+    //       //console.log(objs);
+    //       this.setState( { data: objs} );
+    //     }.bind(this));
   }
 
   componentWillReceiveProps(nextProps) {
-
-    if(this.state) {
-      if(nextProps.data) {
-
-        var newState = this.state.data.slice();
-        newState.push(nextProps.data);
-        newState.shift();
-
-        this.setState({data: newState});
-      }
-    }
+    //
+    // if(this.state) {
+    //   if(nextProps.data) {
+    //
+    //     var newState = this.state.data.slice();
+    //     newState.push(nextProps.data);
+    //     newState.shift();
+    //
+    //     this.setState({data: newState});
+    //   }
+    // }
   }
 
   render() {
+
+    console.log(this.props);
 
     var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
     var rtCurrent = this.props.data.current.toFixed(0) + ' mA';

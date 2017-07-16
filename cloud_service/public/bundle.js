@@ -20865,9 +20865,9 @@
 
 	var _Enviro2 = _interopRequireDefault(_Enviro);
 
-	var _Geo = __webpack_require__(346);
+	var _Gps = __webpack_require__(470);
 
-	var _Geo2 = _interopRequireDefault(_Geo);
+	var _Gps2 = _interopRequireDefault(_Gps);
 
 	var _History = __webpack_require__(347);
 
@@ -20943,6 +20943,7 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      var _this2 = this;
 
 	      var list = this.state.telemetry.map(function (elem) {
 	        return elem.family;
@@ -20953,50 +20954,62 @@
 	      var house;
 	      var motor;
 	      var enviro;
-	      var geo;
+	      var gps;
 
-	      if (list.includes('solar')) {
-	        console.log('solar at main');
-
+	      if (list.includes('house')) {
 	        var data = this.state.telemetry.filter(function (elem) {
-	          return elem.family === 'motor';
+	          return elem.family === 'house';
 	        });
 
-	        solar = _react2.default.createElement(
+	        house = _react2.default.createElement(
 	          "div",
-	          null,
-	          _react2.default.createElement(_Test2.default, { data: data })
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory('gold');
+	            } },
+	          _react2.default.createElement(_House2.default, { data: data })
 	        );
 	      }
-
-	      // if(list.includes('solar')) {
-	      //   console.log('solar');
 	      //
-	      //   var data = this.state.telemetry.map((elem) => {return elem.family = 'solar'});
+	      // if(list.includes('solar')) {
+	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
 	      //
 	      //   solar = (
-	      //     <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
+	      //     <div onClick={ () => this.gotoHistory('gold') } >
 	      //       <Solar data={data} />
 	      //     </div>
 	      //   )
 	      // }
-
-	      // if(this.state.house) {
-	      //   house = (
-	      //     <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
-	      //        <House data={this.state.house} />
-	      //     </div>
-	      //   )
-	      // }
 	      //
-	      // if(this.state.motor) {
+	      // if(list.includes('motor')) {
+	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
+	      //
 	      //   motor = (
-	      //     <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
-	      //       <Motor data={this.state.motor} />
+	      //     <div onClick={ () => this.gotoHistory('gold') } >
+	      //       <Motor data={data} />
 	      //     </div>
 	      //   )
 	      // }
 	      //
+	      // if(list.includes('enviro')) {
+	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
+	      //
+	      //   enviro = (
+	      //     <div onClick={ () => this.gotoHistory('gold') } >
+	      //       <Enviro data={data} />
+	      //     </div>
+	      //   )
+	      // }
+	      //
+	      // if(list.includes('gps')) {
+	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
+	      //
+	      //   gps = (
+	      //     <div onClick={ () => this.gotoHistory('gold') } >
+	      //       <Gps data={data} />
+	      //     </div>
+	      //   )
+	      // }
+
 	      // if(this.state.enviro) {
 	      //   enviro = (
 	      //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
@@ -21005,13 +21018,7 @@
 	      //   )
 	      // }
 	      //
-	      // if(this.state.geo) {
-	      //   geo = (
-	      //     <div onClick={ () => this.gotoMap} >
-	      //       <Geo data={this.state.geo} />
-	      //     </div>
-	      //   )
-	      // }
+
 
 	      if (this.state.view === 'history') {
 
@@ -52657,31 +52664,33 @@
 	  _createClass(House, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      fetch('/sensor/House Battery Bank/10').then(function (res) {
-	        return res.json();
-	      }).then(function (objs) {
-	        //console.log(objs);
-	        this.setState({ data: objs });
-	      }.bind(this));
+	      // fetch('/sensor/House Battery Bank/10')
+	      //   .then((res) => res.json())
+	      //     .then(function(objs) {
+	      //       //console.log(objs);
+	      //       this.setState( { data: objs} );
+	      //     }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(nextProps) {
-
-	      if (this.state) {
-	        if (nextProps.data) {
-
-	          var newState = this.state.data.slice();
-	          newState.push(nextProps.data);
-	          newState.shift();
-
-	          this.setState({ data: newState });
-	        }
-	      }
+	      //
+	      // if(this.state) {
+	      //   if(nextProps.data) {
+	      //
+	      //     var newState = this.state.data.slice();
+	      //     newState.push(nextProps.data);
+	      //     newState.shift();
+	      //
+	      //     this.setState({data: newState});
+	      //   }
+	      // }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+
+	      console.log(this.props);
 
 	      var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
 	      var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
@@ -53597,168 +53606,7 @@
 		exports.default = Enviro;
 
 /***/ }),
-/* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactChartjs = __webpack_require__(172);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Geo = function (_React$Component) {
-	  _inherits(Geo, _React$Component);
-
-	  function Geo(props) {
-	    _classCallCheck(this, Geo);
-
-	    var _this = _possibleConstructorReturn(this, (Geo.__proto__ || Object.getPrototypeOf(Geo)).call(this, props));
-
-	    _this.state = {
-	      data: []
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Geo, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {}
-	  }, {
-	    key: 'render',
-	    value: function render() {
-
-	      var rtLat = 'Lat: ' + this.props.data.latitude;
-	      var rtLon = 'Lon: ' + this.props.data.longitude;
-	      var rtSpeed = this.props.data.speed + ' knots';
-	      //var rtTmg = this.props.data.tmg;
-
-	      var speedData = {
-	        labels: [this.props.data.speed],
-	        datasets: [{
-	          labels: '',
-	          data: [this.props.data.speed],
-	          backgroundColor: ['lightseagreen']
-	        }]
-	      };
-
-	      var speedOptions = {
-	        layout: {
-	          padding: {
-	            left: 15
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 0,
-	              display: false
-	            },
-	            barThickness: 140,
-	            display: false
-	          }],
-	          xAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 10
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: true
-	            }
-	          }]
-	        }
-	      };
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        ' ',
-	        _react2.default.createElement(
-	          'h3',
-	          null,
-	          'Geospatial'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'geoContainer' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'graphContainer geoSpeed' },
-	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
-	              options: speedOptions,
-	              width: 400,
-	              height: 140
-	            }),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'titlebar' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'title' },
-	                'Speed'
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rtData' },
-	                ' ',
-	                rtSpeed,
-	                ' '
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'geoLocation' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'geoLocLabel' },
-	              rtLat
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'geoLocLabel' },
-	              rtLon
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Geo;
-	}(_react2.default.Component);
-
-		exports.default = Geo;
-
-/***/ }),
+/* 346 */,
 /* 347 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -57812,6 +57660,168 @@
 	}(_react2.default.Component);
 
 		exports.default = HistoryDuo;
+
+/***/ }),
+/* 470 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(172);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Gps = function (_React$Component) {
+	  _inherits(Gps, _React$Component);
+
+	  function Gps(props) {
+	    _classCallCheck(this, Gps);
+
+	    var _this = _possibleConstructorReturn(this, (Gps.__proto__ || Object.getPrototypeOf(Gps)).call(this, props));
+
+	    _this.state = {
+	      data: []
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Gps, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      var rtLat = 'Lat: ' + this.props.data.latitude;
+	      var rtLon = 'Lon: ' + this.props.data.longitude;
+	      var rtSpeed = this.props.data.speed + ' knots';
+	      //var rtTmg = this.props.data.tmg;
+
+	      var speedData = {
+	        labels: [this.props.data.speed],
+	        datasets: [{
+	          labels: '',
+	          data: [this.props.data.speed],
+	          backgroundColor: ['lightseagreen']
+	        }]
+	      };
+
+	      var speedOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 140,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 10
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          'Geospatial'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'geoContainer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer geoSpeed' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: speedData,
+	              options: speedOptions,
+	              width: 400,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Speed'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                rtSpeed,
+	                ' '
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'geoLocation' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'geoLocLabel' },
+	              rtLat
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'geoLocLabel' },
+	              rtLon
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Gps;
+	}(_react2.default.Component);
+
+		exports.default = Gps;
 
 /***/ })
 /******/ ]);

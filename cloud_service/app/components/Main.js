@@ -4,7 +4,7 @@ import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
 import Enviro from "./Enviro";
-import Geo from "./Geo";
+import Gps from "./Gps";
 import History from "./History";
 import HistoryDuo from "./HistoryDuo";
 
@@ -67,49 +67,60 @@ class Main extends React.Component {
     var house;
     var motor;
     var enviro;
-    var geo;
+    var gps;
 
-    if(list.includes('solar')) {
-      console.log('solar at main');
 
-      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
+    if(list.includes('house')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
 
-      solar = (
-        <div >
-          <Test data={data} />
+      house = (
+        <div onClick={ () => this.gotoHistory('gold') } >
+          <House data={data} />
         </div>
       )
     }
-
-    // if(list.includes('solar')) {
-    //   console.log('solar');
     //
-    //   var data = this.state.telemetry.map((elem) => {return elem.family = 'solar'});
+    // if(list.includes('solar')) {
+    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
     //
     //   solar = (
-    //     <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
+    //     <div onClick={ () => this.gotoHistory('gold') } >
     //       <Solar data={data} />
     //     </div>
     //   )
     // }
-
-    // if(this.state.house) {
-    //   house = (
-    //     <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
-    //        <House data={this.state.house} />
-    //     </div>
-    //   )
-    // }
     //
-    // if(this.state.motor) {
+    // if(list.includes('motor')) {
+    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
+    //
     //   motor = (
-    //     <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
-    //       <Motor data={this.state.motor} />
+    //     <div onClick={ () => this.gotoHistory('gold') } >
+    //       <Motor data={data} />
     //     </div>
     //   )
     // }
     //
-    // if(this.state.enviro) {
+    // if(list.includes('enviro')) {
+    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
+    //
+    //   enviro = (
+    //     <div onClick={ () => this.gotoHistory('gold') } >
+    //       <Enviro data={data} />
+    //     </div>
+    //   )
+    // }
+    //
+    // if(list.includes('gps')) {
+    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
+    //
+    //   gps = (
+    //     <div onClick={ () => this.gotoHistory('gold') } >
+    //       <Gps data={data} />
+    //     </div>
+    //   )
+    // }
+
+      // if(this.state.enviro) {
     //   enviro = (
     //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
     //       <Enviro data={this.state.enviro} />
@@ -117,13 +128,7 @@ class Main extends React.Component {
     //   )
     // }
     //
-    // if(this.state.geo) {
-    //   geo = (
-    //     <div onClick={ () => this.gotoMap} >
-    //       <Geo data={this.state.geo} />
-    //     </div>
-    //   )
-    // }
+
 
     if(this.state.view === 'history') {
 

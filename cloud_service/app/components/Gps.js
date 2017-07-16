@@ -1,7 +1,7 @@
 import React from "react";
 import {HorizontalBar} from 'react-chartjs-2';
 
-class Geo extends React.Component {
+class Gps extends React.Component {
 
   constructor(props) {
     super(props);
@@ -102,4 +102,4 @@ class Geo extends React.Component {
     )
   }
 }
-export default Geo;
+export default Gps;
