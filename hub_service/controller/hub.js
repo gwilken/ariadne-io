@@ -10,11 +10,7 @@ const motor = require("./motor");
 const sensor = require("./wifisensors");
 
 var ws;
-var packet = {};
-var packets = [];
-var documents = [];
-var count = 0;
-const realTimeInterval = 3000;
+var telemetry = {};
 
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
@@ -47,28 +43,14 @@ setInterval(function() {
     ws.send( JSON.stringify( motor ) );
     ws.send( JSON.stringify( sensor ) );
   };
+
+  Object.assign(telemetry[sensor.displayName], gps);
+  Object.assign(telemetry[sensor.displayName], motor);
+  Object.assign(telemetry[sensor.displayName], sensor);
+
+  console.log(telemetry);
+
 }, 1000);
-
-setInterval(function() {
-    mongo.collection.insert(gps, function(err) {
-      if(err) console.log(err);
-      console.log('packets added to db');
-    });
-}, 60000);
-
-setInterval(function() {
-    mongo.collection.insert(motor, function(err) {
-      if(err) console.log(err);
-      console.log('packets added to db');
-    });
-}, 10000);
-
-setInterval(function() {
-    mongo.collection.insert(sensor, function(err) {
-      if(err) console.log(err);
-      console.log('packets added to db');
-    });
-}, 10000);
 
 
 connect();
