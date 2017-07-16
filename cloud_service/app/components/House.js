@@ -12,12 +12,12 @@ class House extends React.Component {
   }
 
   componentDidMount() {
-    // fetch('/sensor/House Battery Bank/10')
-    //   .then((res) => res.json())
-    //     .then(function(objs) {
-    //       //console.log(objs);
-    //       this.setState( { data: objs} );
-    //     }.bind(this));
+    fetch('/telemetry/house/20')
+      .then((res) => res.json())
+        .then(function(objs) {
+          console.log(objs);
+          //this.setState( { data: objs} );
+        }.bind(this));
   }
 
   componentWillReceiveProps(nextProps) {

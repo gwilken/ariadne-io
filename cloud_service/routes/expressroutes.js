@@ -65,4 +65,24 @@ router.get('/data/:time', function(req, res) {
 
 })
 
+router.get('/telemetry/:family/:time', function(req, res) {
+
+  var secs = Date.now() - (req.params.time * 60000);
+
+  mongo.collection.find( { createdAt: { $gt: secs } } ).toArray(function(err, docs) {
+    if(err) {
+      console.log(err);
+      res.end();
+    }
+
+    var filteredDocs = docs.filter((elem) => {
+      return elem.family === req.params.family;
+    })
+
+    else res.json(filteredDocsdocs);
+  });
+
+})
+
+
 module.exports = router;

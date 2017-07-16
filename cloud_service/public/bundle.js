@@ -52664,12 +52664,12 @@
 	  _createClass(House, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      // fetch('/sensor/House Battery Bank/10')
-	      //   .then((res) => res.json())
-	      //     .then(function(objs) {
-	      //       //console.log(objs);
-	      //       this.setState( { data: objs} );
-	      //     }.bind(this));
+	      fetch('/telemetry/house/20').then(function (res) {
+	        return res.json();
+	      }).then(function (objs) {
+	        console.log(objs);
+	        //this.setState( { data: objs} );
+	      }.bind(this));
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
