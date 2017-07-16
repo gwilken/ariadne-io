@@ -1,5 +1,7 @@
 import React from "react";
-import {Line} from 'react-chartjs-2';
+//import {Line} from 'react-chartjs-2';
+import {HorizontalBar} from 'react-chartjs-2';
+
 
 class House extends React.Component {
 
@@ -7,17 +9,18 @@ class House extends React.Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      color: 'royalblue'
     }
   }
 
   componentDidMount() {
-    fetch('/telemetry/100')
-      .then((res) => res.json())
-        .then(function(objs) {
-          console.log(objs);
-          //this.setState( { data: objs} );
-        }.bind(this));
+    // fetch('/telemetry/100')
+    //   .then((res) => res.json())
+    //     .then(function(objs) {
+    //       console.log(objs);
+    //       //this.setState( { data: objs} );
+    //     }.bind(this));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,14 +41,14 @@ class House extends React.Component {
 
     console.log(this.props.data[0]);
 
-    var currentData = [];
-    var voltData = [];
+    // var currentData = [];
+    // var voltData = [];
 
-    var rtVolt = this.props.data[0].data[0].data.toFixed(2) + this.props.data[0].data[0].unit;
-    var rtCurrent = this.props.data[0].data[1].data.toFixed(0) + this.props.data[0].data[1].unit;
+    var volts = this.props.data[0].data[0].data.toFixed(2); + this.props.data[0].data[0].unit;
+    var current = this.props.data[0].data[1].data.toFixed(0); + this.props.data[0].data[1].unit;
 
-    voltData.push(this.props.data[0].data[0].data.toFixed(2))
-    currentData.push(this.props.data[0].data[1].data.toFixed(0));
+    // voltData.push(this.props.data[0].data[0].data.toFixed(2))
+    // currentData.push(this.props.data[0].data[1].data.toFixed(0));
 
 
     // var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
@@ -61,130 +64,227 @@ class House extends React.Component {
     //   return(obj.loadvoltage);
     // })
 
+    var voltsGraphData = {
+        labels: [volts],
+        datasets: [
+            {
+              labels: '',
+              data: [volts],
+              backgroundColor: [this.state.color]
+            }
+         ]
+       };
+
+    var voltsGraphOptions = {
+    layout: {
+      padding: {
+        left: 15,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+          display: false,
+        },
+        barThickness: 140,
+        display: false,
+      }],
+      xAxes: [{
+        ticks: {
+          min: 10,
+          max: 14.5,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: true,
+        },
+      }]
+    }
+    }
+
     var currentGraphData = {
-      labels: currentData,
-      datasets: [
-          {
-            fill: true,
-            backgroundColor: 'royalblue',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: currentData
-          }
-       ]
-    }
+        labels: [current],
+        datasets: [
+            {
+              labels: '',
+              data: [current],
+              backgroundColor: [this.state.color]
+            }
+         ]
+       };
 
-    var voltGraphData = {
-      labels: voltData,
-      datasets: [
-          {
-            fill: true,
-            backgroundColor: 'royalblue',
-            // borderColor: 'yellow',
-            borderWidth: 2,
-            lineTension: 0.1,
-            pointRadius: 0,
-            data: voltData
-          }
-       ]
-    }
-
-    var currentChartOptions = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
+    var currentGraphOptions = {
+    layout: {
+      padding: {
+        left: 15,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+          display: false,
         },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
+        barThickness: 140,
         display: false,
-        position: 'top',
-      },
-      animation: {
-        // duration: 100,
-        easing: 'linear'
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          position: 'right',
-          ticks: {
-            min: 0,
-            max: 7500,
-            mirror: false,
-           },
-          }],
-        xAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-          },
-          gridLines: {
-            display: false,
-            drawTicks: false,
-          },
-          scaleLabel: {
-            display: true,
-          },
-          ticks: {
-            display: false,
-          },
+      }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 10000,
         },
-        ],
-      },
+        gridLines: {
+          display: false,
+          drawTicks: true,
+        },
+      }]
+    }
     }
 
-    var voltChartOptions = {
-      layout: {
-        padding: {
-          left: 15,
-          right: 3,
-        },
-      },
-      tooltips: {
-        enabled: false,
-      },
-      legend: {
-        display: false,
-        position: 'top',
-      },
-      animation: {
-        // duration: 100,
-        easing: 'linear'
-      },
-      maintainAspectRatio: false,
-      scales: {
-        yAxes: [{
-          position: 'right',
-          ticks: {
-            min: 0,
-            max: 14.5,
-            mirror: false,
-           },
-          }],
-        xAxes: [{
-          ticks: {
-            min: 0,
-            max: 0,
-          },
-          gridLines: {
-            display: false,
-            drawTicks: false,
-          },
-          scaleLabel: {
-            display: true,
-          },
-          ticks: {
-            display: false,
-          },
-        },
-        ],
-      },
-    }
+
+    // var currentGraphData = {
+    //   labels: currentData,
+    //   datasets: [
+    //       {
+    //         fill: true,
+    //         backgroundColor: 'royalblue',
+    //         borderWidth: 2,
+    //         lineTension: 0.1,
+    //         pointRadius: 0,
+    //         data: currentData
+    //       }
+    //    ]
+    // }
+    //
+    // var voltGraphData = {
+    //   labels: voltData,
+    //   datasets: [
+    //       {
+    //         fill: true,
+    //         backgroundColor: 'royalblue',
+    //         // borderColor: 'yellow',
+    //         borderWidth: 2,
+    //         lineTension: 0.1,
+    //         pointRadius: 0,
+    //         data: voltData
+    //       }
+    //    ]
+    // }
+
+    // var currentChartOptions = {
+    //   layout: {
+    //     padding: {
+    //       left: 15,
+    //       right: 3,
+    //     },
+    //   },
+    //   tooltips: {
+    //     enabled: false,
+    //   },
+    //   legend: {
+    //     display: false,
+    //     position: 'top',
+    //   },
+    //   animation: {
+    //     // duration: 100,
+    //     easing: 'linear'
+    //   },
+    //   maintainAspectRatio: false,
+    //   scales: {
+    //     yAxes: [{
+    //       position: 'right',
+    //       ticks: {
+    //         min: 0,
+    //         max: 7500,
+    //         mirror: false,
+    //        },
+    //       }],
+    //     xAxes: [{
+    //       ticks: {
+    //         min: 0,
+    //         max: 0,
+    //       },
+    //       gridLines: {
+    //         display: false,
+    //         drawTicks: false,
+    //       },
+    //       scaleLabel: {
+    //         display: true,
+    //       },
+    //       ticks: {
+    //         display: false,
+    //       },
+    //     },
+    //     ],
+    //   },
+    // }
+    //
+    // var voltChartOptions = {
+    //   layout: {
+    //     padding: {
+    //       left: 15,
+    //       right: 3,
+    //     },
+    //   },
+    //   tooltips: {
+    //     enabled: false,
+    //   },
+    //   legend: {
+    //     display: false,
+    //     position: 'top',
+    //   },
+    //   animation: {
+    //     // duration: 100,
+    //     easing: 'linear'
+    //   },
+    //   maintainAspectRatio: false,
+    //   scales: {
+    //     yAxes: [{
+    //       position: 'right',
+    //       ticks: {
+    //         min: 0,
+    //         max: 14.5,
+    //         mirror: false,
+    //        },
+    //       }],
+    //     xAxes: [{
+    //       ticks: {
+    //         min: 0,
+    //         max: 0,
+    //       },
+    //       gridLines: {
+    //         display: false,
+    //         drawTicks: false,
+    //       },
+    //       scaleLabel: {
+    //         display: true,
+    //       },
+    //       ticks: {
+    //         display: false,
+    //       },
+    //     },
+    //     ],
+    //   },
+    // }
 
     return (
 
@@ -192,8 +292,8 @@ class House extends React.Component {
         <div>
 
           <div className="graphContainer">
-            <Line data={voltGraphData}
-                options={voltChartOptions}
+            <HorizontalBar data={voltsGraphData}
+                options={voltsChartOptions}
                 width={800}
                 height={140}
             />
@@ -201,13 +301,13 @@ class House extends React.Component {
             <div className="titlebar">
 
               <div className="title">Battery Voltage</div>
-              <div className="rtData"> {rtVolt} </div>
+              <div className="rtData"> {volts} </div>
 
             </div>
           </div>
 
           <div className="graphContainer">
-            <Line data={currentGraphData}
+            <HorizontalBar data={currentGraphData}
                 options={currentChartOptions}
                 width={800}
                 height={140}
@@ -215,7 +315,7 @@ class House extends React.Component {
 
             <div className="titlebar">
               <div className="title">Current Usage</div>
-              <div className="rtData"> {rtCurrent}</div>
+              <div className="rtData"> {current}</div>
             </div>
           </div>
 
