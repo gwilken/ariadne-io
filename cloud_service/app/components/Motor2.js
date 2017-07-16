@@ -210,7 +210,7 @@ class Motor extends React.Component {
       xAxes: [{
         ticks: {
           min: 46,
-          max: 60,
+          max: 54,
         },
         gridLines: {
           display: false,
@@ -331,7 +331,7 @@ class Motor extends React.Component {
 
           <div className="titlebar">
             <div className="title">Total Bank Voltage</div>
-            <div className="rtData"> {bankVoltage[0].data} </div>
+            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} </div>
           </div>
         </div>
 

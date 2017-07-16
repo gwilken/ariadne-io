@@ -57466,7 +57466,7 @@
 	          xAxes: [{
 	            ticks: {
 	              min: 46,
-	              max: 60
+	              max: 54
 	            },
 	            gridLines: {
 	              display: false,
@@ -57576,7 +57576,7 @@
 	              'div',
 	              { className: 'rtData' },
 	              ' ',
-	              bankVoltage[0].data,
+	              bankVoltage[0].data.toFixed(2),
 	              ' '
 	            )
 	          )
