@@ -2,6 +2,8 @@ const SerialPort = require("serialport");
 
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
+const mongo = require("../model/mongo.js");
+
 
 var count = 0;
 
