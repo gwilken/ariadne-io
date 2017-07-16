@@ -44,8 +44,8 @@ class House extends React.Component {
     var rtVolt = this.props.data[0].data[0].data.toFixed(2) + this.props.data[0].data[0].unit;
     var rtCurrent = this.props.data[0].data[1].data.toFixed(0) + this.props.data[0].data[1].unit;
 
-    voltData.push(rtVolt)
-    currentData.push(rtCurrent);
+    voltData.push(this.props.data[0].data[0].data.toFixed(2))
+    currentData.push(this.props.data[0].data[1].data.toFixed(0));
 
 
     // var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
