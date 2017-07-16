@@ -57552,7 +57552,6 @@
 	          data: [motorRPM[0].data, 9],
 	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
 	          borderColor: ['firebrick', 'firebrick'],
-
 	          borderWidth: 1
 	        }]
 	      };
