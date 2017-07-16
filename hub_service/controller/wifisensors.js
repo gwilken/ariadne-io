@@ -36,6 +36,8 @@ const sensorServer = net.createServer(function(socket) {
     }
 
     console.log(telemetry.length);
+    console.log(list);
+
 
     // count++;
     //
