@@ -7,7 +7,7 @@ const url = require('url');
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
-const sensor = require("./wifisensors");
+const telemetry = require("./wifisensors");
 
 var ws;
 var sensorsArr = [];
@@ -40,10 +40,13 @@ var connect = function () {
 }
 
 setInterval(function() {
+
+  console.log(telemetry);
+
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( motor ) );
     ws.send( JSON.stringify( gps ) );
-    ws.send( JSON.stringify( sensor ) );
+  //  ws.send( JSON.stringify( sensor ) );
   };
 }, 1000);
 

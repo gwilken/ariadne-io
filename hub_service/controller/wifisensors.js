@@ -15,33 +15,19 @@ const sensorServer = net.createServer(function(socket) {
       var list = telemetry.map((elem) => { return elem.displayName; })
 
       if(list.indexOf(packet.displayName) === -1) {
-
         telemetry.push(packet);
-
-      } else {
-
-        if( telemetry [ list.indexOf(packet.displayName) ] !== packet) {
-
+      }
+        else {
           telemetry.splice(list.indexOf(packet.displayName), 1, packet);
-
-        } else {
-          console.log('no difference: ');
-          console.log(telemetry[list.indexOf(packet.displayName)]);
-          console.log(packet);
-          }
-
-
         }
+    }
 
-
-
-
-    } catch(err) {
+    catch(err) {
       console.log('error at wireless sensor', err);
     }
 
-    console.log(telemetry.length);
-    console.log(list);
+  //  console.log(telemetry.length);
+  //  console.log(list);
 
 
     // count++;
@@ -60,4 +46,4 @@ const sensorServer = net.createServer(function(socket) {
 
 sensorServer.listen(3215, '192.168.10.1');
 
-module.exports = sensor;
+module.exports = telemetry;
