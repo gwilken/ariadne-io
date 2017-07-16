@@ -5,24 +5,28 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 var telemetry = {};
 var count = 0;
+var data;
 
 wss.on('connection', function connection(ws) {
 
   ws.on('message', function incoming(packet) {
 
-    var data = JSON.parse(packet);
+    try {
+      data = JSON.parse(packet);
+    } catch(err) {
+      console.log('error at parse incoming json', err);
+    }
 
     if(mongo.collection) {
-
-      packet.createdAt = Date.now();
+      data.createdAt = Date.now();
 
       count++;
 
       if(count >= 50) {
 
-        mongo.collection.insertOne(packet, function(err, res) {
+        mongo.collection.insertOne(data, function(err, res) {
           if(err) console.log(err);
-          console.log('packet added to db');
+          console.log('data added to db');
         });
 
         count = 0;

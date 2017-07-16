@@ -48,7 +48,7 @@ class Main extends React.Component {
 
       var msg = JSON.parse(event.data);
 
-      //console.log(msg);
+      console.log(msg);
 
       if(msg.name === 'House Battery Bank') {
         this.setState( {house: msg } );
