@@ -14,9 +14,9 @@ const sensorServer = net.createServer(function(socket) {
 
       //Object.assign(sensor, packet);
 
-      if(telemetry.some( (element)  => {
+      if( telemetry.some( (element)  => {
           element.displayName === packet.displayName;
-        }) {
+        })) {
 
         telemetry.push(packet);
       } else {
