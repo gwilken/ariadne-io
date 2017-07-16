@@ -57586,21 +57586,53 @@
 	            { className: 'gaugeLeft' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'currentDiv' },
+	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
 	                options: currentOptions,
 	                width: 400,
 	                height: 140
-	              })
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Current Out'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  motorCurrent[0].data,
+	                  ' Ah'
+	                )
+	              )
 	            ),
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'ttdDiv' },
+	              { className: 'graphContainer' },
 	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: ttdData,
 	                options: ttdOptions,
 	                width: 400,
 	                height: 140
-	              })
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Time to Discharge'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  motorTTD[0].data,
+	                  ' Hours'
+	                )
+	              )
 	            )
 	          ),
 	          _react2.default.createElement(

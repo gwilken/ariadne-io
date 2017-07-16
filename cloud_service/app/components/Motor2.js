@@ -326,23 +326,31 @@ class Motor extends React.Component {
           <div className="gaugeContainer">
 
             <div className="gaugeLeft">
+              <div className="graphContainer">
+                <HorizontalBar data={currentData}
+                  options={currentOptions}
+                    width={400}
+                    height={140}
+                />
 
-              <div className="currentDiv">
-              <HorizontalBar data={currentData}
-                options={currentOptions}
-                  width={400}
-                  height={140}
-              />
-            </div>
+                <div className="titlebar">
+                  <div className="title">Current Out</div>
+                  <div className="rtData"> {motorCurrent[0].data} Ah</div>
+                </div>
+              </div>
 
-            <div className="ttdDiv">
-              <HorizontalBar data={ttdData}
-                options={ttdOptions}
-                  width={400}
-                  height={140}
-              />
-            </div>
+              <div className="graphContainer">
+                <HorizontalBar data={ttdData}
+                  options={ttdOptions}
+                    width={400}
+                    height={140}
+                />
 
+                <div className="titlebar">
+                  <div className="title">Time to Discharge</div>
+                  <div className="rtData"> {motorTTD[0].data} Hours</div>
+                </div>
+              </div>
             </div>
 
             <div className="gaugeRight">
