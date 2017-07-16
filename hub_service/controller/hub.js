@@ -11,6 +11,7 @@ const motor = require("./motor");
 
 var ws;
 var packet = {};
+var packets = [];
 var documents = [];
 var count = 0;
 const realTimeInterval = 3000;
@@ -47,10 +48,10 @@ connect();
     setInterval(function() {
 
       gps._id = new ObjectID()
-      documents.push(gps);
+      packets.push(gps);
 
       motor._id = new ObjectID();
-      documents.push(motor);
+      packets.push(motor);
 
       if (ws.readyState === WebSocket.OPEN) {
         ws.send( JSON.stringify( gps ) );
@@ -67,14 +68,14 @@ connect();
 
           packet._id = new ObjectID();
 
-          documents.push(packet);
+          packets.push(packet);
 
           if (documents.length >= 1000 && mongo.collection) {
+            var documents = packets.slice();
+            packets = [];
             mongo.collection.insertMany(documents, function(err) {
               console.log('docs added');
-              documents = [];
             });
-
           }
 
           if (ws.readyState === WebSocket.OPEN) {
