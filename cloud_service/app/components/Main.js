@@ -72,7 +72,7 @@ class Main extends React.Component {
     if(list.includes('solar')) {
       console.log('solar at main');
 
-      var data = this.state.telemetry.map((elem) => {return elem.family = 'solar'});
+      var data = this.state.telemetry.filter((elem) => {return elem.family = 'solar'});
 
       solar = (
         <div >

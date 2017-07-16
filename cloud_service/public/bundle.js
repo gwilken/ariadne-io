@@ -20958,7 +20958,7 @@
 	      if (list.includes('solar')) {
 	        console.log('solar at main');
 
-	        var data = this.state.telemetry.map(function (elem) {
+	        var data = this.state.telemetry.filter(function (elem) {
 	          return elem.family = 'solar';
 	        });
 
