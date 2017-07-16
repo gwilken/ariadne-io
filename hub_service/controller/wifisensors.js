@@ -2,6 +2,7 @@ const net = require("net");
 
 var packet = {};
 var sensor = {};
+var count = 0;
 
 const sensorServer = net.createServer(function(socket) {
   socket.on("data", function(data) {
@@ -13,6 +14,16 @@ const sensorServer = net.createServer(function(socket) {
     } catch(err) {
       console.log('error at wireless sensor', err);
     }
+
+    if(count === 500) {
+      sensor._id = new ObjectID();
+      mongo.collection.insert(sensor, function(err) {
+        if(err) console.log('error at sensor mongo insert', err);
+        console.log('sensor data inserted');
+      })
+      count = 0;
+    }
+
   })
 });
 
