@@ -69,7 +69,7 @@ connect();
 
           documents.push(packet);
 
-          if (documents.length >= 100 && mongo.collection) {
+          if (documents.length >= 1000 && mongo.collection) {
             mongo.collection.insertMany(documents, function(err) {
               console.log('docs added');
               documents = [];
