@@ -4,6 +4,7 @@ const mongo = require("../model/mongo.js");
 const wss = new WebSocket.Server({ port: 8080 });
 
 var telemetry = [];
+var doc = {};
 var count = 0;
 var data;
 
@@ -26,11 +27,11 @@ wss.on('connection', function connection(ws) {
   });
 
   setInterval(function() {
-    var doc = {};
-    doc.telemetry = telemetry;
-    doc.createdAt = Date.now();
 
     if(mongo.collection) {
+      doc.createdAt = Date.now();
+      doc.telemetry = telemetry;
+
       mongo.collection.insert(doc, function(err) {
         if(err) console.log('error at mongo insert telemetry', err);
         console.log('telemetry inserted in db');
