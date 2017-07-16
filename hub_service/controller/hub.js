@@ -47,33 +47,30 @@ setInterval(function() {
       telemetry.splice(list.indexOf(motor.displayName), 1, motor);
     }
 
-    if(list.indexOf(gps.displayName) === -1) {
-      telemetry.push(gps);
+  if(list.indexOf(gps.displayName) === -1) {
+    telemetry.push(gps);
+  }
+    else {
+      telemetry.splice(list.indexOf(gps.displayName), 1, gps);
     }
-      else {
-        telemetry.splice(list.indexOf(gps.displayName), 1, gps);
-      }
 
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send( JSON.stringify( telemetry ) );
+  };
 
-  console.log(telemetry.length);
-
-  // if (ws.readyState === WebSocket.OPEN) {
-  //   ws.send( JSON.stringify( motor ) );
-  //   ws.send( JSON.stringify( gps ) );
-  // //  ws.send( JSON.stringify( sensor ) );
-  // };
 }, 1000);
 
-// setInterval(function() {
-//   if (ws.readyState === WebSocket.OPEN) {
-//     ws.send( JSON.stringify( gps ) );
-//   };
-// }, 1000);
-//
-// setInterval(function() {
-//   if (ws.readyState === WebSocket.OPEN) {
-//     ws.send( JSON.stringify( sensor ) );
-//   };
-// }, 1000);
+
+setInterval(function() {
+
+  var doc = {};
+  doc.telemetry = telemetry;
+  doc.createdAt = Date.now();
+
+  mongo.collection.insert(doc, function(err) {
+    if(err) console.log('error at mongo insert telemetry', err);
+  })
+
+}, 5000)
 
 connect();

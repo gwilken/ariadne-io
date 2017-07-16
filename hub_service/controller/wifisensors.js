@@ -26,21 +26,6 @@ const sensorServer = net.createServer(function(socket) {
       console.log('error at wireless sensor', err);
     }
 
-  //  console.log(telemetry.length);
-  //  console.log(list);
-
-
-    // count++;
-    //
-    // if(count > 100) {
-    //   packet._id = new ObjectID();
-    //   mongo.collection.insert(packet, function(err) {
-    //     if(err) console.log('error at sensor mongo insert', err);
-    //     console.log('sensor data inserted');
-    //   })
-    //   count = 0;
-    // }
-
   })
 });
 
