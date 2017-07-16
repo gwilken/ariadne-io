@@ -78,11 +78,11 @@ router.get('/telemetry/:family/:time', function(req, res) {
       res.end();
     } else {
 
-        var filteredDocs = docs.filter( (elem) => {
+        var filteredDocs = docs.telemetry.filter( (elem) => {
           return elem.family === req.params.family;
         })
 
-        res.json(docs);
+        res.json(filteredDocs);
       }
   });
 
