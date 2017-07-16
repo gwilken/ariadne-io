@@ -91,86 +91,108 @@ class Motor extends React.Component {
         }
       }
 
-  //     var ttdData = {
-  //       labels: ["Red", "darker red"],
-  //       datasets: [{
-  //           label: '',
-  //           data: [ this.state.ey.ttd ],
-  //           backgroundColor: [
-  //               'firebrick',
-  //               'rgb(0,0,0)'
-  //           ],
-  //           borderColor: ['firebrick', 'firebrick'],
-  //
-  //           borderWidth: 1
-  //       }]
-  //     };
-  //
-  //     var ttdOptions = {
-  //       rotation: 1 * Math.PI,
-  //       circumference: 1 * Math.PI,
-  //       tooltips: {
-  //         enabled: false,
-  //       },
-  //       legend: {
-  //         display: false,
-  //         position: 'top',
-  //       },
-  //       animation: {
-  //         // duration: 100,
-  //         easing: 'linear'
-  //       },
-  //       maintainAspectRatio: false
-  //     };
-  //
-  //     var currentData = {
-  //         labels: [this.state.ey.current],
-  //         datasets: [
-  //             {
-  //               labels: '',
-  //               data: [this.state.ey.current],
-  //               backgroundColor: ['firebrick']
-  //             }
-  //          ]
-  //        };
-  //
-  //     var currentOptions = {
-  //     layout: {
-  //       padding: {
-  //         left: 15,
-  //       },
-  //     },
-  //     tooltips: {
-  //       enabled: false,
-  //     },
-  //     legend: {
-  //       display: false,
-  //     },
-  //     responsive: true,
-  //     maintainAspectRatio: false,
-  //     scales: {
-  //       yAxes: [{
-  //         ticks: {
-  //           min: 0,
-  //           max: 0,
-  //           display: false,
-  //         },
-  //         barThickness: 120,
-  //         display: false,
-  //       }],
-  //       xAxes: [{
-  //         ticks: {
-  //           min: 0,
-  //           max: 10,
-  //         },
-  //         gridLines: {
-  //           display: false,
-  //           drawTicks: true,
-  //         },
-  //       }]
-  //     }
-  //   }
-  //
+      var currentData = {
+          labels: [motorCurrent[0].data],
+          datasets: [
+              {
+                labels: '',
+                data: [motorCurrent[0].data],
+                backgroundColor: ['firebrick']
+              }
+           ]
+         };
+
+      var currentOptions = {
+      layout: {
+        padding: {
+          left: 15,
+        },
+      },
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          barThickness: 120,
+          display: false,
+        }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 10,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
+      }
+
+      var ttdData = {
+        labels: [motorTTD[0].data],
+        datasets: [{
+            label: '',
+            data: [ motorTTD[0].data ],
+            backgroundColor: [
+                'firebrick',
+                'rgb(0,0,0)'
+            ],
+            borderColor: ['firebrick'],
+
+            borderWidth: 1
+        }]
+      };
+
+      var ttdOptions = {
+        layout: {
+          padding: {
+            left: 15,
+          },
+        },
+        tooltips: {
+          enabled: false,
+        },
+        legend: {
+          display: false,
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 0,
+              display: false,
+            },
+            barThickness: 120,
+            display: false,
+          }],
+          xAxes: [{
+            ticks: {
+              min: 0,
+              max: 20,
+            },
+            gridLines: {
+              display: false,
+              drawTicks: true,
+            },
+          }]
+        }
+      };
+
+
+
     var batteryMotorData = {
         labels: [bankVoltage[0].data],
         datasets: [
@@ -283,8 +305,6 @@ class Motor extends React.Component {
     };
 
     var rpmOptions = {
-      // rotation: 1 * Math.PI,
-      // circumference: 1 * Math.PI,
       tooltips: {
         enabled: false,
       },
@@ -304,31 +324,24 @@ class Motor extends React.Component {
 
         <h2>Motor</h2>
 
-
-         {/* <div className="graphContainer">
-
-          <HorizontalBar data={currentData}
-            options={currentOptions}
-              width={800}
-              height={140}
-          />
-
-          <div className="titlebar">
-            <div className="title">Current Usage</div>
-            <div className="rtData"> {rtCurrent} </div>
-          </div>
-
-        </div>*/}
-
           <div className="gaugeContainer">
 
-            {/* <div className="gaugeLeft">
-              <Doughnut data={ttdData}
+            <div className="gaugeLeft">
+
+              <HorizontalBar data={currentData}
+                options={currentOptions}
+                  width={400}
+                  height={140}
+              />
+
+              <HorizontalBar data={ttdData}
                 options={ttdOptions}
                   width={400}
                   height={140}
               />
-            </div> */}
+
+
+            </div>
 
             <div className="gaugeRight">
               <Doughnut data={rpmData}

@@ -59,7 +59,7 @@ h3 {
 
 .gaugeContainer {
   position: relative;
-  min-height: 140px;
+  min-height: 330px;
 }
 
 .gaugeLeft {
@@ -69,7 +69,7 @@ h3 {
 
 .gaugeRight {
   position: absolute;
-  left: 51%;
+  left: 60%;
 }
 
 .motorGauageBar {
