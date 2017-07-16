@@ -24,10 +24,6 @@ const sensorServer = net.createServer(function(socket) {
 
           telemetry.splice(list.indexOf(packet.displayName), 1, packet);
 
-          console.log('difference: ');
-          console.log(telemetry[list.indexOf(packet.displayName)]);
-          console.log(packet);
-
         } else {
           console.log('no difference: ');
           console.log(telemetry[list.indexOf(packet.displayName)]);
