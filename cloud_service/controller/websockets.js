@@ -14,25 +14,20 @@ wss.on('connection', function connection(ws) {
 
     if(mongo.collection) {
 
-        if(data.family) {
-          telemetry[data.family] = data;
-          telemetry.createdAt = Date.now();
-        }
+      packet.createdAt = Date.now();
 
-        count++;
+      count++;
 
-        if(count >= 400) {
+      if(count >= 100) {
 
-          mongo.collection.insert({telemetry}, function(err, res) {
-            if(err) console.log(err);
-            console.log('telemetry added to db');
-          });
+        mongo.collection.insert(packet, function(err, res) {
+          if(err) console.log(err);
+          console.log('packet added to db');
+        });
 
-          count = 0;
-        }
-
+        count = 0;
+      }
     }
-
 
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
