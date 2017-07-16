@@ -2,7 +2,7 @@ import React from "react";
 import Test from "./Test";
 import Solar from "./Solar";
 import House from "./House";
-import Motor from "./Motor";
+import Motor from "./Motor2";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
 import History from "./History";
@@ -82,7 +82,7 @@ class Main extends React.Component {
 
     if(list.includes('solar')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
-    
+
       solar = (
         <div onClick={ () => this.gotoHistory('gold') } >
           <Solar data={data} />
@@ -90,15 +90,15 @@ class Main extends React.Component {
       )
     }
 
-    // if(list.includes('motor')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
-    //
-    //   motor = (
-    //     <div onClick={ () => this.gotoHistory('gold') } >
-    //       <Motor data={data} />
-    //     </div>
-    //   )
-    // }
+    if(list.includes('motor')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
+
+      motor = (
+        <div onClick={ () => this.gotoHistory('gold') } >
+          <Motor data={data} />
+        </div>
+      )
+    }
     //
     // if(list.includes('enviro')) {
     //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
