@@ -42,23 +42,11 @@ var connect = function () {
 }
 
 setInterval(function() {
-  gps._id = new ObjectID()
-  packets.push(gps);
-
-  motor._id = new ObjectID();
-  packets.push(motor);
-
-  sensor._id = new ObjectID();
-  packets.push(sensor);
-  console.log(sensor);
-
-  // if (packets.length >= 20 && mongo.collection) {
-  //   mongo.collection.insertMany(packets, function(err) {
-  //     if(err) console.log(err);
-  //     console.log('packets added to db');
-  //   });
-  //   packets = [];
-  // }
+  // gps._id = new ObjectID()
+  //
+  // motor._id = new ObjectID();
+  //
+  // sensor._id = new ObjectID();
 
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( gps ) );
@@ -67,5 +55,15 @@ setInterval(function() {
   };
 
 }, 1000);
+
+setInterval(function() {
+    mongo.collection.insertMany([gps, motor, sensor], function(err) {
+      if(err) console.log(err);
+      console.log('packets added to db');
+    });
+  }, 5000);
+
+})
+
 
 connect();
