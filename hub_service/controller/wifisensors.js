@@ -5,28 +5,38 @@ const mongo = require("../model/mongo.js");
 var packet = {};
 var sensor = {};
 var count = 0;
+var telemetry = [];
 
 const sensorServer = net.createServer(function(socket) {
   socket.on("data", function(data) {
     try {
       packet = JSON.parse(data);
 
-      Object.assign(sensor, packet);
+      //Object.assign(sensor, packet);
+
+      if(telemetry.indexOf(packet.displayName) === -1) {
+        telemetry.push(packet);
+      } else {
+        telemetry.splice(telemetry.indexOf(packet.displayName), 1, packet);
+      }
+
 
     } catch(err) {
       console.log('error at wireless sensor', err);
     }
 
-    count++;
+    console.log(telemetry);
 
-    if(count > 100) {
-      packet._id = new ObjectID();
-      mongo.collection.insert(packet, function(err) {
-        if(err) console.log('error at sensor mongo insert', err);
-        console.log('sensor data inserted');
-      })
-      count = 0;
-    }
+    // count++;
+    //
+    // if(count > 100) {
+    //   packet._id = new ObjectID();
+    //   mongo.collection.insert(packet, function(err) {
+    //     if(err) console.log('error at sensor mongo insert', err);
+    //     console.log('sensor data inserted');
+    //   })
+    //   count = 0;
+    // }
 
   })
 });
