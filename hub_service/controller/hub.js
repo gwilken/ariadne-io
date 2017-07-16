@@ -61,17 +61,18 @@ connect();
         try {
           packet = JSON.parse(data);
 
-          documents.push(packet);
+          // documents.push(packet);
+          //
+          // if (documents.length > 100 && mongo.collection) {
+          //   mongo.collection.insertMany(documents, function(err) {
+          //     console.log('docs added');
+          //     if(err) console.log(err);
+          //   });
+          //
+          //   documents = [];
+          // }
 
-          if (documents.length > 100 && mongo.collection) {
-
-            mongo.collection.insertMany(documents, function(err) {
-              console.log('docs added');
-              if(err) console.log(err);
-            });
-
-            documents = [];
-          }
+          console.log(packet);
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( packet ) );
