@@ -28,9 +28,10 @@ wss.on('connection', function connection(ws) {
   setInterval(function() {
 
     if(mongo.collection) {
-      var doc = {};
-      doc.createdAt = Date.now();
-      doc.telemetry = telemetry;
+      var doc = {
+        telemetry: telemetry,
+        createdAt: Date.now()
+      };
 
       mongo.collection.insert(doc, function(err) {
         if(err) console.log('error at mongo insert telemetry', err);
