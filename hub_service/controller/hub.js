@@ -16,7 +16,6 @@ var documents = [];
 var count = 0;
 const realTimeInterval = 3000;
 
-
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
 
@@ -51,14 +50,14 @@ setInterval(function() {
 
   sensor._id = new ObjectID();
   packets.push(sensor);
+  console.log(sensor);
 
   if (packets.length >= 20 && mongo.collection) {
-    var documents = packets.slice();
-    packets = [];
-    mongo.collection.insertMany(documents, function(err) {
+    mongo.collection.insertMany(packets, function(err) {
       if(err) console.log(err);
       console.log('packets added to db');
     });
+    packets = [];
   }
 
   if (ws.readyState === WebSocket.OPEN) {
@@ -66,6 +65,7 @@ setInterval(function() {
     ws.send( JSON.stringify( motor ) );
     ws.send( JSON.stringify( sensor ) );
   };
+
 }, 1000);
 
 connect();
