@@ -16,28 +16,22 @@ class Motor extends React.Component {
 
   render() {
 
-
     var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
     var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
-    if(battery1.length > 0) {
-      var battery1_volts = battery1[0].data[0].data;
-    }
+    if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
+    if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
+    if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
+    if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
 
-    if(battery2.length > 0) {
-      var battery2_volts = battery2[0].data[0].data;
-    }
+    var motorData = this.props.data.filter((elem) => {return elem.displayName === 'Electric Yacht 10kW Motor'});
 
-    if(battery3.length > 0) {
-      var battery3_volts = battery3[0].data[0].data;
+    if(motorData.length > 0) {
+      var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
+      console.log(bankVoltage);
     }
-
-    if(battery4.length > 0) {
-      var battery4_volts = battery4[0].data[0].data;
-    }
-
       //
       //
       // var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
@@ -46,21 +40,17 @@ class Motor extends React.Component {
       // var rtCurrent = this.state.ey.current + ' Ah';
       // var rtBankVolt = this.state.ey.volts + ' v';
 
-      var data = {
+      var batteryGroupData = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
-        datasets: [
-          {
+        datasets: [{
             backgroundColor: 'firebrick',
             borderColor: 'firebrick',
             borderWidth: 1,
-            // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            // hoverBorderColor: 'rgba(255,99,132,1)',
             data: [battery1_volts, battery2_volts, battery3_volts, battery4_volts]
-          }
-        ]
+          }]
       };
 
-      var options = {
+      var batteryGroupOptions = {
         layout: {
           padding: {
             left: 15,
@@ -75,7 +65,6 @@ class Motor extends React.Component {
           position: 'top',
         },
         animation: {
-          // duration: 100,
           easing: 'linear'
         },
         maintainAspectRatio: false,
@@ -101,6 +90,7 @@ class Motor extends React.Component {
           ]
         }
       }
+
   //     var ttdData = {
   //       labels: ["Red", "darker red"],
   //       datasets: [{
@@ -181,54 +171,54 @@ class Motor extends React.Component {
   //     }
   //   }
   //
-  //   var voltBankData = {
-  //       labels: [this.state.ey.volts],
-  //       datasets: [
-  //           {
-  //             labels: '',
-  //             data: [this.state.ey.volts],
-  //             backgroundColor: ['firebrick']
-  //           }
-  //        ]
-  //      };
-  //
-  //   var voltBankOptions = {
-  //   layout: {
-  //     padding: {
-  //       left: 15,
-  //     },
-  //   },
-  //   tooltips: {
-  //     enabled: false,
-  //   },
-  //   legend: {
-  //     display: false,
-  //   },
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   scales: {
-  //     yAxes: [{
-  //       ticks: {
-  //         min: 0,
-  //         max: 0,
-  //         display: false,
-  //       },
-  //       barThickness: 120,
-  //       display: false,
-  //     }],
-  //     xAxes: [{
-  //       ticks: {
-  //         min: 0,
-  //         max: 60,
-  //       },
-  //       gridLines: {
-  //         display: false,
-  //         drawTicks: true,
-  //       },
-  //     }]
-  //   }
-  // }
-  //
+    var batteryMotorData = {
+        labels: [this.state.ey.volts],
+        datasets: [
+            {
+              labels: '',
+              data: [this.state.ey.volts],
+              backgroundColor: ['firebrick']
+            }
+         ]
+       };
+
+    var batteryMotorOptions = {
+    layout: {
+      padding: {
+        left: 15,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+          display: false,
+        },
+        barThickness: 120,
+        display: false,
+      }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 60,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: true,
+        },
+      }]
+    }
+  }
+
   //   var rpmData = {
   //     labels: ["Red", "darker red"],
   //     datasets: [{
@@ -305,8 +295,8 @@ class Motor extends React.Component {
 
 
           <div className="motorGauageBar">
-            {/* <div className="title">Motor Batts</div> */}
-            {/* <div className="ttdLabel"> {ttd} </div>
+            {/* <div className="title">Motor Batts</div>
+            /* <div className="ttdLabel"> {ttd} </div>
             <div className="rpmLabel"> {rpm} </div>
           </div>
 
@@ -324,18 +314,17 @@ class Motor extends React.Component {
             <div className="title">Total Bank Voltage</div>
             <div className="rtData"> {rtBankVolt} </div>
           </div>
-        </div> */} */}
+        </div> */
 
 
         <div className="graphContainer">
-            <Bar data={data}
-              options={options}
+            <Bar data={batteryGroupData}
+              options={batteryGroupOptions}
                 width={800}
                 height={280}
             />
 
           <div className="motorBattBar">
-            {/* <div className="title">Motor Batts</div> */}
             <div className="motorBattData"> {battery1_volts} </div>
             <div className="motorBattData"> {battery2_volts} </div>
             <div className="motorBattData"> {battery3_volts} </div>
