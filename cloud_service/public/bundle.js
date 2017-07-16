@@ -20959,7 +20959,7 @@
 	        console.log('solar at main');
 
 	        var data = this.state.telemetry.filter(function (elem) {
-	          return elem.family === 'solar';
+	          return elem.family === 'motor';
 	        });
 
 	        solar = _react2.default.createElement(
@@ -21093,15 +21093,7 @@
 
 	      console.log(this.props);
 
-	      return _react2.default.createElement(
-	        "div",
-	        null,
-	        _react2.default.createElement(
-	          "h1",
-	          null,
-	          "TEST COMPONENT"
-	        )
-	      );
+	      return _react2.default.createElement("div", null);
 	    }
 	  }]);
 

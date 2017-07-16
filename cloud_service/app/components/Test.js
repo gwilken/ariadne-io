@@ -23,7 +23,7 @@ class Test extends React.Component {
     return(
       <div>
 
-        <h1>TEST COMPONENT</h1>
+        {/* <h1>TEST COMPONENT</h1> */}
 
       </div>
     )
