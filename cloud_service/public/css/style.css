@@ -65,6 +65,8 @@ h3 {
 .gaugeLeft {
   position: absolute;
   left: 5%;
+  max-height: 380px;
+  width: 50%;
 }
 
 .gaugeRight {
