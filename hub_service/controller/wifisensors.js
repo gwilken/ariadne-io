@@ -12,6 +12,7 @@ const sensorServer = net.createServer(function(socket) {
     try {
       packet = JSON.parse(data);
       Object.assign(sensor, packet);
+      sensor._id = new ObjectID();
       dataArr.push(sensor);
     } catch(err) {
       console.log('error at wireless sensor', err);
@@ -19,7 +20,7 @@ const sensorServer = net.createServer(function(socket) {
 
     if(dataArr.length > 70) {
     //  sensor._id = new ObjectID();
-      mongo.collection.insertMany(dataArr, function(err) {
+      mongo.collection.insert(dataArr, function(err) {
         if(err) console.log('error at sensor mongo insert', err);
         console.log('sensor data inserted');
       })
