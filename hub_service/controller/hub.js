@@ -42,27 +42,33 @@ var connect = function () {
 }
 
 setInterval(function() {
-  // gps._id = new ObjectID()
-  //
-  // motor._id = new ObjectID();
-  //
-  // sensor._id = new ObjectID();
-
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( gps ) );
     ws.send( JSON.stringify( motor ) );
     ws.send( JSON.stringify( sensor ) );
   };
-
 }, 1000);
 
 setInterval(function() {
-    mongo.collection.insertMany([gps, motor, sensor], function(err) {
+    mongo.collection.insert(gps, function(err) {
       if(err) console.log(err);
       console.log('packets added to db');
     });
-}, 5000);
+}, 60000);
 
+setInterval(function() {
+    mongo.collection.insert(motor, function(err) {
+      if(err) console.log(err);
+      console.log('packets added to db');
+    });
+}, 10000);
+
+setInterval(function() {
+    mongo.collection.insert([gps, motor, sensor], function(err) {
+      if(err) console.log(err);
+      console.log('packets added to db');
+    });
+}, 10000);
 
 
 connect();
