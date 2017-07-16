@@ -7,7 +7,7 @@ const url = require('url');
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
-const sensor = require("/.wifisensors");
+const sensor = require("./wifisensors");
 
 var ws;
 var packet = {};
