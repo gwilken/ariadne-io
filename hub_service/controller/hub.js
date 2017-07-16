@@ -78,7 +78,7 @@ connect();
             documents = [];
           }
 
-          //console.log(packet);
+          console.log(packet);
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( packet ) );
