@@ -75,17 +75,19 @@ const sensorServer = net.createServer(function(socket) {
     } catch(err) {
       console.log(err);
     }
+
+    if (packets.length >= 50 && mongo.collection) {
+      var documents = packets.slice();
+      packets = [];
+      mongo.collection.insertMany(documents, function(err) {
+        if(err) console.log(err);
+        console.log('packets added to db');
+      });
+    }
+
   })
 });
 
 
-if (packets.length >= 50 && mongo.collection) {
-  var documents = packets.slice();
-  packets = [];
-  mongo.collection.insertMany(documents, function(err) {
-    if(err) console.log(err);
-    console.log('packets added to db');
-  });
-}
 
 sensorServer.listen(3215, '192.168.10.1');
