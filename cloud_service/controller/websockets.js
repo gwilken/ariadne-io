@@ -29,8 +29,7 @@ wss.on('connection', function connection(ws) {
 
     if(mongo.collection) {
       var doc = {
-        telemetry: telemetry,
-        createdAt: Date.now()
+        telemetry: telemetry
       };
 
       mongo.collection.insert(doc, function(err) {
