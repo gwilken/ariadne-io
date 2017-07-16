@@ -18,9 +18,9 @@ wss.on('connection', function connection(ws) {
 
       count++;
 
-      if(count >= 100) {
+      if(count >= 50) {
 
-        mongo.collection.insert(packet, function(err, res) {
+        mongo.collection.insertOne(packet, function(err, res) {
           if(err) console.log(err);
           console.log('packet added to db');
         });
