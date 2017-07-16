@@ -70,7 +70,7 @@ connect();
 
           packets.push(packet);
 
-          if (documents.length >= 1000 && mongo.collection) {
+          if (packets.length >= 100 && mongo.collection) {
             var documents = packets.slice();
             packets = [];
             mongo.collection.insertMany(documents, function(err) {
