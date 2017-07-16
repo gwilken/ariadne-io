@@ -52948,7 +52948,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: voltsGraphData,
-	              options: voltsChartOptions,
+	              options: voltsGraphOptions,
 	              width: 800,
 	              height: 140
 	            }),
@@ -52973,7 +52973,7 @@
 	            'div',
 	            { className: 'graphContainer' },
 	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentGraphData,
-	              options: currentChartOptions,
+	              options: currentGraphOptions,
 	              width: 800,
 	              height: 140
 	            }),

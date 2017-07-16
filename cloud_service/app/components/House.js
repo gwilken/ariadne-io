@@ -293,7 +293,7 @@ class House extends React.Component {
 
           <div className="graphContainer">
             <HorizontalBar data={voltsGraphData}
-                options={voltsChartOptions}
+                options={voltsGraphOptions}
                 width={800}
                 height={140}
             />
@@ -308,7 +308,7 @@ class House extends React.Component {
 
           <div className="graphContainer">
             <HorizontalBar data={currentGraphData}
-                options={currentChartOptions}
+                options={currentGraphOptions}
                 width={800}
                 height={140}
             />
