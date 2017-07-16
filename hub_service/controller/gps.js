@@ -1,6 +1,7 @@
 const net = require("net");
 const nmea = require("nmea-simple");
 const mongo = require("../model/mongo.js");
+const ObjectID = require('mongodb').ObjectID;
 
 var count = 0;
 
@@ -59,7 +60,8 @@ gpsSocket.on("data", function(data) {
 
   count++;
 
-  if(count === 60) {
+  if(count === 100) {
+    gps._id = new ObjectID();
     mongo.collection.insert(gps, function(err) {
       if(err) console.log('error at gps mongo insert', err);
       console.log('gps data inserted');
