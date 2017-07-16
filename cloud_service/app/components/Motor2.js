@@ -327,18 +327,21 @@ class Motor extends React.Component {
 
             <div className="gaugeLeft">
 
+              <div className="currentDiv">
               <HorizontalBar data={currentData}
                 options={currentOptions}
                   width={400}
                   height={140}
               />
+            </div>
 
+            <div className="ttdDiv">
               <HorizontalBar data={ttdData}
                 options={ttdOptions}
                   width={400}
                   height={140}
               />
-
+            </div>
 
             </div>
 

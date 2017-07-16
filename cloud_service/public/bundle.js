@@ -57584,16 +57584,24 @@
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'gaugeLeft' },
-	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
-	              options: currentOptions,
-	              width: 400,
-	              height: 140
-	            }),
-	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: ttdData,
-	              options: ttdOptions,
-	              width: 400,
-	              height: 140
-	            })
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'currentDiv' },
+	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
+	                options: currentOptions,
+	                width: 400,
+	                height: 140
+	              })
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'ttdDiv' },
+	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: ttdData,
+	                options: ttdOptions,
+	                width: 400,
+	                height: 140
+	              })
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'div',
