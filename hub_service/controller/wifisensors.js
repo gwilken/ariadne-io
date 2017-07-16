@@ -20,17 +20,17 @@ const sensorServer = net.createServer(function(socket) {
 
       } else {
 
-        if(telemetry[list.indexOf(packet.displayName] !== packet) {
+        if( telemetry [ list.indexOf(packet.displayName) ] !== packet) {
 
           telemetry.splice(list.indexOf(packet.displayName), 1, packet);
 
           console.log('difference: ');
-          console.log(telemetry[list.indexOf(packet.displayName]);
+          console.log(telemetry[list.indexOf(packet.displayName)]);
           console.log(packet);
 
         } else {
           console.log('no difference: ');
-          console.log(telemetry[list.indexOf(packet.displayName]);
+          console.log(telemetry[list.indexOf(packet.displayName)]);
           console.log(packet);
           }
 
