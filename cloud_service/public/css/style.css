@@ -74,14 +74,23 @@ h3 {
 
 .rpm-label-container {
   position: absolute;
+  bottom: 43%;
+  left: 43.5%;
 }
 
 .rpm-label-data {
-  position: absolute;
+  position: relative;
+  bottom: 0px;
+  text-align: center;
+  width: auto;
+  font-size: 36px;
+  margin: 0 0 13px 0;
 }
 
 .rpm-label {
-  position: absolute;
+  position: relative;
+  text-align: center;
+  font-size: 18pt;
 }
 
 .motorGauageBar {
