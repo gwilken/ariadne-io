@@ -69,6 +69,7 @@ motorPort.on('data', function (data) {
     if(data[i] === 4 && data[i+1] === 4 && data[i+2] === 1) {
 
       data.copy(motorData, 0, i);
+
       motor.data[2].data = ((motorData[9] << 8) + motorData[8]) / 10;
       motor.data[3].data = ((motorData.readUInt8(13) << 8) + motorData.readUInt8(12)) / 100;
       motor.data[4].data = ((motorData[16] << 8) + motorData[15]) / 100;
@@ -80,9 +81,9 @@ motorPort.on('data', function (data) {
   count++;
 
   if(count === 1000) {
-    var motorData = Object.assign({}, motor);
-    motorData._id = new ObjectID();
-    mongo.collection.insert(motorData, function(err) {
+    var motorObj = Object.assign({}, motor);
+    motorObj._id = new ObjectID();
+    mongo.collection.insert(motorObj, function(err) {
       if(err) console.log('error at motor mongo insert', err);
       console.log('motor data inserted');
     })
