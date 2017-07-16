@@ -14,15 +14,15 @@ wss.on('connection', function connection(ws) {
 
     if(mongo.collection) {
 
-      packet.createdAt = Date.now();
+      data.createdAt = Date.now();
 
       count++;
 
       if(count >= 50) {
 
-        mongo.collection.insertOne(packet, function(err, res) {
+        mongo.collection.insertOne(data, function(err, res) {
           if(err) console.log(err);
-          console.log('packet added to db');
+          console.log('data added to db');
         });
 
         count = 0;
