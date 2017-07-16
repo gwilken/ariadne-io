@@ -79,7 +79,7 @@ router.get('/telemetry/:family/:time', function(req, res) {
           return elem.family === req.params.family;
         })
 
-        res.json(filteredDocsdocs);
+        res.json(filteredDocs);
       }
   });
 
