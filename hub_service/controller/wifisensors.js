@@ -1,5 +1,7 @@
 const net = require("net");
 
+var packet = {};
+
 const sensorServer = net.createServer(function(socket) {
   socket.on("data", function(data) {
     try {
