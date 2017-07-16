@@ -20918,9 +20918,9 @@
 
 	      ws.onmessage = function (event) {
 
-	        var msg = JSON.parse(event.data);
+	        var telemetry = JSON.parse(event.data);
 
-	        console.log(msg);
+	        this.setState({ telemetry: telemetry });
 
 	        //     if(msg.name === 'House Battery Bank') {
 	        //       this.setState( {house: msg } );
@@ -21007,6 +21007,7 @@
 	      var geo;
 
 	      if (list.includes('solar')) {
+	        console.log('solar');
 	        solar = _react2.default.createElement(
 	          "div",
 	          { onClick: function onClick() {
@@ -21016,45 +21017,37 @@
 	        );
 	      }
 
-	      if (this.state.house) {
-	        house = _react2.default.createElement(
-	          "div",
-	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "House Battery Bank", field1: "current", field2: "busvoltage" }, 'royalblue');
-	            } },
-	          _react2.default.createElement(_House2.default, { data: this.state.house })
-	        );
-	      }
-
-	      if (this.state.motor) {
-	        motor = _react2.default.createElement(
-	          "div",
-	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Electric Yacht 10kW Motor", field1: "volts", field2: "current" }, 'firebrick');
-	            } },
-	          _react2.default.createElement(_Motor2.default, { data: this.state.motor })
-	        );
-	      }
-
-	      if (this.state.enviro) {
-	        enviro = _react2.default.createElement(
-	          "div",
-	          { onClick: function onClick() {
-	              return _this2.gotoHistory({ name: "Environmental", field1: "temperature", field2: "pressure" }, 'darkviolet');
-	            } },
-	          _react2.default.createElement(_Enviro2.default, { data: this.state.enviro })
-	        );
-	      }
-
-	      if (this.state.geo) {
-	        geo = _react2.default.createElement(
-	          "div",
-	          { onClick: function onClick() {
-	              return _this2.gotoMap;
-	            } },
-	          _react2.default.createElement(_Geo2.default, { data: this.state.geo })
-	        );
-	      }
+	      // if(this.state.house) {
+	      //   house = (
+	      //     <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
+	      //        <House data={this.state.house} />
+	      //     </div>
+	      //   )
+	      // }
+	      //
+	      // if(this.state.motor) {
+	      //   motor = (
+	      //     <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
+	      //       <Motor data={this.state.motor} />
+	      //     </div>
+	      //   )
+	      // }
+	      //
+	      // if(this.state.enviro) {
+	      //   enviro = (
+	      //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
+	      //       <Enviro data={this.state.enviro} />
+	      //     </div>
+	      //   )
+	      // }
+	      //
+	      // if(this.state.geo) {
+	      //   geo = (
+	      //     <div onClick={ () => this.gotoMap} >
+	      //       <Geo data={this.state.geo} />
+	      //     </div>
+	      //   )
+	      // }
 
 	      if (this.state.view === 'history') {
 

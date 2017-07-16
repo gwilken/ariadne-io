@@ -36,9 +36,9 @@ class Main extends React.Component {
 
     ws.onmessage = function(event) {
 
-      var msg = JSON.parse(event.data);
+      var telemetry = JSON.parse(event.data);
 
-      console.log(msg);
+      this.setState({telemetry: telemetry});
 
   //     if(msg.name === 'House Battery Bank') {
   //       this.setState( {house: msg } );
@@ -121,6 +121,7 @@ class Main extends React.Component {
     var geo;
 
     if(list.includes('solar')) {
+      console.log('solar');
       solar = (
         <div onClick={ () => this.gotoHistory( { name: "Solar Controller Monitor" , field1: "current", field2: "busvoltage" }, 'gold')} >
           <Solar data={this.state.solar} />
@@ -128,37 +129,37 @@ class Main extends React.Component {
       )
     }
 
-    if(this.state.house) {
-      house = (
-        <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
-           <House data={this.state.house} />
-        </div>
-      )
-    }
-
-    if(this.state.motor) {
-      motor = (
-        <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
-          <Motor data={this.state.motor} />
-        </div>
-      )
-    }
-
-    if(this.state.enviro) {
-      enviro = (
-        <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
-          <Enviro data={this.state.enviro} />
-        </div>
-      )
-    }
-
-    if(this.state.geo) {
-      geo = (
-        <div onClick={ () => this.gotoMap} >
-          <Geo data={this.state.geo} />
-        </div>
-      )
-    }
+    // if(this.state.house) {
+    //   house = (
+    //     <div onClick={ () => this.gotoHistory( { name: "House Battery Bank" , field1: "current", field2: "busvoltage" }, 'royalblue')} >
+    //        <House data={this.state.house} />
+    //     </div>
+    //   )
+    // }
+    //
+    // if(this.state.motor) {
+    //   motor = (
+    //     <div onClick={ () => this.gotoHistory( { name: "Electric Yacht 10kW Motor" , field1: "volts", field2: "current" }, 'firebrick')} >
+    //       <Motor data={this.state.motor} />
+    //     </div>
+    //   )
+    // }
+    //
+    // if(this.state.enviro) {
+    //   enviro = (
+    //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
+    //       <Enviro data={this.state.enviro} />
+    //     </div>
+    //   )
+    // }
+    //
+    // if(this.state.geo) {
+    //   geo = (
+    //     <div onClick={ () => this.gotoMap} >
+    //       <Geo data={this.state.geo} />
+    //     </div>
+    //   )
+    // }
 
     if(this.state.view === 'history') {
 
