@@ -18,7 +18,6 @@ const realTimeInterval = 3000;
 
 
 var connect = function () {
-
   ws = new WebSocket('ws://www.rednightsky.com:8080');
 
   ws.on('open', function open() {
@@ -45,51 +44,47 @@ var connect = function () {
 
 connect();
 
-    setInterval(function() {
+setInterval(function() {
+  gps._id = new ObjectID()
+  packets.push(gps);
 
-      gps._id = new ObjectID()
-      packets.push(gps);
+  motor._id = new ObjectID();
+  packets.push(motor);
 
-      motor._id = new ObjectID();
-      packets.push(motor);
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send( JSON.stringify( gps ) );
+    ws.send( JSON.stringify( motor ) );
+  };
+}, 1000);
+
+
+const sensorServer = net.createServer(function(socket) {
+  socket.on("data", function(data) {
+
+    try {
+      packet = JSON.parse(data);
+
+      packet._id = new ObjectID();
+
+      packets.push(packet);
 
       if (ws.readyState === WebSocket.OPEN) {
-        ws.send( JSON.stringify( gps ) );
-        ws.send( JSON.stringify( motor ) );
+        ws.send( JSON.stringify( packet ) );
       };
-    }, 1000);
+
+    } catch(err) {
+      console.log(err);
+    }
+  })
+});
 
 
-    const sensorServer = net.createServer(function(socket) {
-      socket.on("data", function(data) {
+if (packets.length >= 300 && mongo.collection) {
+  var documents = packets.slice();
+  packets = [];
+  mongo.collection.insertMany(documents, function(err) {
+    if(err) console.log(err);
+  });
+}
 
-        try {
-          packet = JSON.parse(data);
-
-          packet._id = new ObjectID();
-
-          packets.push(packet);
-
-          if (packets.length >= 300 && mongo.collection) {
-            var documents = packets.slice();
-            packets = [];
-            mongo.collection.insertMany(documents, function(err) {
-
-                if(err) console.log(err);
-
-              console.log('docs added');
-            });
-          }
-
-          if (ws.readyState === WebSocket.OPEN) {
-            ws.send( JSON.stringify( packet ) );
-          };
-
-        } catch(err) {
-          console.log(err);
-        }
-
-      })
-    });
-
-    sensorServer.listen(3215, '192.168.10.1');
+sensorServer.listen(3215, '192.168.10.1');
