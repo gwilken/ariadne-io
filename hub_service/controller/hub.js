@@ -9,7 +9,6 @@ const gps = require("./gps");
 const motor = require("./motor");
 
 var ws;
-
 var packet = {};
 var telemetry = {};
 var count = 0;
@@ -59,7 +58,7 @@ connect();
 
         try {
           packet = JSON.parse(data);
-          Object.assign(telemetry, data, gps, motor);
+          Object.assign(telemetry, {data}, {gps}, {motor});
 
           count++;
 
