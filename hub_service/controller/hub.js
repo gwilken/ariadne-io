@@ -44,9 +44,9 @@ setInterval(function() {
     ws.send( JSON.stringify( sensor ) );
   };
 
-  Object.assign(telemetry[sensor.displayName], gps);
-  Object.assign(telemetry[sensor.displayName], motor);
-  Object.assign(telemetry[sensor.displayName], sensor);
+if(gps.displayName) Object.assign(telemetry[gps.displayName], gps);
+if(motor.displayName) Object.assign(telemetry[motor.displayName], motor);
+if(sensor.displayName) Object.assign(telemetry[sensor.displayName], sensor);
 
   console.log(telemetry);
 
