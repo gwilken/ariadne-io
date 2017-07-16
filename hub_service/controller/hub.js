@@ -10,9 +10,6 @@ const motor = require("./motor");
 const telemetry = require("./wifisensors");
 
 var ws;
-var sensorsArr = [];
-var gpsArr = [];
-var motorArr = [];
 
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
@@ -41,13 +38,30 @@ var connect = function () {
 
 setInterval(function() {
 
+  var list = telemetry.map((elem) => { return elem.displayName; })
+
+  if(list.indexOf(motor.displayName) === -1) {
+    telemetry.push(motor);
+  }
+    else {
+      telemetry.splice(list.indexOf(motor.displayName), 1, packet);
+    }
+
+    if(list.indexOf(gps.displayName) === -1) {
+      telemetry.push(gps);
+    }
+      else {
+        telemetry.splice(list.indexOf(gps.displayName), 1, packet);
+      }
+
+
   console.log(telemetry);
 
-  if (ws.readyState === WebSocket.OPEN) {
-    ws.send( JSON.stringify( motor ) );
-    ws.send( JSON.stringify( gps ) );
-  //  ws.send( JSON.stringify( sensor ) );
-  };
+  // if (ws.readyState === WebSocket.OPEN) {
+  //   ws.send( JSON.stringify( motor ) );
+  //   ws.send( JSON.stringify( gps ) );
+  // //  ws.send( JSON.stringify( sensor ) );
+  // };
 }, 1000);
 
 // setInterval(function() {
