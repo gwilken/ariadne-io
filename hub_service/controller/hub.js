@@ -44,14 +44,14 @@ setInterval(function() {
     telemetry.push(motor);
   }
     else {
-      telemetry.splice(list.indexOf(motor.displayName), 1, packet);
+      telemetry.splice(list.indexOf(motor.displayName), 1, motor);
     }
 
     if(list.indexOf(gps.displayName) === -1) {
       telemetry.push(gps);
     }
       else {
-        telemetry.splice(list.indexOf(gps.displayName), 1, packet);
+        telemetry.splice(list.indexOf(gps.displayName), 1, gps);
       }
 
 
