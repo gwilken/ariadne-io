@@ -3,11 +3,11 @@ const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
 const ObjectID = require('mongodb').ObjectID;
 const url = require('url');
-const net = require("net");
 
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
+const sensor = require("/.wifisensors");
 
 var ws;
 var packet = {};
@@ -42,8 +42,6 @@ var connect = function () {
   };
 }
 
-connect();
-
 setInterval(function() {
   gps._id = new ObjectID()
   packets.push(gps);
@@ -51,43 +49,23 @@ setInterval(function() {
   motor._id = new ObjectID();
   packets.push(motor);
 
+  sensor._id = new ObjectID();
+  packets.push(sensor);
+
+  if (packets.length >= 20 && mongo.collection) {
+    var documents = packets.slice();
+    packets = [];
+    mongo.collection.insertMany(documents, function(err) {
+      if(err) console.log(err);
+      console.log('packets added to db');
+    });
+  }
+
   if (ws.readyState === WebSocket.OPEN) {
     ws.send( JSON.stringify( gps ) );
     ws.send( JSON.stringify( motor ) );
+    ws.send( JSON.stringify( sensor ) );
   };
 }, 1000);
 
-
-const sensorServer = net.createServer(function(socket) {
-  socket.on("data", function(data) {
-
-    try {
-      packet = JSON.parse(data);
-
-      packet._id = new ObjectID();
-
-      packets.push(packet);
-
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.send( JSON.stringify( packet ) );
-      };
-
-    } catch(err) {
-      console.log(err);
-    }
-
-    if (packets.length >= 50 && mongo.collection) {
-      var documents = packets.slice();
-      packets = [];
-      mongo.collection.insertMany(documents, function(err) {
-        if(err) console.log(err);
-        console.log('packets added to db');
-      });
-    }
-
-  })
-});
-
-
-
-sensorServer.listen(3215, '192.168.10.1');
+connect();
