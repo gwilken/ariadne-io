@@ -57527,46 +57527,79 @@
 	            }
 	          }]
 	        }
+	      };
 
-	        //   var rpmData = {
-	        //     labels: ["Red", "darker red"],
-	        //     datasets: [{
-	        //         label: '',
-	        //         data: [ this.state.ey.rpm, 9 ],
-	        //         backgroundColor: [
-	        //             'firebrick',
-	        //             'rgb(0,0,0)'
-	        //         ],
-	        //         borderColor: ['firebrick', 'firebrick'],
-	        //
-	        //         borderWidth: 1
-	        //     }]
-	        //   };
-	        //
-	        //   var rpmOptions = {
-	        //     rotation: 1 * Math.PI,
-	        //     circumference: 1 * Math.PI,
-	        //     tooltips: {
-	        //       enabled: false,
-	        //     },
-	        //     legend: {
-	        //       display: false,
-	        //       position: 'top',
-	        //     },
-	        //     animation: {
-	        //       // duration: 100,
-	        //       easing: 'linear'
-	        //     },
-	        //     maintainAspectRatio: false
-	        //   };
+	      var rpmData = {
+	        labels: ["Red", "darker red"],
+	        datasets: [{
+	          label: '',
+	          data: [motorRPM[0].data, 9],
+	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
+	          borderColor: ['firebrick', 'firebrick'],
 
-	      };return _react2.default.createElement(
+	          borderWidth: 1
+	        }]
+	      };
+
+	      var rpmOptions = {
+	        // rotation: 1 * Math.PI,
+	        // circumference: 1 * Math.PI,
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false
+	      };
+
+	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
 	          'h2',
 	          null,
 	          'Motor'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'gaugeContainer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'gaugeRight' },
+	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
+	              options: rpmOptions,
+	              width: 400,
+	              height: 140
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'motorGauageBar' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'title' },
+	            'Motor Batts'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'ttdLabel' },
+	            ' ',
+	            ttd,
+	            ' '
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'rpmLabel' },
+	            ' ',
+	            rpm,
+	            ' '
+	          )
 	        ),
 	        _react2.default.createElement(
 	          'div',

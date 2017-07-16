@@ -267,37 +267,36 @@ class Motor extends React.Component {
   }
   }
 
-  //   var rpmData = {
-  //     labels: ["Red", "darker red"],
-  //     datasets: [{
-  //         label: '',
-  //         data: [ this.state.ey.rpm, 9 ],
-  //         backgroundColor: [
-  //             'firebrick',
-  //             'rgb(0,0,0)'
-  //         ],
-  //         borderColor: ['firebrick', 'firebrick'],
-  //
-  //         borderWidth: 1
-  //     }]
-  //   };
-  //
-  //   var rpmOptions = {
-  //     rotation: 1 * Math.PI,
-  //     circumference: 1 * Math.PI,
-  //     tooltips: {
-  //       enabled: false,
-  //     },
-  //     legend: {
-  //       display: false,
-  //       position: 'top',
-  //     },
-  //     animation: {
-  //       // duration: 100,
-  //       easing: 'linear'
-  //     },
-  //     maintainAspectRatio: false
-  //   };
+    var rpmData = {
+      labels: ["Red", "darker red"],
+      datasets: [{
+          label: '',
+          data: [ motorRPM[0].data, 9 ],
+          backgroundColor: [
+              'firebrick',
+              'rgb(0,0,0)'
+          ],
+          borderColor: ['firebrick', 'firebrick'],
+
+          borderWidth: 1
+      }]
+    };
+
+    var rpmOptions = {
+      // rotation: 1 * Math.PI,
+      // circumference: 1 * Math.PI,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
+        display: false,
+        position: 'top',
+      },
+      animation: {
+        easing: 'linear'
+      },
+      maintainAspectRatio: false
+    };
 
     return (
 
@@ -319,17 +318,17 @@ class Motor extends React.Component {
             <div className="rtData"> {rtCurrent} </div>
           </div>
 
-        </div>
+        </div>*/}
 
           <div className="gaugeContainer">
 
-            <div className="gaugeLeft">
+            {/* <div className="gaugeLeft">
               <Doughnut data={ttdData}
                 options={ttdOptions}
                   width={400}
                   height={140}
               />
-            </div>
+            </div> */}
 
             <div className="gaugeRight">
               <Doughnut data={rpmData}
@@ -346,7 +345,7 @@ class Motor extends React.Component {
              <div className="title">Motor Batts</div>
              <div className="ttdLabel"> {ttd} </div>
             <div className="rpmLabel"> {rpm} </div>
-          </div>*/}
+          </div>
 
 
 
