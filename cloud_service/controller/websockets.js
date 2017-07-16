@@ -3,7 +3,7 @@ const mongo = require("../model/mongo.js");
 
 const wss = new WebSocket.Server({ port: 8080 });
 
-var telemetry = {};
+var telemetry = [];
 var count = 0;
 var data;
 
@@ -12,7 +12,8 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(packet) {
 
     try {
-      data = JSON.parse(packet);
+      telemetry = JSON.parse(packet);
+
     } catch(err) {
       console.log('error at parse incoming json', err);
     }
@@ -35,10 +36,24 @@ wss.on('connection', function connection(ws) {
 
     wss.clients.forEach(function each(client) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
-        client.send(packet);
+        client.send(telemetry);
       }
     });
 
   });
+
+  setInterval(function() {
+    var doc = {};
+    doc.telemetry = telemetry;
+    doc.createdAt = Date.now();
+
+    if(mongo.collection) {
+      mongo.collection.insert(doc, function(err) {
+        if(err) console.log('error at mongo insert telemetry', err);
+        console.log('telemetry inserted in db');
+      })
+    }
+
+  }, 30000)
 
 });
