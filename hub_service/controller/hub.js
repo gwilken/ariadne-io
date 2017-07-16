@@ -1,6 +1,7 @@
 
 const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
+const ObjectID = require('mongodb').ObjectID,
 const url = require('url');
 const net = require("net");
 
@@ -45,7 +46,10 @@ connect();
 
     setInterval(function() {
 
+      gps._id = new ObjectID()
       documents.push(gps);
+
+      motor._id = new ObejctID();
       documents.push(motor);
 
       if (ws.readyState === WebSocket.OPEN) {
@@ -60,6 +64,8 @@ connect();
 
         try {
           packet = JSON.parse(data);
+
+          packet._id = new ObjectID();
 
           documents.push(packet);
 
