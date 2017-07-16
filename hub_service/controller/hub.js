@@ -63,8 +63,8 @@ connect();
 
           documents.push(packet);
 
-          if (documents.length > 100 && mongo.collection) {
-            mongo.collection.insertMany(documents, function(err) {
+          if (documents.length > 50 && mongo.collection) {
+            mongo.collection.insert(documents, function(err) {
               console.log('docs added');
               if(err) console.log(err);
             });
@@ -72,7 +72,7 @@ connect();
             documents = [];
           }
 
-          console.log(packet);
+          //console.log(packet);
 
           if (ws.readyState === WebSocket.OPEN) {
             ws.send( JSON.stringify( packet ) );
