@@ -52664,7 +52664,7 @@
 	  _createClass(House, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      fetch('/telemetry/house/100').then(function (res) {
+	      fetch('/telemetry/100').then(function (res) {
 	        return res.json();
 	      }).then(function (objs) {
 	        console.log(objs);
