@@ -73,9 +73,10 @@ connect();
             mongo.collection.insertMany(documents, function(err) {
               console.log('docs added');
               if(err) console.log(err);
+              
+              documents = [];
             });
 
-            documents = [];
           }
 
           console.log(documents);
