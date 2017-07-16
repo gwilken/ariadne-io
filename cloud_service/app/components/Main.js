@@ -22,17 +22,7 @@ class Main extends React.Component {
         field2: ''
       },
       color: 'blue',
-      solar: '',
-      house: '',
-      enviro: '',
-      geo: '',
-      motor: {
-        ey: '',
-        batt1: '',
-        batt2: '',
-        batt3: '',
-        batt4: ''
-      }
+      telemetry: []
     }
 
     this.setView = this.setView.bind(this);
