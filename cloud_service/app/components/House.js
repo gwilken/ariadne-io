@@ -36,20 +36,30 @@ class House extends React.Component {
 
   render() {
 
-    console.log(this.props);
+    console.log(this.props.data[0]);
 
-    var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
-    var rtCurrent = this.props.data.current.toFixed(0) + ' mA';
+    currentData = [];
+    voltData = [];
 
-    var lastObj = this.state.data.length - 1;
+    var rtVolt = this.props.data[0].data[0].data.toFixed(2) + this.props.data[0].data[0].unit;
+    var rtCurrent = this.props.data[0].data[1].data.toFixed(0) + this.props.data[0].data[1].unit;
 
-    var currentData = this.state.data.map(function(obj) {
-      return(obj.current);
-    })
+    voltData.push(rtVolt)
+    currentData.push(rtCurrent);
 
-    var voltData = this.state.data.map(function(obj) {
-      return(obj.loadvoltage);
-    })
+
+    // var rtVolt = this.props.data.loadvoltage.toFixed(2) + ' v';
+    // var rtCurrent = this.props.data.current.toFixed(2) + ' mA';
+    //
+    // var lastObj = this.state.data.length - 1;
+    //
+    // var currentData = this.state.data.map(function(obj) {
+    //   return(obj.current);
+    // })
+    //
+    // var voltData = this.state.data.map(function(obj) {
+    //   return(obj.loadvoltage);
+    // })
 
     var currentGraphData = {
       labels: currentData,
@@ -178,7 +188,7 @@ class House extends React.Component {
 
     return (
 
-      <div> <h3>House</h3>
+      <div> <h3>{this.props.data[0].displayName}</h3>
         <div>
 
           <div className="graphContainer">
