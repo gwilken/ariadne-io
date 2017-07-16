@@ -57292,7 +57292,6 @@
 	        var bankVoltage = motorData[0].data.filter(function (elem) {
 	          return elem.sensor === "volts";
 	        });
-	        console.log(bankVoltage);
 	      }
 	      //
 	      //
@@ -57432,10 +57431,10 @@
 	        //   }
 	        //
 	      };var batteryMotorData = {
-	        labels: [this.state.ey.volts],
+	        labels: [bankVoltage[0].data],
 	        datasets: [{
 	          labels: '',
-	          data: [this.state.ey.volts],
+	          data: [bankVoltage[0].data],
 	          backgroundColor: ['firebrick']
 	        }]
 	      };
@@ -57466,7 +57465,7 @@
 	          }],
 	          xAxes: [{
 	            ticks: {
-	              min: 0,
+	              min: 46,
 	              max: 60
 	            },
 	            gridLines: {
@@ -57553,6 +57552,31 @@
 	              { className: 'motorBattData' },
 	              ' ',
 	              battery4_volts,
+	              ' '
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: batteryMotorData,
+	            options: batteryMotorOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'Total Bank Voltage'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              bankVoltage[0].data,
 	              ' '
 	            )
 	          )

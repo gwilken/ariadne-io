@@ -30,7 +30,8 @@ class Motor extends React.Component {
 
     if(motorData.length > 0) {
       var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
-      console.log(bankVoltage);
+
+
     }
       //
       //
@@ -172,11 +173,11 @@ class Motor extends React.Component {
   //   }
   //
     var batteryMotorData = {
-        labels: [this.state.ey.volts],
+        labels: [bankVoltage[0].data],
         datasets: [
             {
               labels: '',
-              data: [this.state.ey.volts],
+              data: [bankVoltage[0].data],
               backgroundColor: ['firebrick']
             }
          ]
@@ -208,7 +209,7 @@ class Motor extends React.Component {
       }],
       xAxes: [{
         ticks: {
-          min: 0,
+          min: 46,
           max: 60,
         },
         gridLines: {
@@ -298,23 +299,12 @@ class Motor extends React.Component {
              <div className="title">Motor Batts</div>
              <div className="ttdLabel"> {ttd} </div>
             <div className="rpmLabel"> {rpm} </div>
-          </div>
+          </div>*/}
 
 
 
 
-        <div className="graphContainer">
-          <HorizontalBar data={voltBankData}
-            options={voltBankOptions}
-              width={800}
-              height={140}
-          />
 
-          <div className="titlebar">
-            <div className="title">Total Bank Voltage</div>
-            <div className="rtData"> {rtBankVolt} </div>
-          </div>
-        </div>  */}
 
 
         <div className="graphContainer">
@@ -330,7 +320,19 @@ class Motor extends React.Component {
             <div className="motorBattData"> {battery3_volts} </div>
             <div className="motorBattData"> {battery4_volts} </div>
           </div>
+        </div>
 
+        <div className="graphContainer">
+          <HorizontalBar data={batteryMotorData}
+            options={batteryMotorOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Total Bank Voltage</div>
+            <div className="rtData"> {bankVoltage[0].data} </div>
+          </div>
         </div>
 
           {/* <div className="graphContainer">
