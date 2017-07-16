@@ -57583,21 +57583,9 @@
 	          { className: 'motorGauageBar' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'title' },
-	            'Motor Batts'
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'ttdLabel' },
-	            ' ',
-	            ttd,
-	            ' '
-	          ),
-	          _react2.default.createElement(
-	            'div',
 	            { className: 'rpmLabel' },
 	            ' ',
-	            rpm,
+	            motorRPM[0].data,
 	            ' '
 	          )
 	        ),
