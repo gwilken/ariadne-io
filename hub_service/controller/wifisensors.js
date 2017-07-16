@@ -25,7 +25,7 @@ const sensorServer = net.createServer(function(socket) {
       console.log('error at wireless sensor', err);
     }
 
-    console.log(telemetry);
+    console.log(telemetry.length);
 
     // count++;
     //
