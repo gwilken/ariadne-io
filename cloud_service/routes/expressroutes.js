@@ -68,13 +68,11 @@ router.get('/data/:time', function(req, res) {
 router.get('/telemetry/:family/:time', function(req, res) {
 
   console.log(req.params.family);
-
   console.log(req.params.time);
 
-  var secs = Date.now() - (req.params.time * 60000);
-  var objID = ObjectId.createFromTime(secs/1000);
+  var time = Date.now() - (req.params.time * 60000);
 
-  mongo.collection.find( { _id: { $gt: objID } } ).toArray(function(err, docs) {
+  mongo.collection.find( { createdAt: { $gt: time } } ).toArray(function(err, docs) {
     if(err) {
       console.log(err);
       res.end();
