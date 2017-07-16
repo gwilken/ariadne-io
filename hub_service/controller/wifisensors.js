@@ -14,23 +14,21 @@ const sensorServer = net.createServer(function(socket) {
 
       //Object.assign(sensor, packet);
 
-      if(telemetry.length > 0) {
+
 
         var list = telemetry.map((elem) => { elem.displayName; })
 
-        if(list.indexOf(packet.displayName) !== -1) {
+        if(list.indexOf(packet.displayName) === -1) {
+
+          telemetry.push(packet);
+
+        } else {
 
           telemetry.splice(list.indexOf(packet.displayName), 1, packet);
 
-        } else {
-          telemetry.push(packet);
         }
 
-      } else {
 
-        telemetry.push(packet);
-
-      }
 
 
     } catch(err) {
