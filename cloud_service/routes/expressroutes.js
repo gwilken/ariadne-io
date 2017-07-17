@@ -7,6 +7,9 @@ const router = new express.Router();
 
 
 router.get('/telemetry/:family/:time', function(req, res) {
+
+  console.log(req.params.family, req.params.time);
+
   var time = Date.now() - (req.params.time * 60000);
 
   mongo.collection.find( { createdAt: { $gt: time } } ).toArray(function(err, docs) {

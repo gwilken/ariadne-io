@@ -14,8 +14,6 @@ class Gps extends React.Component {
 
   render() {
 
-    console.log(this.props);
-
     var latitude = this.props.data[0].data[0].data[0];
     var longitude = this.props.data[0].data[0].data[1];
     var speed = this.props.data[0].data[1].data;
