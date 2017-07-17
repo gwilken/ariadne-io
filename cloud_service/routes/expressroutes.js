@@ -25,7 +25,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         }
       }
     },
-
   }).toArray(function(err, docs) {
 
     if(err) {
@@ -42,7 +41,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         // })
         //
         // //console.log(list);
-
         res.json(docs);
       }
   });
