@@ -12,6 +12,14 @@ class House extends React.Component {
     }
   }
 
+  componentDidMount() {
+    fetch('/telemetry/house/100')
+      .then((res) => res.json())
+        .then(function(docs) {
+          console.log(docs)
+        })
+  }
+
   render() {
 
     var volts = this.props.data[0].data[0].data.toFixed(2);
