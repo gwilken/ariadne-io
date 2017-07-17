@@ -73,28 +73,23 @@ class Main extends React.Component {
       gps = ( <Gps data={data} handleClick={this.setView}/> )
     }
 
-
-    if(this.state.view.family === 'history') {
+    if(this.state.view.family === 'all') {
       return (
         <div className="mainContainer">
-          ( <History target={this.state.view} /> )
+          {house}
+          {solar}
+          {gps}
+          {motor}
+          {enviro}
         </div>
       )
+    } else
 
-      } else {
-
-        if(this.state.view.family === 'all') {
-          return (
-            <div className="mainContainer">
-              {house}
-              {solar}
-              {gps}
-              {motor}
-              {enviro}
-            </div>
-          )
-        }
-      }
-    }
+      return (
+        <div className="mainContainer">
+           <History target={this.state.view} />
+        </div>
+      )
+  }
 }
 export default Main;
