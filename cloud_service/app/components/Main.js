@@ -77,7 +77,7 @@ class Main extends React.Component {
     if(this.state.view.family === 'history') {
       return (
         <div className="mainContainer">
-          <History target={this.state.view} />
+          ( <History target={this.state.view} /> )
         </div>
       )
 
