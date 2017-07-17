@@ -27,7 +27,7 @@ class History extends React.Component {
     return(
       <div>
 
-        <h1>{this.state}</h1>
+        <h1>history</h1>
 
       </div>
     )
