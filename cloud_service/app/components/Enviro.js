@@ -10,6 +10,16 @@ class Enviro extends React.Component {
       data: [],
       color: 'darkviolet'
     }
+
+    this.windClick = this.windClick.bind(this);
+  }
+
+  windClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[3].displayName,
+      color: this.state.color
+    });
   }
 
   render() {
@@ -38,40 +48,41 @@ class Enviro extends React.Component {
        };
 
     var windOptions = {
-    layout: {
-      padding: {
-        left: 15,
+      onClick: this.windClick;
+      layout: {
+        padding: {
+          left: 15,
+        },
       },
-    },
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 0,
-          display: false,
-        },
-        barThickness: 140,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
         display: false,
-      }],
-      xAxes: [{
-        ticks: {
-          min: 0,
-          max: 65,
-        },
-        gridLines: {
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          barThickness: 140,
           display: false,
-          drawTicks: true,
-        },
-      }]
-    }
+        }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 65,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
     }
 
     var tempData = {

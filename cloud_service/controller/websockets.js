@@ -35,7 +35,6 @@ wss.on('connection', function connection(ws) {
 
       mongo.collection.insert(doc, function(err) {
         if(err) console.log('error at mongo insert telemetry', err);
-        console.log('telemetry inserted in db');
       })
     }
   }, 60000)
