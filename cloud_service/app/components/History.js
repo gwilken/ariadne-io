@@ -14,15 +14,21 @@ class History extends React.Component {
       time: 30,
       docs: []
     }
+
+    this.didLoad = this.didLoad.bind(this);
   }
 
   componentDidMount() {
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
         .then(function(docs) {
-          this.setState({docs: docs});
-        }.bind(this));
+            this.didLoad(docs);
+        });
   };
+
+  didLoad(docs) {
+    this.setState({docs: docs});
+  }
 
   render() {
     console.log('state:',this.state);

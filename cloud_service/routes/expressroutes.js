@@ -8,7 +8,7 @@ const router = new express.Router();
 
 router.get('/telemetry/:family/:name/:time', function(req, res) {
 
-  //console.log("route hit:", req.params.family, req.params.name, req.params.time);
+  console.log("route hit:", req.params.family, req.params.name, req.params.time);
 
   var time = Date.now() - (req.params.time * 60000);
 
