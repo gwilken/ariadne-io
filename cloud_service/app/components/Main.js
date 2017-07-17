@@ -4,6 +4,7 @@ import House from "./House";
 import Motor from "./Motor";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
+import History from "./History";
 import HistoryDuo from "./HistoryDuo";
 
 class Main extends React.Component {
@@ -76,7 +77,7 @@ class Main extends React.Component {
     if(this.state.view.family === 'history') {
       return (
         <div className="mainContainer">
-          <History target={this.state.view}/>
+          <History target={this.state.view} />
         </div>
       )
 
