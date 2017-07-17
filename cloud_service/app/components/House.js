@@ -28,7 +28,7 @@ class House extends React.Component {
 
   render() {
 
-    var test = this.props.handleClick('house-volts');
+    //var test = this.props.handleClick('house-volts');
 
     var volts = this.props.data[0].data[0].data.toFixed(2);
     var current = this.props.data[0].data[1].data.toFixed(0);
@@ -44,7 +44,7 @@ class House extends React.Component {
          ]
        };
 
-    var voltsGraphOptions = {
+    const voltsGraphOptions = {
     onClick: this.voltsClick,
     layout: {
       padding: {
