@@ -20,9 +20,8 @@ class History extends React.Component {
     fetch(`/telemetry/${this.state.family}/${this.state.time}`)
       .then((res) => res.json())
         .then(function(docs) {
-          console.log(docs);
-          //this.setState({docs: docs});
-        })
+          this.setState({docs: docs});
+        }).bind(this);
   }
 
   render() {
