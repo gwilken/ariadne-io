@@ -28,9 +28,9 @@ router.get('/telemetry/:family/:time', function(req, res) {
 
         })
 
-        console.log(list);
+        //console.log(list);
 
-        res.json(docs);
+        res.json(list);
       }
   });
 })
