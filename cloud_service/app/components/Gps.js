@@ -7,29 +7,25 @@ class Gps extends React.Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      color: 'lightseagreen'
     }
-  }
-
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
   }
 
   render() {
 
-    var rtLat = 'Lat: ' + this.props.data.latitude;
-    var rtLon = 'Lon: ' + this.props.data.longitude;
-    var rtSpeed = this.props.data.speed + ' knots';
-    //var rtTmg = this.props.data.tmg;
+    console.log(this.props);
+
+    var latitude = this.props.data[0].data[0].data.latitude;
+    var longitude = this.props.data[0].data[0].data.longitude;
+    var speed = this.props.data[0].data[1].data;
 
     var speedData = {
-        labels: [this.props.data.speed],
+        labels: [speed],
         datasets: [
             {
               labels: '',
-              data: [this.props.data.speed],
+              data: [speed],
               backgroundColor: ['lightseagreen']
             }
          ]
@@ -87,13 +83,13 @@ class Gps extends React.Component {
 
               <div className="titlebar">
                 <div className="title">Speed</div>
-                <div className="rtData"> {rtSpeed} </div>
+                <div className="rtData"> {speed} Knots</div>
               </div>
             </div>
 
             <div className="geoLocation">
-              <div className="geoLocLabel">{rtLat}</div>
-              <div className="geoLocLabel">{rtLon}</div>
+              <div className="geoLocLabel">{latitude}</div>
+              <div className="geoLocLabel">{longitude}</div>
             </div>
 
           </div>

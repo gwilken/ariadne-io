@@ -57777,31 +57777,27 @@
 	    var _this = _possibleConstructorReturn(this, (Gps.__proto__ || Object.getPrototypeOf(Gps)).call(this, props));
 
 	    _this.state = {
-	      data: []
+	      data: [],
+	      color: 'lightseagreen'
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Gps, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
 
-	      var rtLat = 'Lat: ' + this.props.data.latitude;
-	      var rtLon = 'Lon: ' + this.props.data.longitude;
-	      var rtSpeed = this.props.data.speed + ' knots';
-	      //var rtTmg = this.props.data.tmg;
+	      console.log(this.props);
+
+	      var latitude = this.props.data[0].data[0].data.latitude;
+	      var longitude = this.props.data[0].data[0].data.longitude;
+	      var speed = this.props.data[0].data[1].data;
 
 	      var speedData = {
-	        labels: [this.props.data.speed],
+	        labels: [speed],
 	        datasets: [{
 	          labels: '',
-	          data: [this.props.data.speed],
+	          data: [speed],
 	          backgroundColor: ['lightseagreen']
 	        }]
 	      };
@@ -57875,8 +57871,8 @@
 	                'div',
 	                { className: 'rtData' },
 	                ' ',
-	                rtSpeed,
-	                ' '
+	                speed,
+	                ' Knots'
 	              )
 	            )
 	          ),
@@ -57886,12 +57882,12 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'geoLocLabel' },
-	              rtLat
+	              latitude
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'geoLocLabel' },
-	              rtLon
+	              longitude
 	            )
 	          )
 	        )

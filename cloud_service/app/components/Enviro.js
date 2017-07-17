@@ -23,7 +23,7 @@ class Enviro extends React.Component {
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
     if(windSpeed < 0) windSpeed = 0;
-    
+
     var windKnots = (windSpeed * 1.943844).toFixed(2);
 
     var windData = {
@@ -218,69 +218,68 @@ class Enviro extends React.Component {
   }
 }
 
-    return (
+  return (
+    <div>
+
+      <h2>Environmental</h2>
 
       <div>
 
-        <h2>Environmental</h2>
+        <div className="graphContainer">
+          <HorizontalBar data={windData}
+              options={windOptions}
+              width={800}
+              height={140}
+          />
 
-        <div>
-
-          <div className="graphContainer">
-            <HorizontalBar data={windData}
-                options={windOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title">Wind Speed</div>
-              <div className="rtData"> {windKnots} Knots </div>
-            </div>
+          <div className="titlebar">
+            <div className="title">Wind Speed</div>
+            <div className="rtData"> {windKnots} Knots </div>
           </div>
-
-          <div className="graphContainer">
-            <HorizontalBar data={tempData}
-                options={tempOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title">Temperature</div>
-              <div className="rtData"> {tempDisplay} </div>
-            </div>
-          </div>
-
-          <div className="graphContainer">
-            <HorizontalBar data={humidityData}
-                options={humidityOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title">Humidity</div>
-              <div className="rtData"> {humidity} % </div>
-            </div>
-          </div>
-
-          <div className="graphContainer">
-            <HorizontalBar data={pressData}
-                options={pressOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title">Barometric Pressure</div>
-              <div className="rtData"> {pressure} mB</div>
-            </div>
-          </div>
-
         </div>
+
+        <div className="graphContainer">
+          <HorizontalBar data={tempData}
+              options={tempOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Temperature</div>
+            <div className="rtData"> {tempDisplay} </div>
+          </div>
+        </div>
+
+        <div className="graphContainer">
+          <HorizontalBar data={humidityData}
+              options={humidityOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Humidity</div>
+            <div className="rtData"> {humidity} % </div>
+          </div>
+        </div>
+
+        <div className="graphContainer">
+          <HorizontalBar data={pressData}
+              options={pressOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Barometric Pressure</div>
+            <div className="rtData"> {pressure} mB</div>
+          </div>
+        </div>
+
       </div>
-    )
+    </div>
+  )
   }
 }
 export default Enviro;
