@@ -8,7 +8,7 @@ class History extends React.Component {
     super(props);
 
     this.state = {
-      family: this.props.view.displayName,
+      family: this.props.view.family,
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       time: 180
@@ -24,7 +24,7 @@ class History extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state);
 
     return(
       <div>
