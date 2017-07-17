@@ -8,12 +8,9 @@ class History extends React.Component {
     super(props);
 
     this.state = {
-      family: this.props.target.family,
-      target: this.props.target.displayName,
-      color: this.props.target.color,
+      target: this.props.target,
       time: 180
     }
-
   }
 
   componentDidMount() {
@@ -25,6 +22,8 @@ class History extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+
     return(
       <div>
 
