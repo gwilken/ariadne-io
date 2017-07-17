@@ -19,7 +19,7 @@ class Enviro extends React.Component {
     var pressure = this.props.data[0].data[2].data.toFixed(2);
     var windSpeed = this.props.data[0].data[3].data.toFixed(2);
 
-    var tempF = temp[0].data * 9/5 + 32;
+    var tempF = temp * 9/5 + 32;
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
     var tempData = {
@@ -71,11 +71,11 @@ class Enviro extends React.Component {
   }
 
   var pressData = {
-      labels: [pressure[0].data],
+      labels: [pressure],
       datasets: [
           {
             labels: '',
-            data: [pressure[0].data],
+            data: [pressure],
             backgroundColor: ['darkviolet']
           }
        ]
@@ -147,7 +147,7 @@ class Enviro extends React.Component {
 
             <div className="titlebar">
               <div className="title">Barometric Pressure</div>
-              <div className="rtData"> {pressure[0].data} mB</div>
+              <div className="rtData"> {pressure} mB</div>
             </div>
           </div>
 
