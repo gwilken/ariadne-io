@@ -33,7 +33,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
           }
         }
       }
-      console.log(arr);
+      //console.log(arr);
       res.json(arr);
       }
   });
