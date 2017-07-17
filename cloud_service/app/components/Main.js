@@ -16,18 +16,11 @@ class Main extends React.Component {
 
     this.state = {
       view: 'all',
-      selected: {
-        name: '',
-        field1: '',
-        field2: ''
-      },
-      color: 'blue',
       telemetry: []
     }
 
     this.setView = this.setView.bind(this);
     this.gotoHistory = this.gotoHistory.bind(this);
-
   }
 
   componentDidMount() {
@@ -54,21 +47,17 @@ class Main extends React.Component {
      });
   }
 
-  gotoMap() {
-
-  }
+  gotoMap() {}
 
   render() {
 
     var list = this.state.telemetry.map((elem) => { return elem.family; })
 
-    var content;
-    var solar;
     var house;
+    var solar;
     var motor;
     var enviro;
     var gps;
-
 
     if(list.includes('house')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
@@ -109,25 +98,16 @@ class Main extends React.Component {
         </div>
       )
     }
-    //
-    // if(list.includes('gps')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-    //
-    //   gps = (
-    //     <div onClick={ () => this.gotoHistory('gold') } >
-    //       <Gps data={data} />
-    //     </div>
-    //   )
-    // }
 
-      // if(this.state.enviro) {
-    //   enviro = (
-    //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
-    //       <Enviro data={this.state.enviro} />
-    //     </div>
-    //   )
-    // }
-    //
+    if(list.includes('gps')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
+
+      gps = (
+        <div onClick={ () => this.gotoHistory('gold') } >
+          <Gps data={data} />
+        </div>
+      )
+    }
 
 
     if(this.state.view === 'history') {
@@ -135,7 +115,7 @@ class Main extends React.Component {
       return (
 
         <div className="mainContainer">
-          <HistoryDuo selected={this.state.selected} color={this.state.color} setView={this.setView}/>
+          {/* <HistoryDuo selected={this.state.selected} color={this.state.color} setView={this.setView}/> */}
         </div>
 
       )

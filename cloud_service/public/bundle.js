@@ -20895,18 +20895,11 @@
 
 	    _this.state = {
 	      view: 'all',
-	      selected: {
-	        name: '',
-	        field1: '',
-	        field2: ''
-	      },
-	      color: 'blue',
 	      telemetry: []
 	    };
 
 	    _this.setView = _this.setView.bind(_this);
 	    _this.gotoHistory = _this.gotoHistory.bind(_this);
-
 	    return _this;
 	  }
 
@@ -20949,9 +20942,8 @@
 	        return elem.family;
 	      });
 
-	      var content;
-	      var solar;
 	      var house;
+	      var solar;
 	      var motor;
 	      var enviro;
 	      var gps;
@@ -21011,34 +21003,24 @@
 	          _react2.default.createElement(_Enviro2.default, { data: data })
 	        );
 	      }
-	      //
-	      // if(list.includes('gps')) {
-	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-	      //
-	      //   gps = (
-	      //     <div onClick={ () => this.gotoHistory('gold') } >
-	      //       <Gps data={data} />
-	      //     </div>
-	      //   )
-	      // }
 
-	      // if(this.state.enviro) {
-	      //   enviro = (
-	      //     <div onClick={ () => this.gotoHistory( { name: "Environmental" , field1: "temperature", field2: "pressure" }, 'darkviolet')} >
-	      //       <Enviro data={this.state.enviro} />
-	      //     </div>
-	      //   )
-	      // }
-	      //
+	      if (list.includes('gps')) {
+	        var data = this.state.telemetry.filter(function (elem) {
+	          return elem.family === 'gps';
+	        });
 
+	        gps = _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory('gold');
+	            } },
+	          _react2.default.createElement(_Gps2.default, { data: data })
+	        );
+	      }
 
 	      if (this.state.view === 'history') {
 
-	        return _react2.default.createElement(
-	          "div",
-	          { className: "mainContainer" },
-	          _react2.default.createElement(_HistoryDuo2.default, { selected: this.state.selected, color: this.state.color, setView: this.setView })
-	        );
+	        return _react2.default.createElement("div", { className: "mainContainer" });
 	      } else {
 
 	        if (this.state.view === 'all') {
