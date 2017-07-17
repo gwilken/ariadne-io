@@ -17,10 +17,14 @@ class History extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/telemetry/${this.state.family}/${this.state.time}`)
+    fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
         .then(function(docs) {
+
+
           this.setState({docs: docs});
+
+
         });
   }.bind(this);
 
