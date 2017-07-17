@@ -12,23 +12,30 @@ router.get('/telemetry/:family/:time', function(req, res) {
 
   var time = Date.now() - (req.params.time * 60000);
 
-  mongo.collection.find( { createdAt: { $gt: time } } ).toArray(function(err, docs) {
+  mongo.collection.find( {
+    createdAt: { $gt: time },
+    telemetry: { $elemMatch: {family: req.params.family} }
+  }, {
+    _id: 0
+  }).toArray(function(err, docs) {
+
+
     if(err) {
       console.log(err);
       res.end();
     } else {
+        //
+        // var list = docs.filter((elem) => {
+        //
+        //   return elem.telemetry.filter((elem2) => {
+        //     return elem2.family === req.params.family;
+        //   })
+        //
+        // })
+        // 
+        // //console.log(list);
 
-        var list = docs.filter((elem) => {
-
-          return elem.telemetry.filter((elem2) => {
-            return elem2.family === req.params.family;
-          })
-
-        })
-
-        //console.log(list);
-
-        res.json(list);
+        res.json(docs);
       }
   });
 })
