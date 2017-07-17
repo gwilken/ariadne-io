@@ -23,6 +23,13 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       console.log(err);
       res.end();
     } else {
+
+        var arr = docs.filter((elem) => {
+          return elem.telemetry[0].data.filter((elem2) => {
+            return elem2.displayName === req.params.name;
+          })
+        })
+
         //
         // var list = docs.filter((elem) => {
         //
@@ -33,7 +40,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         // })
         //
         // //console.log(list);
-        res.json(docs);
+        res.json(arr);
       }
   });
 })
