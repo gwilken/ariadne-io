@@ -53360,7 +53360,7 @@
 
 	    _this.state = {
 	      data: [],
-	      color: darkviolet
+	      color: 'darkviolet'
 	    };
 	    return _this;
 	  }

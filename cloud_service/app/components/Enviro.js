@@ -8,7 +8,7 @@ class Enviro extends React.Component {
 
     this.state = {
       data: [],
-      color: darkviolet
+      color: 'darkviolet'
     }
   }
 
