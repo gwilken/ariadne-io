@@ -8,9 +8,9 @@ class History extends React.Component {
     super(props);
 
     this.state = {
-      family: this.props.view.family,
-      target: this.props.view.displayName,
-      color: this.props.view.color,
+      family: this.props.target.family,
+      target: this.props.target.displayName,
+      color: this.props.target.color,
       time: 180
     }
 
