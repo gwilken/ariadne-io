@@ -19,7 +19,6 @@ class Main extends React.Component {
     }
 
     this.setView = this.setView.bind(this);
-    this.gotoHistory = this.gotoHistory.bind(this);
   }
 
   componentDidMount() {
