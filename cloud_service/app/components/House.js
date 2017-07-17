@@ -10,6 +10,8 @@ class House extends React.Component {
       data: [],
       color: 'royalblue'
     }
+
+    this.voltsClick = this.voltsClick.bind(this);
   }
 
   componentDidMount() {
@@ -18,6 +20,10 @@ class House extends React.Component {
         .then(function(docs) {
           console.log(docs)
         })
+  }
+
+  voltsClick() {
+    this.props.handleClick('house-volts');
   }
 
   render() {
@@ -39,7 +45,7 @@ class House extends React.Component {
        };
 
     var voltsGraphOptions = {
-    onClick: test,
+    onClick: this.voltsClick,
     layout: {
       padding: {
         left: 15,
