@@ -11,7 +11,7 @@ class History extends React.Component {
       family: this.props.view.family,
       displayName: this.props.view.displayName,
       color: this.props.view.color,
-      time: 120,
+      time: 200,
       data: []
     }
 
@@ -48,11 +48,6 @@ class History extends React.Component {
         display: false,
         position: 'top',
       },
-      // animation: {
-      //   // duration: 400,
-      //   easing: 'linear'
-      // },
-      // maintainAspectRatio: false,
       scales: {
         yAxes: [{
           position: 'right',
