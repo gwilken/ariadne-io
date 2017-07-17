@@ -11,7 +11,8 @@ class History extends React.Component {
       family: this.props.view.family,
       displayName: this.props.view.displayName,
       color: this.props.view.color,
-      time: 180
+      time: 30,
+      docs: []
     }
   }
 
@@ -19,7 +20,7 @@ class History extends React.Component {
     fetch(`/telemetry/${this.state.family}/${this.state.time}`)
       .then((res) => res.json())
         .then(function(docs) {
-          console.log(docs)
+          this.setState({docs: docs});
         })
   }
 

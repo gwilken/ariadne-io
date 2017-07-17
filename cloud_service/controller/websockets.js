@@ -38,6 +38,6 @@ wss.on('connection', function connection(ws) {
         console.log('telemetry inserted in db');
       })
     }
-  }, 30000)
+  }, 60000)
 
 });
