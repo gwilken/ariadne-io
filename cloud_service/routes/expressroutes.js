@@ -24,11 +24,14 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       res.end();
     } else {
 
-        var arr = docs.filter((elem) => {
+        var arr = docs.map((elem) => {
           console.log('elem:', elem);
           return elem.telemetry[0].data.forEach((elem2) => {
             console.log('elem2:', elem2)
-            return (elem2.displayName === req.params.name) ;
+
+            if (elem2.displayName === req.params.name) {
+              return elem2.data
+            } ;
           })
         })
 
