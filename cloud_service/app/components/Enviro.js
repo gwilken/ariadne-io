@@ -22,6 +22,8 @@ class Enviro extends React.Component {
     var tempF = temp * 9/5 + 32;
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
+    if(windSpeed < 0) windSpeed = 0;
+    
     var windKnots = (windSpeed * 1.943844).toFixed(2);
 
     var windData = {
