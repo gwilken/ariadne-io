@@ -11,7 +11,7 @@ class History extends React.Component {
       family: this.props.view.family,
       displayName: this.props.view.displayName,
       color: this.props.view.color,
-      time: 120,
+      time: 180,
       data: []
     }
 
