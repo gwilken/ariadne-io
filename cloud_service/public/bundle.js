@@ -53377,6 +53377,52 @@
 	      var tempF = temp * 9 / 5 + 32;
 	      var tempDisplay = tempF.toFixed(2) + '\xB0' + ' F';
 
+	      var windData = {
+	        labels: [windSpeed],
+	        datasets: [{
+	          labels: '',
+	          data: [windSpeed],
+	          backgroundColor: [this.state.color]
+	        }]
+	      };
+
+	      var windOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 140,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 32
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
 	      var tempData = {
 	        labels: [tempF],
 	        datasets: [{
@@ -53423,6 +53469,52 @@
 	        }
 	      };
 
+	      var humidityData = {
+	        labels: [humidity],
+	        datasets: [{
+	          labels: '',
+	          data: [humidity],
+	          backgroundColor: [this.state.color]
+	        }]
+	      };
+
+	      var humidityOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 140,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 100
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
 	      var pressData = {
 	        labels: [pressure],
 	        datasets: [{
@@ -53458,7 +53550,7 @@
 	          }],
 	          xAxes: [{
 	            ticks: {
-	              min: 0,
+	              min: 300,
 	              max: 1100
 	            },
 	            gridLines: {
@@ -53472,15 +53564,39 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        ' ',
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          'Environmental'
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: windData,
+	              options: windOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Wind Speed'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                windSpeed,
+	                ' m/s '
+	              )
+	            )
+	          ),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'graphContainer' },
@@ -53503,6 +53619,31 @@
 	                ' ',
 	                tempDisplay,
 	                ' '
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'graphContainer' },
+	            _react2.default.createElement(_reactChartjs.HorizontalBar, { data: humidityData,
+	              options: humidityOptions,
+	              width: 800,
+	              height: 140
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'titlebar' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'title' },
+	                'Humidity'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rtData' },
+	                ' ',
+	                humidity,
+	                ' % '
 	              )
 	            )
 	          ),

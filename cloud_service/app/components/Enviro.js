@@ -22,6 +22,54 @@ class Enviro extends React.Component {
     var tempF = temp * 9/5 + 32;
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
+    var windData = {
+        labels: [windSpeed],
+        datasets: [
+            {
+              labels: '',
+              data: [windSpeed],
+              backgroundColor: [this.state.color]
+            }
+         ]
+       };
+
+    var windOptions = {
+    layout: {
+      padding: {
+        left: 15,
+      },
+    },
+    tooltips: {
+      enabled: false,
+    },
+    legend: {
+      display: false,
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 0,
+          display: false,
+        },
+        barThickness: 140,
+        display: false,
+      }],
+      xAxes: [{
+        ticks: {
+          min: 0,
+          max: 32,
+        },
+        gridLines: {
+          display: false,
+          drawTicks: true,
+        },
+      }]
+    }
+    }
+
     var tempData = {
         labels: [tempF],
         datasets: [
@@ -70,6 +118,54 @@ class Enviro extends React.Component {
     }
   }
 
+  var humidityData = {
+      labels: [humidity],
+      datasets: [
+          {
+            labels: '',
+            data: [humidity],
+            backgroundColor: [this.state.color]
+          }
+       ]
+     };
+
+  var humidityOptions = {
+  layout: {
+    padding: {
+      left: 15,
+    },
+  },
+  tooltips: {
+    enabled: false,
+  },
+  legend: {
+    display: false,
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    yAxes: [{
+      ticks: {
+        min: 0,
+        max: 0,
+        display: false,
+      },
+      barThickness: 140,
+      display: false,
+    }],
+    xAxes: [{
+      ticks: {
+        min: 0,
+        max: 100,
+      },
+      gridLines: {
+        display: false,
+        drawTicks: true,
+      },
+    }]
+  }
+  }
+
   var pressData = {
       labels: [pressure],
       datasets: [
@@ -107,7 +203,7 @@ class Enviro extends React.Component {
     }],
     xAxes: [{
       ticks: {
-        min: 0,
+        min: 300,
         max: 1100,
       },
       gridLines: {
@@ -120,8 +216,24 @@ class Enviro extends React.Component {
 
     return (
 
-      <div> <h3>Environmental</h3>
+      <div>
+
+        <h2>Environmental</h2>
+
         <div>
+
+          <div className="graphContainer">
+            <HorizontalBar data={windData}
+                options={windOptions}
+                width={800}
+                height={140}
+            />
+
+            <div className="titlebar">
+              <div className="title">Wind Speed</div>
+              <div className="rtData"> {windSpeed} m/s </div>
+            </div>
+          </div>
 
           <div className="graphContainer">
             <HorizontalBar data={tempData}
@@ -131,10 +243,21 @@ class Enviro extends React.Component {
             />
 
             <div className="titlebar">
-
               <div className="title">Temperature</div>
               <div className="rtData"> {tempDisplay} </div>
+            </div>
+          </div>
 
+          <div className="graphContainer">
+            <HorizontalBar data={humidityData}
+                options={humidityOptions}
+                width={800}
+                height={140}
+            />
+
+            <div className="titlebar">
+              <div className="title">Humidity</div>
+              <div className="rtData"> {humidity} % </div>
             </div>
           </div>
 
