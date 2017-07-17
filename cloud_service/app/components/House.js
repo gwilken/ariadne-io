@@ -24,11 +24,11 @@ class House extends React.Component {
   }
 
   voltsClick(event) {
-    this.props.handleClick({family: 'house', displayName: 'Battery Voltage'});
+    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[0].displayName});
   }
 
   currentClick(event) {
-    this.props.handleClick({family: 'house', displayName: 'Current Usage'});
+    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[1].displayName});
   }
 
   render() {
