@@ -53377,11 +53377,13 @@
 	      var tempF = temp * 9 / 5 + 32;
 	      var tempDisplay = tempF.toFixed(2) + '\xB0' + ' F';
 
+	      var windKnots = (windSpeed * 1.943844).toFixed(2);
+
 	      var windData = {
-	        labels: [windSpeed],
+	        labels: [windKnots],
 	        datasets: [{
 	          labels: '',
-	          data: [windSpeed],
+	          data: [windKnots],
 	          backgroundColor: [this.state.color]
 	        }]
 	      };
@@ -53413,7 +53415,7 @@
 	          xAxes: [{
 	            ticks: {
 	              min: 0,
-	              max: 32
+	              max: 65
 	            },
 	            gridLines: {
 	              display: false,
@@ -53592,8 +53594,8 @@
 	                'div',
 	                { className: 'rtData' },
 	                ' ',
-	                windSpeed,
-	                ' m/s '
+	                windKnots,
+	                ' Knots '
 	              )
 	            )
 	          ),

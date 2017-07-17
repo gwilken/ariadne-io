@@ -22,12 +22,14 @@ class Enviro extends React.Component {
     var tempF = temp * 9/5 + 32;
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
+    var windKnots = (windSpeed * 1.943844).toFixed(2);
+
     var windData = {
-        labels: [windSpeed],
+        labels: [windKnots],
         datasets: [
             {
               labels: '',
-              data: [windSpeed],
+              data: [windKnots],
               backgroundColor: [this.state.color]
             }
          ]
@@ -60,7 +62,7 @@ class Enviro extends React.Component {
       xAxes: [{
         ticks: {
           min: 0,
-          max: 32,
+          max: 65,
         },
         gridLines: {
           display: false,
@@ -231,7 +233,7 @@ class Enviro extends React.Component {
 
             <div className="titlebar">
               <div className="title">Wind Speed</div>
-              <div className="rtData"> {windSpeed} m/s </div>
+              <div className="rtData"> {windKnots} Knots </div>
             </div>
           </div>
 
