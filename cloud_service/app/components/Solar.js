@@ -16,11 +16,19 @@ class Solar extends React.Component {
   }
 
   voltsClick(event) {
-    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[0].displayName});
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[0].displayName,
+      color: this.state.color
+     });
   }
 
   currentClick(event) {
-    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[1].displayName});
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[1].displayName,
+      color: this.state.color
+    });
   }
 
   render() {
