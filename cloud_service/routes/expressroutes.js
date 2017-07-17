@@ -19,15 +19,14 @@ router.get('/telemetry/:family/:time', function(req, res) {
     } else {
 
         var list = docs.filter((elem) => {
-          return (
-            var filtered = elem.telemetry.filter((elem2) => {
-              return (
 
-                return elem2.family === req.params.family;
+          var filtered = elem.telemetry.filter((elem2) => {
+            return elem2.family === req.params.family;
+          })
 
-              )
-            })
-          ) })
+          return filtered;
+
+        })
 
         console.log(list);
 
