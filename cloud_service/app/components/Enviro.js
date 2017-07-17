@@ -147,7 +147,7 @@ class Enviro extends React.Component {
 
             <div className="titlebar">
               <div className="title">Barometric Pressure</div>
-              <div className="rtData"> {rtPress}</div>
+              <div className="rtData"> {pressure[0].data} mB</div>
             </div>
           </div>
 

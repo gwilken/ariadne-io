@@ -53526,7 +53526,8 @@
 	                'div',
 	                { className: 'rtData' },
 	                ' ',
-	                rtPress
+	                pressure[0].data,
+	                ' mB'
 	              )
 	            )
 	          )
