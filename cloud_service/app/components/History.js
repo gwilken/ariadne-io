@@ -21,7 +21,7 @@ class History extends React.Component {
       .then((res) => res.json())
         .then((docs) => {
           this.setState({docs: docs});
-        }.bind(this));
+        }).bind(this);
   };
 
   render() {
