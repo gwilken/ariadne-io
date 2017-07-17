@@ -18,7 +18,7 @@ router.get('/telemetry/:family/:time', function(req, res) {
       res.end();
     } else {
 
-        var list = docs.telemetry.filter((elem) => { return elem.family === req.params.family; })
+        var list = docs.filter((elem) => { return elem.telemetry.family === req.params.family; })
 
         console.log(list);
 
