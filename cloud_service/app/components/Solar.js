@@ -10,6 +10,17 @@ class Solar extends React.Component {
       data: [],
       color: 'gold'
     }
+
+    this.voltsClick = this.voltsClick.bind(this);
+    this.currentClick = this.currentClick.bind(this);
+  }
+
+  voltsClick(event) {
+    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[0].displayName});
+  }
+
+  currentClick(event) {
+    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[1].displayName});
   }
 
   render() {
@@ -17,7 +28,7 @@ class Solar extends React.Component {
     var volts = this.props.data[0].data[0].data.toFixed(2);
     var current = this.props.data[0].data[1].data.toFixed(0);
 
-    var voltsGraphData = {
+    const voltsGraphData = {
         labels: [volts],
         datasets: [
             {
@@ -28,44 +39,45 @@ class Solar extends React.Component {
          ]
        };
 
-    var voltsGraphOptions = {
-    layout: {
-      padding: {
-        left: 15,
+    const voltsGraphOptions = {
+      onClick: this.voltsClick,
+      layout: {
+        padding: {
+          left: 15,
+        },
       },
-    },
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 0,
-          display: false,
-        },
-        barThickness: 140,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
         display: false,
-      }],
-      xAxes: [{
-        ticks: {
-          min: 10,
-          max: 14.5,
-        },
-        gridLines: {
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          barThickness: 140,
           display: false,
-          drawTicks: true,
-        },
-      }]
-    }
+        }],
+        xAxes: [{
+          ticks: {
+            min: 10,
+            max: 14.5,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
     }
 
-    var currentGraphData = {
+    const currentGraphData = {
         labels: [current],
         datasets: [
             {
@@ -76,41 +88,42 @@ class Solar extends React.Component {
          ]
        };
 
-    var currentGraphOptions = {
-    layout: {
-      padding: {
-        left: 15,
+    const currentGraphOptions = {
+      onClick: this.currentClick,
+      layout: {
+        padding: {
+          left: 15,
+        },
       },
-    },
-    tooltips: {
-      enabled: false,
-    },
-    legend: {
-      display: false,
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 0,
-          display: false,
-        },
-        barThickness: 140,
+      tooltips: {
+        enabled: false,
+      },
+      legend: {
         display: false,
-      }],
-      xAxes: [{
-        ticks: {
-          min: 0,
-          max: 7500,
-        },
-        gridLines: {
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            min: 0,
+            max: 0,
+            display: false,
+          },
+          barThickness: 140,
           display: false,
-          drawTicks: true,
-        },
-      }]
-    }
+        }],
+        xAxes: [{
+          ticks: {
+            min: 0,
+            max: 7500,
+          },
+          gridLines: {
+            display: false,
+            drawTicks: true,
+          },
+        }]
+      }
     }
 
     return (
