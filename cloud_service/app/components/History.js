@@ -32,6 +32,8 @@ class History extends React.Component {
 
   render() {
 
+    var chart = null;
+
     var options = {
       layout: {
         padding: {
@@ -98,7 +100,7 @@ class History extends React.Component {
       )
     }
     return(
-    
+
 
                <div className="historyContainer">
 
