@@ -1,5 +1,4 @@
 import React from "react";
-import HistoryGraph from './HistoryGraph'
 import {Line} from 'react-chartjs-2';
 // import Slider from 'rc-slider/lib/Slider';
 

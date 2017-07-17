@@ -37,7 +37,7 @@ class House extends React.Component {
        };
 
     var voltsGraphOptions = {
-    onClick: this.props.handleClick('house-volts');
+    onClick: this.props.handleClick('house-volts'),
     layout: {
       padding: {
         left: 15,
