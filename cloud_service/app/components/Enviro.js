@@ -48,7 +48,7 @@ class Enviro extends React.Component {
        };
 
     var windOptions = {
-      onClick: this.windClick;
+      onClick: this.windClick,
       layout: {
         padding: {
           left: 15,
