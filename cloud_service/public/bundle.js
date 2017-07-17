@@ -20857,7 +20857,7 @@
 
 	var _House2 = _interopRequireDefault(_House);
 
-	var _Motor = __webpack_require__(471);
+	var _Motor = __webpack_require__(344);
 
 	var _Motor2 = _interopRequireDefault(_Motor);
 
@@ -20997,16 +20997,20 @@
 	          _react2.default.createElement(_Motor2.default, { data: data })
 	        );
 	      }
-	      //
-	      // if(list.includes('enviro')) {
-	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
-	      //
-	      //   enviro = (
-	      //     <div onClick={ () => this.gotoHistory('gold') } >
-	      //       <Enviro data={data} />
-	      //     </div>
-	      //   )
-	      // }
+
+	      if (list.includes('enviro')) {
+	        var data = this.state.telemetry.filter(function (elem) {
+	          return elem.family === 'enviro';
+	        });
+
+	        enviro = _react2.default.createElement(
+	          "div",
+	          { onClick: function onClick() {
+	              return _this2.gotoHistory('gold');
+	            } },
+	          _react2.default.createElement(_Enviro2.default, { data: data })
+	        );
+	      }
 	      //
 	      // if(list.includes('gps')) {
 	      //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
@@ -52403,8 +52407,8 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var volts = this.props.data[0].data[0].data.toFixed(2);+this.props.data[0].data[0].unit;
-	      var current = this.props.data[0].data[1].data.toFixed(0);+this.props.data[0].data[1].unit;
+	      var volts = this.props.data[0].data[0].data.toFixed(2);
+	      var current = this.props.data[0].data[1].data.toFixed(0);
 
 	      var voltsGraphData = {
 	        labels: [volts],
@@ -52614,8 +52618,8 @@
 	    key: 'render',
 	    value: function render() {
 
-	      var volts = this.props.data[0].data[0].data.toFixed(2);+this.props.data[0].data[0].unit;
-	      var current = this.props.data[0].data[1].data.toFixed(0);+this.props.data[0].data[1].unit;
+	      var volts = this.props.data[0].data[0].data.toFixed(2);
+	      var current = this.props.data[0].data[1].data.toFixed(0);
 
 	      var voltsGraphData = {
 	        labels: [volts],
@@ -52781,7 +52785,546 @@
 		exports.default = House;
 
 /***/ }),
-/* 344 */,
+/* 344 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(172);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
+	  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+	};
+
+	var Motor = function (_React$Component) {
+	  _inherits(Motor, _React$Component);
+
+	  function Motor(props) {
+	    _classCallCheck(this, Motor);
+
+	    var _this = _possibleConstructorReturn(this, (Motor.__proto__ || Object.getPrototypeOf(Motor)).call(this, props));
+
+	    _this.state = {
+	      data: [],
+	      color: 'firebrick'
+	    };
+	    return _this;
+	  }
+
+	  _createClass(Motor, [{
+	    key: 'render',
+	    value: function render() {
+
+	      var battery1 = this.props.data.filter(function (elem) {
+	        return elem.displayName === 'Battery 1';
+	      });
+	      var battery2 = this.props.data.filter(function (elem) {
+	        return elem.displayName === 'Battery 2';
+	      });
+	      var battery3 = this.props.data.filter(function (elem) {
+	        return elem.displayName === 'Battery 3';
+	      });
+	      var battery4 = this.props.data.filter(function (elem) {
+	        return elem.displayName === 'Battery 4';
+	      });
+
+	      if (battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
+	      if (battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
+	      if (battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
+	      if (battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
+
+	      var motorData = this.props.data.filter(function (elem) {
+	        return elem.displayName === 'Electric Yacht 10kW Motor';
+	      });
+
+	      if (motorData.length > 0) {
+	        var bankVoltage = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "volts";
+	        });
+	        var motorSOC = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "soc";
+	        });
+	        var motorCurrent = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "current";
+	        });
+	        var motorTTD = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "ttd";
+	        });
+	        var motorRPM = motorData[0].data.filter(function (elem) {
+	          return elem.sensor === "rpm";
+	        });
+	      }
+
+	      var batteryGroupData = {
+	        labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
+	        datasets: [{
+	          backgroundColor: 'firebrick',
+	          borderColor: 'firebrick',
+	          borderWidth: 1,
+	          data: [battery1_volts, battery2_volts, battery3_volts, battery4_volts]
+	        }]
+	      };
+
+	      var batteryGroupOptions = {
+	        layout: {
+	          padding: {
+	            left: 15,
+	            right: 3
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            position: 'right',
+	            ticks: {
+	              min: 0,
+	              max: 14.5,
+	              mirror: false
+	            }
+	          }],
+	          xAxes: [{
+	            display: true,
+	            gridLines: {
+	              display: false,
+	              drawTicks: false
+	            },
+	            scaleLabel: {
+	              display: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var currentData = {
+	        labels: [motorCurrent[0].data],
+	        datasets: [{
+	          labels: '',
+	          data: [motorCurrent[0].data],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var currentOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 10
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var ttdData = {
+	        labels: [motorTTD[0].data],
+	        datasets: [{
+	          label: '',
+	          data: [motorTTD[0].data],
+	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
+	          borderColor: ['firebrick'],
+
+	          borderWidth: 1
+	        }]
+	      };
+
+	      var ttdOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 20
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var batteryMotorData = {
+	        labels: [bankVoltage[0].data],
+	        datasets: [{
+	          labels: '',
+	          data: [bankVoltage[0].data],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var batteryMotorOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 46,
+	              max: 54
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var socData = {
+	        labels: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
+	        datasets: [{
+	          labels: '',
+	          data: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
+	          backgroundColor: ['firebrick']
+	        }]
+	      };
+
+	      var socOptions = {
+	        layout: {
+	          padding: {
+	            left: 15
+	          }
+	        },
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false
+	        },
+	        responsive: true,
+	        maintainAspectRatio: false,
+	        scales: {
+	          yAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 0,
+	              display: false
+	            },
+	            barThickness: 120,
+	            display: false
+	          }],
+	          xAxes: [{
+	            ticks: {
+	              min: 0,
+	              max: 100
+	            },
+	            gridLines: {
+	              display: false,
+	              drawTicks: true
+	            }
+	          }]
+	        }
+	      };
+
+	      var rpmData = {
+	        labels: ["Red", "darker red"],
+	        datasets: [{
+	          label: '',
+	          data: [motorRPM[0].data, 9],
+	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
+	          borderColor: ['firebrick', 'firebrick'],
+	          borderWidth: 1
+	        }]
+	      };
+
+	      var rpmOptions = {
+	        tooltips: {
+	          enabled: false
+	        },
+	        legend: {
+	          display: false,
+	          position: 'top'
+	        },
+	        animation: {
+	          easing: 'linear'
+	        },
+	        maintainAspectRatio: false
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Motor'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'gaugeContainer' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'gaugeLeft' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
+	                options: currentOptions,
+	                width: 400,
+	                height: 140
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Current Out'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  motorCurrent[0].data,
+	                  ' Ah'
+	                )
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'graphContainer' },
+	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: ttdData,
+	                options: ttdOptions,
+	                width: 400,
+	                height: 140
+	              }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'titlebar' },
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'title' },
+	                  'Time to Discharge'
+	                ),
+	                _react2.default.createElement(
+	                  'div',
+	                  { className: 'rtData' },
+	                  ' ',
+	                  motorTTD[0].data,
+	                  ' Hours'
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'gaugeRight' },
+	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
+	              options: rpmOptions,
+	              width: 400,
+	              height: 280
+	            }),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rpm-label-container' },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rpm-label-data' },
+	                motorRPM[0].data
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'rpm-label' },
+	                'RPM'
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: socData,
+	            options: socOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'State of Charge'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              motorSOC[0].data.mapRange(0, 255, 0, 100),
+	              '%'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.Bar, { data: batteryGroupData,
+	            options: batteryGroupOptions,
+	            width: 800,
+	            height: 280
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'motorBattBar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              battery1_volts,
+	              ' V'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              battery2_volts,
+	              ' V'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              battery3_volts,
+	              ' V'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'motorBattData' },
+	              ' ',
+	              battery4_volts,
+	              ' V'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'graphContainer' },
+	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: batteryMotorData,
+	            options: batteryMotorOptions,
+	            width: 800,
+	            height: 140
+	          }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'titlebar' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'title' },
+	              'Total Bank Voltage'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'rtData' },
+	              ' ',
+	              bankVoltage[0].data.toFixed(2),
+	              ' V'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Motor;
+	}(_react2.default.Component);
+
+		exports.default = Motor;
+
+/***/ }),
 /* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52816,26 +53359,22 @@
 	    var _this = _possibleConstructorReturn(this, (Enviro.__proto__ || Object.getPrototypeOf(Enviro)).call(this, props));
 
 	    _this.state = {
-	      data: []
+	      data: [],
+	      color: darkviolet
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Enviro, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
 
-	      var rtPress = this.props.data.pressure.toFixed(2) + ' mB';
+	      var temp = this.props.data[0].data[0].data.toFixed(2);
+	      var humidity = this.props.data[0].data[1].data.toFixed(2);
+	      var pressure = this.props.data[0].data[2].data.toFixed(2);
+	      var windSpeed = this.props.data[0].data[3].data.toFixed(2);
 
-	      // T(°C) × 9/5 + 32
-
-	      var tempF = this.props.data.temperature * 9 / 5 + 32;
+	      var tempF = temp[0].data * 9 / 5 + 32;
 	      var tempDisplay = tempF.toFixed(2) + '\xB0' + ' F';
 
 	      var tempData = {
@@ -52843,7 +53382,7 @@
 	        datasets: [{
 	          labels: '',
 	          data: [tempF],
-	          backgroundColor: ['darkviolet']
+	          backgroundColor: [this.state.color]
 	        }]
 	      };
 
@@ -52885,10 +53424,10 @@
 	      };
 
 	      var pressData = {
-	        labels: [this.props.data.pressure],
+	        labels: [pressure[0].data],
 	        datasets: [{
 	          labels: '',
-	          data: [this.props.data.pressure],
+	          data: [pressure[0].data],
 	          backgroundColor: ['darkviolet']
 	        }]
 	      };
@@ -57218,546 +57757,6 @@
 	}(_react2.default.Component);
 
 		exports.default = Gps;
-
-/***/ }),
-/* 471 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactChartjs = __webpack_require__(172);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
-	  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-	};
-
-	var Motor = function (_React$Component) {
-	  _inherits(Motor, _React$Component);
-
-	  function Motor(props) {
-	    _classCallCheck(this, Motor);
-
-	    var _this = _possibleConstructorReturn(this, (Motor.__proto__ || Object.getPrototypeOf(Motor)).call(this, props));
-
-	    _this.state = {
-	      data: [],
-	      color: 'firebrick'
-	    };
-	    return _this;
-	  }
-
-	  _createClass(Motor, [{
-	    key: 'render',
-	    value: function render() {
-
-	      var battery1 = this.props.data.filter(function (elem) {
-	        return elem.displayName === 'Battery 1';
-	      });
-	      var battery2 = this.props.data.filter(function (elem) {
-	        return elem.displayName === 'Battery 2';
-	      });
-	      var battery3 = this.props.data.filter(function (elem) {
-	        return elem.displayName === 'Battery 3';
-	      });
-	      var battery4 = this.props.data.filter(function (elem) {
-	        return elem.displayName === 'Battery 4';
-	      });
-
-	      if (battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
-	      if (battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
-	      if (battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
-	      if (battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
-
-	      var motorData = this.props.data.filter(function (elem) {
-	        return elem.displayName === 'Electric Yacht 10kW Motor';
-	      });
-
-	      if (motorData.length > 0) {
-	        var bankVoltage = motorData[0].data.filter(function (elem) {
-	          return elem.sensor === "volts";
-	        });
-	        var motorSOC = motorData[0].data.filter(function (elem) {
-	          return elem.sensor === "soc";
-	        });
-	        var motorCurrent = motorData[0].data.filter(function (elem) {
-	          return elem.sensor === "current";
-	        });
-	        var motorTTD = motorData[0].data.filter(function (elem) {
-	          return elem.sensor === "ttd";
-	        });
-	        var motorRPM = motorData[0].data.filter(function (elem) {
-	          return elem.sensor === "rpm";
-	        });
-	      }
-
-	      var batteryGroupData = {
-	        labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
-	        datasets: [{
-	          backgroundColor: 'firebrick',
-	          borderColor: 'firebrick',
-	          borderWidth: 1,
-	          data: [battery1_volts, battery2_volts, battery3_volts, battery4_volts]
-	        }]
-	      };
-
-	      var batteryGroupOptions = {
-	        layout: {
-	          padding: {
-	            left: 15,
-	            right: 3
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          easing: 'linear'
-	        },
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            position: 'right',
-	            ticks: {
-	              min: 0,
-	              max: 14.5,
-	              mirror: false
-	            }
-	          }],
-	          xAxes: [{
-	            display: true,
-	            gridLines: {
-	              display: false,
-	              drawTicks: false
-	            },
-	            scaleLabel: {
-	              display: true
-	            }
-	          }]
-	        }
-	      };
-
-	      var currentData = {
-	        labels: [motorCurrent[0].data],
-	        datasets: [{
-	          labels: '',
-	          data: [motorCurrent[0].data],
-	          backgroundColor: ['firebrick']
-	        }]
-	      };
-
-	      var currentOptions = {
-	        layout: {
-	          padding: {
-	            left: 15
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 0,
-	              display: false
-	            },
-	            barThickness: 120,
-	            display: false
-	          }],
-	          xAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 10
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: true
-	            }
-	          }]
-	        }
-	      };
-
-	      var ttdData = {
-	        labels: [motorTTD[0].data],
-	        datasets: [{
-	          label: '',
-	          data: [motorTTD[0].data],
-	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderColor: ['firebrick'],
-
-	          borderWidth: 1
-	        }]
-	      };
-
-	      var ttdOptions = {
-	        layout: {
-	          padding: {
-	            left: 15
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 0,
-	              display: false
-	            },
-	            barThickness: 120,
-	            display: false
-	          }],
-	          xAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 20
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: true
-	            }
-	          }]
-	        }
-	      };
-
-	      var batteryMotorData = {
-	        labels: [bankVoltage[0].data],
-	        datasets: [{
-	          labels: '',
-	          data: [bankVoltage[0].data],
-	          backgroundColor: ['firebrick']
-	        }]
-	      };
-
-	      var batteryMotorOptions = {
-	        layout: {
-	          padding: {
-	            left: 15
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 0,
-	              display: false
-	            },
-	            barThickness: 120,
-	            display: false
-	          }],
-	          xAxes: [{
-	            ticks: {
-	              min: 46,
-	              max: 54
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: true
-	            }
-	          }]
-	        }
-	      };
-
-	      var socData = {
-	        labels: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
-	        datasets: [{
-	          labels: '',
-	          data: [motorSOC[0].data.mapRange(0, 255, 0, 100)],
-	          backgroundColor: ['firebrick']
-	        }]
-	      };
-
-	      var socOptions = {
-	        layout: {
-	          padding: {
-	            left: 15
-	          }
-	        },
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false
-	        },
-	        responsive: true,
-	        maintainAspectRatio: false,
-	        scales: {
-	          yAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 0,
-	              display: false
-	            },
-	            barThickness: 120,
-	            display: false
-	          }],
-	          xAxes: [{
-	            ticks: {
-	              min: 0,
-	              max: 100
-	            },
-	            gridLines: {
-	              display: false,
-	              drawTicks: true
-	            }
-	          }]
-	        }
-	      };
-
-	      var rpmData = {
-	        labels: ["Red", "darker red"],
-	        datasets: [{
-	          label: '',
-	          data: [motorRPM[0].data, 9],
-	          backgroundColor: ['firebrick', 'rgb(0,0,0)'],
-	          borderColor: ['firebrick', 'firebrick'],
-	          borderWidth: 1
-	        }]
-	      };
-
-	      var rpmOptions = {
-	        tooltips: {
-	          enabled: false
-	        },
-	        legend: {
-	          display: false,
-	          position: 'top'
-	        },
-	        animation: {
-	          easing: 'linear'
-	        },
-	        maintainAspectRatio: false
-	      };
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Motor'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'gaugeContainer' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'gaugeLeft' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: currentData,
-	                options: currentOptions,
-	                width: 400,
-	                height: 140
-	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Current Out'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  motorCurrent[0].data,
-	                  ' Ah'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'graphContainer' },
-	              _react2.default.createElement(_reactChartjs.HorizontalBar, { data: ttdData,
-	                options: ttdOptions,
-	                width: 400,
-	                height: 140
-	              }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'titlebar' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'title' },
-	                  'Time to Discharge'
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'rtData' },
-	                  ' ',
-	                  motorTTD[0].data,
-	                  ' Hours'
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'gaugeRight' },
-	            _react2.default.createElement(_reactChartjs.Doughnut, { data: rpmData,
-	              options: rpmOptions,
-	              width: 400,
-	              height: 280
-	            }),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rpm-label-container' },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rpm-label-data' },
-	                motorRPM[0].data
-	              ),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'rpm-label' },
-	                'RPM'
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: socData,
-	            options: socOptions,
-	            width: 800,
-	            height: 140
-	          }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'title' },
-	              'State of Charge'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              motorSOC[0].data.mapRange(0, 255, 0, 100),
-	              '%'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.Bar, { data: batteryGroupData,
-	            options: batteryGroupOptions,
-	            width: 800,
-	            height: 280
-	          }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'motorBattBar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              battery1_volts,
-	              ' V'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              battery2_volts,
-	              ' V'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              battery3_volts,
-	              ' V'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'motorBattData' },
-	              ' ',
-	              battery4_volts,
-	              ' V'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'graphContainer' },
-	          _react2.default.createElement(_reactChartjs.HorizontalBar, { data: batteryMotorData,
-	            options: batteryMotorOptions,
-	            width: 800,
-	            height: 140
-	          }),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'titlebar' },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'title' },
-	              'Total Bank Voltage'
-	            ),
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'rtData' },
-	              ' ',
-	              bankVoltage[0].data.toFixed(2),
-	              ' V'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Motor;
-	}(_react2.default.Component);
-
-		exports.default = Motor;
 
 /***/ })
 /******/ ]);

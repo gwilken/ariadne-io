@@ -7,23 +7,19 @@ class Enviro extends React.Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      color: darkviolet
     }
-  }
-
-  componentDidMount() {
-  }
-
-  componentWillReceiveProps(nextProps) {
   }
 
   render() {
 
-    var rtPress = this.props.data.pressure.toFixed(2) + ' mB';
+    var temp = this.props.data[0].data[0].data.toFixed(2);
+    var humidity = this.props.data[0].data[1].data.toFixed(2);
+    var pressure = this.props.data[0].data[2].data.toFixed(2);
+    var windSpeed = this.props.data[0].data[3].data.toFixed(2);
 
-    // T(°C) × 9/5 + 32
-
-    var tempF = this.props.data.temperature * 9/5 + 32;
+    var tempF = temp[0].data * 9/5 + 32;
     var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
 
     var tempData = {
@@ -32,7 +28,7 @@ class Enviro extends React.Component {
             {
               labels: '',
               data: [tempF],
-              backgroundColor: ['darkviolet']
+              backgroundColor: [this.state.color]
             }
          ]
        };
@@ -75,11 +71,11 @@ class Enviro extends React.Component {
   }
 
   var pressData = {
-      labels: [this.props.data.pressure],
+      labels: [pressure[0].data],
       datasets: [
           {
             labels: '',
-            data: [this.props.data.pressure],
+            data: [pressure[0].data],
             backgroundColor: ['darkviolet']
           }
        ]

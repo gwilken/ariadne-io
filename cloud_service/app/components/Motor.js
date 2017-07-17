@@ -3,132 +3,54 @@ import {Bar} from 'react-chartjs-2';
 import {Doughnut} from 'react-chartjs-2';
 import {HorizontalBar} from 'react-chartjs-2';
 
+Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
+  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 class Motor extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      ey: {
-        ttd: 0,
-        current: 0,
-        volts: 0,
-        rpm: 0,
-        soc: 0
-      },
-      batt1: {
-          busvoltage: 0
-      },
-      batt2:  {
-          busvoltage: 0
-      },
-      batt3:  {
-          busvoltage: 0
-      },
-      batt4:  {
-          busvoltage: 0
-      }
+      data: [],
+      color: 'firebrick'
     }
   }
-
-  componentWillMount() {
-    // var obj = {};
-    // var data = {
-    //   busvoltage: 0
-    // }
-    //
-    // this.setState( { motor: Object.assign( {}, this.state.motor, { batt1: data } ) } );
-    // this.setState( { motor: Object.assign( {}, this.state.motor, { batt2: data } ) } );
-    // this.setState( { motor: Object.assign( {}, this.state.motor, { batt3: data } ) } );
-    // this.setState( { motor: Object.assign( {}, this.state.motor, { batt4: data } ) } );
-  }
-
-  componentWillReceiveProps(nextProps) {
-
-    if(nextProps.data.ey) {
-
-      this.setState({ey: nextProps.data.ey});
-
-      // if(nextProps.data.ey.current) {
-      //
-      //   var newState = React.addons.update(this.state, {
-      //     ey: { current: {$set: nextProps.data.ey.current} }
-      //   });
-      //
-      //   this.setState(newState);
-      //
-      //   // var obj = {};
-      //   // this.setState( { ey: Object.assign( {}, this.state.ey, { current: nextProps.data.ey.current } ) } );
-      // } else
-      //
-      // if(nextProps.data.ey.volts) {
-      //   var obj = {};
-      //   console.log('at motor', nextProps.data.ey.volts);
-      //   this.setState( { ey: Object.assign( {}, this.state.ey, { volts: nextProps.data.ey.volts } ) } );
-      //   console.log('at volts:', this.state.ey);
-      // } else
-      //
-      // if(nextProps.data.ey.ttd) {
-      //   var obj = {};
-      //   this.setState( { ey: Object.assign( {}, this.state.ey, {ttd: nextProps.data.ey.ttd} ) } );
-      // } else
-      //
-      // if(nextProps.data.ey.rpm) {
-      //   var obj = {};
-      //   this.setState( { ey: Object.assign( {}, this.state.ey, {rpm: nextProps.data.ey.rpm} ) } );
-      // }
-
-    }
-
-
-    if(nextProps.data.batt1) {
-      this.setState( { batt1: nextProps.data.batt1 } );
-    }
-
-    if(nextProps.data.batt2) {
-      this.setState( { batt2: nextProps.data.batt2 } );
-    }
-
-    if(nextProps.data.batt3) {
-      this.setState( { batt3: nextProps.data.batt3 } );
-    }
-
-    if(nextProps.data.batt4) {
-      this.setState( { batt4: nextProps.data.batt4 } );
-    }
-  }
-
 
   render() {
 
-  //  console.log('at render:', this.state.ey);
+    var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+    var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
+    var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
+    var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
-      var rtBatt1 = this.state.batt1.busvoltage.toFixed(2) + ' v';
-      var rtBatt2 = this.state.batt2.busvoltage.toFixed(2) + ' v';
-      var rtBatt3 = this.state.batt3.busvoltage.toFixed(2) + ' v';
-      var rtBatt4 = this.state.batt4.busvoltage.toFixed(2) + ' v';
+    if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
+    if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
+    if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
+    if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
 
-      var ttd = 'Total Discharge in ' + this.state.ey.ttd + ' Hours';
-      var rpm = this.state.ey.rpm + ' RPM';
+    var motorData = this.props.data.filter((elem) => {return elem.displayName === 'Electric Yacht 10kW Motor'});
 
-      var rtCurrent = this.state.ey.current + ' Ah';
-      var rtBankVolt = this.state.ey.volts + ' v';
+    if(motorData.length > 0) {
+      var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
+      var motorSOC = motorData[0].data.filter((elem) => {return elem.sensor === "soc"});
+      var motorCurrent = motorData[0].data.filter((elem) => {return elem.sensor === "current"});
+      var motorTTD = motorData[0].data.filter((elem) => {return elem.sensor === "ttd"});
+      var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
+    }
 
-      var data = {
+      var batteryGroupData = {
         labels: ['Battery 1', 'Battery 2', 'Battery 3', 'Battery 4'],
-        datasets: [
-          {
+        datasets: [{
             backgroundColor: 'firebrick',
             borderColor: 'firebrick',
             borderWidth: 1,
-            // hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-            // hoverBorderColor: 'rgba(255,99,132,1)',
-            data: [this.state.batt1.busvoltage, this.state.batt2.busvoltage, this.state.batt3.busvoltage, this.state.batt4.busvoltage]
-          }
-        ]
+            data: [battery1_volts, battery2_volts, battery3_volts, battery4_volts]
+          }]
       };
 
-      var options = {
+      var batteryGroupOptions = {
         layout: {
           padding: {
             left: 15,
@@ -143,7 +65,6 @@ class Motor extends React.Component {
           position: 'top',
         },
         animation: {
-          // duration: 100,
           easing: 'linear'
         },
         maintainAspectRatio: false,
@@ -169,44 +90,13 @@ class Motor extends React.Component {
           ]
         }
       }
-      var ttdData = {
-        labels: ["Red", "darker red"],
-        datasets: [{
-            label: '',
-            data: [ this.state.ey.ttd ],
-            backgroundColor: [
-                'firebrick',
-                'rgb(0,0,0)'
-            ],
-            borderColor: ['firebrick', 'firebrick'],
-
-            borderWidth: 1
-        }]
-      };
-
-      var ttdOptions = {
-        rotation: 1 * Math.PI,
-        circumference: 1 * Math.PI,
-        tooltips: {
-          enabled: false,
-        },
-        legend: {
-          display: false,
-          position: 'top',
-        },
-        animation: {
-          // duration: 100,
-          easing: 'linear'
-        },
-        maintainAspectRatio: false
-      };
 
       var currentData = {
-          labels: [this.state.ey.current],
+          labels: [motorCurrent[0].data],
           datasets: [
               {
                 labels: '',
-                data: [this.state.ey.current],
+                data: [motorCurrent[0].data],
                 backgroundColor: ['firebrick']
               }
            ]
@@ -247,20 +137,72 @@ class Motor extends React.Component {
           },
         }]
       }
-    }
+      }
 
-    var voltBankData = {
-        labels: [this.state.ey.volts],
+      var ttdData = {
+        labels: [motorTTD[0].data],
+        datasets: [{
+            label: '',
+            data: [ motorTTD[0].data ],
+            backgroundColor: [
+                'firebrick',
+                'rgb(0,0,0)'
+            ],
+            borderColor: ['firebrick'],
+
+            borderWidth: 1
+        }]
+      };
+
+      var ttdOptions = {
+        layout: {
+          padding: {
+            left: 15,
+          },
+        },
+        tooltips: {
+          enabled: false,
+        },
+        legend: {
+          display: false,
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              min: 0,
+              max: 0,
+              display: false,
+            },
+            barThickness: 120,
+            display: false,
+          }],
+          xAxes: [{
+            ticks: {
+              min: 0,
+              max: 20,
+            },
+            gridLines: {
+              display: false,
+              drawTicks: true,
+            },
+          }]
+        }
+      };
+
+    var batteryMotorData = {
+        labels: [bankVoltage[0].data],
         datasets: [
             {
               labels: '',
-              data: [this.state.ey.volts],
+              data: [bankVoltage[0].data],
               backgroundColor: ['firebrick']
             }
          ]
        };
 
-    var voltBankOptions = {
+    var batteryMotorOptions = {
     layout: {
       padding: {
         left: 15,
@@ -286,8 +228,8 @@ class Motor extends React.Component {
       }],
       xAxes: [{
         ticks: {
-          min: 0,
-          max: 60,
+          min: 46,
+          max: 54,
         },
         gridLines: {
           display: false,
@@ -297,24 +239,69 @@ class Motor extends React.Component {
     }
   }
 
+  var socData = {
+      labels: [motorSOC[0].data.mapRange(0,255,0,100)],
+      datasets: [
+          {
+            labels: '',
+            data: [motorSOC[0].data.mapRange(0,255,0,100)],
+            backgroundColor: ['firebrick']
+          }
+       ]
+     };
+
+  var socOptions = {
+  layout: {
+    padding: {
+      left: 15,
+    },
+  },
+  tooltips: {
+    enabled: false,
+  },
+  legend: {
+    display: false,
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    yAxes: [{
+      ticks: {
+        min: 0,
+        max: 0,
+        display: false,
+      },
+      barThickness: 120,
+      display: false,
+    }],
+    xAxes: [{
+      ticks: {
+        min: 0,
+        max: 100,
+      },
+      gridLines: {
+        display: false,
+        drawTicks: true,
+      },
+    }]
+  }
+  }
+
     var rpmData = {
       labels: ["Red", "darker red"],
       datasets: [{
           label: '',
-          data: [ this.state.ey.rpm, 9 ],
+          data: [ motorRPM[0].data, 9 ],
           backgroundColor: [
               'firebrick',
               'rgb(0,0,0)'
           ],
           borderColor: ['firebrick', 'firebrick'],
-
           borderWidth: 1
       }]
     };
 
     var rpmOptions = {
-      rotation: 1 * Math.PI,
-      circumference: 1 * Math.PI,
       tooltips: {
         enabled: false,
       },
@@ -323,7 +310,6 @@ class Motor extends React.Component {
         position: 'top',
       },
       animation: {
-        // duration: 100,
         easing: 'linear'
       },
       maintainAspectRatio: false
@@ -333,101 +319,98 @@ class Motor extends React.Component {
 
       <div>
 
-        <h3>Motor</h3>
-
-
-        <div className="graphContainer">
-
-          <HorizontalBar data={currentData}
-            options={currentOptions}
-              width={800}
-              height={140}
-          />
-
-          <div className="titlebar">
-            <div className="title">Current Usage</div>
-            <div className="rtData"> {rtCurrent} </div>
-          </div>
-
-        </div>
+        <h2>Motor</h2>
 
           <div className="gaugeContainer">
 
             <div className="gaugeLeft">
-              <Doughnut data={ttdData}
-                options={ttdOptions}
-                  width={400}
-                  height={140}
-              />
+              <div className="graphContainer">
+                <HorizontalBar data={currentData}
+                  options={currentOptions}
+                    width={400}
+                    height={140}
+                />
+
+                <div className="titlebar">
+                  <div className="title">Current Out</div>
+                  <div className="rtData"> {motorCurrent[0].data} Ah</div>
+                </div>
+              </div>
+
+              <div className="graphContainer">
+                <HorizontalBar data={ttdData}
+                  options={ttdOptions}
+                    width={400}
+                    height={140}
+                />
+
+                <div className="titlebar">
+                  <div className="title">Time to Discharge</div>
+                  <div className="rtData"> {motorTTD[0].data} Hours</div>
+                </div>
+              </div>
             </div>
 
             <div className="gaugeRight">
               <Doughnut data={rpmData}
                 options={rpmOptions}
                   width={400}
-                  height={140}
+                  height={280}
               />
+
+              <div className="rpm-label-container">
+                <div className="rpm-label-data">{motorRPM[0].data}</div>
+                <div className="rpm-label">RPM</div>
+              </div>
+
             </div>
 
           </div>
 
+          <div className="graphContainer">
+            <HorizontalBar data={socData}
+              options={socOptions}
+                width={800}
+                height={140}
+            />
 
-          <div className="motorGauageBar">
-            {/* <div className="title">Motor Batts</div> */}
-            <div className="ttdLabel"> {ttd} </div>
-            <div className="rpmLabel"> {rpm} </div>
+            <div className="titlebar">
+              <div className="title">State of Charge</div>
+              <div className="rtData"> {motorSOC[0].data.mapRange(0,255,0,100)}%</div>
+            </div>
           </div>
 
 
+        <div className="graphContainer">
+            <Bar data={batteryGroupData}
+              options={batteryGroupOptions}
+                width={800}
+                height={280}
+            />
 
+          <div className="motorBattBar">
+            <div className="motorBattData"> {battery1_volts} V</div>
+            <div className="motorBattData"> {battery2_volts} V</div>
+            <div className="motorBattData"> {battery3_volts} V</div>
+            <div className="motorBattData"> {battery4_volts} V</div>
+          </div>
+        </div>
 
         <div className="graphContainer">
-          <HorizontalBar data={voltBankData}
-            options={voltBankOptions}
+          <HorizontalBar data={batteryMotorData}
+            options={batteryMotorOptions}
               width={800}
               height={140}
           />
 
           <div className="titlebar">
             <div className="title">Total Bank Voltage</div>
-            <div className="rtData"> {rtBankVolt} </div>
+            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} V</div>
           </div>
         </div>
-
-
-        <div className="graphContainer">
-            <Bar data={data}
-              options={options}
-                width={800}
-                height={140}
-            />
-
-          <div className="motorBattBar">
-            {/* <div className="title">Motor Batts</div> */}
-            <div className="motorBattData"> {rtBatt1} </div>
-            <div className="motorBattData"> {rtBatt2} </div>
-            <div className="motorBattData"> {rtBatt3} </div>
-            <div className="motorBattData"> {rtBatt4} </div>
-          </div>
-        </div>
-
-          {/* <div className="graphContainer">
-            <Line data={voltGraphData}
-                options={voltChartOptions}
-                width={800}
-                height={140}
-            />
-
-            <div className="titlebar">
-              <div className="title"> Volts</div>
-              <div className="rtData"> {this.props.data.loadvoltage} V </div>
-            </div>
-          </div> */}
-
 
       </div>
       )
-
   }
 }
 

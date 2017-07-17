@@ -14,8 +14,8 @@ class House extends React.Component {
 
   render() {
 
-    var volts = this.props.data[0].data[0].data.toFixed(2); + this.props.data[0].data[0].unit;
-    var current = this.props.data[0].data[1].data.toFixed(0); + this.props.data[0].data[1].unit;
+    var volts = this.props.data[0].data[0].data.toFixed(2);
+    var current = this.props.data[0].data[1].data.toFixed(0);
 
     var voltsGraphData = {
         labels: [volts],
