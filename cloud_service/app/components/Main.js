@@ -12,7 +12,9 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      view: 'all',
+      view: {
+        family: 'all'
+      },
       telemetry: []
     }
 
@@ -30,22 +32,11 @@ class Main extends React.Component {
   }
 
   setView(newView) {
-    // this.setState({
-    //   view: newView
-    // });
+    this.setState({
+      view: newView
+    });
     console.log(newView);
   }
-
-  gotoHistory(selected, color) {
-    console.log(selected);
-    this.setState({
-      view: 'history',
-      color: color,
-      selected: selected
-     });
-  }
-
-  gotoMap() {}
 
   render() {
 
@@ -83,20 +74,16 @@ class Main extends React.Component {
     }
 
 
-    if(this.state.view === 'history') {
-
+    if(this.state.view.family === 'history') {
       return (
-
         <div className="mainContainer">
-          {/* <HistoryDuo selected={this.state.selected} color={this.state.color} setView={this.setView}/> */}
+          <History target={this.state.view}/>
         </div>
-
       )
 
       } else {
 
-        if(this.state.view === 'all') {
-
+        if(this.state.view.family === 'all') {
           return (
             <div className="mainContainer">
               {house}

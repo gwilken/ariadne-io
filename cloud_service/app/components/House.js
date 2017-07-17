@@ -15,20 +15,20 @@ class House extends React.Component {
     this.currentClick = this.currentClick.bind(this);
   }
 
-  componentDidMount() {
-    fetch('/telemetry/house/100')
-      .then((res) => res.json())
-        .then(function(docs) {
-          console.log(docs)
-        })
-  }
-
   voltsClick(event) {
-    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[0].displayName});
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[0].displayName,
+      color: this.state.color
+    });
   }
 
   currentClick(event) {
-    this.props.handleClick({family: this.props.data[0].family, displayName: this.props.data[0].data[1].displayName});
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[1].displayName,
+      color: this.state.color
+    });
   }
 
   render() {
