@@ -16,7 +16,16 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     createdAt: { $gt: time }
   }, {
     _id: 0,
-    telemetry: { $elemMatch: {family: req.params.family}, data: {$elemMath: {displayName: req.params.name} } }
+    telemetry: {
+      $elemMatch: {
+        family: req.params.family,
+        data: { $elemMath: {
+          displayName: req.params.name
+          }
+        }
+      }
+    }, 
+
   }).toArray(function(err, docs) {
 
     if(err) {
