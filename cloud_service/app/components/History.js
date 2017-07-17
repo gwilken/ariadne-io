@@ -24,7 +24,7 @@ class History extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log('state:',this.state);
 
     return(
       <div>
