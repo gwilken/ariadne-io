@@ -49,62 +49,37 @@ class Main extends React.Component {
 
   render() {
 
-    var list = this.state.telemetry.map((elem) => { return elem.family; })
+    var house,
+        solar,
+        motor,
+        enviro,
+        gps;
 
-    var house;
-    var solar;
-    var motor;
-    var enviro;
-    var gps;
+    var list = this.state.telemetry.map((elem) => { return elem.family; })
 
     if(list.includes('house')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
-
-      house = (
-
-          <House data={data} handleClick={this.setView}/>
-
-      )
+      house = ( <House data={data} handleClick={this.setView}/> )
     }
 
     if(list.includes('solar')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
-
-      solar = (
-        <div onClick={ () => this.gotoHistory('gold') } >
-          <Solar data={data} />
-        </div>
-      )
+      solar = ( <Solar data={data} /> )
     }
 
     if(list.includes('motor')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
-
-      motor = (
-        <div onClick={ () => this.gotoHistory('gold') } >
-          <Motor data={data} />
-        </div>
-      )
+      motor = ( <Motor data={data} /> )
     }
 
     if(list.includes('enviro')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
-
-      enviro = (
-        <div onClick={ () => this.gotoHistory('gold') } >
-          <Enviro data={data} />
-        </div>
-      )
+      enviro = ( <Enviro data={data} /> )
     }
 
     if(list.includes('gps')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-
-      gps = (
-        <div onClick={ () => this.gotoHistory('gold') } >
-          <Gps data={data} />
-        </div>
-      )
+      gps = ( <Gps data={data} /> )
     }
 
 
