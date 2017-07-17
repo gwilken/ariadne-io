@@ -19,12 +19,12 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     telemetry: {
       $elemMatch: {
         family: req.params.family,
-        data: { $elemMath: {
+        data: { $elemMatch: {
           displayName: req.params.name
           }
         }
       }
-    }, 
+    },
 
   }).toArray(function(err, docs) {
 
