@@ -21030,9 +21030,9 @@
 	            { className: "mainContainer" },
 	            house,
 	            solar,
+	            gps,
 	            motor,
-	            enviro,
-	            gps
+	            enviro
 	          );
 	        }
 	      }
@@ -57774,6 +57774,8 @@
 	      var latitude = this.props.data[0].data[0].data[0];
 	      var longitude = this.props.data[0].data[0].data[1];
 	      var speed = this.props.data[0].data[1].data;
+	      var tmg = this.props.data[0].data[2].data;
+	      var siv = this.props.data[0].data[3].data;
 
 	      var speedData = {
 	        labels: [speed],
@@ -57826,7 +57828,7 @@
 	        null,
 	        ' ',
 	        _react2.default.createElement(
-	          'h3',
+	          'h2',
 	          null,
 	          'Geospatial'
 	        ),
@@ -57864,11 +57866,13 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'geoLocLabel' },
+	              'lat: ',
 	              latitude
 	            ),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'geoLocLabel' },
+	              'lon: ',
 	              longitude
 	            )
 	          )

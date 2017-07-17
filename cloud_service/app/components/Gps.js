@@ -19,6 +19,8 @@ class Gps extends React.Component {
     var latitude = this.props.data[0].data[0].data[0];
     var longitude = this.props.data[0].data[0].data[1];
     var speed = this.props.data[0].data[1].data;
+    var tmg = this.props.data[0].data[2].data;
+    var siv = this.props.data[0].data[3].data;
 
     var speedData = {
         labels: [speed],
@@ -70,7 +72,7 @@ class Gps extends React.Component {
 
     return (
 
-      <div> <h3>Geospatial</h3>
+      <div> <h2>Geospatial</h2>
 
           <div className="geoContainer">
 
@@ -88,8 +90,8 @@ class Gps extends React.Component {
             </div>
 
             <div className="geoLocation">
-              <div className="geoLocLabel">{latitude}</div>
-              <div className="geoLocLabel">{longitude}</div>
+              <div className="geoLocLabel">lat: {latitude}</div>
+              <div className="geoLocLabel">lon: {longitude}</div>
             </div>
 
           </div>

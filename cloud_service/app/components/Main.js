@@ -126,11 +126,11 @@ class Main extends React.Component {
 
           return (
             <div className="mainContainer">
-                    {house}
-                    {solar}
-                    {motor}
-                    {enviro}
-                    {gps}
+              {house}
+              {solar}
+              {gps}
+              {motor}
+              {enviro}
             </div>
           )
         }
