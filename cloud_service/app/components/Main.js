@@ -33,9 +33,10 @@ class Main extends React.Component {
   }
 
   setView(newView) {
-    this.setState({
-      view: newView
-    });
+    // this.setState({
+    //   view: newView
+    // });
+    console.log(newView);
   }
 
   gotoHistory(selected, color) {
@@ -63,9 +64,9 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
 
       house = (
-        <div onClick={ () => this.gotoHistory('gold') } >
-          <House data={data} />
-        </div>
+
+          <House data={data} handleClick={this.setView}/>
+
       )
     }
 
