@@ -28,10 +28,10 @@ class History extends React.Component {
     return(
       <div>
 
-        {this.state}
+        <h1>{this.state}</h1>
 
       </div>
-    );
+    )
   }
 
 }
