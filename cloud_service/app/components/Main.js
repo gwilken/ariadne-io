@@ -64,22 +64,22 @@ class Main extends React.Component {
 
     if(list.includes('solar')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
-      solar = ( <Solar data={data} /> )
+      solar = ( <Solar data={data} handleClick={this.setView}/> )
     }
 
     if(list.includes('motor')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
-      motor = ( <Motor data={data} /> )
+      motor = ( <Motor data={data} handleClick={this.setView}/> )
     }
 
     if(list.includes('enviro')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
-      enviro = ( <Enviro data={data} /> )
+      enviro = ( <Enviro data={data} handleClick={this.setView}/> )
     }
 
     if(list.includes('gps')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-      gps = ( <Gps data={data} /> )
+      gps = ( <Gps data={data} handleClick={this.setView}/> )
     }
 
 
