@@ -42,7 +42,7 @@ class History extends React.Component {
 
     console.log(this.state.value);
 
-    var val;
+    var val = this.state.value;
 
     var chart = null;
 
