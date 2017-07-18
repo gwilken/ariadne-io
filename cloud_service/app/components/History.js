@@ -14,7 +14,6 @@ class History extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       time: 180,
-      value: 1,
       data: []
     }
 
@@ -41,9 +40,7 @@ class History extends React.Component {
 
   render() {
 
-    console.log(this.state.value);
-
-    var val = this.state.value;
+    var time = this.state.time;
 
     var chart = null;
 
@@ -126,7 +123,7 @@ class History extends React.Component {
             <Slider
                   min={0}
                   max={1440}
-                  value={val}
+                  value={time}
                   tooltip={0}
                   orientation="horizontal"
                   onChange={this.handleOnChange}
@@ -134,7 +131,7 @@ class History extends React.Component {
 
           </div>
           <div className="slider-value">
-            {val}
+            {time} Minute View
           </div>
         </div>
 
