@@ -70,6 +70,8 @@ class History extends React.Component {
 
   render() {
 
+    var h = (window.innerHeight * .75).toFixed(0);
+
     var time = this.state.time;
     var displayTime = moment(Date.now() - time*60000).fromNow();
     var chart = null;
@@ -134,7 +136,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             width={800}
-            height={650}
+            height={h}
         />
       )
     }
@@ -142,6 +144,7 @@ class History extends React.Component {
     var styleObj = {
       backgroundColor: this.state.color
     }
+
 
     return(
 
