@@ -15,6 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
+      chartHeight: 500,
       data: [],
       average: null,
       high: null,
@@ -22,12 +23,15 @@ class History extends React.Component {
     }
 
     this.didLoad = this.didLoad.bind(this);
+    this.updateHeight = this.updateHeight.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnChangeComplete = this.handleOnChangeComplete.bind(this);
   }
 
   componentDidMount() {
+    this.updateHeight();
+
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
         .then((docs) => {
@@ -47,6 +51,10 @@ class History extends React.Component {
       high: sorted[docs.length - 1].toFixed(2),
       low: sorted[0].toFixed(2)
     })
+  }
+
+  updateHeight() {
+    this.setState({chartHeight: window.innerHeight - 100})
   }
 
   handleClick(event) {
@@ -69,8 +77,6 @@ class History extends React.Component {
   }
 
   render() {
-
-    var h = (window.innerHeight * .75).toFixed(0);
 
     var time = this.state.time;
     var displayTime = moment(Date.now() - time*60000).fromNow();
@@ -136,7 +142,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             // width={800}
-            // height={h}
+            height={this.state.chartHeight}
         />
       )
     }
