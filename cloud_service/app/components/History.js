@@ -137,9 +137,8 @@ class History extends React.Component {
     return(
 
       <div>
-        <h3>{ this.state.displayName}</h3>
-        <h3 className="slider-value">Last {time} Minutes</h3>
-
+        <h3>{ this.state.displayName} - Last {time} Minutes</h3>
+        
         <div className="historyContainer">
           <div className="historyGraph">
 
