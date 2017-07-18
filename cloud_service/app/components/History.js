@@ -2,6 +2,7 @@ import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
 import Slider from 'react-rangeslider';
+// import 'react-rangeslider/lib/index.css';
 
 class History extends React.Component {
 
