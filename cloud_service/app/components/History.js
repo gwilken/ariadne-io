@@ -124,8 +124,8 @@ class History extends React.Component {
           <div className='rangeslider-horizontal'>
 
             <Slider
-                  min={0}
-                  max={2400}
+                  min={2400}
+                  max={0}
                   value={val}
                   tooltip={0}
                   reverse={1}
