@@ -126,11 +126,19 @@ class History extends React.Component {
 
         </div>
 
+        <div className="history-info">
+          <h3 className="slider-value">Last {time} Minutes</h3>
+          <p>Average</p>
+          <p>Median</p>
+          <p>High</p>
+          <p>Low</p>
+        </div>
+
         <div className='slider-group'>
           <div className='rangeslider-horizontal'>
 
             <Slider
-              min={0}
+              min={5}
               max={1440}
               value={time}
               tooltip={0}
@@ -140,9 +148,7 @@ class History extends React.Component {
             />
 
           </div>
-          <div className="slider-value">
-            Last {time} Minutes
-          </div>
+
         </div>
 
       </div>
