@@ -28,7 +28,7 @@ class House extends React.Component {
     this.props.handleClick({
       family: this.props.data[0].family,
       displayName: this.props.data[0].data[1].displayName,
-      unit: this.props.data[0].data[0].unit,
+      unit: this.props.data[0].data[1].unit,
       color: this.state.color
     });
   }
