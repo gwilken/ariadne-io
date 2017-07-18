@@ -114,7 +114,7 @@ class History extends React.Component {
         <Slider
               min={0}
               max={100}
-              value={stateValue}
+              value={this.state.value}
               orientation="vertical"
               onChange={this.handleOnChange}
             />
