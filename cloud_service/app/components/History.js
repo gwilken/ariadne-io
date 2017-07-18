@@ -142,9 +142,11 @@ class History extends React.Component {
 
           <div className="history-info-container">
             <div className="history-info">
-              <h4>Average: {this.state.average} {this.state.unit}</h4>
-              <h4>High: {this.state.high} {this.state.unit}</h4>
-              <h4>Low: {this.state.low} {this.state.unit}</h4>
+              <span>
+                <h4>Average: {this.state.average} {this.state.unit}</h4>
+                <h4>High: {this.state.high} {this.state.unit}</h4>
+                <h4>Low: {this.state.low} {this.state.unit}</h4>
+              </span>
             </div>
           </div>
 
