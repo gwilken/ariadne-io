@@ -135,8 +135,8 @@ class History extends React.Component {
       chart = (
         <Line data={data}
             options={options}
-            width={800}
-            height={h}
+            // width={800}
+            // height={h}
         />
       )
     }
