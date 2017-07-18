@@ -50,8 +50,11 @@ class History extends React.Component {
   render() {
 
     var time = this.state.time;
-
     var chart = null;
+    var sliderFillStyle = {
+      backgroundColor: this.state.color
+    }
+
 
     var options = {
       animation: {
@@ -113,7 +116,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             width={800}
-            height={465}
+            height={550}
         />
       )
     }
@@ -131,7 +134,7 @@ class History extends React.Component {
         <div className='slider-group'>
           <div className='rangeslider-horizontal'>
 
-            <Slider
+            <Slider style={sliderFillStyle}
                   min={0}
                   max={1440}
                   value={time}
