@@ -159,10 +159,16 @@ h3 {
 .historyGraph {
   position: relative;
   float: right;
-  width: 100%;
+  width: 90%;
   margin: 1% 1%;
 }
 
 .slider-group {
-  height: 100%;
+  position: relative;
+  display: inline-block;
+  left: 3%;
+}
+
+.rangeslider-vertical {
+  height: 300px;
 }
