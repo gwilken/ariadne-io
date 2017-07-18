@@ -1,6 +1,7 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
+import Slider from 'react-rangeslider'
 
 class History extends React.Component {
 
@@ -12,10 +13,12 @@ class History extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       time: 180,
+      value: null,
       data: []
     }
 
     this.didLoad = this.didLoad.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +33,13 @@ class History extends React.Component {
     this.setState({data: docs});
   }
 
+  handleOnChange(value) {
+    this.setState({value: value});
+  }
+
   render() {
+
+    console.log(this.state.value);
 
     var chart = null;
 
@@ -85,6 +94,12 @@ class History extends React.Component {
             }
          ]
       }
+
+      <Slider
+            value={volume}
+            orientation="vertical"
+            onChange={this.handleOnChange}
+          />
 
       chart = (
         <Line data={data}
