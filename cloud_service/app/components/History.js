@@ -183,7 +183,9 @@ class History extends React.Component {
               <h4>Low: {this.state.low} {this.state.unit}</h4>
             </div>
 
-            {trend}
+            <div>
+              {trend}
+            </div>
 
           </div>
 
