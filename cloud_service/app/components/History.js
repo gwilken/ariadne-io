@@ -31,7 +31,6 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
-    this.setState({data: [] });
     this.setState({data: docs});
   }
 
@@ -55,6 +54,9 @@ class History extends React.Component {
     var chart = null;
 
     var options = {
+      animation: {
+        duration: 1000,
+      },
       layout: {
         padding: {
           left: 15,
