@@ -14,7 +14,11 @@ class History extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       time: 180,
-      data: []
+      data: [],
+      average: null,
+      median: null,
+      high: null,
+      low: null
     }
 
     this.didLoad = this.didLoad.bind(this);
@@ -33,6 +37,17 @@ class History extends React.Component {
   didLoad(docs) {
     this.setState({data: [] });
     this.setState({data: docs});
+
+    var sorted = docs.sort();
+    var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
+    var median = docs[ Math.floor( docs.length / 2) ];
+
+    this.setState({
+      average: average,
+      median: median,
+      high: sorted[docs.length - 1],
+      low: sorted[0]
+    })
   }
 
   handleOnChange(value) {
@@ -128,10 +143,10 @@ class History extends React.Component {
 
         <div className="history-info">
           <h3 className="slider-value">Last {time} Minutes</h3>
-          <p>Average</p>
-          <p>Median</p>
-          <p>High</p>
-          <p>Low</p>
+          <h4>Average</h4>
+          <h4>Median</h4>
+          <h4>High</h4>
+          <h4>Low</h4>
         </div>
 
         <div className='slider-group'>
