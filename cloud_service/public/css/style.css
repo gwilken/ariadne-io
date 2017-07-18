@@ -8,7 +8,7 @@ h3 {
 }
 
 h4 {
-    line-height: 18px;
+  line-height: 18px;
 }
 
 .mainContainer {
@@ -173,7 +173,12 @@ h4 {
 }
 
 .history-info {
+  display: inline-flex;
   margin: 0% 1%;
+}
+
+.history-info-text {
+  flex: 1;
 }
 
 .trend-container {
