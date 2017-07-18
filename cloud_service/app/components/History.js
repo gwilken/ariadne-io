@@ -36,18 +36,20 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
+    graphData = docs[0].slice();
+
     console.log(docs);
     this.setState({data: [] });
-    this.setState({data: docs[0]});
+    this.setState({data: graphData});
 
-    var sorted = docs[0].sort((a, b) => { return a - b; } );
-    var average = docs[0].reduce((sum, val) => { return sum + val }) / docs[0].length;
-    var median = docs[0][ Math.floor( docs[0].length / 2) ];
+    var sorted = graphData.sort((a, b) => { return a - b; } );
+    var average = graphData.reduce((sum, val) => { return sum + val }) / graphData.length;
+    var median = graphData[ Math.floor( graphData.length / 2) ];
 
     this.setState({
       average: average.toFixed(0),
       median: median.toFixed(0),
-      high: sorted[docs[0].length - 1].toFixed(0),
+      high: sorted[graphData.length - 1].toFixed(0),
       low: sorted[0].toFixed(0)
     })
   }
