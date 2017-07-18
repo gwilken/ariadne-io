@@ -13,7 +13,7 @@ class History extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       time: 180,
-      value: null,
+      value: 1,
       data: []
     }
 
@@ -111,7 +111,7 @@ class History extends React.Component {
                   <div className="historyGraph">
 
                     <Slider
-                          value={volume}
+                          value={this.state.value}
                           orientation="vertical"
                           onChange={this.handleOnChange}
                         />
