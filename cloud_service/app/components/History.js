@@ -54,7 +54,8 @@ class History extends React.Component {
   }
 
   updateHeight() {
-    this.setState({chartHeight: Math.floor(window.innerWidth / 1.4)})
+    console.log('innerHeight:', window.innerHeight);
+    this.setState({chartHeight: window.innerHeight - 200})
   }
 
   handleClick(event) {
