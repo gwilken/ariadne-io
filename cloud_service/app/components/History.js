@@ -1,7 +1,7 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
-import Slider from 'react-rangeslider'
+import Slider from 'react-rangeslider';
 
 class History extends React.Component {
 
@@ -105,11 +105,13 @@ class History extends React.Component {
     }
     return(
 
-      <Slider
-            value={this.state.value}
-            orientation="vertical"
-            onChange={this.handleOnChange}
-          />
+      <div>
+
+        <Slider
+              value={this.state.value}
+              orientation="vertical"
+              onChange={this.handleOnChange}
+            />
 
                <div className="historyContainer">
 
@@ -121,7 +123,7 @@ class History extends React.Component {
 
                 </div>
 
-
+      </div>
     )
   }
 
