@@ -16,6 +16,57 @@ class Motor extends React.Component {
       data: [],
       color: 'firebrick'
     }
+
+    this.socClick = this.socClick.bind(this);
+    this.ttdClick = this.ttdClick.bind(this);
+    this.currentClick = this.currentClick.bind(this);
+    this.voltsClick = this.voltsClick.bind(this);
+    this.rpmClick = this.rpmClick.bind(this);
+  }
+
+  socClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[0].displayName,
+      unit: this.props.data[0].data[0].unit,
+      color: this.state.color
+    });
+  }
+
+  ttdClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[1].displayName,
+      unit: this.props.data[0].data[1].unit,
+      color: this.state.color
+    });
+  }
+
+  currentClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[2].displayName,
+      unit: this.props.data[0].data[2].unit,
+      color: this.state.color
+    });
+  }
+
+  voltsClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[3].displayName,
+      unit: this.props.data[0].data[3].unit,
+      color: this.state.color
+    });
+  }
+
+  rpmClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[4].displayName,
+      unit: this.props.data[0].data[4].unit,
+      color: this.state.color
+    });
   }
 
   render() {
@@ -103,6 +154,7 @@ class Motor extends React.Component {
          };
 
       var currentOptions = {
+      onClick: this.currentClick,
       layout: {
         padding: {
           left: 15,
@@ -155,6 +207,7 @@ class Motor extends React.Component {
       };
 
       var ttdOptions = {
+        onClick: this.ttdClick,
         layout: {
           padding: {
             left: 15,
@@ -203,6 +256,7 @@ class Motor extends React.Component {
        };
 
     var batteryMotorOptions = {
+      onClick: this.voltsClick,
     layout: {
       padding: {
         left: 15,
@@ -251,6 +305,7 @@ class Motor extends React.Component {
      };
 
   var socOptions = {
+    onClick: this.socClick,
   layout: {
     padding: {
       left: 15,
@@ -302,6 +357,7 @@ class Motor extends React.Component {
     };
 
     var rpmOptions = {
+      onClick: this.rpmClick,
       tooltips: {
         enabled: false,
       },
