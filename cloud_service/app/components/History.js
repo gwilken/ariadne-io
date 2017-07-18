@@ -31,6 +31,7 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
+    this.setState({data: [] });
     this.setState({data: docs});
   }
 
@@ -58,7 +59,7 @@ class History extends React.Component {
 
     var options = {
       animation: {
-        duration: 400,
+        duration: 1000,
         easing: 'linear',
       },
       layout: {
@@ -129,20 +130,18 @@ class History extends React.Component {
 
         </div>
 
-        {/* .rangeslider-horizontal .rangeslider__fill */}
-
         <div className='slider-group'>
           <div className='rangeslider-horizontal' style={divStyle}>
 
             <Slider
-                  min={0}
-                  max={1440}
-                  value={time}
-                  tooltip={0}
-                  orientation="horizontal"
-                  onChange={this.handleOnChange}
-                  onChangeComplete={this.handleOnChangeComplete}
-                />
+              min={0}
+              max={1440}
+              value={time}
+              tooltip={0}
+              orientation="horizontal"
+              onChange={this.handleOnChange}
+              onChangeComplete={this.handleOnChangeComplete}
+            />
 
           </div>
           <div className="slider-value">
