@@ -132,7 +132,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             width={800}
-            height={950}
+            height={825}
         />
       )
     }
