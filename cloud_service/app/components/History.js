@@ -1,6 +1,7 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
+// import Trend fomr './Trend';
 import Slider from 'react-rangeslider';
 // import 'react-rangeslider/lib/index.css';
 
@@ -16,8 +17,8 @@ class History extends React.Component {
       unit: this.props.view.unit,
       time: 180,
       data: [],
+      trend: [],
       average: null,
-      median: null,
       high: null,
       low: null
     }
@@ -37,25 +38,23 @@ class History extends React.Component {
 
   didLoad(docs) {
     var graphData = docs[0].slice();
+    var trendData = docs[1].slice();
 
-    console.log(docs);
     this.setState({data: [] });
     this.setState({data: graphData});
+    this.setState({trend: trendData});
 
     var sorted = graphData.sort((a, b) => { return a - b; } );
     var average = graphData.reduce((sum, val) => { return sum + val }) / graphData.length;
-    var median = graphData[ Math.floor( graphData.length / 2) ];
 
     this.setState({
       average: average.toFixed(0),
-      median: median.toFixed(0),
       high: sorted[graphData.length - 1].toFixed(0),
       low: sorted[0].toFixed(0)
     })
   }
 
   handleOnChange(value) {
-  //  console.log('change complete');
     this.setState({time: value});
   }
 
@@ -71,6 +70,7 @@ class History extends React.Component {
 
     var time = this.state.time;
     var chart = null;
+    var trend = null;
 
     var options = {
       animation: {
@@ -137,6 +137,32 @@ class History extends React.Component {
       )
     }
 
+    if(this.state.trend.length > 0) {
+      var trendData = {
+        labels: this.state.trend,
+        datasets: [
+            {
+              fill: true,
+              backgroundColor: this.state.color,
+              borderWidth: 2,
+              lineTension: 0.4,
+              pointRadius: 0,
+              data: this.state.trend
+            }
+         ]
+      }
+
+      trend = (
+        <Line data={trendData}
+            options={options}
+            width={400}
+            height={300}
+        />
+      )
+    }
+
+
+
     return(
 
       <div>
@@ -153,10 +179,11 @@ class History extends React.Component {
 
             <div className="history-info">
               <h4>Average: {this.state.average} {this.state.unit}</h4>
-              <h4>Median: {this.state.median} {this.state.unit}</h4>
               <h4>High: {this.state.high} {this.state.unit}</h4>
               <h4>Low: {this.state.low} {this.state.unit}</h4>
             </div>
+
+            {trend}
 
           </div>
 
