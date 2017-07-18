@@ -1,9 +1,7 @@
 import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
-// import Trend fomr './Trend';
 import Slider from 'react-rangeslider';
-// import 'react-rangeslider/lib/index.css';
 
 class History extends React.Component {
 
@@ -17,7 +15,6 @@ class History extends React.Component {
       unit: this.props.view.unit,
       time: 180,
       data: [],
-      trend: [],
       average: null,
       high: null,
       low: null
@@ -37,19 +34,15 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
-    var graphData = docs[0].slice();
-    var trendData = docs[1].slice();
-
     this.setState({data: [] });
-    this.setState({data: graphData});
-    this.setState({trend: trendData});
+    this.setState({data: docs});
 
-    var sorted = graphData.sort((a, b) => { return a - b; } );
-    var average = graphData.reduce((sum, val) => { return sum + val }) / graphData.length;
+    var sorted = docs.sort((a, b) => { return a - b; } );
+    var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
 
     this.setState({
       average: average.toFixed(0),
-      high: sorted[graphData.length - 1].toFixed(0),
+      high: sorted[docs.length - 1].toFixed(0),
       low: sorted[0].toFixed(0)
     })
   }
@@ -70,7 +63,6 @@ class History extends React.Component {
 
     var time = this.state.time;
     var chart = null;
-    var trend = null;
 
     var options = {
       animation: {
@@ -137,61 +129,27 @@ class History extends React.Component {
       )
     }
 
-    if(this.state.trend.length > 0) {
-      var trendData = {
-        labels: this.state.trend,
-        datasets: [
-            {
-              fill: true,
-              backgroundColor: this.state.color,
-              borderWidth: 2,
-              lineTension: .4,
-              pointRadius: 0,
-              data: this.state.trend
-            }
-         ]
-      }
-
-      trend = (
-        <Line data={trendData}
-            options={options}
-            width={400}
-            height={300}
-        />
-      )
-    }
-
-
-
     return(
 
       <div>
+
         <h3>{ this.state.displayName} - Last {time} Minutes</h3>
 
         <div className="historyContainer">
           <div className="historyGraph">
-
-          {chart}
-
+            {chart}
           </div>
 
           <div className="history-info-container">
-
             <div className="history-info">
               <h4>Average: {this.state.average} {this.state.unit}</h4>
               <h4>High: {this.state.high} {this.state.unit}</h4>
               <h4>Low: {this.state.low} {this.state.unit}</h4>
             </div>
-
-            <div className="trend-container">
-              {trend}
-            </div>
-
           </div>
 
           <div className='slider-group'>
             <div className='rangeslider-horizontal'>
-
               <Slider
                 min={5}
                 max={1440}
@@ -201,9 +159,7 @@ class History extends React.Component {
                 onChange={this.handleOnChange}
                 onChangeComplete={this.handleOnChangeComplete}
               />
-
             </div>
-
           </div>
 
         </div>

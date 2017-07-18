@@ -2,7 +2,6 @@ const ObjectId = require('mongodb').ObjectID;
 const express = require("express");
 const path = require("path");
 const mongo = require("../model/mongo");
-const timeseries = require("timeseries-analysis");
 
 const router = new express.Router();
 
@@ -25,8 +24,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     } else {
 
       var arr = [];
-      var trendArr = [];
-      var telemetryData = [];
 
       if(docs.length > 0) {
         for(var i = 0; i < docs.length; i++) {
@@ -40,19 +37,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         }
       }
 
-      var trendData = new timeseries.main(timeseries.adapter.fromArray(arr));
-      trendArr = trendData.ma({
-          period: 20
-      }).output();
-
-      var processed = trendArr.map((elem) => {
-        return elem[1];
-      })
-
-      telemetryData.push(arr);
-      telemetryData.push(processed);
-
-      res.json(telemetryData);
+      res.json(arr);
       }
   });
 })
