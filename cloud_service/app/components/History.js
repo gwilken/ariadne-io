@@ -117,7 +117,7 @@ class History extends React.Component {
               max={100}
               value={val}
               orientation="vertical"
-              onChangeComplete={this.handleOnChange}
+              onChange={this.handleOnChange}
             />
           </div>
         </div>
