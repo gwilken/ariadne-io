@@ -13,6 +13,7 @@ class History extends React.Component {
       family: this.props.view.family,
       displayName: this.props.view.displayName,
       color: this.props.view.color,
+      unit: this.props.view.unit,
       time: 180,
       data: [],
       average: null,
@@ -149,10 +150,10 @@ class History extends React.Component {
           <div className="history-info-container">
 
             <div className="history-info">
-              <h4>Average: {this.state.average}</h4>
-              <h4>Median: {this.state.median}</h4>
-              <h4>High: {this.state.high}</h4>
-              <h4>Low: {this.state.low}</h4>
+              <h4>Average: {this.state.average} {this.state.unit}</h4>
+              <h4>Median: {this.state.median} {this.state.unit}</h4>
+              <h4>High: {this.state.high} {this.state.unit}</h4>
+              <h4>Low: {this.state.low} {this.state.unit}</h4>
             </div>
 
           </div>
