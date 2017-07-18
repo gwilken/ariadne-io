@@ -140,7 +140,8 @@ h3 {
 
 .historyContainer {
   position: absolute;
-  width: 93%;
+  width: 100%;
+  margin: 0% 0%;
 }
 
 .backButton {
@@ -159,13 +160,10 @@ h3 {
 
 .historyGraph {
   position: relative;
-  float: right;
-  width: 100%;
+  width: 97%;
   margin: 1% 1%;
 }
 
 .slider-group {
-  position: relative;
-  display: inline-block;
-  left: 3%;
+  margin: 0% 0% 0% 0%;
 }
