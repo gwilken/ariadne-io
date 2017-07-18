@@ -108,12 +108,17 @@ class History extends React.Component {
     return(
 
       <div>
-
+        <div className='slider-group'>
+          <div className='slider-vertical'>
         <Slider
+              min={0}
+              max={100}
               value={value}
               orientation="vertical"
               onChange={this.handleOnChange}
             />
+          </div>
+        </div>
 
                <div className="historyContainer">
 
