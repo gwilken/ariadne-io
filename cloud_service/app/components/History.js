@@ -118,6 +118,8 @@ class History extends React.Component {
 
         </div>
 
+        {/* .rangeslider-horizontal .rangeslider__fill */}
+
         <div className='slider-group'>
           <div className='rangeslider-horizontal rangeslider-reverse'>
 

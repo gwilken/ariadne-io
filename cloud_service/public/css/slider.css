@@ -68,7 +68,8 @@
   border-radius: 30px;
   top: -10px;
 }
-.rangeslider-horizontal .rangeslider__handle:after {
+
+/*.rangeslider-horizontal .rangeslider__handle:after {
   content: ' ';
   position: absolute;
   width: 16px;
@@ -78,7 +79,8 @@
   border-radius: 50%;
   background-color: #dadada;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 -1px 3px rgba(0, 0, 0, 0.4) inset;
-}
+}*/
+
 .rangeslider-horizontal .rangeslider__tooltip {
   top: -55px;
 }
