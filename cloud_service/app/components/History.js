@@ -112,8 +112,6 @@ class History extends React.Component {
     return(
 
       <div className="historyContainer">
-
-
         <div className="historyGraph">
 
         {chart}
