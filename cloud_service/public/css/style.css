@@ -151,9 +151,10 @@ h4 {
 }
 
 .historyContainer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   margin: 0% 0%;
+  bottom: 7%;
 }
 
 .backButton {
