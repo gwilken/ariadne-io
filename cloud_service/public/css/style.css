@@ -169,6 +169,10 @@ h3 {
   margin: 0% 8% 0% 5%;
 }
 
+.rangeslider-horizontal {
+    border-radius: 0px;
+}
+
 .rangeslider-horizontal .rangeslider__fill {
     border-radius: 0px;
     background-color: darkgrey;
