@@ -42,9 +42,9 @@ class History extends React.Component {
     var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
 
     this.setState({
-      average: average.toFixed(0),
-      high: sorted[docs.length - 1].toFixed(0),
-      low: sorted[0].toFixed(0)
+      average: average.toFixed(2),
+      high: sorted[docs.length - 1].toFixed(2),
+      low: sorted[0].toFixed(2)
     })
   }
 
@@ -132,7 +132,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             width={800}
-            height={725}
+            height={700}
         />
       )
     }
