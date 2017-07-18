@@ -15,7 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      chartHeight: Math.floor(window.innerWidth / 1.4),
+      chartHeight: 500,
       data: [],
       average: null,
       high: null,
@@ -30,7 +30,7 @@ class History extends React.Component {
   }
 
   componentDidMount() {
-    //this.updateHeight();
+    this.updateHeight();
 
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
