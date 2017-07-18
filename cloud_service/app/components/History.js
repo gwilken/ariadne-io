@@ -15,7 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      chartHeight: Math.floor(window.innerHeight * .65),
+      chartHeight: Math.floor(window.innerHeight * .60),
       data: [],
       average: null,
       high: null,
@@ -170,6 +170,7 @@ class History extends React.Component {
                 max={1440}
                 value={time}
                 tooltip={1}
+                format={displayTime}
                 orientation="horizontal"
                 onChange={this.handleOnChange}
                 onChangeComplete={this.handleOnChangeComplete}
