@@ -88,7 +88,7 @@ class Main extends React.Component {
 
       return (
         <div className="mainContainer">
-           <History view={this.state.view} />
+           <History view={this.state.view} handleClick={this.setView} />
         </div>
       )
 

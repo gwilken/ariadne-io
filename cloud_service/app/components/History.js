@@ -21,6 +21,7 @@ class History extends React.Component {
     }
 
     this.didLoad = this.didLoad.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnChangeComplete = this.handleOnChangeComplete.bind(this);
   }
@@ -47,6 +48,12 @@ class History extends React.Component {
     })
   }
 
+  handleClick() {
+    this.props.handleClick({
+      family: 'all'
+    });
+  }
+
   handleOnChange(value) {
     this.setState({time: value});
   }
@@ -65,7 +72,7 @@ class History extends React.Component {
     var chart = null;
 
     var options = {
-      onClick: {},
+      onClick: this.handleClick,
       animation: {
         duration: 600,
         easing: 'linear',
@@ -125,7 +132,7 @@ class History extends React.Component {
         <Line data={data}
             options={options}
             width={800}
-            height={550}
+            height={950}
         />
       )
     }
