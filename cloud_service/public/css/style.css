@@ -165,7 +165,8 @@ h3 {
 }
 
 .slider-group {
-  margin: 0% 0% 0% 0%;
+  position: relative;
+  margin: 0% 12% 0% 3%;
 }
 
 .rangeslider, .rangeslider .rangeslider__fill {
