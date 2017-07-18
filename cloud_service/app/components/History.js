@@ -141,12 +141,16 @@ class History extends React.Component {
 
         </div>
 
-        <div className="history-info">
+        <div className="history-info-container">
           <h3 className="slider-value">Last {time} Minutes</h3>
-          <h4>Average</h4>
-          <h4>Median</h4>
-          <h4>High</h4>
-          <h4>Low</h4>
+
+          <div className="history-info">
+            <h4>Average {this.state.average}</h4>
+            <h4>Median {this.state.median}</h4>
+            <h4>High {this.state.high}</h4>
+            <h4>Low {this.state.low}</h4>
+          </div>
+
         </div>
 
         <div className='slider-group'>
