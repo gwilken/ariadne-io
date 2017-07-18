@@ -54,7 +54,12 @@ class History extends React.Component {
   }
 
   updateHeight() {
+    console.log('inner width', window.innerWidth);
+
     this.setState({chartHeight: window.innerWidth * 1.25})
+
+    console.log('state height', this.state.chartHeight);
+
   }
 
   handleClick(event) {
@@ -141,7 +146,7 @@ class History extends React.Component {
       chart = (
         <Line data={data}
             options={options}
-            // width={800}
+            width={800}
             height={this.state.chartHeight}
         />
       )
