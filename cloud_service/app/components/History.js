@@ -65,6 +65,7 @@ class History extends React.Component {
     var chart = null;
 
     var options = {
+      onClick: {},
       animation: {
         duration: 600,
         easing: 'linear',
@@ -129,6 +130,10 @@ class History extends React.Component {
       )
     }
 
+    var styleObj = {
+      backgroundColor: this.state.color
+    }
+
     return(
 
       <div>
@@ -142,14 +147,14 @@ class History extends React.Component {
 
           <div className="history-info-container">
             <div className="history-info">
-                <h4 className="history-info-text">Average: {this.state.average} {this.state.unit}</h4>
-                <h4 className="history-info-text">High: {this.state.high} {this.state.unit}</h4>
-                <h4 className="history-info-text">Low: {this.state.low} {this.state.unit}</h4>
+              <h4 className="history-info-text">Low: {this.state.low} {this.state.unit}</h4>
+              <h4 className="history-info-text">High: {this.state.high} {this.state.unit}</h4>
+              <h4 className="history-info-text">Average: {this.state.average} {this.state.unit}</h4>
             </div>
           </div>
 
           <div className='slider-group'>
-            <div className='rangeslider-horizontal'>
+            <div className='rangeslider-horizontal' style={styleObj}>
               <Slider
                 min={5}
                 max={1440}

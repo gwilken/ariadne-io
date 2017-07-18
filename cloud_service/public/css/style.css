@@ -169,12 +169,12 @@ h4 {
 }
 
 .history-info-container {
-  margin: 0% 4%;
+  text-align: center;
 }
 
 .history-info {
   display: inline-flex;
-  margin: 0% 1%;
+  width: 100%;
 }
 
 .history-info-text {
@@ -196,7 +196,7 @@ h4 {
 
 .rangeslider-horizontal .rangeslider__fill {
     border-radius: 0px;
-    background-color: darkgrey;
+    background-color: inherit;
 }
 
 .slider-value {
