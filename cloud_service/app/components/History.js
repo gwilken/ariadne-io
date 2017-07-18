@@ -71,7 +71,7 @@ class History extends React.Component {
   render() {
 
     var time = this.state.time;
-    var displayTime = moment(Date.now() - time*60000).fromNow(true);
+    var displayTime = moment(Date.now() - time*60000).fromNow();
     var chart = null;
 
     var options = {
