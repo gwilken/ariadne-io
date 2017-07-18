@@ -52,7 +52,7 @@ class History extends React.Component {
     var time = this.state.time;
     var chart = null;
     var sliderFillStyle = {
-      backgroundColor: this.prop.view.color
+      backgroundColor: this.props.view.color
     }
 
 
