@@ -35,7 +35,6 @@ class Main extends React.Component {
     this.setState({
       view: newView
     });
-    console.log(newView);
   }
 
   render() {
