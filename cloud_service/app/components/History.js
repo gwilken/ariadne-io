@@ -132,45 +132,53 @@ class History extends React.Component {
         />
       )
     }
+
     return(
 
-      <div className="historyContainer">
-        <div className="historyGraph">
+      <div>
+        <h3>{ this.state.family }</h3>
+        <h4>{ this.state.displayName}</h4>
+        <h4 className="slider-value">Last {time} Minutes</h4>
 
-        {chart}
+        <div className="historyContainer">
+          <div className="historyGraph">
 
-        </div>
+          {chart}
 
-        <div className="history-info-container">
-          <h3 className="slider-value">Last {time} Minutes</h3>
-
-          <div className="history-info">
-            <h4>Average {this.state.average}</h4>
-            <h4>Median {this.state.median}</h4>
-            <h4>High {this.state.high}</h4>
-            <h4>Low {this.state.low}</h4>
           </div>
 
-        </div>
+          <div className="history-info-container">
 
-        <div className='slider-group'>
-          <div className='rangeslider-horizontal'>
+            <div className="history-info">
+              <h4>Average: {this.state.average}</h4>
+              <h4>Median: {this.state.median}</h4>
+              <h4>High: {this.state.high}</h4>
+              <h4>Low: {this.state.low}</h4>
+            </div>
 
-            <Slider
-              min={5}
-              max={1440}
-              value={time}
-              tooltip={0}
-              orientation="horizontal"
-              onChange={this.handleOnChange}
-              onChangeComplete={this.handleOnChangeComplete}
-            />
+          </div>
+
+          <div className='slider-group'>
+            <div className='rangeslider-horizontal'>
+
+              <Slider
+                min={5}
+                max={1440}
+                value={time}
+                tooltip={0}
+                orientation="horizontal"
+                onChange={this.handleOnChange}
+                onChangeComplete={this.handleOnChangeComplete}
+              />
+
+            </div>
 
           </div>
 
         </div>
 
       </div>
+
     )
   }
 
