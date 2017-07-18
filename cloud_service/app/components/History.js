@@ -36,7 +36,7 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
-    graphData = docs[0].slice();
+    var graphData = docs[0].slice();
 
     console.log(docs);
     this.setState({data: [] });
