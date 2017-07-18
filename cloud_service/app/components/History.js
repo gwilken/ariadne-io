@@ -120,7 +120,7 @@ class History extends React.Component {
           </div>
         </div>
 
-               <div className="historyContainer">
+               {/* <div className="historyContainer">
 
                   <div className="historyGraph">
 
@@ -128,7 +128,7 @@ class History extends React.Component {
 
                   </div>
 
-                </div>
+                </div> */}
 
       </div>
     )
