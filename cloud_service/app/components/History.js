@@ -42,6 +42,8 @@ class History extends React.Component {
 
     console.log(this.state.value);
 
+    var stateValue = this.state.value;
+
     var chart = null;
 
     var options = {
@@ -112,7 +114,7 @@ class History extends React.Component {
         <Slider
               min={0}
               max={100}
-              value={this.state.value}
+              value={stateValue}
               orientation="vertical"
               onChangeComplete={this.handleOnChange}
             />
