@@ -39,14 +39,14 @@ class History extends React.Component {
     this.setState({data: [] });
     this.setState({data: docs[0]});
 
-    var sorted = docs.sort((a, b) => { return a - b; } );
-    var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
-    var median = docs[ Math.floor( docs.length / 2) ];
+    var sorted = docs[0].sort((a, b) => { return a - b; } );
+    var average = docs[0].reduce((sum, val) => { return sum + val }) / docs[0].length;
+    var median = docs[0][ Math.floor( docs[0].length / 2) ];
 
     this.setState({
       average: average.toFixed(0),
       median: median.toFixed(0),
-      high: sorted[docs.length - 1].toFixed(0),
+      high: sorted[docs[0].length - 1].toFixed(0),
       low: sorted[0].toFixed(0)
     })
   }
