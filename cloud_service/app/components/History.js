@@ -35,6 +35,7 @@ class History extends React.Component {
   }
 
   handleOnChange(value) {
+    console.log('change complete');
     this.setState({value: value});
   }
 
