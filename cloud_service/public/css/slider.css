@@ -133,6 +133,7 @@
 .rangeslider-reverse .rangeslider-horizontal .rangeslider__fill {
   right: 0;
 }
+
 .rangeslider-reverse .rangeslider-vertical .rangeslider__fill {
   top: 0;
   bottom: inherit;

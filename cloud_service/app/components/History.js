@@ -121,7 +121,7 @@ class History extends React.Component {
         {/* .rangeslider-horizontal .rangeslider__fill */}
 
         <div className='slider-group'>
-          <div className='rangeslider-horizontal rangeslider-reverse'>
+          <div className='rangeslider-reverse rangeslider-horizontal'>
 
             <Slider
                   min={0}
