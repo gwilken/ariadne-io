@@ -40,7 +40,7 @@ class History extends React.Component {
   }
 
   handleOnChangeComplete() {
-    console.log("time:" this.state.time);
+    console.log("time:", this.state.time);
   }
 
   render() {
