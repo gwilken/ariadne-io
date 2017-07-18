@@ -145,7 +145,7 @@ class History extends React.Component {
               fill: true,
               backgroundColor: this.state.color,
               borderWidth: 2,
-              lineTension: 1,
+              lineTension: .4,
               pointRadius: 0,
               data: this.state.trend
             }
