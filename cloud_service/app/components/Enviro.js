@@ -12,6 +12,10 @@ class Enviro extends React.Component {
     }
 
     this.windClick = this.windClick.bind(this);
+    this.pressureClick = this.pressureClick.bind(this);
+    this.humidityClick = this.humidityClick.bind(this);
+    this.tempClick = this.tempClick.bind(this);
+
   }
 
   windClick(event) {
