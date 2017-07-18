@@ -9,6 +9,7 @@ h3 {
 
 .mainContainer {
   margin: 3% 1%;
+  min-height: 100%;
 }
 
 .graphContainer {
@@ -160,4 +161,8 @@ h3 {
   float: right;
   width: 100%;
   margin: 1% 1%;
+}
+
+.slider-group {
+  height: 100%;
 }
