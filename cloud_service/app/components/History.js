@@ -73,7 +73,7 @@ class History extends React.Component {
     console.log('state height', this.state.chartHeight);
 
     var time = this.state.time;
-    var displayTime = moment(Date.now() - time*60000).fromNow();
+    var displayTime = moment(Date.now() - time*60000).fromNow(true);
     var chart = null;
 
     var options = {
