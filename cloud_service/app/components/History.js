@@ -75,7 +75,6 @@ class History extends React.Component {
     var chart = null;
 
     var options = {
-      onClick: this.handleClick,
       animation: {
         duration: 600,
         easing: 'linear',
@@ -151,7 +150,7 @@ class History extends React.Component {
         <h3>{ this.state.displayName} - {displayTime}</h3>
 
         <div className="historyContainer">
-          <div className="historyGraph">
+          <div className="historyGraph" onClick={this.handleClick}>
             {chart}
           </div>
 
