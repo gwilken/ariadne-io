@@ -161,14 +161,3 @@ h3 {
   width: 100%;
   margin: 1% 1%;
 }
-
-.slider-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slider-vertical,
-.slider-horizontal {
-  flex: 1;
-}
