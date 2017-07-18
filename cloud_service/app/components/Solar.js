@@ -167,7 +167,7 @@ class Solar extends React.Component {
             />
 
             <div className="titlebar">
-              <div className="title">Current In</div>
+              <div className="title">Current Output</div>
               <div className="rtData"> {current} mA</div>
             </div>
           </div>

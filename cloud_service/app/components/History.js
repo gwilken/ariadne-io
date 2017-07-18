@@ -37,7 +37,7 @@ class History extends React.Component {
 
   didLoad(docs) {
     this.setState({data: [] });
-    this.setState({data: docs});
+    this.setState({data: docs[0]});
 
     var sorted = docs.sort((a, b) => { return a - b; } );
     var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
@@ -138,7 +138,7 @@ class History extends React.Component {
 
       <div>
         <h3>{ this.state.displayName} - Last {time} Minutes</h3>
-        
+
         <div className="historyContainer">
           <div className="historyGraph">
 
