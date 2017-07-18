@@ -23,7 +23,6 @@ class History extends React.Component {
     }
 
     this.didLoad = this.didLoad.bind(this);
-    this.updateHeight = this.updateHeight.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnChangeComplete = this.handleOnChangeComplete.bind(this);
