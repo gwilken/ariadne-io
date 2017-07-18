@@ -19,6 +19,7 @@ class History extends React.Component {
 
     this.didLoad = this.didLoad.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnChangeComplete = this.handleOnChangeComplete.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +37,10 @@ class History extends React.Component {
   handleOnChange(value) {
   //  console.log('change complete');
     this.setState({time: value});
+  }
+
+  handleOnChangeComplete() {
+    console.log("time:" this.state.time);
   }
 
   render() {
@@ -127,6 +132,7 @@ class History extends React.Component {
                   tooltip={0}
                   orientation="horizontal"
                   onChange={this.handleOnChange}
+                  onChangeComplete={this.handleOnChangeComplete}
                 />
 
           </div>
