@@ -171,12 +171,9 @@ h3 {
 
 .rangeslider-horizontal .rangeslider__fill {
     border-radius: 0px;
+    background-color: darkgrey;
 }
 
 .slider-value {
   display: inline;
-}
-
-.rangeslider__fill {
-  background-color: darkgrey;
 }
