@@ -51,8 +51,8 @@ class History extends React.Component {
 
     var time = this.state.time;
     var chart = null;
-    var sliderFillStyle = {
-      backgroundColor: this.props.view.color
+    var divStyle = {
+        backgroundColor: this.props.view.color
     }
 
 
@@ -132,9 +132,9 @@ class History extends React.Component {
         {/* .rangeslider-horizontal .rangeslider__fill */}
 
         <div className='slider-group'>
-          <div className='rangeslider-horizontal'>
+          <div className='rangeslider-horizontal' style={divStyle}>
 
-            <Slider style={sliderFillStyle}
+            <Slider
                   min={0}
                   max={1440}
                   value={time}
