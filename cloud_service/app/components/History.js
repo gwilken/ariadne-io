@@ -38,7 +38,7 @@ class History extends React.Component {
     this.setState({data: [] });
     this.setState({data: docs});
 
-    var sorted = docs.sort();
+    var sorted = docs.sort((a, b) => { return a - b; } );
     var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
     var median = docs[ Math.floor( docs.length / 2) ];
 
