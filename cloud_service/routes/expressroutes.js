@@ -30,7 +30,9 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         for(var i = 0; i < docs.length; i++) {
           for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
             if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-              arr.push(docs[i].telemetry[0].data[j].data);
+              var data = docs[i].telemetry[0].data[j].data;
+              if (data < 0) data = 0;
+              arr.push(data);
             }
           }
         }
