@@ -15,7 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      chartHeight: window.innerHeight - 300,
+      chartHeight: Math.floor(window.innerHeight * .7),
       data: [],
       average: null,
       high: null,
@@ -31,6 +31,7 @@ class History extends React.Component {
 
   componentDidMount() {
     this.updateHeight();
+    window.addEventListener("resize", this.updateHeight);
 
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
@@ -55,7 +56,7 @@ class History extends React.Component {
 
   updateHeight() {
     console.log('innerHeight:', window.innerHeight);
-    this.setState({chartHeight: window.innerHeight - 300})
+    this.setState({chartHeight: Math.floor(window.innerHeight * .7)})
   }
 
   handleClick(event) {
