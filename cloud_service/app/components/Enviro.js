@@ -15,7 +15,6 @@ class Enviro extends React.Component {
     this.pressureClick = this.pressureClick.bind(this);
     this.humidityClick = this.humidityClick.bind(this);
     this.tempClick = this.tempClick.bind(this);
-
   }
 
   windClick(event) {
@@ -48,8 +47,8 @@ class Enviro extends React.Component {
   humidityClick(event) {
     this.props.handleClick({
       family: this.props.data[0].family,
-      displayName: this.props.data[0].data[2].displayName,
-      unit: this.props.data[0].data[2].unit,
+      displayName: this.props.data[0].data[1].displayName,
+      unit: this.props.data[0].data[1].unit,
       color: this.state.color
     });
   }
