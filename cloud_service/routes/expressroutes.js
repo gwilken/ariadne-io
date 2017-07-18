@@ -41,8 +41,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       }
 
       var trendData = new timeseries.main(timeseries.adapter.fromArray(arr));
-      trendArr = trendData.smoother({
-          period: 100
+      trendArr = trendData.ma({
+          period: 6
       }).output();
 
       var processed = trendArr.map((elem) => {
