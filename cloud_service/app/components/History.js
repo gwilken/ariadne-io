@@ -49,7 +49,8 @@ class History extends React.Component {
     })
   }
 
-  handleClick() {
+  handleClick(event) {
+    event.preventDefault();
     this.props.handleClick({
       family: 'all'
     });
