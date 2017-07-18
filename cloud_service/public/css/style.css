@@ -183,3 +183,7 @@ h3 {
 .rangeslider .rangeslider__handle {
     box-shadow: 0;
 }
+
+.slider-value {
+  display: inline;
+}
