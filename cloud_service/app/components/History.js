@@ -111,8 +111,6 @@ class History extends React.Component {
 
       <div>
 
-         <div className="historyContainer">
-
            <div className='slider-group'>
              <div className='slider-vertical'>
 
@@ -129,13 +127,9 @@ class History extends React.Component {
 
             <div className="historyGraph">
 
-
-
             {chart}
 
             </div>
-
-          </div>
 
       </div>
     )
