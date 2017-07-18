@@ -176,3 +176,7 @@ h3 {
 .slider-value {
   display: inline;
 }
+
+.rangeslider__fill {
+  background-color: darkgrey;
+}
