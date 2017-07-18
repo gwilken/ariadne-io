@@ -168,22 +168,10 @@ h3 {
   position: relative;
   margin: 0% 12% 0% 3%;
 }
-/*
-.rangeslider, .rangeslider .rangeslider__fill {
-    box-shadow: 0;
-}*/
 
 .rangeslider-horizontal .rangeslider__fill {
     border-radius: 0px;
 }
-
-/*.rangeslider__fill {
-    box-shadow: 0;
-}
-
-.rangeslider .rangeslider__handle {
-    box-shadow: 0;
-}*/
 
 .slider-value {
   display: inline;

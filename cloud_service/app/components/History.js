@@ -128,7 +128,6 @@ class History extends React.Component {
                   max={1440}
                   value={val}
                   tooltip={0}
-                  reverse={1}
                   orientation="horizontal"
                   onChange={this.handleOnChange}
                 />
