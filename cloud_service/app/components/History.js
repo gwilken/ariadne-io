@@ -58,8 +58,6 @@ class History extends React.Component {
 
     this.setState({chartHeight: window.innerWidth * 1.25})
 
-    console.log('state height', this.state.chartHeight);
-
   }
 
   handleClick(event) {
@@ -82,6 +80,7 @@ class History extends React.Component {
   }
 
   render() {
+    console.log('state height', this.state.chartHeight);
 
     var time = this.state.time;
     var displayTime = moment(Date.now() - time*60000).fromNow();
