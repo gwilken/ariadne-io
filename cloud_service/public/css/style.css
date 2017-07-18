@@ -139,7 +139,8 @@ h3 {
 }
 
 .historyContainer {
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 
 .backButton {
@@ -167,5 +168,9 @@ h3 {
   position: relative;
   display: inline-block;
   left: 3%;
+  height: 400px;
+}
+
+.rangeslider-vertical {
   height: 400px;
 }
