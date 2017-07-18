@@ -2,6 +2,7 @@ import React from "react";
 import {Line} from 'react-chartjs-2';
 import {Bar} from 'react-chartjs-2';
 import Slider from 'react-rangeslider';
+import moment from 'moment';
 
 class History extends React.Component {
 
@@ -69,6 +70,7 @@ class History extends React.Component {
   render() {
 
     var time = this.state.time;
+    var displayTime = moment(Date.now() - time*1000).fromNow(true);
     var chart = null;
 
     var options = {
@@ -145,7 +147,7 @@ class History extends React.Component {
 
       <div>
 
-        <h3>{ this.state.displayName} - Last {time} Minutes</h3>
+        <h3>{ this.state.displayName} - {displayTime}</h3>
 
         <div className="historyContainer">
           <div className="historyGraph">
