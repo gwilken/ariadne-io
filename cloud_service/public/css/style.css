@@ -7,6 +7,10 @@ h3 {
   margin: 1% 1%;
 }
 
+h4 {
+    line-height: 18px;
+}
+
 .mainContainer {
   margin: 3% 1%;
   min-height: 100%;
@@ -165,7 +169,7 @@ h3 {
 }
 
 .history-info-container {
-
+  margin: 0% 2%;
 }
 
 .history-info {
@@ -187,5 +191,5 @@ h3 {
 }
 
 .slider-value {
-
+  margin: 3% 0%;
 }

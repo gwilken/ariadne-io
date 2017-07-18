@@ -43,10 +43,10 @@ class History extends React.Component {
     var median = docs[ Math.floor( docs.length / 2) ];
 
     this.setState({
-      average: average,
-      median: median,
-      high: sorted[docs.length - 1],
-      low: sorted[0]
+      average: average.toFixed(0),
+      median: median.toFixed(0),
+      high: sorted[docs.length - 1].toFixed(0),
+      low: sorted[0].toFixed(0)
     })
   }
 
