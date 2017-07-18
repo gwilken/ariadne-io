@@ -45,8 +45,12 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
           period: 10
       }).output();
 
+      var processed = trendArr.map((elem) => {
+        return elem[1];
+      })
+
       telemetryData.push(arr);
-      telemetryData.push(trendArr);
+      telemetryData.push(processed);
 
       res.json(telemetryData);
       }
