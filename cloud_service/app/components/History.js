@@ -110,7 +110,7 @@ class History extends React.Component {
 
       <div>
         <div className='slider-group'>
-          <div className='slider'>
+          <div className='slider-vertical'>
         <Slider
               min={0}
               max={100}
