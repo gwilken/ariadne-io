@@ -190,6 +190,10 @@ h4 {
   margin: 0% 8% 0% 5%;
 }
 
+.rangeslider {
+  background-color: inherit;
+}
+
 .rangeslider-horizontal {
     border-radius: 0px;
 }
