@@ -95,12 +95,6 @@ class History extends React.Component {
          ]
       }
 
-      <Slider
-            value={volume}
-            orientation="vertical"
-            onChange={this.handleOnChange}
-          />
-
       chart = (
         <Line data={data}
             options={options}
@@ -115,6 +109,12 @@ class History extends React.Component {
                <div className="historyContainer">
 
                   <div className="historyGraph">
+
+                    <Slider
+                          value={volume}
+                          orientation="vertical"
+                          onChange={this.handleOnChange}
+                        />
 
                     {chart}
 
