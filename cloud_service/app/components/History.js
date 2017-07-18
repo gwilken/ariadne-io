@@ -15,7 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      chartHeight: 500,
+      chartHeight: window.innerHeight - 300,
       data: [],
       average: null,
       high: null,
@@ -55,7 +55,7 @@ class History extends React.Component {
 
   updateHeight() {
     console.log('innerHeight:', window.innerHeight);
-    this.setState({chartHeight: window.innerHeight - 200})
+    this.setState({chartHeight: window.innerHeight - 300})
   }
 
   handleClick(event) {
