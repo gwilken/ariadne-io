@@ -25,16 +25,20 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
       var arr = [];
 
-      if(docs.length > 0) {
-        for(var i = 0; i < docs.length; i++) {
-          for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
-            if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-              var data = docs[i].telemetry[0].data[j].data;
-              if (data < 0) data = 0;
-              arr.push(data);
+      try {
+        if(docs.length > 0) {
+          for(var i = 0; i < docs.length; i++) {
+            for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
+              if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
+                var data = docs[i].telemetry[0].data[j].data;
+                if (data < 0) data = 0;
+                arr.push(data);
+              }
             }
           }
         }
+      } catch(err) {
+        console.log(err);
       }
 
       res.json(arr);
