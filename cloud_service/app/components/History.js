@@ -105,16 +105,15 @@ class History extends React.Component {
     }
     return(
 
+      <Slider
+            value={this.state.value}
+            orientation="vertical"
+            onChange={this.handleOnChange}
+          />
 
                <div className="historyContainer">
 
                   <div className="historyGraph">
-
-                    <Slider
-                          value={this.state.value}
-                          orientation="vertical"
-                          onChange={this.handleOnChange}
-                        />
 
                     {chart}
 
