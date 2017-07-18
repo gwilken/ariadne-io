@@ -52,14 +52,10 @@ class History extends React.Component {
 
     var time = this.state.time;
     var chart = null;
-    var divStyle = {
-        backgroundColor: this.props.view.color
-    }
-
 
     var options = {
       animation: {
-        duration: 1000,
+        duration: 600,
         easing: 'linear',
       },
       layout: {
@@ -131,7 +127,7 @@ class History extends React.Component {
         </div>
 
         <div className='slider-group'>
-          <div className='rangeslider-horizontal' style={divStyle}>
+          <div className='rangeslider-horizontal'>
 
             <Slider
               min={0}
@@ -145,7 +141,7 @@ class History extends React.Component {
 
           </div>
           <div className="slider-value">
-            {time} Minute View
+            Last {time} Minutes
           </div>
         </div>
 
