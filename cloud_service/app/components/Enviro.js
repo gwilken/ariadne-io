@@ -18,6 +18,34 @@ class Enviro extends React.Component {
     this.props.handleClick({
       family: this.props.data[0].family,
       displayName: this.props.data[0].data[3].displayName,
+      unit: this.props.data[0].data[3].unit,
+      color: this.state.color
+    });
+  }
+
+  tempClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[0].displayName,
+      unit: this.props.data[0].data[0].unit,
+      color: this.state.color
+    });
+  }
+
+  pressureClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[2].displayName,
+      unit: this.props.data[0].data[2].unit,
+      color: this.state.color
+    });
+  }
+
+  humidityClick(event) {
+    this.props.handleClick({
+      family: this.props.data[0].family,
+      displayName: this.props.data[0].data[2].displayName,
+      unit: this.props.data[0].data[2].unit,
       color: this.state.color
     });
   }
@@ -97,6 +125,7 @@ class Enviro extends React.Component {
        };
 
     var tempOptions = {
+    onClick: this.tempClick,
     layout: {
       padding: {
         left: 15,
@@ -145,6 +174,7 @@ class Enviro extends React.Component {
      };
 
   var humidityOptions = {
+    onClick: this.humidityClick,
   layout: {
     padding: {
       left: 15,
@@ -193,6 +223,7 @@ class Enviro extends React.Component {
      };
 
   var pressOptions = {
+    onClick: this.pressureClick,
   layout: {
     padding: {
       left: 15,
