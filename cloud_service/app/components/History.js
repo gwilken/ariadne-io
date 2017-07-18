@@ -36,6 +36,7 @@ class History extends React.Component {
   };
 
   didLoad(docs) {
+    console.log(docs);
     this.setState({data: [] });
     this.setState({data: docs[0]});
 
