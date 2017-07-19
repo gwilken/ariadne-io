@@ -213,6 +213,26 @@ h4 {
     background-color: inherit;
 }
 
+.rangeslider-horizontal .rangeslider__tooltip {
+    top: -70px;
+    left: -21px;
+}
+
+.rangeslider .rangeslider__tooltip {
+    width: 110px;
+    height: 40px;
+    text-align: center;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 1);
+    font-weight: normal;
+    font-size: 20px;
+    transition: all 100ms ease-in;
+    border-radius: 4px;
+    display: inline-block;
+    color: black;
+    opacity: 0;
+}
+
 .slider-value {
   margin: 3% 0%;
 }
