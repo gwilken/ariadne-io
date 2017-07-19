@@ -37,6 +37,6 @@ wss.on('connection', function connection(ws) {
         if(err) console.log('error at mongo insert telemetry', err);
       })
     }
-  }, 60000)
+  }, 120000)
 
 });
