@@ -170,7 +170,6 @@ class History extends React.Component {
                 max={1440}
                 value={time}
                 tooltip={1}
-                format={time + ' Minutes'}
                 orientation="horizontal"
                 onChange={this.handleOnChange}
                 onChangeComplete={this.handleOnChangeComplete}
