@@ -5,7 +5,6 @@ import Motor from "./Motor";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
 import History from "./History";
-import HistoryDuo from "./HistoryDuo";
 
 class Main extends React.Component {
 
