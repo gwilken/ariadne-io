@@ -72,6 +72,8 @@ class History extends React.Component {
   render() {
     var time = this.state.time;
     var displayTime = moment(Date.now() - time * 60000).fromNow(true);
+    var formatTime = () => displayTime;
+
     var chart = null;
 
     var options = {
@@ -170,6 +172,7 @@ class History extends React.Component {
                 max={1440}
                 value={time}
                 tooltip={1}
+                format={formatTime}
                 orientation="horizontal"
                 onChange={this.handleOnChange}
                 onChangeComplete={this.handleOnChangeComplete}
