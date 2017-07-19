@@ -72,7 +72,7 @@ class History extends React.Component {
   }
 
   displayTime() {
-    this.setState( {displayTime: moment(Date.now() - time*60000).fromNow(true)} )
+    this.setState( {displayTime: moment(Date.now() - this.state.time*60000).fromNow(true)} )
   }
 
   render() {
