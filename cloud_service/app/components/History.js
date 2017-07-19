@@ -15,7 +15,6 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      displayTime: null,
       chartHeight: Math.floor(window.innerHeight * .60),
       data: [],
       average: null,
@@ -24,7 +23,6 @@ class History extends React.Component {
     }
 
     this.didLoad = this.didLoad.bind(this);
-    this.displayTime = this.displayTime.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnChangeComplete = this.handleOnChangeComplete.bind(this);
@@ -71,12 +69,9 @@ class History extends React.Component {
         });
   }
 
-  displayTime() {
-    this.setState( {displayTime: moment(Date.now() - this.state.time*60000).fromNow(true)} )
-  }
-
   render() {
     var time = this.state.time;
+    var displayTime = moment(Date.now() - time * 60000).fromNow(true);
     var chart = null;
 
     var options = {
@@ -153,7 +148,7 @@ class History extends React.Component {
 
       <div>
 
-        <h3>{ this.state.displayName} - {this.state.displayTime}</h3>
+        <h3>{ this.state.displayName} - {displayTime}</h3>
 
         <div className="historyContainer">
           <div className="historyGraph" onClick={this.handleClick}>
@@ -175,7 +170,7 @@ class History extends React.Component {
                 max={1440}
                 value={time}
                 tooltip={1}
-                format={this.displayTime}
+                format={time + ' Minutes'}
                 orientation="horizontal"
                 onChange={this.handleOnChange}
                 onChangeComplete={this.handleOnChangeComplete}
