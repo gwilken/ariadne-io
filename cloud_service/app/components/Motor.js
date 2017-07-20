@@ -102,12 +102,12 @@ class Motor extends React.Component {
       };
 
       var batteryGroupOptions = {
-        layout: {
-          padding: {
-            left: 15,
-            right: 3,
-          },
-        },
+        // layout: {
+          // padding: {
+          //   left: 15,
+          //   right: 3,
+          // },
+        // },
         tooltips: {
           enabled: false,
         },
