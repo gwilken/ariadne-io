@@ -436,6 +436,18 @@ class Motor extends React.Component {
             </div>
           </div>
 
+        <div className="graphContainer">
+          <HorizontalBar data={batteryMotorData}
+            options={batteryMotorOptions}
+              width={800}
+              height={140}
+          />
+
+          <div className="titlebar">
+            <div className="title">Total Bank Voltage</div>
+            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} V</div>
+          </div>
+        </div>
 
         <div className="graphContainer">
             <Bar data={batteryGroupData}
@@ -449,19 +461,6 @@ class Motor extends React.Component {
             <div className="motorBattData"> {battery2_volts} V</div>
             <div className="motorBattData"> {battery3_volts} V</div>
             <div className="motorBattData"> {battery4_volts} V</div>
-          </div>
-        </div>
-
-        <div className="graphContainer">
-          <HorizontalBar data={batteryMotorData}
-            options={batteryMotorOptions}
-              width={800}
-              height={140}
-          />
-
-          <div className="titlebar">
-            <div className="title">Total Bank Voltage</div>
-            <div className="rtData"> {bankVoltage[0].data.toFixed(2)} V</div>
           </div>
         </div>
 
