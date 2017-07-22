@@ -1,91 +1,48 @@
-const ObjectID = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectID;
 const express = require("express");
 const path = require("path");
-const db = require("../model/mongo");
+const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
+router.get('/telemetry/:family/:name/:time', function(req, res) {
 
-router.get('/login',
-  function(req, res) {
+  var time = Date.now() - (req.params.time * 60000);
 
+  mongo.collection.find( {
+    createdAt: { $gt: time }
+  }, {
+    _id: 0,
+    telemetry: { $elemMatch: { family: req.params.family, } },
+  }).toArray(function(err, docs) {
+
+    if(err) {
+      console.log(err);
+      res.end();
+    } else {
+
+      var arr = [];
+
+      try {
+        if(docs.length > 0) {
+          for(var i = 0; i < docs.length; i++) {
+            for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
+              if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
+                var data = docs[i].telemetry[0].data[j].data;
+                if (data < 0) data = 0;
+                arr.push(data);
+              }
+            }
+          }
+        }
+      } catch(err) {
+        console.log(err);
+      }
+
+      res.json(arr);
+      }
   });
+})
 
-//
-// app.post('/login',
-//   passport.authenticate('local', { failureRedirect: '/login' }),
-//
-//   function(req, res) {
-//     res.redirect('/app/home.html');
-//   });
-
-
-router.get('/history', function (req, res) {
-
-  var obj = req.body;
-  console.log(obj);
-
-});
-
-router.get('/automation/:command', function(req, res) {
-
-
-
-  if(req.query.target === 'runningLights') {
-
-    if(req.query.state === 'true') {
-        board.digitalWrite(dcPanel.runningLights.relayPin, board.LOW);
-        res.send({target: 'runningLights', status: 'true'});
-    };
-
-    if(req.query.state === 'false') {
-        board.digitalWrite(dcPanel.runningLights.relayPin, board.HIGH);
-        res.send({target: 'runningLights', status: 'false'});
-    };
-  };
-
-  if(req.query.target === 'cabinLights') {
-
-    if(req.query.state === 'true') {
-        board.digitalWrite(dcPanel.cabinLights.relayPin, board.LOW);
-        res.send({target: 'cabinLights', status: 'true'});
-    };
-
-    if(req.query.state === 'false') {
-        board.digitalWrite(dcPanel.cabinLights.relayPin, board.HIGH);
-        res.send({target: 'cabinLights', status: 'false'});
-    };
-  };
-
-  if(req.query.target === 'spreaderLights') {
-
-    if(req.query.state === 'true') {
-        board.digitalWrite(dcPanel.spreaderLights.relayPin, board.LOW);
-        res.send({target: 'spreaderLights', status: 'true'});
-    };
-
-    if(req.query.state === 'false') {
-        board.digitalWrite(dcPanel.spreaderLights.relayPin, board.HIGH);
-        res.send({target: 'spreaderLights', status: 'false'});
-    };
-  };
-
-  if(req.query.target === 'gps') {
-
-    if(req.query.state === 'true') {
-        board.digitalWrite(dcPanel.gps.relayPin, board.LOW);
-        res.send({target: 'gps', status: 'true'});
-    };
-
-    if(req.query.state === 'false') {
-        board.digitalWrite(dcPanel.gps.relayPin, board.HIGH);
-        res.send({target: 'gps', status: 'false'});
-    };
-  };
-});
-
-router.get('/config', function (req, res) {
-  console.log('config route');
-});
 
 module.exports = router;

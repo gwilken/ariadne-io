@@ -1,15 +1,31 @@
-
 const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
 const ObjectID = require('mongodb').ObjectID;
 const url = require('url');
-
 //const automation = require("./automation");
 const gps = require("./gps");
 const motor = require("./motor");
 const telemetry = require("./wifisensors");
 
 var ws;
+
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(packet) {
+    try {
+      telemetry = JSON.parse(packet);
+    } catch(err) {
+      console.log('error at parse incoming json', err);
+    }
+
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(packet);
+      }
+    });
+  });
+});
 
 var connect = function () {
   ws = new WebSocket('ws://www.rednightsky.com:8080');
@@ -67,6 +83,6 @@ setInterval(function() {
   mongo.collection.insert(doc, function(err) {
     if(err) console.log('error at mongo insert telemetry', err);
   })
-}, 30000)
+}, 120000)
 
 connect();

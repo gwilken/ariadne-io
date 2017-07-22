@@ -1,5 +1,4 @@
 var webpack = require('webpack');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   // This is the entry point or start of our react applicaton
