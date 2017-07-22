@@ -5,10 +5,6 @@ const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
-router.get('/', function(req, res) {
-  res.send('index.html');
-})
-
 router.get('/telemetry/:family/:name/:time', function(req, res) {
 
   var time = Date.now() - (req.params.time * 60000);
