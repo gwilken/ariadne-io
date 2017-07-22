@@ -7,7 +7,7 @@ var app = express();
 
 require("./controller/hub");
 
-var PORT = 8000;
+var PORT = 80;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
