@@ -23,19 +23,19 @@ class Gps extends React.Component {
 
             <RealtimeBar
               data={speed}
-              title="Speed"
-              realtimedata={speed + ' Knots'}
+              family={this.props.data[0].family}
+              displayName={this.props.data[0].data[1].displayName}
+              unit={this.props.data[0].data[1].unit}
               color={this.props.color}
-              handleClick={null}
               range={{low: 0, high: 10}}
             />
 
             <RealtimeBar
               data={siv}
-              title="Satellites in View"
-              realtimedata={siv}
+              family={this.props.data[0].family}
+              displayName={this.props.data[0].data[3].displayName}
+              unit={null}
               color={this.props.color}
-              handleClick={null}
               range={{low: 0, high: 12}}
             />
 

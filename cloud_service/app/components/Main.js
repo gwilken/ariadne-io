@@ -80,15 +80,15 @@ class Main extends React.Component {
       )
     }
 
-      return (
-        <div className="mainContainer">
-          {house}
-          {solar}
-          {gps}
-          {motor}
-          {enviro}
-        </div>
-      )
+    return (
+      <div className="mainContainer">
+        {house}
+        {solar}
+        {gps}
+        {motor}
+        {enviro}
+      </div>
+    )
 
   }
 }

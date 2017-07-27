@@ -49,7 +49,7 @@ class RealtimeGauge extends React.Component {
 
         <div className="rpm-label-container">
           <div className="rpm-label-data">{this.props.data}</div>
-          <div className="rpm-label">{this.props.title}</div>
+          <div className="rpm-label">{this.props.displayName}</div>
         </div>
       </div>
 
