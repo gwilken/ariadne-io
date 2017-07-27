@@ -18,7 +18,7 @@ wss.on('connection', function connection(ws) {
       telemetry = JSON.parse(packet);
       count++;
 
-      if(count >= 10) {
+      if(count >= 300) {
         count = 0;
         if(mongo.collection) {
           var doc = {
