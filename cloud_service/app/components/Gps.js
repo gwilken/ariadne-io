@@ -39,7 +39,6 @@ class Gps extends React.Component {
               range={{low: 0, high: 12}}
             />
 
-
             <h5 className="geoLocation">Current Location: {latitude}, {longitude}</h5>
 
           </div>
