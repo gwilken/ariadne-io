@@ -2,7 +2,7 @@ import React from "react";
 import {HorizontalBar} from 'react-chartjs-2';
 
 
-class Realtime extends React.Component {
+class RealtimeBar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -82,4 +82,4 @@ class Realtime extends React.Component {
 
 }
 
-export default Realtime;
+export default RealtimeBar;

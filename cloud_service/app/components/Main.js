@@ -57,7 +57,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
       motor = (
         <div className="component-container">
-          <Motor data={data} handleClick={this.setView}/>
+          <Motor data={data} color="firebrick"/>
         </div>
       )
     }
@@ -66,7 +66,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
       enviro = (
         <div className="component-container">
-          <Enviro data={data} handleClick={this.setView}/>
+          <Enviro data={data} color="darkviolet"/>
         </div>
       )
     }

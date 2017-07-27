@@ -1,4 +1,6 @@
 import React from "react";
+import RealtimeBar from "./RealtimeBar";
+
 import {HorizontalBar} from 'react-chartjs-2';
 
 class Enviro extends React.Component {
@@ -270,57 +272,41 @@ class Enviro extends React.Component {
 
       <div>
 
-        <div className="graphContainer">
-          <HorizontalBar data={windData}
-              options={windOptions}
-              width={800}
-              height={140}
-          />
+        <RealtimeBar
+          data={windKnots}
+          title="Wind Speed"
+          realtimedata={windKnots + ' Knots'}
+          color={this.props.color}
+          handleClick={null}
+          range={{low: 0, high: 65}}
+        />
 
-          <div className="titlebar">
-            <div className="title">Wind Speed</div>
-            <div className="rtData"> {windKnots} Knots </div>
-          </div>
-        </div>
+        <RealtimeBar
+          data={temp}
+          title="Temperature"
+          realtimedata={temp + ' C'}
+          color={this.props.color}
+          handleClick={null}
+          range={{low: 0, high: 50}}
+        />
 
-        <div className="graphContainer">
-          <HorizontalBar data={tempData}
-              options={tempOptions}
-              width={800}
-              height={140}
-          />
+        <RealtimeBar
+          data={humidity}
+          title="Humidity"
+          realtimedata={humidity + '%'}
+          color={this.props.color}
+          handleClick={null}
+          range={{low: 0, high: 100}}
+        />
 
-          <div className="titlebar">
-            <div className="title">Temperature</div>
-            <div className="rtData"> {tempDisplay} </div>
-          </div>
-        </div>
-
-        <div className="graphContainer">
-          <HorizontalBar data={humidityData}
-              options={humidityOptions}
-              width={800}
-              height={140}
-          />
-
-          <div className="titlebar">
-            <div className="title">Humidity</div>
-            <div className="rtData"> {humidity} % </div>
-          </div>
-        </div>
-
-        <div className="graphContainer">
-          <HorizontalBar data={pressData}
-              options={pressOptions}
-              width={800}
-              height={140}
-          />
-
-          <div className="titlebar">
-            <div className="title">Barometric Pressure</div>
-            <div className="rtData"> {pressure} mB</div>
-          </div>
-        </div>
+        <RealtimeBar
+          data={pressure}
+          title="Humidity"
+          realtimedata={pressure + ' mB'}
+          color={this.props.color}
+          handleClick={null}
+          range={{low: 300, high: 1100}}
+        />
 
       </div>
     </div>

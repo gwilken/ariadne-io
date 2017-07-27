@@ -1,5 +1,5 @@
 import React from "react";
-import Realtime from "./Realtime";
+import RealtimeBar from "./RealtimeBar";
 import History from "./History";
 
 var voltsHistory = null;
@@ -49,7 +49,7 @@ class Solar extends React.Component {
 
         <div className="family-container">
 
-          <Realtime
+          <RealtimeBar
             data={volts}
             title="Panel Voltage"
             realtimedata={volts + 'V'}
@@ -60,7 +60,7 @@ class Solar extends React.Component {
 
           {voltsHistory}
 
-          <Realtime
+          <RealtimeBar
             data={current}
             title="Current In"
             realtimedata={current + 'mA'}
