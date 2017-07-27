@@ -15,7 +15,7 @@ class History extends React.Component {
       color: this.props.view.color,
       unit: this.props.view.unit,
       time: 180,
-      chartHeight: Math.floor(window.innerHeight * .58),
+      chartHeight: Math.floor(window.innerHeight * .33),
       data: [],
       average: null,
       high: null,
@@ -52,9 +52,7 @@ class History extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.handleClick({
-      family: 'all'
-    });
+    this.props.handleClick();
   }
 
   handleOnChange(value) {
@@ -148,9 +146,9 @@ class History extends React.Component {
 
     return(
 
-      <div>
+      <div className="family-container">
 
-        <h3>{ this.state.displayName} - {displayTime}</h3>
+        <h3>{displayTime}</h3>
 
         <div className="historyContainer">
           <div className="historyGraph" onClick={this.handleClick}>
