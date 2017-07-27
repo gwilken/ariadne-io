@@ -41,6 +41,6 @@ wss.on('connection', function connection(ws) {
         console.log('inserted');
       })
     }
-  }, 120000)
+  }, 300000)
 
 });
