@@ -1,7 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const url = 'mongodb://localhost:27017/ariadneIO';
+const url = 'mongodb://127.0.0.1:27017/ariadneIO';
 
 var mongo = {
     db: null,
@@ -9,8 +9,14 @@ var mongo = {
 
     connect: function() {
 
-      MongoClient.connect(url, function(err, db) {
+      MongoClient.connect('mongodb://127.0.0.1:27017/ariadneIO', function(err, db) {
+
+        if(err) console.log(err);
+
           console.log("Connected successfully to mongodb");
+
+
+
           mongo.db = db;
           mongo.collection = db.collection('data');
         });

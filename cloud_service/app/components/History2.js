@@ -4,7 +4,7 @@ import {Bar} from 'react-chartjs-2';
 import Slider from 'react-rangeslider';
 import moment from 'moment';
 
-class History extends React.Component {
+class History2 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -187,4 +187,4 @@ class History extends React.Component {
 
 }
 
-export default History;
+export default History2;

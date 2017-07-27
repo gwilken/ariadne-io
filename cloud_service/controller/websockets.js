@@ -2,6 +2,9 @@ const WebSocket = require('ws');
 const mongo = require("../model/mongo.js");
 
 const wss = new WebSocket.Server({ port: 8080 });
+//below for local testing
+//var ws = new WebSocket('ws://www.rednightsky.com:8080');
+
 
 var telemetry = [];
 var count = 0;
@@ -35,6 +38,7 @@ wss.on('connection', function connection(ws) {
 
       mongo.collection.insert(doc, function(err) {
         if(err) console.log('error at mongo insert telemetry', err);
+        console.log('inserted');
       })
     }
   }, 120000)
