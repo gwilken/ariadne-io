@@ -4,7 +4,7 @@ import {Bar} from 'react-chartjs-2';
 import Slider from 'react-rangeslider';
 import moment from 'moment';
 
-class History extends React.Component {
+class History2 extends React.Component {
 
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ class History extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       unit: this.props.view.unit,
-      time: 180,
+      time: 60,
       chartHeight: Math.floor(window.innerHeight * .33),
       data: [],
       average: null,
@@ -31,23 +31,18 @@ class History extends React.Component {
   componentDidMount() {
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
-        .then((docs) => {
-            this.didLoad(docs);
+        .then((obj) => {
+            this.didLoad(obj);
         });
   };
 
-  didLoad(docs) {
-    this.setState({data: [] });
-    this.setState({data: docs});
-
-    var sorted = docs.sort((a, b) => { return a - b; } );
-    var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
-
+  didLoad(obj) {
     this.setState({
-      average: average.toFixed(2),
-      high: sorted[docs.length - 1].toFixed(2),
-      low: sorted[0].toFixed(2)
-    })
+        data: obj.data,
+        high: obj.high,
+        low: obj.low,
+        average: obj.average
+      });
   }
 
   handleClick(event) {
@@ -187,4 +182,4 @@ class History extends React.Component {
 
 }
 
-export default History;
+export default History2;

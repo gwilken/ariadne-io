@@ -83,6 +83,6 @@ setInterval(function() {
   mongo.collection.insert(doc, function(err) {
     if(err) console.log('error at mongo insert telemetry', err);
   })
-}, 120000)
+}, 180000)
 
 connect();

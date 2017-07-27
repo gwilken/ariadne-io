@@ -12,28 +12,17 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      view: {
-        family: 'all'
-      },
       telemetry: []
     }
-
-    this.setView = this.setView.bind(this);
   }
 
   componentDidMount() {
     var ws = new WebSocket('ws://localhost:8080');
 
     ws.onmessage = function(event) {
-      var telemetry = JSON.parse(event.data);
-      this.setState({telemetry: telemetry});
+        var telemetry = JSON.parse(event.data);
+        this.setState({telemetry: telemetry});
     }.bind(this);
-  }
-
-  setView(newView) {
-    this.setState({
-      view: newView
-    });
   }
 
   render() {
@@ -50,7 +39,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
       house = (
         <div className="component-container">
-          <House data={data} handleClick={this.setView}/>
+          <House data={data} color="royalblue"/>
         </div>
       )
     }
@@ -59,7 +48,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
       solar = (
         <div className="component-container">
-          <Solar data={data} handleClick={this.setView}/>
+          <Solar data={data} color="gold"/>
         </div>
       )
     }
@@ -68,7 +57,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
       motor = (
         <div className="component-container">
-          <Motor data={data} handleClick={this.setView}/>
+          <Motor data={data} color="firebrick"/>
         </div>
       )
     }
@@ -77,7 +66,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
       enviro = (
         <div className="component-container">
-          <Enviro data={data} handleClick={this.setView}/>
+          <Enviro data={data} color="darkviolet"/>
         </div>
       )
     }
@@ -86,29 +75,20 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
       gps = (
         <div className="component-container">
-          <Gps data={data} handleClick={this.setView}/>
+          <Gps data={data} color="lightseagreen"/>
         </div>
       )
     }
 
-
-    if(this.state.view.family === 'all') {
-      return (
-        <div className="mainContainer">
-          {house}
-          {solar}
-          {gps}
-          {motor}
-          {enviro}
-        </div>
-      )
-    } else
-
-      return (
-        <div className="mainContainer">
-           <History view={this.state.view} handleClick={this.setView} />
-        </div>
-      )
+    return (
+      <div className="mainContainer">
+        {house}
+        {solar}
+        {gps}
+        {motor}
+        {enviro}
+      </div>
+    )
 
   }
 }
