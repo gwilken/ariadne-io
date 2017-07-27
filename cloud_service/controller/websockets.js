@@ -17,6 +17,22 @@ wss.on('connection', function connection(ws) {
     try {
       telemetry = JSON.parse(packet);
       count++;
+
+      if(count >== 10) {
+        count = 0;
+        if(mongo.collection) {
+          var doc = {
+            telemetry: telemetry,
+            createdAt: Date.now()
+          };
+
+          mongo.collection.insert(doc, function(err) {
+            if(err) console.log('error at mongo insert telemetry', err);
+            console.log('inserted');
+          })
+        }
+      }
+
     } catch(err) {
       console.log('error at parse incoming json', err);
     }
@@ -28,20 +44,4 @@ wss.on('connection', function connection(ws) {
     });
 
   });
-
-  if(count >== 10) {
-    count = 0;
-    if(mongo.collection) {
-      var doc = {
-        telemetry: telemetry,
-        createdAt: Date.now()
-      };
-
-      mongo.collection.insert(doc, function(err) {
-        if(err) console.log('error at mongo insert telemetry', err);
-        console.log('inserted');
-      })
-    }
-}
-
 });
