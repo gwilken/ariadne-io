@@ -76,7 +76,7 @@ class History extends React.Component {
 
     var options = {
       animation: {
-        duration: 600,
+        duration: 300,
         easing: 'linear',
       },
       layout: {
