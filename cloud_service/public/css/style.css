@@ -142,11 +142,12 @@ h4 {
 }
 
 .geoLocation {
-  position: absolute;
+  margin-left: 2%;
+  /*position: absolute;
   left: 51%;
   background-color: lightseagreen;
   min-height: 110px;
-  width: 40%;
+  width: 40%;*/
 }
 
 .geoLocLabel {

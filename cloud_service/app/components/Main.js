@@ -75,7 +75,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
       gps = (
         <div className="component-container">
-          <Gps data={data} handleClick={this.setView}/>
+          <Gps data={data} color="lightseagreen"/>
         </div>
       )
     }
