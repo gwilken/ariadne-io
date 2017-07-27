@@ -22,6 +22,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     } else {
 
       var arr = [];
+      var sorted =[];
+      var average = 0;
 
       try {
         if(docs.length > 0) {
@@ -35,11 +37,22 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
             }
           }
         }
+
+        sorted = arr.sort((a, b) => { return a - b; } );
+        average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
+
       } catch(err) {
         console.log(err);
       }
 
-      res.json(arr);
+      var response = {
+        data: arr,
+        high: sorted[docs.length - 1].toFixed(2),
+        low: sorted[0].toFixed(2),
+        average: average.toFixed(2)
+      }
+
+      res.json(response);
       }
   });
 })

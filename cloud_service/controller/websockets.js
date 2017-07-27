@@ -5,7 +5,6 @@ const wss = new WebSocket.Server({ port: 8080 });
 //below for local testing
 //var ws = new WebSocket('ws://www.rednightsky.com:8080');
 
-
 var telemetry = [];
 var count = 0;
 var data;
@@ -18,7 +17,7 @@ wss.on('connection', function connection(ws) {
       telemetry = JSON.parse(packet);
       count++;
 
-      if(count >= 300) {
+      if(count >= 180) {
         count = 0;
         if(mongo.collection) {
           var doc = {
@@ -44,4 +43,5 @@ wss.on('connection', function connection(ws) {
     });
 
   });
+
 });

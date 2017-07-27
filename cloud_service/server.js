@@ -18,9 +18,7 @@ app.use("/", routes);
 
 mongo.connect();
 
-
 require("./controller/websockets");
-
 
 app.listen(PORT, function() {
   console.log("Server listening on port", PORT);
