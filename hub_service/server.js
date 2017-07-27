@@ -5,7 +5,7 @@ const routes = require("./routes/expressroutes");
 
 var app = express();
 
-require("./controller/hub");
+require("./controller/hub")(app);
 
 var PORT = 80;
 
