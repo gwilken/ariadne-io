@@ -17,7 +17,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    var ws = new WebSocket('ws://localhost:8080');
+    var ws = new WebSocket('ws://192.168.10.1:8080');
 
     ws.onmessage = function(event) {
         var telemetry = JSON.parse(event.data);
