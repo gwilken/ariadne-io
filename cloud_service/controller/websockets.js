@@ -16,6 +16,7 @@ wss.on('connection', function connection(ws) {
 
     try {
       telemetry = JSON.parse(packet);
+      count++;
     } catch(err) {
       console.log('error at parse incoming json', err);
     }
@@ -28,8 +29,8 @@ wss.on('connection', function connection(ws) {
 
   });
 
-  setInterval(function() {
-
+  if(count >= 10) {
+    count = 0;
     if(mongo.collection) {
       var doc = {
         telemetry: telemetry,
@@ -41,6 +42,6 @@ wss.on('connection', function connection(ws) {
         console.log('inserted');
       })
     }
-  }, 300000)
+}
 
 });
