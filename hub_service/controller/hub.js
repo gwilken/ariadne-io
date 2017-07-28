@@ -15,6 +15,9 @@ module.exports = function(app) {
   const wss = new WebSocket.Server({ server });
 
   wss.on('connection', function connection(ws) {
+
+    console.log('client connected');
+
     ws.on('message', function incoming(packet) {
       try {
         telemetry = JSON.parse(packet);
