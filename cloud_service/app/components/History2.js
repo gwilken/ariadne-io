@@ -14,7 +14,7 @@ class History2 extends React.Component {
       displayName: this.props.view.displayName,
       color: this.props.view.color,
       unit: this.props.view.unit,
-      time: 60,
+      time: 120,
       chartHeight: Math.floor(window.innerHeight * .33),
       data: [],
       average: null,
