@@ -24,6 +24,13 @@ module.exports = function(app) {
         console.log('error at parse incoming json', err);
       }
 
+      wss.clients.forEach(function each(client) {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(telemetry);
+        }
+      });
+
+
     });
   });
 
@@ -72,12 +79,6 @@ module.exports = function(app) {
     if (internetServer.readyState === WebSocket.OPEN) {
       internetServer.send( JSON.stringify( telemetry ) );
     };
-
-    wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(telemetry);
-      }
-    });
 
   }, 1000);
 
