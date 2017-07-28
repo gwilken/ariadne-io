@@ -13,25 +13,8 @@ module.exports = function(app) {
   var internetServer;
   const wss = new WebSocket.Server({port: 8080});
 
-  wss.on('connection', function connection(ws) {
-
+  wss.on('connection', function() {
     console.log('client connected');
-
-    ws.on('message', function incoming(packet) {
-      try {
-        telemetry = JSON.parse(packet);
-      } catch(err) {
-        console.log('error at parse incoming json', err);
-      }
-
-      wss.clients.forEach(function each(client) {
-        if (client.readyState === WebSocket.OPEN) {
-          client.send(telemetry);
-        }
-      });
-
-
-    });
   });
 
   var connect = function () {
@@ -80,6 +63,13 @@ module.exports = function(app) {
       internetServer.send( JSON.stringify( telemetry ) );
     };
 
+    if(wss) {
+      wss.clients.forEach(function each(client) {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify( telemetry ) );
+        }
+      });
+    }
   }, 1000);
 
 
