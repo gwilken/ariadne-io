@@ -12,7 +12,7 @@ module.exports = function(app) {
 
   var ws;
   //const server = http.createServer(app);
-  const wss = new WebSocket.Server({ 'ws://192.168.10.1:8080' });
+  const wss = new WebSocket.Server('ws://192.168.10.1:8080');
 
   wss.on('connection', function connection(ws) {
 
