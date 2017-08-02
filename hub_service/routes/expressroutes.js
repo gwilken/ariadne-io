@@ -38,6 +38,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
           }
         }
 
+        var data = arr.slice();
         sorted = arr.sort((a, b) => { return a - b; } );
         average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
 
@@ -46,7 +47,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       }
 
       var response = {
-        data: arr,
+        data: data,
         high: sorted[docs.length - 1].toFixed(2),
         low: sorted[0].toFixed(2),
         average: average.toFixed(2)
