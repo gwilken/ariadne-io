@@ -16,7 +16,7 @@ The project consists of a few major components:
 
 ![sensor-closeup](/public/images/ariadne-closeup.jpeg)
 
-So many sensors. So much data.
+So many sensors.
 
 ![sensor-family](/public/images/ariadne-sensor-fam.jpeg)
 
