@@ -50,7 +50,7 @@ At first glance, it looked like garbage. but garbage with definite structure.
 
 ![motor](/public/images/rsserial.jpg)
 
-Once we start bringing it in as hexadecimal and get out port speed right, it's clear we have something:
+Once we start bringing it in as hexadecimal and get our port speed right, it's clear we have something:
 
 ![motor](/public/images/rshex.jpg)
 
