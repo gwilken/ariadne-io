@@ -20,9 +20,11 @@ wss.on('connection', function connection(ws) {
       if(count >= 180) {
         count = 0;
         if(mongo.collection) {
+          var d = new Date();
+
           var doc = {
             telemetry: telemetry,
-            createdAt: Date.now()
+            createdAt: d.getTime();
           };
 
           mongo.collection.insert(doc, function(err) {
