@@ -82,7 +82,7 @@ module.exports = function(app) {
     mongo.collection.insert(doc, function(err) {
       if(err) console.log('error at mongo insert telemetry', err);
     })
-  }, 180000)
+  }, 120000)
 
   connect();
 
