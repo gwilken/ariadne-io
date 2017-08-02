@@ -4,6 +4,9 @@
 
 Using a Raspberry Pi and a bunch of ESP8266 modules to build a wireless IoT network on a 30' sailboat.
 
+Live version: [link](http://www.rednightsky.com)
+
+
 ## Project Overview
 
 The project consists of a few major components:
