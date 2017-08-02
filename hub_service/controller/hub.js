@@ -75,8 +75,9 @@ module.exports = function(app) {
 
   setInterval(function() {
     var doc = {};
+    var d = new Date();
     doc.telemetry = telemetry;
-    doc.createdAt = Date.getTime();
+    doc.createdAt = d.getTime();
 
     mongo.collection.insert(doc, function(err) {
       if(err) console.log('error at mongo insert telemetry', err);
