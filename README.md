@@ -46,15 +46,15 @@ The physical electrical interface is RS-485. I was able to hack together a home 
 
  I emailed the company and, amazingly, they sent me a byte level breakdown of the proprietary protocol they wrote to communicate with their display.
 
-At first, it looked like garbage, but with some definite structure.
+At first glance, it looked like garbage. but garbage with definite structure.
 
 ![motor](/public/images/rsserial.jpg)
 
-But once we start bringing it in as hexadecimal, it's clear we have something:
+Once we start bringing it in as hexadecimal and get out port speed right, it's clear we have something:
 
 ![motor](/public/images/rshex.jpg)
 
-Once the speed and packet length were figured out, it was just a matter of some simple bit shifting Node to get our values. Now we have realtime wireless electrical motor data!
+After that, it was just a matter of some simple bit shifting in Node to get our values. Now we have realtime wireless electrical motor data!
 
 ![motor](/public/images/ari-motor.jpeg)
 
