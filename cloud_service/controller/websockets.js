@@ -17,7 +17,7 @@ wss.on('connection', function connection(ws) {
       telemetry = JSON.parse(packet);
       count++;
 
-      if(count >= 180) {
+      if(count >= 120) {
         count = 0;
         if(mongo.collection) {
           var d = new Date();
