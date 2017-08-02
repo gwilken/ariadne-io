@@ -58,6 +58,17 @@ After that, it was just a matter of some simple bit shifting in Node to get our 
 
 ![motor](/public/images/ari-motor.jpeg)
 
+### GPS
+
+* GPS and AIS data is captured from a wired connection. A USB cable brings data to the Raspberry Pi as NMEA 0183 messages. Using Kplex, a linux NMEA multiplexer, it is parsed and organized. Location info is then brought into Node. The raw NMEA messages are also retransmitted on the local wifi network on a separate port so I can use chart plotting software on the iPad, or any internet connected device, wirelessly.   
+
+AIS targets and position on an iPad from multiplexed NMEA data over wifi:
+![nav](/public/images/image1.PNG)
+
+Raw messages coming in:
+![nav](/public/images/image2.PNG)
+
+
 ### Webpage
 
 * The last piece was creating an internet accessible VPS server running a web application built with Node.js, Express, and MongoDB that receives info from the boat as JSON data over websockets and uses React.js to render data quickly and efficiently. I built a simple API that gets historical data from the Mongo database. It then can be graphed with a user selectable time range.
