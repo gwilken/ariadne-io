@@ -44,7 +44,7 @@ The physical electrical interface is RS-485. I was able to hack together a home 
 
 ![motor](/public/images/IMG_0034.jpeg)
 
- I emailed the company and, amazingly, they sent me a byte level breakdown of the proprietary protocol they wrote to communicate with their display.
+ I emailed Electric Yacht and, amazingly, they sent me a byte level breakdown of the proprietary protocol they wrote to communicate with their display.
 
 At first glance, it looked like garbage. but garbage with definite structure.
 
