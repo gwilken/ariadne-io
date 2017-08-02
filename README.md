@@ -17,6 +17,11 @@ So many sensors. So much data.
 
 ![sensor-family](/public/images/ariadne-sensor-fam.jpeg)
 
+Sensor data from the solar panels displayed in the app.
+
+![solar](/public/images/ari-solar.jpeg)
+
+
 ### Hub
 
 * A Raspberry Pi, on the boat, running Node.js and MongoDB. It creates a local network using the Pi's onboard wifi and listens for any sensors. It also serves up the main web application locally to view data. The hub also sends data out to a internet viewable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast and fed 50' of cat6 cable down to the Pi to provide a connection out to the world. I also installed a Huawei USB cell modem to get to the internet when not in wifi range.     
