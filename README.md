@@ -6,7 +6,7 @@ Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 
 Live version: [rednightsky.com](http://www.rednightsky.com)
 
 The subject of our experiments in IoT: A 1975 Yankee 30 MKIII. Wifi was spotty back then.
-![ariadne](/public/images/IMG_0294.jpeg)
+![ariadne](/public/images/IMG_0294.jpg)
 
 ## The Components
 
@@ -49,13 +49,21 @@ Network
 
  The Pi creates a local network using the on-board wifi and serves up the main web application locally to view data. It also sends data out to a internet viewable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast and to the Pi. If connected to a wifi network the Pi will transmit sensor data out to an internet viewable machine over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data.     
 
+Getting high while mounting the WiFi radio on the mast.
+![ariadne](/public/images/IMG_0168.jpg)
+
 The Raspberry Pi is housed in the blue Pelican Case.
 
 ![motor](/public/images/IMG_0015.jpeg)
 
 ## Electric Motor
 
-After a number of strandings, leaks, fires, and near sinkings, I finally removed the original Atomic 4 gasoline engine and replaced it with an electric motor. Electric Yacht sent me a 10kw 48 volt motor kit that I promptly set about trying to hack in to. To run the thing, a 48 volt battery bank is created by wiring four 235 amp/hour batteries in series. Each battery has it's own separate sensor which helps keep track of the balance of voltages. If they get too far out of whack with each other charging capacity and life expectancy can suffer.
+After a number of strandings, leaks, fires, and near sinkings, I finally removed the original Atomic 4 gasoline engine and replaced it with an electric motor. Electric Yacht sent me a 10kw 48 volt motor kit that I promptly set about trying to hack in to. To run the thing, a 48 volt battery bank is created by wiring four 235 amp/hour batteries in series.
+
+3 of the motor batteries before being installed.
+![motor](/public/images/IMG_0045.jpg)
+
+Each battery has it's own separate sensor which helps keep track of the balance of voltages. If they get too far out of whack with each other charging capacity and life expectancy can suffer.
 
 Starboard side motor batteries.
 ![motor](/public/images/ariadne-batts.jpeg)
