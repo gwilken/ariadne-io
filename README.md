@@ -2,26 +2,27 @@
 
 ## Building a Smart Sailboat
 
-Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 modules, and some Javascript. 
-
+Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 modules, and some Javascript.
 Live version: [rednightsky.com](http://www.rednightsky.com)
 
+The subject of our experiments in IoT: A 1975 Yankee 30 MKIII. Wifi was spotty back then.
+![ariadne](/public/images/IMG_0294.jpeg)
 
 ## The Components
 
 ### Sensors, Sensors, and more Sensors
 * Anyone who has ever worked on a small sailboat knows the hell-scape of pain that is contorting ones self into wild positions inside every dark nook and cranny to run wire or drill holes or what have you. When I initially started to prototype out a network of sensors to monitor different systems all over the boat, it quickly became clear wireless was the way to go. So I began with the venerable ESP8266 micro-controller and started to design a simple system around it. The ESP8266 has a full wifi network stack, plenty of IO pins, and can be programmed with the Arduino IDE. Simple, easy. I got mine from Adafruit. Depending on what I'm monitoring, they are paired up with a voltage & current sensor, an environmental sensor, or just reading voltages from one of the analog pins. Each sensor and ESP is soldered on to a small circuit board and housed in a weatherproof enclosure.
 
-The wireless sensors monitor: 
+The wireless sensors monitor:
 * House battery bank, which supplies 12 volt DC power to the lights, radio, gps, and refrigerator.
 * 4 separate motor batteries. I installed an electric motor in place of the old gasoline engine. The batteries are wired in series to create 48 volts DC.
-* Real-time energy usage. 
-* Solar energy creation. A Blue Sky Energy Solar Boost 3000 MPPT controller handles power input from 3 removable solar panels. 
+* Real-time energy usage.
+* Solar energy creation. A Blue Sky Energy Solar Boost 3000 MPPT controller handles power input from 3 removable solar panels.
 * Environmental conditions. Temperature, atmospheric pressure, and humidity are gathered from a Bosch BME280 breakout board. Wind speed is calculated from an analog voltage produced by a anemometer mounted at the mast head. For this sensor/module I used the ESP32, both to try it out, and because it has a higher resolution ADC. 12bit as opposed to the ESP8266's 10bit.
 
 Motor and GPS data is brought in over USB.
 
-This bounty of data riches is finally all ingested by a Raspberry Pi running software I wrote in Node.js. 
+This bounty of data riches is finally all ingested by a Raspberry Pi running software I wrote in Node.js.
 
 ![sensor-closeup](/public/images/ariadne-closeup.jpeg)
 
