@@ -48,7 +48,7 @@ For the database, I run MongoDB on the Pi and so far it has worked very well. Th
 
 Networking
 
- It's important to network. The Pi creates a local net using it's on-board wifi and serves up the main web application to any local device. It also sends data out to an internet reachable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast to the Pi. If connected to a wifi network, the Pi will transmit sensor data out over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice strong wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data via 3G cellular.     
+ They say it's important to network. The Pi creates a local net using it's on-board wifi and serves up the main web application to any local device. It also sends data out to an internet reachable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast to the Pi. If connected to a wifi network, the Pi will transmit sensor data out over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice strong wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data via 3G cellular.     
 
 Getting high while mounting the WiFi radio on the mast.
 ![ariadne](/public/images/IMG_0168.jpg)
