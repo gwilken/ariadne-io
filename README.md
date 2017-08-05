@@ -27,7 +27,7 @@ This bounty of data riches is finally all ingested by a Raspberry Pi running sof
 
 ![sensor-closeup](/public/images/ariadne-closeup.jpeg)
 
-Give me all the data. (Wind speed sensor was later folded into the Environmental sensor)
+Give me all the datas. (Wind speed sensor was later folded into the Environmental sensor)
 
 ![sensor-family](/public/images/ariadne-sensor-fam.jpeg)
 
