@@ -78,7 +78,7 @@ module.exports = function(app) {
     var d = new Date();
     doc.telemetry = telemetry;
     doc.createdAt = d.getTime();
-    doc.expiresAt = d.now() + (86400 * 1000);
+    doc.expiresAt = Date.now() + (86400 * 1000);
 
     mongo.collection.insert(doc, function(err) {
       if(err) console.log('error at mongo insert telemetry', err);
