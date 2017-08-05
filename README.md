@@ -3,6 +3,7 @@
 ## Building a Smart Sailboat
 
 Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 modules, and some Javascript.
+
 Live version: [rednightsky.com](http://www.rednightsky.com)
 
 The subject of our experiments in IoT: A 1975 Yankee 30 MKIII. Wifi was spotty back then.
@@ -52,7 +53,7 @@ Network
 Getting high while mounting the WiFi radio on the mast.
 ![ariadne](/public/images/IMG_0168.jpg)
 
-The Raspberry Pi is housed in the blue Pelican Case.
+The Raspberry Pi is housed in the blue Pelican Case. The two 100 amp/hour batteries beside the motor are the house bank.
 
 ![motor](/public/images/IMG_0015.jpeg)
 
@@ -60,7 +61,7 @@ The Raspberry Pi is housed in the blue Pelican Case.
 
 After a number of strandings, leaks, fires, and near sinkings, I finally removed the original Atomic 4 gasoline engine and replaced it with an electric motor. Electric Yacht sent me a 10kw 48 volt motor kit that I promptly set about trying to hack in to. To run the thing, a 48 volt battery bank is created by wiring four 235 amp/hour batteries in series.
 
-3 of the motor batteries before being installed.
+3 of the 4 motor batteries before being installed.
 ![motor](/public/images/IMG_0045.jpg)
 
 Each battery has it's own separate sensor which helps keep track of the balance of voltages. If they get too far out of whack with each other charging capacity and life expectancy can suffer.
