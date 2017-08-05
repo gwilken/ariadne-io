@@ -34,7 +34,7 @@ class Enviro extends React.Component {
           displayName={this.props.data[0].data[3].displayName}
           unit={this.props.data[0].data[3].unit}
           color={this.props.color}
-          range={{low: 0, high: 65}}
+          range={{low: 0, high: 32}}
         />
 
         <RealtimeBar
