@@ -38,7 +38,7 @@ Solar power info displayed in the app.
 
 ### The Raspberry Hub
 
-Node
+Node.js
 
 The on-board Raspberry Pi has a number of jobs to do and a server written in Node is the task master. It listens for any sensors in wifi range and if discovered opens up a TCP connection and starts getting data. As a system, a couple of my major design goals were to implement a database and to use React as the front-end framework. I realized early on if each sensor outputted a nicely formated JSON packet it would make every thing down the line easier. Once the Pi receives sensor data it has to parse the JSON, merge it with other sensor data, insert it into the database, serve up a local web application, and retransmit the data out to an internet accessible machine for remote viewing. I use Systemd to start and keep the server process running.  
 
@@ -46,9 +46,9 @@ MongoDB
 
 For the database, I run MongoDB on the Pi and so far it has worked very well. The Pi uses an SD card to store the disk image. Because SD cards weren't designed for the constant read/writes of something like a database, I use a 16gb USB thumb drive as the Mongo data store. Currently I'm only logging the last 24 hours of data, so I setup a Time To Live index on the Mongo collection which will expire data after a day, keeping the drive from filling up and making the db snappy.
 
-Network
+Networking
 
- The Pi creates a local network using the on-board wifi and serves up the main web application locally to view data. It also sends data out to a internet viewable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast and to the Pi. If connected to a wifi network the Pi will transmit sensor data out to an internet viewable machine over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data.     
+ It's important to network. The Pi creates a local net using it's on-board wifi and serves up the main web application to any local device. It also sends data out to an internet reachable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast to the Pi. If connected to a wifi network, the Pi will transmit sensor data out over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice strong wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data via 3G cellular.     
 
 Getting high while mounting the WiFi radio on the mast.
 ![ariadne](/public/images/IMG_0168.jpg)
