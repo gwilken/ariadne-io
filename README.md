@@ -59,24 +59,26 @@ The Raspberry Pi is housed in the blue Pelican Case. The two 100 amp/hour batter
 
 ## Electric Motor
 
-After a number of strandings, leaks, fires, and near sinkings, I finally removed the original Atomic 4 gasoline engine and replaced it with an electric motor. Electric Yacht sent me a 10kw 48 volt motor kit that I promptly set about trying to hack in to. To run the thing, a 48 volt battery bank is created by wiring four 235 amp/hour batteries in series.
+After it caused a number of strandings, leaks, fires, and near sinkings, I finally removed the original Atomic 4 gasoline engine and replaced it with an electric motor. Electric Yacht sent me a 10kw 48 volt motor kit that I promptly set about trying to hack in to. To run the thing, a 48 volt battery bank is created by wiring four 235 amp/hour batteries in series.
 
-3 of the 4 motor batteries before being installed.
+3 of the 4 motor batteries before being installed. They are heavy.
 ![motor](/public/images/IMG_0045.jpg)
 
 Each battery has it's own separate sensor which helps keep track of the balance of voltages. If they get too far out of whack with each other charging capacity and life expectancy can suffer.
 
-Starboard side motor batteries.
+Starboard side motor batteries installed.
 ![motor](/public/images/ariadne-batts.jpeg)
 
 
-The system came with a wired display that mounts in the cockpit and plugs into the motor controller. While wiring it up, It's hard to miss the second, unused communications port. Is there nothing that piques a nerd's interest more then an open comm port? I think not! So I set about trying to extract some data from it. It proved to be a lot easier than I thought.
+The system came with a wired display that mounts in the cockpit and plugs into a controller on the motor. While wiring it up, It's hard to miss the second, unused communications port. Is there nothing that piques a nerd's interest more then an open comm port? I think not! So I set about trying to extract some data from it. It proved to be a lot easier than I thought.
 
 ![motor](/public/images/IMG_0026.jpeg)
 
-The physical electrical interface is RS-485. I was able to hack together a home made cable from the plug end of an extra broken motor monitor I had and a USB to RS-485 cable I found on Amazon. Using the Serialport module for Node, getting data worked just fine.
+The physical electrical interface is RS-485. I was able to hack together a home made cable from the plug end of an extra broken motor monitor I had and a USB to RS-485 cable I found on Amazon. Using the Serialport module for Node, getting data was damn easy.
 
 ![motor](/public/images/IMG_0029.jpeg)
+
+I love me a good heat shrunk connection.
 
 ![motor](/public/images/IMG_0030.jpeg)
 
@@ -88,7 +90,7 @@ At first, garbage. But garbage with structure!
 
 ![motor](/public/images/rsserial.jpg)
 
-Once we look at it in hexadecimal and get our port speed dialed in it's clear we have something:
+Once we look at it in hexadecimal and get our port speed dialed in, it's clear we have something:
 
 ![motor](/public/images/rshex.jpg)
 
