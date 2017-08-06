@@ -6,7 +6,7 @@ Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 
 
 Live version: [rednightsky.com](http://www.rednightsky.com)
 
-The subject of our experiments in IoT: A 1975 Yankee 30 MKIII. Wifi was spotty back then.
+The subject of our experiments in IoT: A 1975 Yankee 30 MKIII.
 ![ariadne](/public/images/IMG_0294.jpg)
 
 ## The Components
@@ -50,7 +50,7 @@ Networking
 
  They say it's important to network. The Pi creates a local net using it's on-board wifi and serves up the main web application to any local device. It also sends data out to an internet reachable machine. I mounted a Ubiquiti Bullet M2 wifi radio with a high gain antennae at the top of the mast. I was able to feed 50' of cat6 cable down the mast to the Pi. If connected to a wifi network, the Pi will transmit sensor data out over websockets. Using a DHCP server and some iptables configuring, the Pi acts as a router for the Ubiquiti modem and bridges internet access, creating a nice strong wifi network for the boat. For those times when i'm not in a marina surrounded by wifi, I installed a Huawei USB cell modem and use a Hologram SIM card to transmit data via 3G cellular.     
 
-Getting high while mounting the WiFi radio on the mast.
+Getting high mounting the WiFi radio on the mast.
 ![ariadne](/public/images/IMG_0168.jpg)
 
 The Raspberry Pi is housed in the blue Pelican Case. The two 100 amp/hour batteries beside the motor are the house bank.
