@@ -84,9 +84,9 @@ class Main extends React.Component {
       <div className="mainContainer">
         {house}
         {solar}
+        {enviro}
         {gps}
         {motor}
-        {enviro}
       </div>
     )
 
