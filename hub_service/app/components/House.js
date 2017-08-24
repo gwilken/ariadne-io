@@ -31,7 +31,7 @@ class House extends React.Component {
             range={{low: 10, high: 14.5}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={current}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
