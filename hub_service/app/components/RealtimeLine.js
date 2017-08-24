@@ -1,6 +1,6 @@
 import React from "react";
 import History2 from "./History2";
-import {line} from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 
 class RealtimeLine extends React.Component {
 
