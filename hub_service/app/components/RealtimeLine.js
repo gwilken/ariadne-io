@@ -17,7 +17,7 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/telemetry/${this.props.family}/${this.props.displayName}/10`)
+    fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
       .then((res) => res.json())
         .then((obj) => {
             this.didLoad(obj);
