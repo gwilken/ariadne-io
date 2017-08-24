@@ -1,5 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+import RealtimeLine from "./RealtimeLine";
 import BatteryBank from "./BatteryBank";
 
 Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
@@ -30,7 +30,7 @@ class Motor extends React.Component {
 
         <h2>Motor</h2>
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorCurrent[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[2].displayName}
@@ -39,7 +39,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 10}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorRPM[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[4].displayName}
@@ -48,7 +48,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 2000}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorTTD[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
@@ -57,7 +57,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 20}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorSOC[0].data.mapRange(0,255,0,100)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
@@ -66,7 +66,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 100}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={bankVoltage[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[3].displayName}
