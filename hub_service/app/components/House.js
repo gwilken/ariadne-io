@@ -1,6 +1,7 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+//import RealtimeBar from "./RealtimeBar";
 import History from "./History";
+import RealtimeLine from "./RealtimeLine"
 
 class House extends React.Component {
 
@@ -21,7 +22,7 @@ class House extends React.Component {
 
         <div className="family-container">
 
-          <RealtimeBar
+          <RealtimeLine
             data={volts}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
