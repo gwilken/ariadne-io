@@ -26,13 +26,11 @@ class Motor extends React.Component {
       var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
 
-    var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
-
-  //  console.log(batt1Data[0].displayName);
+    //var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
 
     if(batt1Data.length > 0) {
-      var batt1Volts = [];
-      batt1Volts.push(batt1Data[0].data[0].data);
+
+      var batt1Volts = batt1Data[0].data.filter((elem) => {return elem.displayName === "Battery 1"});
 
       console.log(batt1Volts);
       console.log(this.props.data[0].family);
@@ -47,7 +45,17 @@ class Motor extends React.Component {
         color={this.props.color}
         range={{low: 10, high: 14.5}}
       />)
+
     }
+
+  //  console.log(batt1Data[0].displayName);
+
+    // if(batt1Data.length > 0) {
+    //   var batt1Volts = [];
+    //   batt1Volts.push(batt1Data[0].data[0].data);
+    //
+    //
+    // }
 
 
 
