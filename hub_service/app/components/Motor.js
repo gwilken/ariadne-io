@@ -28,7 +28,7 @@ class Motor extends React.Component {
 
     var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
 
-    console.log(batt1Data);
+    console.log(batt1Data[0].displayName);
 
     if(batt1Data.length > 0) {
       var batt1Volts = [];
