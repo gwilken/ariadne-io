@@ -29,7 +29,7 @@ class Motor extends React.Component {
     //var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
 
 
-      var batt1Data = batt1Data[0].data.filter((elem) => {return elem.displayName === "Battery 1"});
+      var batt1Data = this.props.data.filter((elem) => {return elem.displayName === "Battery 1"});
 
     if(batt1Data.length > 0) {
 
