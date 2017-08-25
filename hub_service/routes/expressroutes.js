@@ -62,9 +62,8 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
 
   var num = parseInt(req.params.num);
 
-  mongo.collection.find({}, {
+  mongo.collection.find({ $query: {}, $orderby: { "createdAt": -1 } }, {
     _id: 0,
-    $orderby: {"createdAt": -1},
     telemetry: {
       $elemMatch: {
         family: req.params.family,
