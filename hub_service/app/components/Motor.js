@@ -54,7 +54,7 @@ class Motor extends React.Component {
             data={battery1_volts}
             family={this.props.data[0].family}
             displayName={battery1.displayName}
-            unit={battery1.data[0].unit}
+            unit={'V'}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
           />
