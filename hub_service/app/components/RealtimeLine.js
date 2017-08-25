@@ -35,7 +35,7 @@ class RealtimeLine extends React.Component {
   }
 
   refresh() {
-    fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
+    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
       .then((res) => res.json())
         .then((obj) => {
           this.setState({
