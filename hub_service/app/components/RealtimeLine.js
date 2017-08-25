@@ -31,20 +31,19 @@ class RealtimeLine extends React.Component {
         data: obj.data
       });
 
-
     setInterval( function() {
-      fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
-        .then((res) => res.json())
-          .then((obj) => {
-              this.refresh(obj);
-          }).bind(this);
+      this.refresh();
     }, 30000)
   }
 
-  refresh(obj) {
-    this.setState({
-        data: obj.data
-      });
+  refresh() {
+    fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
+      .then((res) => res.json())
+        .then((obj) => {
+          this.setState({
+              data: obj.data
+            });
+        });
   }
 
   handleClick() {
