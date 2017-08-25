@@ -29,9 +29,9 @@ class Main extends React.Component {
 
     var house,
         solar,
-        motor,
         enviro,
-        gps;
+        gps,
+        motor;
 
     var list = this.state.telemetry.map((elem) => { return elem.family; })
 
@@ -84,9 +84,9 @@ class Main extends React.Component {
       <div className="mainContainer">
         {house}
         {solar}
+        {enviro}
         {gps}
         {motor}
-        {enviro}
       </div>
     )
 

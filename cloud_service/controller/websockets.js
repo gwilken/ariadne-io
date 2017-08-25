@@ -17,14 +17,15 @@ wss.on('connection', function connection(ws) {
       telemetry = JSON.parse(packet);
       count++;
 
-      if(count >= 120) {
+      if(count >= 30) {
         count = 0;
         if(mongo.collection) {
           var d = new Date();
 
           var doc = {
             telemetry: telemetry,
-            createdAt: d.getTime()
+            createdAt: d.getTime(),
+            expiresAt: Date.now() + (86400 * 1000)
           };
 
           mongo.collection.insert(doc, function(err) {

@@ -1,5 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+import RealtimeLine from "./RealtimeLine";
 
 class Enviro extends React.Component {
 
@@ -28,16 +28,16 @@ class Enviro extends React.Component {
 
       <div>
 
-        <RealtimeBar
+        <RealtimeLine
           data={windKnots}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[3].displayName}
           unit={this.props.data[0].data[3].unit}
           color={this.props.color}
-          range={{low: 0, high: 65}}
+          range={{low: 0, high: 32}}
         />
 
-        <RealtimeBar
+        <RealtimeLine
           data={temp}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[0].displayName}
@@ -46,7 +46,7 @@ class Enviro extends React.Component {
           range={{low: 0, high: 50}}
         />
 
-        <RealtimeBar
+        <RealtimeLine
           data={humidity}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[1].displayName}
@@ -55,7 +55,7 @@ class Enviro extends React.Component {
           range={{low: 0, high: 100}}
         />
 
-        <RealtimeBar
+        <RealtimeLine
           data={pressure}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[2].displayName}
