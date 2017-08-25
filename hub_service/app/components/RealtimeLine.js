@@ -9,6 +9,8 @@ class RealtimeLine extends React.Component {
 
     this.state = {
       history: null,
+      family: null,
+      displayName: null,
       data: []
     }
 
@@ -18,6 +20,11 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+        family: this.props.family,
+        displayName: this.props.displayName
+    });
+
     fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
       .then((res) => res.json())
         .then((obj) => {
@@ -31,7 +38,7 @@ class RealtimeLine extends React.Component {
       });
 
     setInterval( function() {
-      fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
+      fetch(`/telemetry/${this.state.family}/${this.state.displayName}/30`)
         .then((res) => res.json())
           .then((obj) => {
               this.didLoad(obj);
