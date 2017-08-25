@@ -24,11 +24,40 @@ class Motor extends React.Component {
       var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
 
+    var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+    var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
+    var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
+    var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
+
+    if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
+    if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
+    if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
+    if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
+
+
     return (
 
       <div>
 
         <h2>Motor</h2>
+
+          <RealtimeLine
+            data={bankVoltage[0].data.toFixed(2)}
+            family={this.props.data[0].family}
+            displayName={this.props.data[0].data[3].displayName}
+            unit={this.props.data[0].data[3].unit}
+            color={this.props.color}
+            range={{low: 46, high: 58}}
+          />
+
+          <RealtimeLine
+            data={battery1.data[0].data}
+            family={this.props.data[0].family}
+            displayName={battery1.displayName}
+            unit={battery1.data[0].unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />
 
           <RealtimeLine
             data={motorCurrent[0].data}
@@ -66,14 +95,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 100}}
           />
 
-          <RealtimeLine
-            data={bankVoltage[0].data.toFixed(2)}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[3].displayName}
-            unit={this.props.data[0].data[3].unit}
-            color={this.props.color}
-            range={{low: 46, high: 58}}
-          />
+
 
         <BatteryBank data={this.props.data} color={this.props.color} />
 
