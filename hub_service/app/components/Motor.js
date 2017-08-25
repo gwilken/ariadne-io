@@ -13,8 +13,6 @@ class Motor extends React.Component {
 
   render() {
 
-    var batt1 = null;
-
     var motorData = this.props.data.filter((elem) => {return elem.displayName === 'Electric Yacht 10kW Motor'});
 
     if(motorData.length > 0) {
@@ -25,25 +23,11 @@ class Motor extends React.Component {
       var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
 
-    //var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+    var batt1Data = this.props.data.filter((elem) => {return elem.displayName === "Battery 1"});
 
-
-      var batt1Data = this.props.data.filter((elem) => {return elem.displayName === "Battery 1"});
-
-      if(batt1Data.length > 0) {
-        var batt1Volts = batt1Data[0].data.filter((elem) => {return elem.sensor === "voltage"});
-
-        //console.log(batt1Volts);
-
-        batt1 = (<RealtimeLine
-          data={batt1Volts[0].data}
-          family={this.props.data[0].family}
-          displayName={batt1Data[0].displayName}
-          unit={batt1Data[0].unit}
-          color={this.props.color}
-          range={{low: 10, high: 14.5}}
-        />)
-      }
+    if(batt1Data.length > 0) {
+      var batt1Volts = batt1Data[0].data.filter((elem) => {return elem.sensor === "voltage"});
+    }
 
 
   //  if(batt1Data.length > 0) {
@@ -108,16 +92,14 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          {/* <RealtimeLine
-            data={batt1Volts}
+          <RealtimeLine
+            data={batt1Volts[0].data}
             family={this.props.data[0].family}
-            displayName={batt1Volts[0].displayName}
-            unit={'V'}
+            displayName={batt1Data[0].displayName}
+            unit={batt1Data[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          /> */}
-
-          {batt1}
+          />
 
           <RealtimeLine
             data={motorCurrent[0].data}
