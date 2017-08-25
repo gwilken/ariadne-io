@@ -58,5 +58,52 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
   });
 })
 
+router.get('/quicklook/:family/:name/:num', function(req, res) {
+
+  mongo.collection.find({}, {
+    _id: 0,
+    telemetry: {
+      $elemMatch: {
+        family: req.params.family,
+      }
+    },
+  }).limit(req.params.num)
+      .sort({"createdAt": -1})
+        .toArray(function(err, docs) {
+
+          if(err) {
+            console.log(err);
+            res.end();
+          } else {
+
+            var arr = [];
+
+            try {
+              if(docs.length > 0) {
+                for(var i = 0; i < docs.length; i++) {
+                  for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
+                    if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
+                      var data = docs[i].telemetry[0].data[j].data;
+                      if (data < 0) data = 0;
+                      arr.push(data);
+                    }
+                  }
+                }
+              }
+
+              var data = arr.slice();
+
+            } catch(err) {
+              console.log(err);
+            }
+
+            var response = {
+              data: data,
+            }
+
+            res.json(response);
+            }
+        });
+})
 
 module.exports = router;
