@@ -35,7 +35,7 @@ class Motor extends React.Component {
      console.log(batt1Volts[0].data);
      console.log(this.props.data[0].family);
      console.log(batt1Data[0].displayName);
-     console.log(batt1Data[0].unit);
+     console.log(batt1Volts.unit);
 
    }
 
