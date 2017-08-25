@@ -64,6 +64,7 @@ class RealtimeLine extends React.Component {
     var chart = null;
 
     var options = {
+      onClick: this.handleClick,
       animation: {
         duration: 300,
         easing: 'linear',
@@ -97,7 +98,8 @@ class RealtimeLine extends React.Component {
             display: true,
           },
           ticks: {
-            display: false,
+            min: this.props.range.low,
+            max: this.props.range.high,
           },
         },
         ],
