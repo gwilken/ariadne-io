@@ -28,6 +28,14 @@ class RealtimeLine extends React.Component {
     this.setState({
         data: obj.data
       });
+      
+    setInterval( function() {
+      fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
+        .then((res) => res.json())
+          .then((obj) => {
+              this.didLoad(obj);
+          });
+    }, 30000)
   }
 
   handleClick() {
