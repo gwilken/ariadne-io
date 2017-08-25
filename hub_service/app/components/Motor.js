@@ -17,9 +17,6 @@ class Motor extends React.Component {
     var batt1 = (<h2>Batt1</h2>);
 
     var motorData = this.props.data.filter((elem) => {return elem.displayName === 'Electric Yacht 10kW Motor'});
-    var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
-
-
 
     if(motorData.length > 0) {
       var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
@@ -28,6 +25,14 @@ class Motor extends React.Component {
       var motorTTD = motorData[0].data.filter((elem) => {return elem.sensor === "ttd"});
       var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
+
+    var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+
+    if(batt1Data.length > 0) {
+      var batt1Volts = batt1Data[0].data[0].data;
+    }
+
+
 
   //  var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
     var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
@@ -71,7 +76,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
-            data={batt1Data[0].data}
+            data={batt1Volts[0].data}
             family={this.props.data[0].family}
             displayName={'Battery 1'}
             unit={'V'}
