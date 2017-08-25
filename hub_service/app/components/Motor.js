@@ -29,10 +29,10 @@ class Motor extends React.Component {
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
-    if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
-    if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
-    if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
-    if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
+    // if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
+    // if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
+    // if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
+    // if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
 
     console.log(battery1[0].displayName);
 
@@ -52,7 +52,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
-            data={battery1_volts}
+            data={battery1[0].data[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={battery1[0].displayName}
             unit={battery1[0].data[0].unit}
