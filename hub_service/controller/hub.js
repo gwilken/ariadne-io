@@ -74,6 +74,7 @@ module.exports = function(app) {
       wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
           client.send(JSON.stringify( telemetry ) );
+          console.log(telemetry);
         }
       });
     }
