@@ -52,14 +52,14 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          {/* <RealtimeLine
-            data={battery1[0].data.toFixed(2)}
+          <RealtimeLine
+            data={battery1[0].data[0].data}
             family={this.props.data[0].family}
             displayName={battery1[0].displayName}
-            unit={battery1[0].unit}
+            unit={battery1[0].data[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          /> */}
+          />
 
           <RealtimeLine
             data={motorCurrent[0].data}
