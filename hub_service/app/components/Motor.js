@@ -29,7 +29,8 @@ class Motor extends React.Component {
     var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
 
     if(batt1Data.length > 0) {
-      console.log(batt1Data[0].data[0].data);
+      var batt1Volts = [];
+      batt1Volts.push(batt1Data[0].data);
     }
 
 
@@ -75,14 +76,14 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          {/* <RealtimeLine
+          <RealtimeLine
             data={batt1Volts[0].data}
             family={this.props.data[0].family}
             displayName={'Battery 1'}
             unit={'V'}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          /> */}
+          />
 
           <RealtimeLine
             data={motorCurrent[0].data}
