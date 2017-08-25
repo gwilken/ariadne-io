@@ -38,14 +38,14 @@ class Motor extends React.Component {
       console.log(batt1Data[0].displayName);
       console.log(batt1Data[0].unit);
 
-      batt1 = (<RealtimeLine
-        data={batt1Data[0].data}
-        family={this.props.data[0].family}
-        displayName={batt1Data[0].displayName}
-        unit={batt1Data[0].data.unit}
-        color={this.props.color}
-        range={{low: 10, high: 14.5}}
-      />)
+      // batt1 = (<RealtimeLine
+      //   data={batt1Data[0].data}
+      //   family={this.props.data[0].family}
+      //   displayName={batt1Data[0].displayName}
+      //   unit={batt1Data[0].data.unit}
+      //   color={this.props.color}
+      //   range={{low: 10, high: 14.5}}
+      // />)
 
     }
 
