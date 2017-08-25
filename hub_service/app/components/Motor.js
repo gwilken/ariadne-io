@@ -34,7 +34,7 @@ class Motor extends React.Component {
     if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
     if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
 
-    console.log(battery1.displayName);
+    console.log(battery1[0].displayName);
 
     return (
 
