@@ -31,7 +31,7 @@ class Motor extends React.Component {
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
-    if(battery1[0].data[0].data) {
+    if(battery1[0].data[0].length > 0) {
       batt1 = (
                 <RealtimeLine
                   data={battery1[0].data[0].data}
