@@ -17,18 +17,18 @@ class MotorBatts extends React.Component {
     if(motorBatt1.length > 0) {
       var motorBatt1Voltage = motorBatt1[0].data.filter((elem) => {return elem.sensor === "voltage"});
     }
-    //
-    // var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
-    // var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
-    // var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
-    // var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
-    //
-    // if(battery1.length > 0) var battery1_volts = battery1[0].data[0].data.toFixed(2);
-    // if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
-    // if(battery3.length > 0) var battery3_volts = battery3[0].data[0].data.toFixed(2);
-    // if(battery4.length > 0) var battery4_volts = battery4[0].data[0].data.toFixed(2);
 
-    console.log(motorBatt1);
+    if(motorBatt2.length > 0) {
+      var motorBatt2Voltage = motorBatt2[0].data.filter((elem) => {return elem.sensor === "voltage"});
+    }
+
+    if(motorBatt3.length > 0) {
+      var motorBatt3Voltage = motorBatt3[0].data.filter((elem) => {return elem.sensor === "voltage"});
+    }
+
+    if(motorBatt4.length > 0) {
+      var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
+    }
 
     return (
       <div>
@@ -41,7 +41,34 @@ class MotorBatts extends React.Component {
             displayName={motorBatt1Voltage[0].displayName}
             unit={motorBatt1Voltage[0].unit}
             color={this.props.color}
-            range={{low: 46, high: 58}}
+            range={{low: 10, high: 14.5}}
+          />
+
+          <RealtimeLine
+            data={motorBatt2Voltage[0].data}
+            family={this.props.data[0].family}
+            displayName={motorBatt2Voltage[0].displayName}
+            unit={motorBatt2Voltage[0].unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />
+
+          <RealtimeLine
+            data={motorBatt3Voltage[0].data}
+            family={this.props.data[0].family}
+            displayName={motorBatt3Voltage[0].displayName}
+            unit={motorBatt3Voltage[0].unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />
+
+          <RealtimeLine
+            data={motorBatt4Voltage[0].data}
+            family={this.props.data[0].family}
+            displayName={motorBatt4Voltage[0].displayName}
+            unit={motorBatt4Voltage[0].unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
           />
 
     </div>
