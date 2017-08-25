@@ -31,7 +31,7 @@ class RealtimeLine extends React.Component {
         data: obj.data
       });
 
-    setInterval( this.refresh(), 30000);
+    setInterval( this.refresh, 30000);
   }
 
   refresh() {
