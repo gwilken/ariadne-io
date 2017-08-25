@@ -69,8 +69,8 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
         family: req.params.family,
       }
     },
-  }).limit(num)
-      .sort({"createdAt": 1})
+  }).sort({"createdAt": 1})
+      .limit(num)
         .toArray(function(err, docs) {
 
           if(err) {
