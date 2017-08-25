@@ -70,7 +70,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
       }
     },
   }).limit(num)
-      .sort({"createdAt": -1})
+      .sort({"createdAt": 1})
         .toArray(function(err, docs) {
 
           if(err) {
