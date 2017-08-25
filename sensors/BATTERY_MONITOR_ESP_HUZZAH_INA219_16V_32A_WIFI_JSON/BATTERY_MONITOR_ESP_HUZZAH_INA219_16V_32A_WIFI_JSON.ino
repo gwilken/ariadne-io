@@ -69,13 +69,13 @@ void loop() {
     JsonObject& root = jsonBuffer.createObject();
 
     root["family"] = "motor";
-    root["displayName"] = "Battery 4";
+    root["displayName"] = "Motor Batteries";
 
     JsonArray& data = root.createNestedArray("data");
 
     JsonObject& voltage = data.createNestedObject();
     voltage["sensor"] = "voltage";
-    voltage["displayName"] = "Battery Voltage";
+    voltage["displayName"] = "Battery 1";
     voltage["data"] = busvoltage;
     voltage["unit"] = "V";
     
