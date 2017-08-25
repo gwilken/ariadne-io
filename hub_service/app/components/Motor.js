@@ -30,15 +30,14 @@ class Motor extends React.Component {
     }
 
 
-  //  if(batt1Data.length > 0) {
+   if(batt1Data.length > 0) {
 
-      // console.log(batt1Data[0].data);
-      // console.log(this.props.data[0].family);
-      // console.log(batt1Data[0].displayName);
-      // console.log(batt1Data[0].unit);
+     console.log(batt1Volts[0].data);
+     console.log(this.props.data[0].family);
+     console.log(batt1Data[0].displayName);
+     console.log(batt1Data[0].unit);
 
-
-  //  }
+   }
 
   //  console.log(batt1Data[0].displayName);
 
