@@ -33,13 +33,13 @@ class Motor extends React.Component {
       if(batt1Data.length > 0) {
         var batt1Volts = batt1Data[0].data.filter((elem) => {return elem.sensor === "voltage"});
 
-        console.log(batt1Volts);
+        //console.log(batt1Volts);
 
         batt1 = (<RealtimeLine
           data={batt1Volts[0].data}
           family={this.props.data[0].family}
           displayName={batt1Data[0].displayName}
-          unit={batt1Data[0].data.unit}
+          unit={batt1Data[0].unit}
           color={this.props.color}
           range={{low: 10, high: 14.5}}
         />)
