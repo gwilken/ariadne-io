@@ -87,6 +87,8 @@ class RealtimeLine extends React.Component {
           position: 'right',
           ticks: {
             mirror: false,
+            min: this.props.range.low,
+            max: this.props.range.high,
            },
           }],
         xAxes: [{
@@ -98,8 +100,7 @@ class RealtimeLine extends React.Component {
             display: true,
           },
           ticks: {
-            min: this.props.range.low,
-            max: this.props.range.high,
+            display: false,
           },
         },
         ],
