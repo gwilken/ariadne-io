@@ -51,7 +51,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
-            data={battery1.data[0].data}
+            data={battery1_volts}
             family={this.props.data[0].family}
             displayName={battery1.displayName}
             unit={battery1.data[0].unit}
