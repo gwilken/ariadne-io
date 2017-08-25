@@ -30,7 +30,7 @@ class Motor extends React.Component {
 
     if(batt1Data.length > 0) {
       var batt1Volts = [];
-      batt1Volts.push(batt1Data[0].data);
+      batt1Volts.push(batt1Data[0].data[0].data);
     }
 
 
@@ -77,7 +77,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
-            data={batt1Volts[0].data}
+            data={batt1Volts}
             family={this.props.data[0].family}
             displayName={'Battery 1'}
             unit={'V'}
