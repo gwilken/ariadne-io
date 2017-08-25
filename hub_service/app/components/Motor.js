@@ -34,6 +34,7 @@ class Motor extends React.Component {
     if(battery3.length > 0) var battery3_volts = battery3.data[0].data.toFixed(2);
     if(battery4.length > 0) var battery4_volts = battery4.data[0].data.toFixed(2);
 
+    console.log(battery1);
 
     return (
 
@@ -50,14 +51,14 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          <RealtimeLine
+          {/* <RealtimeLine
             data={battery1_volts}
             family={this.props.data[0].family}
             displayName={battery1.displayName}
-            unit={'V'}
+            unit={battery1.data[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          />
+          /> */}
 
           <RealtimeLine
             data={motorCurrent[0].data}
