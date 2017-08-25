@@ -99,6 +99,8 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
             }
 
             var response = {
+              family: req.params.family,
+              name: req.params.name,
               data: data,
             }
 

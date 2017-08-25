@@ -22,6 +22,7 @@ class RealtimeLine extends React.Component {
     fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
       .then((res) => res.json())
         .then((obj) => {
+            console.log(obj);
             this.didLoad(obj);
         });
   };
