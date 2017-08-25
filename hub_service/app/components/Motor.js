@@ -17,6 +17,9 @@ class Motor extends React.Component {
     var batt1 = (<h2>Batt1</h2>);
 
     var motorData = this.props.data.filter((elem) => {return elem.displayName === 'Electric Yacht 10kW Motor'});
+    var batt1Data = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+
+
 
     if(motorData.length > 0) {
       var bankVoltage = motorData[0].data.filter((elem) => {return elem.sensor === "volts"});
@@ -26,24 +29,24 @@ class Motor extends React.Component {
       var motorRPM = motorData[0].data.filter((elem) => {return elem.sensor === "rpm"});
     }
 
-    var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
+  //  var battery1 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 1'});
     var battery2 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 2'});
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
     console.log(battery1[0].data.length);
-
-    if(battery1[0].data.length > 0) {
-      batt1 = (
-                <RealtimeLine
-                  data={battery1[0].data}
-                  family={battery1[0].family}
-                  displayName={battery1[0].displayName}
-                  unit={battery1[0].data[0].unit}
-                  color={this.props.color}
-                  range={{low: 10, high: 14.5}}
-                />)
-    }
+    //
+    // if(battery1[0].data.length > 0) {
+    //   batt1 = (
+    //             <RealtimeLine
+    //               data={battery1[0].data}
+    //               family={battery1[0].family}
+    //               displayName={battery1[0].displayName}
+    //               unit={battery1[0].data[0].unit}
+    //               color={this.props.color}
+    //               range={{low: 10, high: 14.5}}
+    //             />)
+    // }
 
     //  (battery1.length > 0) ? battery1_volts = battery1[0].data[0].data.toFixed(2) : battery1_volts = 0;
 
@@ -67,7 +70,14 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          {batt1}
+          <RealtimeLine
+            data={batt1Data[0].data}
+            family={this.props.data[0].family}
+            displayName={'Battery 1'}
+            unit={'V'}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />)
 
           <RealtimeLine
             data={motorCurrent[0].data}
