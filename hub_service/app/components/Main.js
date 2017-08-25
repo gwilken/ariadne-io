@@ -2,9 +2,9 @@ import React from "react";
 import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
+import MotorBatts from "./MotorBatts";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
-import History from "./History";
 
 class Main extends React.Component {
 
@@ -32,7 +32,8 @@ class Main extends React.Component {
         solar,
         enviro,
         gps,
-        motor;
+        motor,
+        motorbatts;
 
     var list = this.state.telemetry.map((elem) => { return elem.family; })
 
@@ -63,6 +64,15 @@ class Main extends React.Component {
       )
     }
 
+    if(list.includes('motorbatt')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
+      motorbatts = (
+        <div className="component-container">
+          <MotorBatts data={data} color="lightsalmon"/>
+        </div>
+      )
+    }
+
     if(list.includes('enviro')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
       enviro = (
@@ -88,6 +98,7 @@ class Main extends React.Component {
         {enviro}
         {gps}
         {motor}
+        {motorbatts}
       </div>
     )
 

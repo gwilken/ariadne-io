@@ -4,7 +4,6 @@ import House from "./House";
 import Motor from "./Motor";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
-import History from "./History";
 
 class Main extends React.Component {
 

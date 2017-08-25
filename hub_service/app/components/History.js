@@ -31,23 +31,18 @@ class History extends React.Component {
   componentDidMount() {
     fetch(`/telemetry/${this.state.family}/${this.state.displayName}/${this.state.time}`)
       .then((res) => res.json())
-        .then((docs) => {
-            this.didLoad(docs);
+        .then((obj) => {
+            this.didLoad(obj);
         });
   };
 
-  didLoad(docs) {
-    this.setState({data: [] });
-    this.setState({data: docs});
-
-    var sorted = docs.sort((a, b) => { return a - b; } );
-    var average = docs.reduce((sum, val) => { return sum + val }) / docs.length;
-
+  didLoad(obj) {
     this.setState({
-      average: average.toFixed(2),
-      high: sorted[docs.length - 1].toFixed(2),
-      low: sorted[0].toFixed(2)
-    })
+        data: obj.data,
+        high: obj.high,
+        low: obj.low,
+        average: obj.average
+      });
   }
 
   handleClick(event) {
@@ -123,7 +118,7 @@ class History extends React.Component {
               fill: true,
               backgroundColor: this.state.color,
               borderWidth: 2,
-              lineTension: 0.4,
+              lineTension: 0.2,
               pointRadius: 0,
               data: this.state.data
             }

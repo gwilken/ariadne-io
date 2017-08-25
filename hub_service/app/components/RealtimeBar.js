@@ -1,5 +1,5 @@
 import React from "react";
-import History2 from "./History2";
+import History from "./History";
 import {HorizontalBar} from 'react-chartjs-2';
 
 class RealtimeBar extends React.Component {
@@ -23,7 +23,7 @@ class RealtimeBar extends React.Component {
       color: this.props.color
     }
 
-    this.setState({ history: (<History2 view={obj} handleClick={this.deleteHistory} />) } );
+    this.setState({ history: (<History view={obj} handleClick={this.deleteHistory} />) } );
   }
 
   deleteHistory() {
