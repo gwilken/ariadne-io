@@ -29,6 +29,8 @@ class Motor extends React.Component {
     var battery3 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 3'});
     var battery4 = this.props.data.filter((elem) => {return elem.displayName === 'Battery 4'});
 
+    var battery1_volts = null;
+
     (battery1.length > 0) ? battery1_volts = battery1[0].data[0].data.toFixed(2) : battery1_volts = 0;
 
     // if(battery2.length > 0) var battery2_volts = battery2[0].data[0].data.toFixed(2);
