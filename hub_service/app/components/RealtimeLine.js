@@ -17,6 +17,7 @@ class RealtimeLine extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.deleteHistory = this.deleteHistory.bind(this);
     this.didLoad = this.didLoad.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   componentDidMount() {
@@ -36,14 +37,19 @@ class RealtimeLine extends React.Component {
     this.setState({
         data: obj.data
       });
-
     setInterval( function() {
       fetch(`/telemetry/${this.state.family}/${this.state.displayName}/30`)
         .then((res) => res.json())
           .then((obj) => {
-              this.didLoad(obj);
+              this.refresh(obj);
           });
     }, 30000)
+  }
+
+  refresh(obj) {
+    this.setState({
+        data: obj.data
+      });
   }
 
   handleClick() {
