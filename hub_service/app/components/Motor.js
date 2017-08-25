@@ -33,6 +33,15 @@ class Motor extends React.Component {
     if(batt1Data.length > 0) {
       var batt1Volts = [];
       batt1Volts.push(batt1Data[0].data[0].data);
+
+      batt1 = (<RealtimeLine
+        data={batt1Volts}
+        family={this.props.data[0].family}
+        displayName={batt1Data[0].displayName}
+        unit={'V'}
+        color={this.props.color}
+        range={{low: 10, high: 14.5}}
+      />)
     }
 
 
@@ -78,14 +87,16 @@ class Motor extends React.Component {
             range={{low: 46, high: 58}}
           />
 
-          <RealtimeLine
+          {/* <RealtimeLine
             data={batt1Volts}
             family={this.props.data[0].family}
             displayName={batt1Volts[0].displayName}
             unit={'V'}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          />
+          /> */}
+
+          {batt1}
 
           <RealtimeLine
             data={motorCurrent[0].data}
