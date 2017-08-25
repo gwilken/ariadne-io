@@ -14,6 +14,7 @@ class RealtimeLine extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.deleteHistory = this.deleteHistory.bind(this);
+    this.didLoad = this.didLoad.bind(this);
   }
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class RealtimeLine extends React.Component {
     this.setState({
         data: obj.data
       });
-      
+
     setInterval( function() {
       fetch(`/telemetry/${this.props.family}/${this.props.displayName}/30`)
         .then((res) => res.json())
