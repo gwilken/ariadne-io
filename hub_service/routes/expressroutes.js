@@ -64,14 +64,14 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
 
   mongo.collection.find({}, {
     _id: 0,
+    $orderby: {"createdAt": -1},
     telemetry: {
       $elemMatch: {
         family: req.params.family,
       }
     },
-  }).sort({"createdAt": 1})
-      .limit(num)
-        .toArray(function(err, docs) {
+  }).limit(num)
+      .toArray(function(err, docs) {
 
           if(err) {
             console.log(err);
