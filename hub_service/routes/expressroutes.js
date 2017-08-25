@@ -60,6 +60,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
 router.get('/quicklook/:family/:name/:num', function(req, res) {
 
+  var num = parseInt(req.params.num);
+
   mongo.collection.find({}, {
     _id: 0,
     telemetry: {
@@ -67,7 +69,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
         family: req.params.family,
       }
     },
-  }).limit(req.params.num)
+  }).limit(num)
       .sort({"createdAt": -1})
         .toArray(function(err, docs) {
 
