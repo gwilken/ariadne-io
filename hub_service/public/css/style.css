@@ -44,20 +44,18 @@ h4 {
 }
 
 .title {
-  display: inline;
+  position: absolute;
+  top: -6px;
   font-size: 19px;
-  float: left;
   color: white;
-  /*mix-blend-mode: exclusion;*/
 }
 
 .rtData {
-  display: inline;
-  margin: 4px 3%;
-  float: right;
-  font-size: 48px;
+  position: absolute;
+  right: 0px;
+  top: -21px;
+  font-size: 55px;
   color: white;
-  /*mix-blend-mode: exclusion;*/
 }
 
 .motorBattBar {
