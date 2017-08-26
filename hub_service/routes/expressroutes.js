@@ -9,25 +9,25 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
   var time = Date.now() - (parseInt(req.params.time) * 60000);
 
-  // mongo.collection.aggregate([
-  //   { $match: { "createdAt": { "$gt": time } } },
-  //   { $unwind: "$telemetry" },
-  //   { $match: { "telemetry.family": req.params.family } },
-  //   { $unwind: "$telemetry.data"},
-  //   { $match: { "telemetry.data.displayName": req.params.name } },
-  //   { $group: {
-  //     "_id": null,
-  //     "createdAt": { $push: "$createdAt" },
-  //     "data" : {$push: "$telemetry.data.data"},
-  //     "family" : req.params.family,
-  //     "displayName" : req.params.name,
-  //     "high": {$max: "$telemetry.data.data"},
-  //     "low": {$min : "$telemetry.data.data"},
-  //     "average": {$avg: "$telemetry.data.data"}
-  //   }}
-  // ]).toArray(function(err, docs) {
-  //   res.json(docs);
-  // })
+  mongo.collection.aggregate([
+    { $match: { "createdAt": { "$gt": time } } },
+    { $unwind: "$telemetry" },
+    { $match: { "telemetry.family": req.params.family } },
+    { $unwind: "$telemetry.data"},
+    { $match: { "telemetry.data.displayName": req.params.name } },
+    { $group: {
+      "_id": null,
+      "createdAt": { $push: "$createdAt" },
+      "data" : {$push: "$telemetry.data.data"},
+      "family" : req.params.family,
+      "displayName" : req.params.name,
+      "high": {$max: "$telemetry.data.data"},
+      "low": {$min : "$telemetry.data.data"},
+      "average": {$avg: "$telemetry.data.data"}
+    }}
+  ]).toArray(function(err, docs) {
+    res.json(docs);
+  })
 
 
   // mongo.collection.find( {
@@ -98,7 +98,7 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
       "createdAt": { $push: "$createdAt" },
       "data" : {$push: "$telemetry.data.data"},
       "family" : req.params.family,
-      "displayName" : req.params.name
+      "displayName" : req.params.name,
     }}
   ]).toArray(function(err, docs) {
     res.json(docs);
