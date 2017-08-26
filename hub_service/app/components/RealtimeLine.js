@@ -29,21 +29,22 @@ class RealtimeLine extends React.Component {
 
   didLoad(obj) {
     this.setState({
-        data: obj.data
+        data: obj.data,
+        ticker: obj.data
       });
 
     setInterval( this.refresh, 30000);
   }
 
   componentDidUpdate() {
-    console.log(this.props.data);
+    //console.log(this.props.data);
     var tempArr = this.state.ticker.slice();
-    console.log(tempArr);
-
+    tempArr.shift();
     tempArr.push(this.props.data);
+
     this.setState({ticker: tempArr});
 
-    console.log(this.state.ticker);
+  //  console.log(this.state.ticker);
 
   }
 
@@ -73,6 +74,8 @@ class RealtimeLine extends React.Component {
   }
 
   render() {
+
+    console.log(this.state.ticker, this.state.ticker.length);
 
     var chart = null;
 
