@@ -88,7 +88,7 @@ class MotorBatts extends React.Component {
           {batt3Comp}
 
           {batt4Comp} */}
-
+{/*
           <RealtimeLine
             data={motorBatt1Voltage[0].data.toFixed(3)}
             family={this.props.data[0].family}
@@ -105,7 +105,7 @@ class MotorBatts extends React.Component {
             unit={motorBatt2Voltage[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
-          />
+          /> */}
 
           <RealtimeLine
             data={motorBatt3Voltage[0].data.toFixed(3)}
