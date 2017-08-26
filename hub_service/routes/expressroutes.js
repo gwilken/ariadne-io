@@ -70,9 +70,9 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
   mongo.collection.aggregate([
     { $match: { "createdAt": { "$gt": time } } },
     { $unwind: "$telemetry" },
-    { $match: { "$telemetry.family": req.params.family } },
+    { $match: { "telemetry.family": req.params.family } },
     { $unwind: "$telemetry.data"},
-    { $match: { "$telemetry.data.displayName": req.params.name } }
+    { $match: { "telemetry.data.displayName": req.params.name } }
 
 
     // { $unwind: "$telemetry.data" }
