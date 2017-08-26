@@ -9,7 +9,7 @@ class House extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.history);
+    console.log(this.props.history());
   }
 
   render() {
