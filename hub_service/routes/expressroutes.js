@@ -83,6 +83,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
           } else {
 
             var arr = [];
+            var dataArr = [];
 
             try {
               if(docs.length > 0) {
@@ -99,7 +100,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
                 }
               }
 
-              var data = arr.slice();
+              dataArr = arr.slice();
 
             } catch(err) {
               console.log(err);
@@ -108,7 +109,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
             var response = {
               family: req.params.family,
               name: req.params.name,
-              data: data
+              data: dataArr
             }
 
             res.json(response);
