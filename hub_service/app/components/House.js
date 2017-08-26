@@ -16,7 +16,7 @@ class House extends React.Component {
    var houseCurrent = house[0].data.filter((elem) => {return elem.sensor === 'current'})
 
    var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
-   var beer = fridge[0].filter((elem) => {return elem.displayName === 'Beer Temperature'});
+   var beer = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
 
 
 //    var volts = this.props.data.filter((elem) => {return elem.sensor === 'voltage'});
