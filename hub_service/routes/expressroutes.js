@@ -7,7 +7,7 @@ const router = new express.Router();
 
 router.get('/telemetry/:family/:name/:time', function(req, res) {
 
-  console.log(req.params.family, req.params.name);
+  //console.log(req.params.family, req.params.name);
 
   var time = Date.now() - (req.params.time * 60000);
 
@@ -50,6 +50,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
       var response = {
         data: data,
+        family: req.params.family,
+        name: req.params.name,
         high: sorted[docs.length - 1].toFixed(2),
         low: sorted[0].toFixed(2),
         average: average.toFixed(2)
@@ -103,7 +105,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
             var response = {
               family: req.params.family,
               name: req.params.name,
-              data: data,
+              data: data
             }
 
             res.json(response);
