@@ -2,8 +2,6 @@ import React from "react";
 import History from "./History";
 import {Line} from 'react-chartjs-2';
 
-var tempArr = [];
-
 class RealtimeLine extends React.Component {
 
   constructor(props) {
@@ -38,6 +36,13 @@ class RealtimeLine extends React.Component {
     //setInterval( this.refresh, 30000);
   }
 
+  componentWillReceiveProps() {
+    var tempArr = this.state.data.slice();
+    tempArr.push(this.props.data);
+    tempArr.shift();
+    this.setState({data: tempArr});
+  }
+
   refresh() {
     // fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
     //   .then((res) => res.json())
@@ -46,10 +51,6 @@ class RealtimeLine extends React.Component {
     //           data: obj.data
     //         });
     //     });
-    tempArr.push(this.props.data);
-    tempArr.shift();
-
-    return(tempArr);
   }
 
   handleClick() {
@@ -118,7 +119,7 @@ class RealtimeLine extends React.Component {
     if(this.state.data.length > 0) {
 
       var data = {
-        labels: this.refresh,
+        labels: this.state.data,
         datasets: [
             {
               fill: true,
@@ -126,7 +127,7 @@ class RealtimeLine extends React.Component {
               borderWidth: 2,
               lineTension: 0.2,
               pointRadius: 0,
-              data: this.refresh
+              data: this.state.data
             }
          ]
       }
