@@ -1,10 +1,10 @@
 import React from "react";
-import Solar from "./Solar";
-import House from "./House";
-import Motor from "./Motor";
+// import Solar from "./Solar";
+// import House from "./House";
+// import Motor from "./Motor";
 import MotorBatts from "./MotorBatts";
-import Enviro from "./Enviro";
-import Gps from "./Gps";
+// import Enviro from "./Enviro";
+// import Gps from "./Gps";
 
 class Main extends React.Component {
 
