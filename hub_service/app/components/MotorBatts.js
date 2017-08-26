@@ -63,14 +63,14 @@ class MotorBatts extends React.Component {
 
     if(motorBatt4.length > 0) {
       batt4Comp = (
-        <RealtimeLine
-          data={motorBatt4[0].data[0].data.toFixed(3)}
-          family={this.props.data[0].family}
-          displayName={motorBatt4[0].data[0].displayName}
-          unit={motorBatt4[0].data[0].unit}
-          color={this.props.color}
-          range={{low: 10, high: 14.5}}
-        />
+        // <RealtimeLine
+        //   data={motorBatt4[0].data[0].data.toFixed(3)}
+        //   family={this.props.data[0].family}
+        //   displayName={motorBatt4[0].data[0].displayName}
+        //   unit={motorBatt4[0].data[0].unit}
+        //   color={this.props.color}
+        //   range={{low: 10, high: 14.5}}
+        // />
       )
     }
 
@@ -85,7 +85,16 @@ class MotorBatts extends React.Component {
 
           {batt3Comp}
 
-          {batt4Comp}
+          {/* {batt4Comp} */}
+
+          <RealtimeLine
+            data={motorBatt4[0].data[0].data.toFixed(3)}
+            family={this.props.data[0].family}
+            displayName={motorBatt4[0].data[0].displayName}
+            unit={motorBatt4[0].data[0].unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />
 
       </div>
     );
