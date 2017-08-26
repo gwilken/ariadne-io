@@ -72,7 +72,12 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
     { $unwind: "$telemetry" },
     { $match: { "telemetry.family": req.params.family } },
     { $unwind: "$telemetry.data"},
-    { $match: { "telemetry.data.displayName": req.params.name } }
+    { $match: { "telemetry.data.displayName": req.params.name } },
+    { $group: {
+      "_id": null,
+      "createdAt": { $push: "createdAt" },
+      "data" : {$push: "telemetry.data.data"}
+    }}
 
 
     // { $unwind: "$telemetry.data" }
