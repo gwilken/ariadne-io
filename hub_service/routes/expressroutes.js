@@ -74,7 +74,7 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
 
     { $group: {
       "_id": "$_id",
-      "data" : { "$push": "$telemetry.data.data" }
+      "data" : { "$push": "$data" }
       }
     }
   ]).toArray(function(err, docs) {
