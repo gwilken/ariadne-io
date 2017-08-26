@@ -7,8 +7,6 @@ const router = new express.Router();
 
 router.get('/telemetry/:family/:name/:time', function(req, res) {
 
-  //console.log(req.params.family, req.params.name);
-
   var time = Date.now() - (req.params.time * 60000);
 
   mongo.collection.find( {
@@ -30,9 +28,7 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       try {
         if(docs.length > 0) {
           for(var i = 0; i < docs.length; i++) {
-
             if(Object.keys(docs[i]).length > 0) {
-
               for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
                 if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
                   var data = docs[i].telemetry[0].data[j].data;
@@ -40,17 +36,13 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
                   arr.push(data);
                 }
               }
-
             }
-
           }
         }
 
         var data = arr.slice();
         sorted = arr.sort((a, b) => { return a - b; } );
         average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
-
-        console.log(data);
 
       } catch(err) {
         console.log(err);
@@ -94,9 +86,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
             try {
               if(docs.length > 0) {
                 for(var i = 0; i < docs.length; i++) {
-
                   if(Object.keys(docs[i]).length > 0) {
-
                     for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
                       if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
                         var data = docs[i].telemetry[0].data[j].data;
@@ -105,9 +95,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
                       }
                     }
                   }
-
                 }
-
               }
 
               var data = arr.reverse().slice();
