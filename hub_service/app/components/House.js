@@ -8,7 +8,7 @@ class House extends React.Component {
     super(props);
   }
 
-  onComponentDidMount() {
+  componentDidMount() {
     console.log(this.props.history);
   }
 
