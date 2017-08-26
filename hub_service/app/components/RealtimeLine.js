@@ -20,7 +20,7 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/10`)
+    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/120`)
       .then((res) => res.json())
         .then((obj) => {
             this.didLoad(obj);
