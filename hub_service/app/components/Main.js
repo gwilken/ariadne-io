@@ -2,7 +2,7 @@ import React from "react";
 import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
-import MotorBatts from "./MotorBatts";
+import MotorBatteryGroup from "./MotorBatteryGroup";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
 
@@ -67,7 +67,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
       motorbatts = (
         <div className="component-container">
-          <MotorBatts data={data} color="orange"/>
+          <MotorBatteryGroup data={data} color="orange"/>
         </div>
       )
     }
