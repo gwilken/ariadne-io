@@ -18,8 +18,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     { $group: {
       "_id": null,
       "createdAt": { $push: "$createdAt" },
-      "displayName": {"$telemetry.data.displayName"},
-      "family": {"$telemetry.family"}
+      "displayName": "$telemetry.data.displayName",
+      "family": "$telemetry.family",
       "data" : {$push: "$telemetry.data.data"},
       "high": {$max: "$telemetry.data.data"},
       "low": {$min : "$telemetry.data.data"},
