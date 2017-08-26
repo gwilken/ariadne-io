@@ -39,10 +39,10 @@ class History extends React.Component {
 
   didLoad(obj) {
     this.setState({
-        data: obj.data,
-        high: obj.high,
-        low: obj.low,
-        average: obj.average
+        data: obj[0].data,
+        high: obj[0].high,
+        low: obj[0].low,
+        average: obj[0].average
       });
   }
 

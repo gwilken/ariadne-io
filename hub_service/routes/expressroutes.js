@@ -19,8 +19,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       "_id": null,
       "createdAt": { $push: "$createdAt" },
       "data" : {$push: "$telemetry.data.data"},
-      "family" : req.params.family,
-      "displayName" : req.params.name,
       "high": {$max: "$telemetry.data.data"},
       "low": {$min : "$telemetry.data.data"},
       "average": {$avg: "$telemetry.data.data"}
