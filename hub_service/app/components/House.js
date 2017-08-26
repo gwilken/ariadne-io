@@ -25,7 +25,7 @@ class House extends React.Component {
         <div className="family-container">
 
           <RealtimeLine
-            data={volts[0].data.toFixed(2)}
+            data={volts[0].data[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
             unit={this.props.data[0].data[0].unit}
