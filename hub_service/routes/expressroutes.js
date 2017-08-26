@@ -96,9 +96,7 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
     { $group: {
       "_id": null,
       "createdAt": { $push: "$createdAt" },
-      "data" : {$push: "$telemetry.data.data"},
-      "family" : req.params.family,
-      "displayName" : req.params.name,
+      "data" : {$push: "$telemetry.data.data"}
     }}
   ]).toArray(function(err, docs) {
     res.json(docs);
