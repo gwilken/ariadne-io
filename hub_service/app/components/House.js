@@ -18,8 +18,9 @@ class House extends React.Component {
     //var volts = this.props.data[0].data[0].data.toFixed(2);
   //  var current = this.props.data[0].data[1].data.toFixed(0);
 
-    if(this.props.data) console.log(this.props.data);
-  //  if(fridge) console.log(fridge);
+  //  if(this.props.data) console.log(this.props.data);
+    if(fridge) console.log(fridge);
+    if(house) console.log(house);
 
 
     return (
