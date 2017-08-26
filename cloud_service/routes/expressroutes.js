@@ -28,11 +28,13 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
       try {
         if(docs.length > 0) {
           for(var i = 0; i < docs.length; i++) {
-            for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
-              if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-                var data = docs[i].telemetry[0].data[j].data;
-                if (data < 0) data = 0;
-                arr.push(data);
+            if(Object.keys(docs[i]).length > 0) {
+              for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
+                if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
+                  var data = docs[i].telemetry[0].data[j].data;
+                  if (data < 0) data = 0;
+                  arr.push(data);
+                }
               }
             }
           }
@@ -48,7 +50,9 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
       var response = {
         data: data,
-        high: sorted[docs.length - 1].toFixed(2),
+        family: req.params.family,
+        name: req.params.name,
+        high: sorted[arr.length - 1].toFixed(2),
         low: sorted[0].toFixed(2),
         average: average.toFixed(2)
       }
@@ -58,5 +62,57 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
   });
 })
 
+router.get('/quicklook/:family/:name/:num', function(req, res) {
+
+  var num = parseInt(req.params.num);
+
+  mongo.collection.find({ $query: {}, $orderby: { "createdAt": -1 } }, {
+    _id: 0,
+    telemetry: {
+      $elemMatch: {
+        family: req.params.family,
+      }
+    },
+  }).limit(num)
+      .toArray(function(err, docs) {
+
+          if(err) {
+            console.log(err);
+            res.end();
+          } else {
+
+            var arr = [];
+
+            try {
+              if(docs.length > 0) {
+                for(var i = 0; i < docs.length; i++) {
+                  if(Object.keys(docs[i]).length > 0) {
+                    for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
+                      if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
+                        var data = docs[i].telemetry[0].data[j].data;
+                        if (data < 0) data = 0;
+                        arr.push(data);
+                      }
+                    }
+                  }
+                }
+              }
+
+              var data = arr.reverse().slice();
+
+            } catch(err) {
+              console.log(err);
+            }
+
+            var response = {
+              family: req.params.family,
+              name: req.params.name,
+              data: data
+            }
+
+            res.json(response);
+            }
+        });
+})
 
 module.exports = router;

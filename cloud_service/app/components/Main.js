@@ -2,6 +2,7 @@ import React from "react";
 import Solar from "./Solar";
 import House from "./House";
 import Motor from "./Motor";
+import MotorBatts from "./MotorBatts";
 import Enviro from "./Enviro";
 import Gps from "./Gps";
 
@@ -16,7 +17,7 @@ class Main extends React.Component {
   }
 
   componentDidMount() {
-    var ws = new WebSocket('ws://www.rednightsky.com:8080');
+    var ws = new WebSocket('ws://192.168.10.1:8080');
 
     ws.onmessage = function(event) {
         var telemetry = JSON.parse(event.data);
@@ -28,9 +29,10 @@ class Main extends React.Component {
 
     var house,
         solar,
-        motor,
         enviro,
-        gps;
+        gps,
+        motor,
+        motorbatts;
 
     var list = this.state.telemetry.map((elem) => { return elem.family; })
 
@@ -61,6 +63,15 @@ class Main extends React.Component {
       )
     }
 
+    if(list.includes('motorbatt')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
+      motorbatts = (
+        <div className="component-container">
+          <MotorBatts data={data} color="orange"/>
+        </div>
+      )
+    }
+
     if(list.includes('enviro')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
       enviro = (
@@ -83,9 +94,10 @@ class Main extends React.Component {
       <div className="mainContainer">
         {house}
         {solar}
+        {enviro}
         {gps}
         {motor}
-        {enviro}
+        {motorbatts}
       </div>
     )
 

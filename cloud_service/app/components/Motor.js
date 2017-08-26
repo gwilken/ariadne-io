@@ -1,6 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
-import BatteryBank from "./BatteryBank";
+import RealtimeLine from "./RealtimeLine";
 
 Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
   return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -28,9 +27,18 @@ class Motor extends React.Component {
 
       <div>
 
-        <h2>Motor</h2>
+        <h2>Electric Motor</h2>
 
-          <RealtimeBar
+          <RealtimeLine
+            data={bankVoltage[0].data}
+            family={this.props.data[0].family}
+            displayName={this.props.data[0].data[3].displayName}
+            unit={this.props.data[0].data[3].unit}
+            color={this.props.color}
+            range={{low: 46, high: 58}}
+          />
+
+          <RealtimeLine
             data={motorCurrent[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[2].displayName}
@@ -39,7 +47,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 10}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorRPM[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[4].displayName}
@@ -48,7 +56,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 2000}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorTTD[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
@@ -57,7 +65,7 @@ class Motor extends React.Component {
             range={{low: 0, high: 20}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={motorSOC[0].data.mapRange(0,255,0,100)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
@@ -65,17 +73,6 @@ class Motor extends React.Component {
             color={this.props.color}
             range={{low: 0, high: 100}}
           />
-
-          <RealtimeBar
-            data={bankVoltage[0].data.toFixed(2)}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[3].displayName}
-            unit={this.props.data[0].data[3].unit}
-            color={this.props.color}
-            range={{low: 46, high: 58}}
-          />
-
-        <BatteryBank data={this.props.data} color={this.props.color} />
 
       </div>
       )
