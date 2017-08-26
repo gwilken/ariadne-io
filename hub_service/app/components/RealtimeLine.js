@@ -33,7 +33,7 @@ class RealtimeLine extends React.Component {
         ticker: obj.data
       });
 
-    setInterval( this.refresh, 30000);
+    //setInterval( this.refresh, 30000);
   }
 
   refresh() {
