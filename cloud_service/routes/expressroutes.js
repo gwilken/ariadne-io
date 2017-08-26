@@ -66,14 +66,15 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
 
   var num = parseInt(req.params.num);
 
-  mongo.collection.find({ $query: {}, $orderby: { "createdAt": -1 } }, {
+  mongo.collection.find({}, {
     _id: 0,
     telemetry: {
       $elemMatch: {
         family: req.params.family,
       }
     },
-  }).limit(num)
+  }).sort({createdAt: -1})
+    .limit(num)
       .toArray(function(err, docs) {
 
           if(err) {
@@ -98,7 +99,7 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
                 }
               }
 
-              var data = arr.reverse().slice();
+              var data = arr.slice();
 
             } catch(err) {
               console.log(err);
