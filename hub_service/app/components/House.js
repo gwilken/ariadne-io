@@ -16,6 +16,8 @@ class House extends React.Component {
     //var volts = this.props.data[0].data[0].data.toFixed(2);
     var current = this.props.data[0].data[1].data.toFixed(0);
 
+    console.log(volts);
+
     return (
 
       <div>
@@ -24,7 +26,7 @@ class House extends React.Component {
 
         <div className="family-container">
 
-          <RealtimeLine
+          {/* <RealtimeLine
             data={volts[0].data[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={volts[0].data[0].displayName}
@@ -40,7 +42,7 @@ class House extends React.Component {
             unit={this.props.data[0].data[1].unit}
             color={this.props.color}
             range={{low: 0, high: 7500}}
-          />
+          /> */}
 
         </div>
 
