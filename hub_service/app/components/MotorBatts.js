@@ -19,7 +19,7 @@ class MotorBatts extends React.Component {
     var motorBatt3 = this.props.data.filter((elem) => {return elem.displayName === 'Motor Battery 3'});
     var motorBatt4 = this.props.data.filter((elem) => {return elem.displayName === 'Motor Battery 4'});
 
-    if(motorBatt1.length > 0) {
+  //  if(motorBatt1.length > 0) {
       var motorBatt1Voltage = motorBatt1[0].data.filter((elem) => {return elem.sensor === "voltage"});
       // batt1Comp = (
       //   <RealtimeLine
@@ -31,9 +31,9 @@ class MotorBatts extends React.Component {
       //     range={{low: 10, high: 14.5}}
       //   />
       // )
-    }
+//    }
 
-    if(motorBatt2.length > 0) {
+//    if(motorBatt2.length > 0) {
       var motorBatt2Voltage = motorBatt2[0].data.filter((elem) => {return elem.sensor === "voltage"});
       // batt2Comp = (
       //   <RealtimeLine
@@ -45,9 +45,9 @@ class MotorBatts extends React.Component {
       //     range={{low: 10, high: 14.5}}
       //   />
       // )
-    }
+  //  }
 
-    if(motorBatt3.length > 0) {
+//    if(motorBatt3.length > 0) {
       var motorBatt3Voltage = motorBatt3[0].data.filter((elem) => {return elem.sensor === "voltage"});
       // batt3Comp = (
       //   <RealtimeLine
@@ -59,9 +59,9 @@ class MotorBatts extends React.Component {
       //     range={{low: 10, high: 14.5}}
       //   />
       // )
-    }
+  //  }
 
-    if(motorBatt4.length > 0) {
+  //  if(motorBatt4.length > 0) {
       var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
       // batt4Comp = (
       //   <RealtimeLine
@@ -73,7 +73,7 @@ class MotorBatts extends React.Component {
       //     range={{low: 10, high: 14.5}}
       //   />
       // )
-    }
+//    }
 
 
     return (
