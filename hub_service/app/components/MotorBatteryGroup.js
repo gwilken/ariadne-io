@@ -23,18 +23,22 @@ class MotorBatteryGroup extends React.Component {
 
           <MotorBattery
             data={motorBatt1}
+            color={this.props.color}
           />
 
           <MotorBattery
             data={motorBatt2}
+            color={this.props.color}
           />
 
           <MotorBattery
             data={motorBatt3}
+            color={this.props.color}
           />
 
           <MotorBattery
             data={motorBatt4}
+            color={this.props.color}
           />
 
       </div>
