@@ -48,15 +48,6 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
-            data={motorRPM[0].data}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[4].displayName}
-            unit={this.props.data[0].data[4].unit}
-            color={this.props.color}
-            range={{low: 0, high: 2000}}
-          />
-
-          <RealtimeLine
             data={motorTTD[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
@@ -72,6 +63,15 @@ class Motor extends React.Component {
             unit={this.props.data[0].data[0].unit}
             color={this.props.color}
             range={{low: 0, high: 100}}
+          />
+
+          <RealtimeLine
+            data={motorRPM[0].data}
+            family={this.props.data[0].family}
+            displayName={this.props.data[0].data[4].displayName}
+            unit={this.props.data[0].data[4].unit}
+            color={this.props.color}
+            range={{low: 0, high: 2000}}
           />
 
       </div>
