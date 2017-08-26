@@ -18,8 +18,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     { $group: {
       "_id": null,
       "createdAt": { $push: "$createdAt" },
-      "displayName": req.params.name,
-      "family": req.params.family,
       "data" : {$push: "$telemetry.data.data"},
       "high": {$max: "$telemetry.data.data"},
       "low": {$min : "$telemetry.data.data"},
@@ -28,59 +26,6 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
   ]).toArray(function(err, docs) {
     res.json(docs);
   })
-
-
-  // mongo.collection.find( {
-  //   createdAt: { $gt: time }
-  // }, {
-  //   _id: 0,
-  //   telemetry: { $elemMatch: { family: req.params.family, } },
-  // }).toArray(function(err, docs) {
-  //
-  //   if(err) {
-  //     console.log(err);
-  //     res.end();
-  //   } else {
-  //
-  //     var arr = [];
-  //     var sorted =[];
-  //     var average = 0;
-  //
-  //     try {
-  //       if(docs.length > 0) {
-  //         for(var i = 0; i < docs.length; i++) {
-  //           if(Object.keys(docs[i]).length > 0) {
-  //             for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
-  //               if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-  //                 var data = docs[i].telemetry[0].data[j].data;
-  //                 if (data < 0) data = 0;
-  //                 arr.push(data);
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //
-  //       var data = arr.slice();
-  //       sorted = arr.sort((a, b) => { return a - b; } );
-  //       average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
-  //
-  //     } catch(err) {
-  //       console.log(err);
-  //     }
-  //
-  //     var response = {
-  //       data: data,
-  //       family: req.params.family,
-  //       name: req.params.name,
-  //       high: sorted[arr.length - 1].toFixed(2),
-  //       low: sorted[0].toFixed(2),
-  //       average: average.toFixed(2)
-  //     }
-  //
-  //     res.json(response);
-  //     }
-  // });
 })
 
 router.get('/quicklook/:family/:name/:time', function(req, res) {
@@ -95,13 +40,11 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
     { $match: { "telemetry.data.displayName": req.params.name } },
     { $group: {
       "_id": null,
-      "createdAt": { $push: "$createdAt" },
       "data" : {$push: "$telemetry.data.data"}
     }}
   ]).toArray(function(err, docs) {
     res.json(docs);
   })
-
 })
 
 module.exports = router;
