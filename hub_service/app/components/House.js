@@ -11,7 +11,7 @@ class House extends React.Component {
 
   render() {
 
-    var volts = this.props.data.filter((elem) => {return elem.displayName === 'Battery Voltage'});
+    var volts = this.props.data.filter((elem) => {return elem.sensor === 'voltage'});
 
     //var volts = this.props.data[0].data[0].data.toFixed(2);
     var current = this.props.data[0].data[1].data.toFixed(0);
@@ -27,8 +27,8 @@ class House extends React.Component {
           <RealtimeLine
             data={volts[0].data[0].data.toFixed(2)}
             family={this.props.data[0].family}
-            displayName={this.props.data[0].data[0].displayName}
-            unit={this.props.data[0].data[0].unit}
+            displayName={volts[0].data[0].displayName}
+            unit={volts[0].data[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
           />
