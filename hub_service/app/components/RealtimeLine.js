@@ -30,9 +30,6 @@ class RealtimeLine extends React.Component {
     this.setState({
         data: obj.data
       });
-
-    tempArr = obj.data.slice();
-
     //setInterval( this.refresh, 30000);
   }
 
