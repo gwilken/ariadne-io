@@ -30,6 +30,10 @@ class MotorBatts extends React.Component {
       var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
     }
 
+    console.log(this.props.data[0].family);
+    console.log(motorBatt2Voltage[0].displayName);
+    //console.log(this.props.data[0].family);
+
     return (
       <div>
 
