@@ -16,16 +16,16 @@ class Main extends React.Component {
       telemetry: []
     }
 
+    this.didLoad = this.didLoad.bind(this);
     this.getHistory = this.getHistory.bind(this);
   }
 
   componentDidMount() {
-
     fetch('/all/60')
       .then((res) => res.json())
         .then((obj) => {
           //console.log(obj);
-          this.setState({history: obj});
+          this.didLoad(obj);
         });
 
     var ws = new WebSocket('ws://192.168.10.1:8080');
@@ -34,6 +34,10 @@ class Main extends React.Component {
         var telemetry = JSON.parse(event.data);
         this.setState({telemetry: telemetry});
     }.bind(this);
+  }
+
+  didLoad(obj) {
+    this.setState({history: obj});
   }
 
   getHistory() {
