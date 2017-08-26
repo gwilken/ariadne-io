@@ -75,8 +75,7 @@ router.get('/quicklook/:family/:name/:time', function(req, res) {
         family: req.params.family,
       }
     },
-  }).sort({_id: -1})
-      .toArray(function(err, docs) {
+  }).toArray(function(err, docs) {
 
           if(err) {
             console.log(err);
