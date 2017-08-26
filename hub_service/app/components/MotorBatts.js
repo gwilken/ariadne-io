@@ -32,7 +32,7 @@ class MotorBatts extends React.Component {
     var motorBatt2 = this.props.data.filter((elem) => {return elem.displayName === 'Motor Battery 2'});
 
     if(motorBatt2.length > 0) {
-      batt1Comp = (
+      batt2Comp = (
         <RealtimeLine
           data={motorBatt2[0].data[0].data.toFixed(3)}
           family={this.props.data[0].family}
@@ -47,7 +47,7 @@ class MotorBatts extends React.Component {
     var motorBatt3 = this.props.data.filter((elem) => {return elem.displayName === 'Motor Battery 3'});
 
     if(motorBatt3.length > 0) {
-      batt1Comp = (
+      batt3Comp = (
         <RealtimeLine
           data={motorBatt3[0].data[0].data.toFixed(3)}
           family={this.props.data[0].family}
@@ -62,7 +62,7 @@ class MotorBatts extends React.Component {
     var motorBatt4 = this.props.data.filter((elem) => {return elem.displayName === 'Motor Battery 4'});
 
     if(motorBatt4.length > 0) {
-      batt1Comp = (
+      batt4Comp = (
         <RealtimeLine
           data={motorBatt4[0].data[0].data.toFixed(3)}
           family={this.props.data[0].family}
