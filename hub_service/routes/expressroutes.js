@@ -62,11 +62,13 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
   });
 })
 
-router.get('/quicklook/:family/:name/:num', function(req, res) {
+router.get('/quicklook/:family/:name/:time', function(req, res) {
 
-  var num = parseInt(req.params.num);
+  var time = Date.now() - (parseInt(req.params.time) * 60000);
 
-  mongo.collection.find({}, {
+  mongo.collection.find({
+    createdAt: { $gt: time }
+  }, {
     _id: 0,
     telemetry: {
       $elemMatch: {
@@ -74,7 +76,6 @@ router.get('/quicklook/:family/:name/:num', function(req, res) {
       }
     },
   }).sort({_id: -1})
-    .limit(num)
       .toArray(function(err, docs) {
 
           if(err) {
