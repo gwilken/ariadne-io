@@ -32,48 +32,48 @@ class MotorBatts extends React.Component {
         />
       )
     }
-    //
-    // if(motorBatt2.length > 0) {
-    //   var motorBatt2Voltage = motorBatt2[0].data.filter((elem) => {return elem.sensor === "voltage"});
-    //   batt2Comp = (
-    //     <RealtimeLine
-    //       data={motorBatt2Voltage[0].data}
-    //       family={this.props.data[0].family}
-    //       displayName={motorBatt2Voltage[0].displayName}
-    //       unit={motorBatt2Voltage[0].unit}
-    //       color={this.props.color}
-    //       range={{low: 10, high: 14.5}}
-    //     />
-    //   )
-    // }
-    //
-    // if(motorBatt3.length > 0) {
-    //   var motorBatt3Voltage = motorBatt3[0].data.filter((elem) => {return elem.sensor === "voltage"});
-    //   batt3Comp = (
-    //     <RealtimeLine
-    //       data={motorBatt3Voltage[0].data}
-    //       family={this.props.data[0].family}
-    //       displayName={motorBatt3Voltage[0].displayName}
-    //       unit={motorBatt3Voltage[0].unit}
-    //       color={this.props.color}
-    //       range={{low: 10, high: 14.5}}
-    //     />
-    //   )
-    // }
-    //
-    // if(motorBatt4.length > 0) {
-    //   var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
-    //   batt4Comp = (
-    //     <RealtimeLine
-    //       data={motorBatt4Voltage[0].data}
-    //       family={this.props.data[0].family}
-    //       displayName={motorBatt4Voltage[0].displayName}
-    //       unit={motorBatt4Voltage[0].unit}
-    //       color={this.props.color}
-    //       range={{low: 10, high: 14.5}}
-    //     />
-    //   )
-    // }
+
+    if(motorBatt2.length > 0) {
+      var motorBatt2Voltage = motorBatt2[0].data.filter((elem) => {return elem.sensor === "voltage"});
+      batt2Comp = (
+        <RealtimeLine
+          data={motorBatt2Voltage[0].data}
+          family={this.props.data[0].family}
+          displayName={motorBatt2Voltage[0].displayName}
+          unit={motorBatt2Voltage[0].unit}
+          color={this.props.color}
+          range={{low: 10, high: 14.5}}
+        />
+      )
+    }
+
+    if(motorBatt3.length > 0) {
+      var motorBatt3Voltage = motorBatt3[0].data.filter((elem) => {return elem.sensor === "voltage"});
+      batt3Comp = (
+        <RealtimeLine
+          data={motorBatt3Voltage[0].data}
+          family={this.props.data[0].family}
+          displayName={motorBatt3Voltage[0].displayName}
+          unit={motorBatt3Voltage[0].unit}
+          color={this.props.color}
+          range={{low: 10, high: 14.5}}
+        />
+      )
+    }
+
+    if(motorBatt4.length > 0) {
+      var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
+      batt4Comp = (
+        <RealtimeLine
+          data={motorBatt4Voltage[0].data}
+          family={this.props.data[0].family}
+          displayName={motorBatt4Voltage[0].displayName}
+          unit={motorBatt4Voltage[0].unit}
+          color={this.props.color}
+          range={{low: 10, high: 14.5}}
+        />
+      )
+    }
 
 
     return (
