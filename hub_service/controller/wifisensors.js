@@ -12,7 +12,7 @@ const sensorServer = net.createServer(function(socket) {
     try {
       packet = JSON.parse(data);
 
-      console.log(JSON.stringify(packet, null, 2));
+    //  console.log(JSON.stringify(packet, null, 2));
 
       var list = telemetry.map((elem) => { return elem.displayName; })
 
