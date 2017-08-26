@@ -18,13 +18,14 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
     telemetry: { $elemMatch: { family: req.params.family, } },
   }).toArray(function(err, docs) {
 
-    for(var x = 0; x < docs.length; x++) {
-      console.log(docs[x].telemetry[0].family);
+    console.log(req.params.family, req.params.name, docs.length);
 
-    }
+    // for(var x = 0; x < docs.length; x++) {
+    //   console.log(docs[x].telemetry[0].family);
+    // }
 
     res.end();
-    // 
+    //
     // if(err) {
     //   console.log(err);
     //   res.end();
