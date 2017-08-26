@@ -23,7 +23,7 @@ class MotorBatts extends React.Component {
       var motorBatt1Voltage = motorBatt1[0].data.filter((elem) => {return elem.sensor === "voltage"});
       batt1Comp = (
         <RealtimeLine
-          data={motorBatt1Voltage[0].data}
+          data={motorBatt1Voltage[0].data.toFixed(2)}
           family={this.props.data[0].family}
           displayName={motorBatt1Voltage[0].displayName}
           unit={motorBatt1Voltage[0].unit}
