@@ -2,6 +2,8 @@ import React from "react";
 import History from "./History";
 import {Line} from 'react-chartjs-2';
 
+var tempArr = [];
+
 class RealtimeLine extends React.Component {
 
   constructor(props) {
@@ -9,8 +11,7 @@ class RealtimeLine extends React.Component {
 
     this.state = {
       history: null,
-      data: [],
-      ticker: []
+      data: []
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -29,9 +30,10 @@ class RealtimeLine extends React.Component {
 
   didLoad(obj) {
     this.setState({
-        data: obj.data,
-        ticker: obj.data
+        data: obj.data
       });
+
+    tempArr = obj.data.slice();
 
     //setInterval( this.refresh, 30000);
   }
@@ -63,7 +65,6 @@ class RealtimeLine extends React.Component {
 
   render() {
 
-    var tempArr = this.state.data.slice();
     tempArr.shift();
     tempArr.push(this.props.data);
 
