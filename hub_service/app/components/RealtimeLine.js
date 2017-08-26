@@ -67,8 +67,6 @@ class RealtimeLine extends React.Component {
 
   render() {
 
-    console.log(tempArr);
-
     var chart = null;
 
     var options = {
