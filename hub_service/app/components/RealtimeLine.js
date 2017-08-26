@@ -9,6 +9,7 @@ class RealtimeLine extends React.Component {
 
     this.state = {
       history: null,
+      ticker: [],
       data: []
     }
 
@@ -30,17 +31,20 @@ class RealtimeLine extends React.Component {
     this.setState({
         data: obj.data
       });
-    //setInterval( this.refresh, 30000);
+    setInterval( this.refresh, 10000);
   }
 
   componentWillReceiveProps() {
     var tempArr = this.state.data.slice();
     tempArr.push(this.props.data);
     tempArr.shift();
-    this.setState({data: tempArr});
+    this.setState({ticker: tempArr});
   }
 
   refresh() {
+
+    this.setState({data: this.state.ticker.slice()})
+
     // fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
     //   .then((res) => res.json())
     //     .then((obj) => {
@@ -72,7 +76,7 @@ class RealtimeLine extends React.Component {
     var options = {
       onClick: this.handleClick,
       animation: {
-        duration: 0,
+        duration: 300,
         easing: 'linear',
       },
       layout: {
