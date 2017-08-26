@@ -1,5 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+import RealtimeLine from "./RealtimeLine";
 import History from "./History";
 
 class House extends React.Component {
@@ -21,7 +21,7 @@ class House extends React.Component {
 
         <div className="family-container">
 
-          <RealtimeBar
+          <RealtimeLine
             data={volts}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
@@ -30,7 +30,7 @@ class House extends React.Component {
             range={{low: 10, high: 14.5}}
           />
 
-          <RealtimeBar
+          <RealtimeLine
             data={current}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
