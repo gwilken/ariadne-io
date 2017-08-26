@@ -9,11 +9,13 @@ class MotorBattery extends React.Component {
 
   render() {
 
+    var volts = this.props.data[0].data[0].data.toFixed(3);
+
     return (
       <div>
 
           <RealtimeLine
-            data={this.props.data[0].data[0].data.toFixed(3)}
+            data={volts}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
             unit={this.props.data[0].data[0].unit}
