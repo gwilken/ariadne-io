@@ -50,6 +50,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         sorted = arr.sort((a, b) => { return a - b; } );
         average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
 
+        console.log(data);
+
       } catch(err) {
         console.log(err);
       }
