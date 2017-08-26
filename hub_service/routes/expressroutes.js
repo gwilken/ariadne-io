@@ -20,6 +20,8 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
 
     console.log(req.params.family, req.params.name, docs.length);
 
+    console.log( JSON.stringify(docs[0]) );
+
     // for(var x = 0; x < docs.length; x++) {
     //   console.log(docs[x].telemetry[0].family);
     // }
