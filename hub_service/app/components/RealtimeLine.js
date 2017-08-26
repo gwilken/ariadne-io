@@ -63,13 +63,11 @@ class RealtimeLine extends React.Component {
 
   render() {
 
-    var tempArr = this.state.ticker.slice();
+    var tempArr = this.state.data.slice();
     tempArr.shift();
     tempArr.push(this.props.data);
 
-    this.setState({ticker: tempArr});
-
-    console.log(this.state.ticker);
+    console.log(tempArr);
 
     var chart = null;
 
