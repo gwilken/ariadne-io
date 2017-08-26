@@ -117,7 +117,7 @@ class RealtimeLine extends React.Component {
     if(this.state.data.length > 0) {
 
       var data = {
-        labels: this.state.data,
+        labels: tempArr,
         datasets: [
             {
               fill: true,
@@ -125,7 +125,7 @@ class RealtimeLine extends React.Component {
               borderWidth: 2,
               lineTension: 0.2,
               pointRadius: 0,
-              data: this.state.data
+              data: tempArr
             }
          ]
       }
