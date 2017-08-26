@@ -22,7 +22,7 @@ class MotorBatts extends React.Component {
         <RealtimeLine
           data={motorBatt1[0].data[0].data.toFixed(3)}
           family={this.props.data[0].family}
-          displayName={motorBatt1Voltage[0].displayName}
+          displayName={motorBatt1[0].data[0].displayName}
           unit={motorBatt1[0].data[0].unit}
           color={this.props.color}
           range={{low: 10, high: 14.5}}
