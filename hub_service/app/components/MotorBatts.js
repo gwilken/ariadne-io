@@ -23,7 +23,7 @@ class MotorBatts extends React.Component {
       var motorBatt1Voltage = motorBatt1[0].data.filter((elem) => {return elem.sensor === "voltage"});
       batt1Comp = (
         <RealtimeLine
-          data={motorBatt1Voltage[0].data.toFixed(2)}
+          data={motorBatt1Voltage[0].data.toFixed(3)}
           family={this.props.data[0].family}
           displayName={motorBatt1Voltage[0].displayName}
           unit={motorBatt1Voltage[0].unit}
@@ -37,7 +37,7 @@ class MotorBatts extends React.Component {
       var motorBatt2Voltage = motorBatt2[0].data.filter((elem) => {return elem.sensor === "voltage"});
       batt2Comp = (
         <RealtimeLine
-          data={motorBatt2Voltage[0].data}
+          data={motorBatt2Voltage[0].data.toFixed(3)}
           family={this.props.data[0].family}
           displayName={motorBatt2Voltage[0].displayName}
           unit={motorBatt2Voltage[0].unit}
@@ -51,7 +51,7 @@ class MotorBatts extends React.Component {
       var motorBatt3Voltage = motorBatt3[0].data.filter((elem) => {return elem.sensor === "voltage"});
       batt3Comp = (
         <RealtimeLine
-          data={motorBatt3Voltage[0].data}
+          data={motorBatt3Voltage[0].data.toFixed(3)}
           family={this.props.data[0].family}
           displayName={motorBatt3Voltage[0].displayName}
           unit={motorBatt3Voltage[0].unit}
@@ -65,7 +65,7 @@ class MotorBatts extends React.Component {
       var motorBatt4Voltage = motorBatt4[0].data.filter((elem) => {return elem.sensor === "voltage"});
       batt4Comp = (
         <RealtimeLine
-          data={motorBatt4Voltage[0].data}
+          data={motorBatt4Voltage[0].data.toFixed(3)}
           family={this.props.data[0].family}
           displayName={motorBatt4Voltage[0].displayName}
           unit={motorBatt4Voltage[0].unit}
