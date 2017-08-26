@@ -1,5 +1,4 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
 import History from "./History";
 import RealtimeLine from "./RealtimeLine"
 
