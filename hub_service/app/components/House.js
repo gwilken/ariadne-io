@@ -11,14 +11,14 @@ class House extends React.Component {
 
   render() {
 
-    var house = this.props.data.filter((elem) => return elem.displayName === 'House');
+  //  var house = this.props.data.filter((elem) => return elem.displayName === 'House');
   //  var fridge = this.props.data.filter((elem) => return elem.displayName === 'Refrigerator');
 
 //    var volts = this.props.data.filter((elem) => {return elem.sensor === 'voltage'});
     //var volts = this.props.data[0].data[0].data.toFixed(2);
   //  var current = this.props.data[0].data[1].data.toFixed(0);
 
-    if(house) console.log(house);
+    if(this.props.data) console.log(this.props.data);
   //  if(fridge) console.log(fridge);
 
 
