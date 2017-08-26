@@ -39,13 +39,17 @@ class RealtimeLine extends React.Component {
   }
 
   refresh() {
-    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
-      .then((res) => res.json())
-        .then((obj) => {
-          this.setState({
-              data: obj.data
-            });
-        });
+    // fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
+    //   .then((res) => res.json())
+    //     .then((obj) => {
+    //       this.setState({
+    //           data: obj.data
+    //         });
+    //     });
+    tempArr.push(this.props.data);
+    tempArr.shift();
+
+    return(tempArr);
   }
 
   handleClick() {
@@ -64,9 +68,6 @@ class RealtimeLine extends React.Component {
   }
 
   render() {
-
-    tempArr.push(this.props.data);
-    tempArr.shift();
 
     console.log(tempArr);
 
@@ -117,7 +118,7 @@ class RealtimeLine extends React.Component {
     if(this.state.data.length > 0) {
 
       var data = {
-        labels: tempArr,
+        labels: this.refresh,
         datasets: [
             {
               fill: true,
@@ -125,7 +126,7 @@ class RealtimeLine extends React.Component {
               borderWidth: 2,
               lineTension: 0.2,
               pointRadius: 0,
-              data: tempArr
+              data: this.refresh
             }
          ]
       }
