@@ -23,13 +23,14 @@ class RealtimeLine extends React.Component {
     fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
       .then((res) => res.json())
         .then((obj) => {
+          console.log(obj);
             this.didLoad(obj);
         });
   };
 
   didLoad(obj) {
     this.setState({
-        data: obj.data
+        data: obj[0].data
       });
     setInterval( this.refresh, 10000);
   }
