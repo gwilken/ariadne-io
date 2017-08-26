@@ -30,7 +30,7 @@ class RealtimeLine extends React.Component {
 
   didLoad(obj) {
     this.setState({
-        data: obj.data
+        data: obj[0].data
       });
     setInterval( this.refresh, 10000);
   }
