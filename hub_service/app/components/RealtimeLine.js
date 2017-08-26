@@ -65,8 +65,8 @@ class RealtimeLine extends React.Component {
 
   render() {
 
-    tempArr.shift();
     tempArr.push(this.props.data);
+    tempArr.shift();
 
     console.log(tempArr);
 
