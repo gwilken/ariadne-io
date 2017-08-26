@@ -11,7 +11,9 @@ class House extends React.Component {
 
   render() {
 
-    var volts = this.props.data[0].data[0].data.toFixed(2);
+    var volts = this.props.data.filter((elem) => {return elem.displayName === 'Battery Voltage'});
+
+    //var volts = this.props.data[0].data[0].data.toFixed(2);
     var current = this.props.data[0].data[1].data.toFixed(0);
 
     return (
@@ -23,7 +25,7 @@ class House extends React.Component {
         <div className="family-container">
 
           <RealtimeLine
-            data={volts}
+            data={volts[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
             unit={this.props.data[0].data[0].unit}
