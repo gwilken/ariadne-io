@@ -56,16 +56,18 @@ router.get('/telemetry/:family/:name/:time', function(req, res) {
         console.log(err);
       }
 
-      var response = {
-        data: data,
-        family: req.params.family,
-        name: req.params.name,
-        high: sorted[docs.length - 1].toFixed(2),
-        low: sorted[0].toFixed(2),
-        average: average.toFixed(2)
-      }
+      res.end();
 
-      res.json(response);
+      // var response = {
+      //   data: data,
+      //   family: req.params.family,
+      //   name: req.params.name,
+      //   high: sorted[docs.length - 1].toFixed(2),
+      //   low: sorted[0].toFixed(2),
+      //   average: average.toFixed(2)
+      // }
+      //
+      // res.json(response);
       }
   });
 })
