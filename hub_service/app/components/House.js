@@ -8,6 +8,10 @@ class House extends React.Component {
     super(props);
   }
 
+  onComponentDidMount() {
+    console.log(this.props.history);
+  }
+
   render() {
 
    var house = this.props.data.filter((elem) => {return elem.displayName === 'House'});
