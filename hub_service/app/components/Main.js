@@ -12,7 +12,7 @@ class Main extends React.Component {
     super();
 
     this.state = {
-      history: [],
+      history: null,
       telemetry: []
     }
 
@@ -24,7 +24,6 @@ class Main extends React.Component {
     fetch('/all/60')
       .then((res) => res.json())
         .then((obj) => {
-          //console.log(obj);
           this.didLoad(obj);
         });
 
@@ -109,15 +108,21 @@ class Main extends React.Component {
       )
     }
 
+    if(this.state.history) {
+      var display = (
+        <div className="mainContainer">
+            {house}
+            {solar}
+            {enviro}
+            {gps}
+            {motor}
+            {motorbatts}
+          </div>
+        )
+    } else var display = null;
+
     return (
-      <div className="mainContainer">
-        {house}
-        {solar}
-        {enviro}
-        {gps}
-        {motor}
-        {motorbatts}
-      </div>
+      {display}
     )
 
   }
