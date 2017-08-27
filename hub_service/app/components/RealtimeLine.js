@@ -48,11 +48,7 @@ class RealtimeLine extends React.Component {
 
         return elem2.data.forEach(function(elem3) {
 
-          return elem3.filter(function(elem4) {
-
-            return elem4.displayName === name;
-
-          })
+          if(elem3.displayName === name) return elem3;
 
         });
       });
