@@ -86,7 +86,7 @@ class Main extends React.Component {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
       motorbatts = (
         <div className="component-container">
-          <MotorBatteryGroup data={data} color="orange" history={this.getHistory}/>
+          <MotorBatteryGroup data={data} color="darkorange" history={this.getHistory}/>
         </div>
       )
     }
