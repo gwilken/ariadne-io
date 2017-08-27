@@ -93,7 +93,7 @@ class RealtimeLine extends React.Component {
     var options = {
       onClick: this.handleClick,
       animation: {
-        duration: 300,
+        duration: 200,
         easing: 'linear',
       },
       layout: {
