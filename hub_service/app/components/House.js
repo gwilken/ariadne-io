@@ -8,9 +8,9 @@ class House extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    console.log(this.props.history());
-  }
+  // componentDidMount() {
+  //   console.log(this.props.history());
+  // }
 
   render() {
 
@@ -30,15 +30,16 @@ class House extends React.Component {
         <div className="family-container">
 
            <RealtimeLine
+            history={this.props.history}
             data={houseVoltage[0].data.toFixed(2)}
-            family={this.props.data[0].family}
+            family={'house'}
             displayName={houseVoltage[0].displayName}
             unit={houseVoltage[0].unit}
             color={this.props.color}
             range={{low: 10, high: 14.5}}
           />
 
-          <RealtimeLine
+          {/* <RealtimeLine
            data={houseCurrent[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={houseCurrent[0].displayName}
@@ -54,7 +55,7 @@ class House extends React.Component {
            unit={'F'}
            color={this.props.color}
            range={{low: 32, high: 100}}
-          />
+          /> */}
 
         </div>
 

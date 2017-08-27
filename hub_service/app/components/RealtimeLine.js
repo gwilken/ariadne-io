@@ -20,12 +20,20 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
-      .then((res) => res.json())
-        .then((obj) => {
-          //console.log(obj);
-          this.didLoad(obj);
-        });
+    // fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
+    //   .then((res) => res.json())
+    //     .then((obj) => {
+    //       //console.log(obj);
+    //       this.didLoad(obj);
+    //     });
+
+    var docs = this.props.history();
+    var filteredDocs = docs.filter((elem) => {
+      return elem.telemetry.family === this.props.family;
+    })
+
+    console.log(filteredDocs);
+
   };
 
   didLoad(obj) {
