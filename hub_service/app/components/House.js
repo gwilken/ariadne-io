@@ -32,7 +32,7 @@ class House extends React.Component {
            <RealtimeLine
             history={this.props.history}
             data={houseVoltage[0].data.toFixed(2)}
-            family={'house'}
+            family={this.props.data[0].family}
             displayName={houseVoltage[0].displayName}
             unit={houseVoltage[0].unit}
             color={this.props.color}
