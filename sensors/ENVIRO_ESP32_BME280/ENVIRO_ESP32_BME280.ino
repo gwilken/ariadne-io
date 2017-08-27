@@ -91,7 +91,7 @@ void loop() {
     temperature["sensor"] = "temp";
     temperature["displayName"] = "Temperature";
     temperature["data"] = temp;
-    temperature["unit"] = "C";
+    temperature["unit"] = "F";
 
     JsonObject& humidity = data.createNestedObject();
     humidity["sensor"] = "humidity";
@@ -108,7 +108,7 @@ void loop() {
     JsonObject& windspeed = data.createNestedObject();
     windspeed["sensor"] = "windspeed";
     windspeed["displayName"] = "Wind Speed";
-    windspeed["data"] = (wind - 819) * (32 - 0) / (4096 - 819) + 0;
+    windspeed["data"] = wind;
     windspeed["unit"] = "m/s";
  
     char buffer[512];
@@ -143,10 +143,12 @@ void connectToHub() {
 
 void getReadings() {
      
-    temp = bme.readTemperature();
+    temp = bme.readTemperature() * 1.8 + 32;
     pres = bme.readPressure() / 100.0F;
     humid = bme.readHumidity();
-    wind = analogRead(A4);
+    wind = ( ((analogRead(A4) - 819) * 32) / 3277);
+
+    if(wind < 0) wind = 0;
 
     Serial.print("Temperature: ");
     Serial.print(temp);
