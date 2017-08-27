@@ -11,6 +11,8 @@ router.get('/all/:time', function(req, res) {
 
   mongo.collection.find({
     "createdAt": { $gt: time}
+  }).map(function(elem) {
+    return elem.telemetry;
   }).toArray(function(err, docs) {
     res.json(docs);
   })

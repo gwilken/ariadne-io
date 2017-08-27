@@ -21,11 +21,11 @@ class RealtimeLine extends React.Component {
 
   componentDidMount() {
 
-    var mapDocs = this.props.history().map((elem) => {
-      return elem.telemetry;
-    })
+    // var mapDocs = this.props.history().map((elem) => {
+    //   return elem.telemetry;
+    // })
 
-    var familyDocs = mapDocs.map((elem) => {
+    var familyDocs = this.props.history().map((elem) => {
       return elem.filter((elem2) => {
           return elem2.family === this.props.family;
         })
