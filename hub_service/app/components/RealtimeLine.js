@@ -38,10 +38,10 @@ class RealtimeLine extends React.Component {
 
     var filterDocs = mapDocs.filter((elem) => {
 
-      elem.family === this.props.family;
+      return elem.family === this.props.family;
 
     })
-    
+
     console.log('filter', filterDocs);
 
 
