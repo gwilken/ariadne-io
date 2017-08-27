@@ -9,7 +9,7 @@ class MotorBattery extends React.Component {
 
   render() {
 
-    var volts = this.props.data[0].data[0].data.toFixed(3);
+    var volts = this.props.data[0].data[0].data.toFixed(2);
 
     return (
       <div>
