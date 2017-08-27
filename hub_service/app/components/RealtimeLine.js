@@ -15,7 +15,6 @@ class RealtimeLine extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.deleteHistory = this.deleteHistory.bind(this);
-    this.didLoad = this.didLoad.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
