@@ -66,6 +66,8 @@ class RealtimeLine extends React.Component {
 
     console.log('filter', res);
 
+    setInterval( this.refresh, 10000);
+
   };
 
   didLoad(obj) {

@@ -39,7 +39,7 @@ class House extends React.Component {
             range={{low: 10, high: 14.5}}
           />
 
-          {/* <RealtimeLine
+          <RealtimeLine
            data={houseCurrent[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={houseCurrent[0].displayName}
@@ -55,7 +55,7 @@ class House extends React.Component {
            unit={'F'}
            color={this.props.color}
            range={{low: 32, high: 100}}
-          /> */}
+          />
 
         </div>
 
