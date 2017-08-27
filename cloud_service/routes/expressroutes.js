@@ -5,6 +5,18 @@ const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
+router.get('/all/:time', function(req, res) {
+
+  var time = Date.now() - (parseInt(req.params.time) * 60000);
+
+  mongo.collection.find({
+    "createdAt": { $gt: time}
+  }).toArray(function(err, docs) {
+    res.json(docs);
+  })
+
+})
+
 router.get('/telemetry/:family/:name/:time', function(req, res) {
 
   var time = Date.now() - (parseInt(req.params.time) * 60000);

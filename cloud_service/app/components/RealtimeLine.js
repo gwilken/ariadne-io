@@ -20,12 +20,37 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
-      .then((res) => res.json())
-        .then((obj) => {
-          console.log(obj);
-            this.didLoad(obj);
+
+    var mapDocs = this.props.history().map((elem) => {
+      return elem.telemetry;
+    })
+
+    var familyDocs = mapDocs.map((elem) => {
+      return elem.filter((elem2) => {
+          return elem2.family === this.props.family;
+        })
+    })
+
+    var res = [];
+
+    familyDocs.forEach((elem) => {
+      elem.forEach((elem2) => {
+        elem2.data.forEach((elem3) => {
+          if(elem3.displayName === this.props.displayName) {
+            res.push(elem3)
+          }
         });
+      });
+    })
+
+    var data = res.map((elem) => {
+      return elem.data;
+    })
+
+    this.setState({data: data});
+
+    setInterval( this.refresh, 10000);
+
   };
 
   didLoad(obj) {
@@ -68,7 +93,7 @@ class RealtimeLine extends React.Component {
     var options = {
       onClick: this.handleClick,
       animation: {
-        duration: 300,
+        duration: 200,
         easing: 'linear',
       },
       layout: {

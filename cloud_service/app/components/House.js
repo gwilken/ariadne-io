@@ -8,6 +8,10 @@ class House extends React.Component {
     super(props);
   }
 
+  // componentDidMount() {
+  //   console.log(this.props.history());
+  // }
+
   render() {
 
    var house = this.props.data.filter((elem) => {return elem.displayName === 'House'});
@@ -26,6 +30,7 @@ class House extends React.Component {
         <div className="family-container">
 
            <RealtimeLine
+            history={this.props.history}
             data={houseVoltage[0].data.toFixed(2)}
             family={this.props.data[0].family}
             displayName={houseVoltage[0].displayName}
@@ -35,6 +40,7 @@ class House extends React.Component {
           />
 
           <RealtimeLine
+           history={this.props.history}
            data={houseCurrent[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={houseCurrent[0].displayName}
@@ -44,6 +50,7 @@ class House extends React.Component {
           />
 
           <RealtimeLine
+           history={this.props.history}
            data={beer[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={beer[0].displayName}
