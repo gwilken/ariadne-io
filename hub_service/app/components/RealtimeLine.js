@@ -49,7 +49,7 @@ class RealtimeLine extends React.Component {
     //   return elem.data;
     // })
 
-     var data = this.props.getHistory(this.state.family, this.state.displayName);
+     var data = this.props.history(this.state.family, this.state.displayName);
     //
     // this.setState({data: data });
     //
