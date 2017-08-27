@@ -47,7 +47,7 @@ class RealtimeLine extends React.Component {
     //   return elem.data;
     // })
 
-    this.setState({data: this.getHistory(this.props.family, this.props.displayName)});
+    this.setState({data: this.props.getHistory(this.props.family, this.props.displayName)});
 
     setInterval( this.refresh, 10000);
 
