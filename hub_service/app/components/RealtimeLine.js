@@ -25,29 +25,29 @@ class RealtimeLine extends React.Component {
     //   return elem.telemetry;
     // })
 
-    var familyDocs = this.props.history().map((elem) => {
-      return elem.filter((elem2) => {
-          return elem2.family === this.props.family;
-        })
-    })
+    // var familyDocs = this.props.history().map((elem) => {
+    //   return elem.filter((elem2) => {
+    //       return elem2.family === this.props.family;
+    //     })
+    // })
 
-    var res = [];
+    // var res = [];
+    //
+    // familyDocs.forEach((elem) => {
+    //   elem.forEach((elem2) => {
+    //     elem2.data.forEach((elem3) => {
+    //       if(elem3.displayName === this.props.displayName) {
+    //         res.push(elem3)
+    //       }
+    //     });
+    //   });
+    // })
 
-    familyDocs.forEach((elem) => {
-      elem.forEach((elem2) => {
-        elem2.data.forEach((elem3) => {
-          if(elem3.displayName === this.props.displayName) {
-            res.push(elem3)
-          }
-        });
-      });
-    })
+    // var data = res.map((elem) => {
+    //   return elem.data;
+    // })
 
-    var data = res.map((elem) => {
-      return elem.data;
-    })
-
-    this.setState({data: data});
+    this.setState({data: this.getHistory(this.props.family, this.props.displayName)});
 
     setInterval( this.refresh, 10000);
 
