@@ -30,6 +30,7 @@ class Motor extends React.Component {
         <h2>Electric Motor</h2>
 
           <RealtimeLine
+            history={this.props.history}
             data={bankVoltage[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[3].displayName}
@@ -39,6 +40,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
+            history={this.props.history}
             data={motorCurrent[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[2].displayName}
@@ -48,6 +50,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
+            history={this.props.history}
             data={motorTTD[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
@@ -57,6 +60,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
+            history={this.props.history}
             data={motorSOC[0].data.mapRange(0,255,0,100)}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
@@ -66,6 +70,7 @@ class Motor extends React.Component {
           />
 
           <RealtimeLine
+            history={this.props.history}
             data={motorRPM[0].data}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[4].displayName}

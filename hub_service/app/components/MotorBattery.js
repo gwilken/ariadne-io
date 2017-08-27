@@ -15,6 +15,7 @@ class MotorBattery extends React.Component {
       <div>
 
           <RealtimeLine
+            history={this.props.history}
             data={volts}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}

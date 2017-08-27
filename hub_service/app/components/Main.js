@@ -63,34 +63,34 @@ class Main extends React.Component {
         </div>
       )
     }
-    //
-    // if(list.includes('solar')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
-    //   solar = (
-    //     <div className="component-container">
-    //       <Solar data={data} color="gold"/>
-    //     </div>
-    //   )
-    // }
-    //
-    // if(list.includes('motor')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
-    //   motor = (
-    //     <div className="component-container">
-    //       <Motor data={data} color="firebrick"/>
-    //     </div>
-    //   )
-    // }
-    //
-    // if(list.includes('motorbatt')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
-    //   motorbatts = (
-    //     <div className="component-container">
-    //       <MotorBatteryGroup data={data} color="orange"/>
-    //     </div>
-    //   )
-    // }
-    //
+
+    if(list.includes('solar')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
+      solar = (
+        <div className="component-container">
+          <Solar data={data} color="gold" history={this.getHistory}/>
+        </div>
+      )
+    }
+
+    if(list.includes('motor')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
+      motor = (
+        <div className="component-container">
+          <Motor data={data} color="firebrick" history={this.getHistory}/>
+        </div>
+      )
+    }
+
+    if(list.includes('motorbatt')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
+      motorbatts = (
+        <div className="component-container">
+          <MotorBatteryGroup data={data} color="orange" history={this.getHistory}/>
+        </div>
+      )
+    }
+
     if(list.includes('enviro')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
       enviro = (
@@ -99,15 +99,15 @@ class Main extends React.Component {
         </div>
       )
     }
-    //
-    // if(list.includes('gps')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-    //   gps = (
-    //     <div className="component-container">
-    //       <Gps data={data} color="lightseagreen"/>
-    //     </div>
-    //   )
-    // }
+
+    if(list.includes('gps')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
+      gps = (
+        <div className="component-container">
+          <Gps data={data} color="lightseagreen" history={this.getHistory}/>
+        </div>
+      )
+    }
 
     return (
       <div className="mainContainer">

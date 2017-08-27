@@ -25,6 +25,7 @@ class Solar extends React.Component {
         <div className="family-container">
 
           <RealtimeLine
+            history={this.props.history}
             data={volts}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[0].displayName}
@@ -34,6 +35,7 @@ class Solar extends React.Component {
           />
 
           <RealtimeLine
+            history={this.props.history}
             data={current}
             family={this.props.data[0].family}
             displayName={this.props.data[0].data[1].displayName}
