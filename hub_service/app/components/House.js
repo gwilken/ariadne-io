@@ -40,6 +40,7 @@ class House extends React.Component {
           />
 
           <RealtimeLine
+           history={this.props.history}
            data={houseCurrent[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={houseCurrent[0].displayName}
@@ -49,6 +50,7 @@ class House extends React.Component {
           />
 
           <RealtimeLine
+           history={this.props.history}
            data={beer[0].data.toFixed(2)}
            family={this.props.data[0].family}
            displayName={beer[0].displayName}
