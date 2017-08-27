@@ -8,8 +8,6 @@ class RealtimeLine extends React.Component {
     super(props);
 
     this.state = {
-      // family: this.props.family,
-      // displayName: this.props.displayName,
       history: null,
       ticker: [],
       data: this.props.history(this.props.family, this.props.displayName)
@@ -22,49 +20,8 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-
-    // var mapDocs = this.props.history().map((elem) => {
-    //   return elem.telemetry;
-    // })
-
-    // var familyDocs = this.props.history().map((elem) => {
-    //   return elem.filter((elem2) => {
-    //       return elem2.family === this.props.family;
-    //     })
-    // })
-
-    // var res = [];
-    //
-    // familyDocs.forEach((elem) => {
-    //   elem.forEach((elem2) => {
-    //     elem2.data.forEach((elem3) => {
-    //       if(elem3.displayName === this.props.displayName) {
-    //         res.push(elem3)
-    //       }
-    //     });
-    //   });
-    // })
-
-    // var data = res.map((elem) => {
-    //   return elem.data;
-    // })
-
-     //var data = this.props.history(this.state.family, this.state.displayName);
-    //
-    // this.setState({data: data });
-    //
      setInterval( this.refresh, 10000);
-
-  //  console.log(data);
-
   };
-
-  didLoad(obj) {
-    this.setState({
-        data: obj[0].data
-      });
-    setInterval( this.refresh, 10000);
-  }
 
   componentWillReceiveProps() {
     var tempArr = this.state.data.slice();
