@@ -40,8 +40,6 @@ class RealtimeLine extends React.Component {
         })
     })
 
-    console.log('family', familyDocs);
-
     var res = [];
 
     familyDocs.forEach((elem) => {
@@ -63,8 +61,6 @@ class RealtimeLine extends React.Component {
     })
 
     this.setState({data: data});
-
-    console.log('filter', res);
 
     setInterval( this.refresh, 10000);
 

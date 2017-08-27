@@ -29,6 +29,7 @@ class Enviro extends React.Component {
       <div>
 
         <RealtimeLine
+          history={this.props.history}
           data={windKnots}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[3].displayName}
@@ -38,6 +39,7 @@ class Enviro extends React.Component {
         />
 
         <RealtimeLine
+          history={this.props.history}
           data={temp}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[0].displayName}
@@ -47,6 +49,7 @@ class Enviro extends React.Component {
         />
 
         <RealtimeLine
+          history={this.props.history}
           data={humidity}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[1].displayName}
@@ -56,6 +59,7 @@ class Enviro extends React.Component {
         />
 
         <RealtimeLine
+          history={this.props.history}
           data={pressure}
           family={this.props.data[0].family}
           displayName={this.props.data[0].data[2].displayName}

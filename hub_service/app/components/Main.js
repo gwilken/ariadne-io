@@ -91,14 +91,14 @@ class Main extends React.Component {
     //   )
     // }
     //
-    // if(list.includes('enviro')) {
-    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
-    //   enviro = (
-    //     <div className="component-container">
-    //       <Enviro data={data} color="darkviolet"/>
-    //     </div>
-    //   )
-    // }
+    if(list.includes('enviro')) {
+      var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
+      enviro = (
+        <div className="component-container">
+          <Enviro data={data} color="darkviolet" history={this.getHistory}/>
+        </div>
+      )
+    }
     //
     // if(list.includes('gps')) {
     //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
