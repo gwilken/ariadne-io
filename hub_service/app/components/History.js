@@ -144,7 +144,7 @@ class History extends React.Component {
 
       <div className="family-container">
 
-        <h3>{displayTime} -> Now</h3>
+        <h3>{displayTime} to now</h3>
 
         <div className="historyContainer">
           <div className="historyGraph" onClick={this.handleClick}>
