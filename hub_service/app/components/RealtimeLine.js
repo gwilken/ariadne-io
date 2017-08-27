@@ -48,7 +48,7 @@ class RealtimeLine extends React.Component {
 
         elem2.data.forEach(function(elem3) {
 
-          elem3.filter(function(elem4) => {
+          elem3.filter(function(elem4) {
 
             console.log(elem4);
 
