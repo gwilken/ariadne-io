@@ -45,16 +45,17 @@ h4 {
 
 .title {
   position: absolute;
-  top: -6px;
-  font-size: 19px;
+  top: -17px;
+  left: 0px;
+  font-size: 18px;
   color: white;
 }
 
 .rtData {
   position: absolute;
-  right: 14px;
-  top: -25px;
-  font-size: 60px;
+  right: 23px;
+  top: -22px;
+  font-size: 38px;
   color: white;
 }
 
