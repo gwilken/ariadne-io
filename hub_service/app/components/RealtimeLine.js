@@ -27,6 +27,7 @@ class RealtimeLine extends React.Component {
     //       this.didLoad(obj);
     //     });
 
+
     var docs = this.props.history();
 
     var mapDocs = docs.map((elem) => {
@@ -41,19 +42,21 @@ class RealtimeLine extends React.Component {
 
     console.log('family', familyDocs);
 
-    var res = familyDocs.forEach( (elem) => {
+    var res = [];
 
-      return elem.forEach( (elem2) => {
+    familyDocs.forEach((elem) => {
 
-        return elem2.data.filter((elem3) => {
+      elem.forEach((elem2) => {
 
-          return elem3.displayName === this.props.displayName;
+        elem2.data.forEach((elem3) => {
 
-        });
+          if(elem3.displayName === this.props.displayName) {
+            res.push(elem3)
+          }
 
         });
       });
-
+    })
 
 
     console.log('filter', res);
