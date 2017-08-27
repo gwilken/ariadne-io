@@ -58,6 +58,11 @@ class RealtimeLine extends React.Component {
       });
     })
 
+    var data = res.map((elem) => {
+      return elem.data;
+    })
+
+    this.setState({data: data});
 
     console.log('filter', res);
 
