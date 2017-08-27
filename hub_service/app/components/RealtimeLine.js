@@ -43,10 +43,7 @@ class RealtimeLine extends React.Component {
 
     console.log('family', familyDocs);
 
-    var displayDocs = familyDocs.filter((elem) => {
-       return elem.forEach((elem2) => {
-
-         return elem2.data.forEach((elem3) => {
+    var displayDocs = familyDocs.filter(elem => elem.forEach(elem2 => elem2.data.forEach(elem3 => elem3.displayName === name)));
 
           // if(elem3.displayName === name) {
           //
@@ -54,11 +51,11 @@ class RealtimeLine extends React.Component {
           //
           // }
 
-          return elem3.displayName === name;
 
-        });
-      });
-    })
+    //
+    //     );
+    //   });
+    // })
 
 
     console.log('filter', displayDocs);
