@@ -8,9 +8,11 @@ class RealtimeLine extends React.Component {
     super(props);
 
     this.state = {
+      family: this.props.family,
+      displayName: this.props.displayName,
       history: null,
       ticker: [],
-      data: this.props.getHistory(this.props.family, this.props.displayName)
+      data: []
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -50,8 +52,10 @@ class RealtimeLine extends React.Component {
     // var data = this.props.getHistory(this.props.family, this.props.displayName);
     //
     // this.setState({data: data });
+    //
+    // setInterval( this.refresh, 10000);
 
-    setInterval( this.refresh, 10000);
+    console.log(this.state.family, this.state.displayName);
 
   };
 
