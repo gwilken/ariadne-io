@@ -10,55 +10,17 @@ class RealtimeLine extends React.Component {
     this.state = {
       history: null,
       ticker: [],
-      data: []
+      data: this.props.history(this.props.family, this.props.displayName)
     }
 
     this.handleClick = this.handleClick.bind(this);
     this.deleteHistory = this.deleteHistory.bind(this);
-    this.didLoad = this.didLoad.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
   componentDidMount() {
-
-    var mapDocs = this.props.history().map((elem) => {
-      return elem.telemetry;
-    })
-
-    var familyDocs = mapDocs.map((elem) => {
-      return elem.filter((elem2) => {
-          return elem2.family === this.props.family;
-        })
-    })
-
-    var res = [];
-
-    familyDocs.forEach((elem) => {
-      elem.forEach((elem2) => {
-        elem2.data.forEach((elem3) => {
-          if(elem3.displayName === this.props.displayName) {
-            res.push(elem3)
-          }
-        });
-      });
-    })
-
-    var data = res.map((elem) => {
-      return elem.data;
-    })
-
-    this.setState({data: data});
-
-    setInterval( this.refresh, 10000);
-
+     setInterval( this.refresh, 10000);
   };
-
-  didLoad(obj) {
-    this.setState({
-        data: obj[0].data
-      });
-    setInterval( this.refresh, 10000);
-  }
 
   componentWillReceiveProps() {
     var tempArr = this.state.data.slice();
