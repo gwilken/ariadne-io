@@ -49,13 +49,13 @@ class RealtimeLine extends React.Component {
     //   return elem.data;
     // })
 
-    // var data = this.props.getHistory(this.props.family, this.props.displayName);
+     var data = this.props.getHistory(this.state.family, this.state.displayName);
     //
     // this.setState({data: data });
     //
     // setInterval( this.refresh, 10000);
 
-    console.log(this.state.family, this.state.displayName);
+    console.log(data);
 
   };
 
