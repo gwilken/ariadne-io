@@ -41,18 +41,12 @@ class RealtimeLine extends React.Component {
 
     console.log('family', familyDocs);
 
-    var displayDocs = familyDocs.filter((elem) => {
-
-      return(elem.filter((elem2) => {
-
-         return (elem2.data.filter((elem3) => {
-
+    var displayDocs = familyDocs.filter(function(elem) {
+      return elem.forEach(function(elem2) {
+         return elem2.data.filter(function(elem3) {
           return elem3.displayName === this.props.displayName;
-
-        }));
-
-      }));
-
+        });
+      });
     })
 
 
