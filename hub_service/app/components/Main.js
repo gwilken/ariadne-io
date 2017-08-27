@@ -50,7 +50,8 @@ class Main extends React.Component {
         enviro,
         gps,
         motor,
-        motorbatts;
+        motorbatts,
+        display;
 
     var list = this.state.telemetry.map((elem) => { return elem.family; })
 
@@ -109,7 +110,7 @@ class Main extends React.Component {
     }
 
     if(this.state.history) {
-      var display = (
+      display = (
         <div className="mainContainer">
             {house}
             {solar}
@@ -119,7 +120,7 @@ class Main extends React.Component {
             {motorbatts}
           </div>
         )
-    } else var display = (<div> </div> );
+    } else display = (<div> </div> );
 
     return (
       {display}
