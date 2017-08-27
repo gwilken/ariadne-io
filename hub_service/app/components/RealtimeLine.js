@@ -30,13 +30,20 @@ class RealtimeLine extends React.Component {
     var docs = this.props.history();
     console.log('docs', docs);
 
-    var filteredDocs = docs.filter((elem) => {
-      return elem.telemetry.filter((elem2) => {
-        return elem2.family === this.props.family;
-      })
+    var mapDocs = docs.map((elem) => {
+      return elem.telemetry;
     })
 
-    console.log(filteredDocs);
+    console.log('map', mapDocs);
+
+    var filterDocs = mapDocs.filter((elem) => {
+
+      elem.family === this.props.family;
+
+    })
+    
+    console.log('filter', filterDocs);
+
 
   };
 
