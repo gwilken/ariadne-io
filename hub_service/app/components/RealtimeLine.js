@@ -43,13 +43,7 @@ class RealtimeLine extends React.Component {
 
     var displayDocs = familyDocs.filter((elem) => {
 
-    return elem.data.map((elem2) => {
-
-      return elem2.displayName === this.props.displayName;
-
-    })
-
-
+      console.log(elem);
 
     })
 
