@@ -123,7 +123,9 @@ class Main extends React.Component {
     } else display = (<div> </div> );
 
     return (
-      {display}
+      <div>
+        {display}
+      </div>
     )
 
   }
