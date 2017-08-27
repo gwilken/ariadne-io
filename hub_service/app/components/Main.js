@@ -119,7 +119,7 @@ class Main extends React.Component {
             {motorbatts}
           </div>
         )
-    } else var display = null;
+    } else var display = (<div> </div> );
 
     return (
       {display}
