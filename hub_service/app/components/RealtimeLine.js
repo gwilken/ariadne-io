@@ -43,7 +43,11 @@ class RealtimeLine extends React.Component {
 
     var displayDocs = familyDocs.filter((elem) => {
 
-      console.log(elem);
+      elem.filter((elem2) => {
+
+        console.log(elem2);
+
+      });
 
     })
 
