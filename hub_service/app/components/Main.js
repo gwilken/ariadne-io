@@ -20,7 +20,7 @@ class Main extends React.Component {
     this.getHistory = this.getHistory.bind(this);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('/all/60')
       .then((res) => res.json())
         .then((obj) => {

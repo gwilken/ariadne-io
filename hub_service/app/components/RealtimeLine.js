@@ -20,17 +20,8 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
-    // fetch(`/quicklook/${this.props.family}/${this.props.displayName}/60`)
-    //   .then((res) => res.json())
-    //     .then((obj) => {
-    //       //console.log(obj);
-    //       this.didLoad(obj);
-    //     });
 
-
-    var docs = this.props.history();
-
-    var mapDocs = docs.map((elem) => {
+    var mapDocs = this.props.history().map((elem) => {
       return elem.telemetry;
     })
 
@@ -43,15 +34,11 @@ class RealtimeLine extends React.Component {
     var res = [];
 
     familyDocs.forEach((elem) => {
-
       elem.forEach((elem2) => {
-
         elem2.data.forEach((elem3) => {
-
           if(elem3.displayName === this.props.displayName) {
             res.push(elem3)
           }
-
         });
       });
     })
