@@ -65,7 +65,7 @@ class History extends React.Component {
 
   render() {
     var time = this.state.time;
-    var displayTime = moment(Date.now() - time * 60000).fromNow();
+    var displayTime = moment(Date.now() - time * 60000).fromNow(true);
     var formatTime = () => displayTime;
 
     var chart = null;
@@ -144,7 +144,7 @@ class History extends React.Component {
 
       <div className="family-container">
 
-        <h3>{displayTime} to now</h3>
+        <h3>Last {displayTime}</h3>
 
         <div className="historyContainer">
           <div className="historyGraph" onClick={this.handleClick}>
