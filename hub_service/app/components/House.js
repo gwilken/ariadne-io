@@ -53,7 +53,7 @@ class House extends React.Component {
     beer = (
       <RealtimeLine
        history={this.props.history}
-       data={data}
+       data={data[0].data.toFixed(2)}
        family={this.props.data[0].family}
        displayName={displayName}
        unit={'F'}
