@@ -7,7 +7,7 @@ const router = new express.Router();
 
 router.get('/all/:time', function(req, res) {
 
-  var time = Date.now() - (parseInt(req.params.time) * 60000);
+  var time = Date.now() - (parseInt(req.params.time) * 600000);
 
   mongo.collection.find({
     "createdAt": { $gt: time}
