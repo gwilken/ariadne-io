@@ -8,10 +8,6 @@ class House extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   console.log(this.props.history());
-  // }
-
   render() {
 
    var house = this.props.data.filter((elem) => {return elem.displayName === 'House'});
@@ -52,7 +48,7 @@ class House extends React.Component {
 
    if(fridge.length > 0) {
     var data = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
-    var displayName = beer[0].displayName;
+    var displayName = data[0].displayName;
 
     beer = (
       <RealtimeLine
