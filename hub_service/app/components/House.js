@@ -18,8 +18,12 @@ class House extends React.Component {
    var houseVoltage = house[0].data.filter((elem) => {return elem.sensor === 'voltage'})
    var houseCurrent = house[0].data.filter((elem) => {return elem.sensor === 'current'})
 
-//   var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
-//   var beer = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
+   var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
+   var beer = null;
+
+  if(fridge.length > 0) {
+    beer = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
+  }
 
     return (
 
@@ -49,7 +53,7 @@ class House extends React.Component {
            range={{low: 0, high: 7500}}
           />
 
-          {/* <RealtimeLine
+          <RealtimeLine
            history={this.props.history}
            data={beer[0].data.toFixed(2)}
            family={this.props.data[0].family}
@@ -57,7 +61,7 @@ class House extends React.Component {
            unit={'F'}
            color={this.props.color}
            range={{low: 32, high: 100}}
-          /> */}
+          />
 
         </div>
 
