@@ -17,12 +17,25 @@ class House extends React.Component {
    var house = this.props.data.filter((elem) => {return elem.displayName === 'House'});
    var houseVoltage = house[0].data.filter((elem) => {return elem.sensor === 'voltage'})
    var houseCurrent = house[0].data.filter((elem) => {return elem.sensor === 'current'})
-
    var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
+
    var beer = null;
 
-  if(fridge.length > 0) {
-    beer = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
+   if(fridge.length > 0) {
+    var data = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
+    var displayName = beer[0].displayName;
+
+    beer = (
+      <RealtimeLine
+       history={this.props.history}
+       data={data}
+       family={this.props.data[0].family}
+       displayName={displayName}
+       unit={'F'}
+       color={this.props.color}
+       range={{low: 32, high: 100}}
+      />
+    )
   }
 
     return (
@@ -53,15 +66,7 @@ class House extends React.Component {
            range={{low: 0, high: 7500}}
           />
 
-          <RealtimeLine
-           history={this.props.history}
-           data={beer[0].data.toFixed(2)}
-           family={this.props.data[0].family}
-           displayName={beer[0].displayName}
-           unit={'F'}
-           color={this.props.color}
-           range={{low: 32, high: 100}}
-          />
+          {beer}
 
         </div>
 
