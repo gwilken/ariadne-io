@@ -41,7 +41,7 @@ class Main extends React.Component {
   }
 
   getHistory(family, name) {
-    console.log(
+    return
        this.state.history
       .reduce( (acc, cur) => acc.concat(cur))
       .filter( (item) => item.family === family)
@@ -50,7 +50,7 @@ class Main extends React.Component {
       .filter( (item) => item.displayName === name)
       .map( (item) => item.data)
       // .map( (item) => item.data)
-    )
+
     // var filterDocs = [];
     //
     // var familyDocs = this.state.history.map((elem) => {
