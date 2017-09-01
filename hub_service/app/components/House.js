@@ -14,7 +14,7 @@ class House extends React.Component {
    var volts = null;
    var current = null;
 
-   var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
+//   var fridge = this.props.data.filter((elem) => {return elem.displayName === 'Refrigerator'});
    var beer = null;
 
    if(house.length > 0) {
@@ -46,22 +46,22 @@ class House extends React.Component {
      )
    }
 
-   if(fridge.length > 0) {
-    var data = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
-    var displayName = data[0].displayName;
-
-    beer = (
-      <RealtimeLine
-       history={this.props.history}
-       data={data[0].data.toFixed(2)}
-       family={this.props.data[0].family}
-       displayName={displayName}
-       unit={'F'}
-       color={this.props.color}
-       range={{low: 32, high: 100}}
-      />
-    )
-  }
+  //  if(fridge.length > 0) {
+  //   var data = fridge[0].data.filter((elem) => {return elem.displayName === 'Beer Temperature'});
+  //   var displayName = data[0].displayName;
+  //
+  //   beer = (
+  //     <RealtimeLine
+  //      history={this.props.history}
+  //      data={data[0].data.toFixed(2)}
+  //      family={this.props.data[0].family}
+  //      displayName={displayName}
+  //      unit={'F'}
+  //      color={this.props.color}
+  //      range={{low: 32, high: 100}}
+  //     />
+  //   )
+  // }
 
     return (
 
