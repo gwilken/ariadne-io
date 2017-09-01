@@ -19,6 +19,7 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state.data);
      setInterval( this.refresh, 10000);
   };
 
