@@ -43,6 +43,7 @@ class Main extends React.Component {
   getHistory(family, name) {
     console.log (
        this.state.history
+       .map( (item) => item.telemetry )
     //  .reduce( (acc, cur) => acc.concat(cur))
     //  .filter( (item) => item.family === family)
     //  .map ( (item) => item.data )
