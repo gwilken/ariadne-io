@@ -41,16 +41,16 @@ class Main extends React.Component {
   }
 
   getHistory(family, name) {
-    console.log (
+    return
        this.state.history
        .map( (item) => item.telemetry )
        .reduce( (acc, cur) => acc.concat(cur))
        .filter( (item) => item.family === family)
        .map ( (item) => item.data )
        .reduce( (acc, cur) => acc.concat(cur))
-      // .filter( (item) => item.displayName === name)
-      // .map( (item) => item.data)
-    )
+       .filter( (item) => item.displayName === name)
+       .map( (item) => item.data);
+
       // .map( (item) => item.data)
 
     // var filterDocs = [];
