@@ -19,14 +19,17 @@ class RealtimeLine extends React.Component {
   }
 
   componentDidMount() {
+     this.setState({ticker: this.state.data});
      setInterval( this.refresh, 10000);
   };
 
   componentWillReceiveProps() {
-    var tempArr = this.state.data.slice();
-    tempArr.push(this.props.data);
-    tempArr.shift();
-    this.setState({ticker: tempArr});
+    if(this.state.data.length > 0) {
+      var tempArr = this.state.data.slice();
+      tempArr.push(this.props.data);
+      tempArr.shift();
+      this.setState({ticker: tempArr});
+    }
   }
 
   refresh() {
@@ -94,7 +97,7 @@ class RealtimeLine extends React.Component {
       },
     };
 
-    if(this.state.data.length > 0) {
+  //  if(this.state.data.length > 0) {
 
       var data = {
         labels: this.state.data,
@@ -117,7 +120,7 @@ class RealtimeLine extends React.Component {
             height={140}
         />
       )
-    }
+  //  }
 
 
     return(

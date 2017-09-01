@@ -40,29 +40,16 @@ class Main extends React.Component {
   }
 
   getHistory(family, name) {
-    var filterDocs = [];
-
-    var familyDocs = this.state.history.map((elem) => {
-      return elem.filter((elem2) => {
-          return elem2.family === family;
-        })
-    })
-
-    familyDocs.forEach((elem) => {
-      elem.forEach((elem2) => {
-        elem2.data.forEach((elem3) => {
-          if(elem3.displayName === name) {
-            filterDocs.push(elem3)
-          }
-        });
-      });
-    })
-
-    var res = filterDocs.map((elem) => {
-      return elem.data;
-    })
-
-    return(res);
+    return (
+       this.state.history
+       .map( (item) => item.telemetry )
+       .reduce( (acc, cur) => acc.concat(cur))
+       .filter( (item) => item.family === family)
+       .map ( (item) => item.data )
+       .reduce( (acc, cur) => acc.concat(cur))
+       .filter( (item) => item.displayName === name)
+       .map( (item) => item.data)
+     );
   }
 
   render() {
