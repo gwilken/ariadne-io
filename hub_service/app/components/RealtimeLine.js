@@ -95,7 +95,7 @@ class RealtimeLine extends React.Component {
       },
     };
 
-    if(this.state.data.length > 0) {
+  //  if(this.state.data.length > 0) {
 
       var data = {
         labels: this.state.data,
@@ -118,7 +118,7 @@ class RealtimeLine extends React.Component {
             height={140}
         />
       )
-    }
+  //  }
 
 
     return(
