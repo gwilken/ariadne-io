@@ -144,7 +144,7 @@ class Main extends React.Component {
       )
     }
 
-    if(this.state.history.length > 0) {
+    if(this.state.history.length) {
       display = (
         <div className="mainContainer">
             {house}
