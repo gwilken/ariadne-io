@@ -42,7 +42,7 @@ class Main extends React.Component {
 
   getHistory(family, name) {
     console.log(
-       telemetry
+       this.state.history
       .filter( (item) => item.family === family)
       .filter( (item) => item.displayName === name)
       .map( (item) => item.data)
