@@ -45,12 +45,11 @@ class Main extends React.Component {
        this.state.history
        .map( (item) => item.telemetry )
        .reduce( (acc, cur) => acc.concat(cur))
-    //  .filter( (item) => item.family === family)
-    //  .map ( (item) => item.data )
-    //  .reduce( (acc, cur) => acc.concat(cur))
-    //  .filter( (item) => item.displayName === name)
-    //  .map( (item) => item.data)
-
+       .filter( (item) => item.family === family)
+       .map ( (item) => item.data )
+       .reduce( (acc, cur) => acc.concat(cur))
+       .filter( (item) => item.displayName === name)
+       .map( (item) => item.data)
     )
       // .map( (item) => item.data)
 
