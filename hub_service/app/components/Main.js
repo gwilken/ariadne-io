@@ -44,7 +44,7 @@ class Main extends React.Component {
     console.log(
        this.state.history
       .filter( (item) => item.family === family)
-      .filter( (item) => item.displayName === name)
+    //  .filter( (item) => item.displayName === name)
       // .map( (item) => item.data)
       // .reduce( (acc, cur) => acc.concat(cur))
       // .map( (item) => item.data)
