@@ -46,7 +46,7 @@ class Main extends React.Component {
       .reduce( (acc, cur) => acc.concat(cur))
       .filter( (item) => item.family === family)
       .map ( (item) => item.data )
-      //.filter( (item) => item.displayName === name)
+      .filter( (item) => item.displayName === name)
       // .map( (item) => item.data)
       // .map( (item) => item.data)
     )
