@@ -36,16 +36,16 @@ class Main extends React.Component {
   }
 
   didLoad(obj) {
-    console.log(obj);
+  //  console.log(obj);
     this.setState({history: obj});
   }
 
   getHistory(family, name) {
     console.log (
        this.state.history
-      .reduce( (acc, cur) => acc.concat(cur))
-      .filter( (item) => item.family === family)
-      .map ( (item) => item.data )
+    //  .reduce( (acc, cur) => acc.concat(cur))
+    //  .filter( (item) => item.family === family)
+    //  .map ( (item) => item.data )
     //  .reduce( (acc, cur) => acc.concat(cur))
     //  .filter( (item) => item.displayName === name)
     //  .map( (item) => item.data)
