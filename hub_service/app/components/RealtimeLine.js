@@ -26,10 +26,12 @@ class RealtimeLine extends React.Component {
   };
 
   componentWillReceiveProps() {
-    var tempArr = this.state.data.slice();
-    tempArr.push(this.props.data);
-    tempArr.shift();
-    this.setState({ticker: tempArr});
+    if(this.state.data.length > 0) {
+      var tempArr = this.state.data.slice();
+      tempArr.push(this.props.data);
+      tempArr.shift();
+      this.setState({ticker: tempArr});
+    }
   }
 
   refresh() {

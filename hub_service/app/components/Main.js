@@ -36,7 +36,6 @@ class Main extends React.Component {
   }
 
   didLoad(obj) {
-  //  console.log(obj);
     this.setState({history: obj});
   }
 
@@ -51,32 +50,6 @@ class Main extends React.Component {
        .filter( (item) => item.displayName === name)
        .map( (item) => item.data)
      );
-
-      // .map( (item) => item.data)
-
-    // var filterDocs = [];
-    //
-    // var familyDocs = this.state.history.map((elem) => {
-    //   return elem.filter((elem2) => {
-    //       return elem2.family === family;
-    //     })
-    // })
-    //
-    // familyDocs.forEach((elem) => {
-    //   elem.forEach((elem2) => {
-    //     elem2.data.forEach((elem3) => {
-    //       if(elem3.displayName === name) {
-    //         filterDocs.push(elem3)
-    //       }
-    //     });
-    //   });
-    // })
-    //
-    // var res = filterDocs.map((elem) => {
-    //   return elem.data;
-    // })
-    //
-    // return(res);
   }
 
   render() {
