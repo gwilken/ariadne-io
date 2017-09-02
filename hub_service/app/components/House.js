@@ -11,14 +11,14 @@ class House extends React.Component {
   render() {
 
    var house = this.props.data.filter((elem) => elem.displayName === 'House');
-   console.log('house: ', house);
 
    var red =
       house.reduce((acc, val) => val.concat(acc))
       .data
-      .filter((item) => item.sensor === 'voltage')
-      .reduce((acc, val) => val.concat(acc))
-      .data
+
+      //.filter((item) => item.sensor === 'voltage')
+      //.reduce((acc, val) => val.concat(acc))
+      //.data
 
 
    console.log('reduce: ', red);

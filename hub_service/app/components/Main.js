@@ -62,7 +62,7 @@ class Main extends React.Component {
         motorbatts,
         display;
 
-    var list = this.state.telemetry.map((elem) => { return elem.family; })
+    var list = this.state.telemetry.map((elem) => elem.family)
 
     if(list.includes('house')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
