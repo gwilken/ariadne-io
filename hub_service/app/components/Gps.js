@@ -9,24 +9,11 @@ class Gps extends React.Component {
 
   render() {
 
-    var geo =
-       this.props.data.filter((elem) => elem.displayName === 'Geospatial')
-       .reduce((acc, val) => val.concat(acc))
-       .data
-       .map((item) => {
-
-         return (
-           <RealtimeLine
-            history={this.props.history}
-            data={item.data.toFixed(2)}
-            family={this.props.data[0].family}
-            displayName={item.displayName}
-            unit={item.unit}
-            color={this.props.color}
-            range={{low: 10, high: 14.5}}
-          />
-         )
-       });
+    var latitude = this.props.data[0].data[0].data[0];
+    var longitude = this.props.data[0].data[0].data[1];
+    var speed = this.props.data[0].data[1].data;
+    var tmg = this.props.data[0].data[2].data;
+    var siv = this.props.data[0].data[3].data;
 
     return (
 
@@ -34,7 +21,27 @@ class Gps extends React.Component {
 
           <div className="geoContainer">
 
-            {geo}
+            <RealtimeLine
+              history={this.props.history}
+              data={speed}
+              family={this.props.data[0].family}
+              displayName={this.props.data[0].data[1].displayName}
+              unit={this.props.data[0].data[1].unit}
+              color={this.props.color}
+              range={{low: 0, high: 10}}
+            />
+
+            <RealtimeLine
+              history={this.props.history}
+              data={siv}
+              family={this.props.data[0].family}
+              displayName={this.props.data[0].data[3].displayName}
+              unit={null}
+              color={this.props.color}
+              range={{low: 0, high: 12}}
+            />
+
+            <h5 className="geoLocation">Current Location: {latitude}, {longitude}</h5>
 
           </div>
 
