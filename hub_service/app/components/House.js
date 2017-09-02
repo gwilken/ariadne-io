@@ -14,7 +14,7 @@ class House extends React.Component {
 
    var red =
       house.reduce((acc, val) => val.concat(acc))
-      .data
+      .data;
 
       //.filter((item) => item.sensor === 'voltage')
       //.reduce((acc, val) => val.concat(acc))
