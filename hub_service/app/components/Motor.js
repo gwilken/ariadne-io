@@ -1,10 +1,6 @@
 import React from "react";
 import RealtimeLine from "./RealtimeLine";
 
-Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
-  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-}
-
 class Motor extends React.Component {
 
   constructor(props) {
