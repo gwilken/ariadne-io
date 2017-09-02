@@ -27,7 +27,6 @@ class Solar extends React.Component {
             displayName={item.displayName}
             unit={item.unit}
             color={this.props.color}
-            range={{low: 10, high: 14.5}}
           />
          )
 

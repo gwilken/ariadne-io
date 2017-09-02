@@ -28,7 +28,6 @@ class Gps extends React.Component {
               displayName={this.props.data[0].data[1].displayName}
               unit={this.props.data[0].data[1].unit}
               color={this.props.color}
-              range={{low: 0, high: 10}}
             />
 
             <RealtimeLine
@@ -38,7 +37,6 @@ class Gps extends React.Component {
               displayName={this.props.data[0].data[3].displayName}
               unit={null}
               color={this.props.color}
-              range={{low: 0, high: 12}}
             />
 
             <h5 className="geoLocation">Current Location: {latitude}, {longitude}</h5>

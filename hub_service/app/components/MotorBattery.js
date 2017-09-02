@@ -21,7 +21,6 @@ class MotorBattery extends React.Component {
             displayName={this.props.data[0].data[0].displayName}
             unit={this.props.data[0].data[0].unit}
             color={this.props.color}
-            range={{low: 10, high: 14.5}}
           />
 
       </div>
