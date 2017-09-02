@@ -13,7 +13,11 @@ class House extends React.Component {
    var house = this.props.data.filter((elem) => elem.displayName === 'House');
    console.log('house: ', house);
 
-   var red = house.reduce((acc, val) => val.concat(acc));
+   var red =
+      house.reduce((acc, val) => val.concat(acc))
+      .map((item) => item.data);
+
+
    console.log('reduce: ', red);
 
    var volts = null;
@@ -23,6 +27,13 @@ class House extends React.Component {
    var beer = null;
 
    if(house.length > 0) {
+
+    //  var houseVoltage =
+    //   house.reduce((acc, val) => val.concat(acc))
+    //     .reduce()
+
+
+
      var houseVoltage = house[0].data.filter((elem) => {return elem.sensor === 'voltage'})
      var houseCurrent = house[0].data.filter((elem) => {return elem.sensor === 'current'})
 
