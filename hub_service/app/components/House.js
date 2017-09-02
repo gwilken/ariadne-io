@@ -14,8 +14,8 @@ class House extends React.Component {
    console.log('house: ', house);
 
    var red =
-      house.reduce((acc, val) => val.concat(acc))
-      //.map((item) => item.data);
+      house.reduce((acc, val) => [val.concat(acc)])
+      .map((item) => item.data);
 
 
    console.log('reduce: ', red);
