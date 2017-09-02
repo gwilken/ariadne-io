@@ -54,7 +54,6 @@ class House extends React.Component {
     return (
 
       <div>
-
         <h2>House</h2>
 
         <div className="family-container">
@@ -63,8 +62,8 @@ class House extends React.Component {
           {beer}
 
         </div>
-
       </div>
+
     )
   }
 }
