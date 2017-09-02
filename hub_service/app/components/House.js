@@ -10,7 +10,12 @@ class House extends React.Component {
 
   render() {
 
-   var house = this.props.data.filter((elem) => {return elem.displayName === 'House'});
+   var house = this.props.data.filter((elem) => elem.displayName === 'House');
+   console.log('house: ', house);
+
+   var red = house.reduce((acc, val) => val.concat(acc));
+   console.log('reduce: ', red);
+
    var volts = null;
    var current = null;
 
