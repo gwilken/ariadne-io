@@ -68,14 +68,14 @@ void loop() {
     DynamicJsonBuffer jsonBuffer;
     JsonObject& root = jsonBuffer.createObject();
 
-    root["family"] = "motor";
-    root["displayName"] = "Motor Batteries";
+    root["family"] = "motorbatt";
+    root["displayName"] = "Motor Battery 1";
 
     JsonArray& data = root.createNestedArray("data");
 
     JsonObject& voltage = data.createNestedObject();
     voltage["sensor"] = "voltage";
-    voltage["displayName"] = "Battery 1";
+    voltage["displayName"] = "Motor Battery 1";
     voltage["data"] = busvoltage;
     voltage["unit"] = "V";
     

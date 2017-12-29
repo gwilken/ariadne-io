@@ -1,5 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+import RealtimeLine from "./RealtimeLine";
 
 class Gps extends React.Component {
 
@@ -21,22 +21,22 @@ class Gps extends React.Component {
 
           <div className="geoContainer">
 
-            <RealtimeBar
+            <RealtimeLine
+              history={this.props.history}
               data={speed}
               family={this.props.data[0].family}
               displayName={this.props.data[0].data[1].displayName}
               unit={this.props.data[0].data[1].unit}
               color={this.props.color}
-              range={{low: 0, high: 10}}
             />
 
-            <RealtimeBar
+            <RealtimeLine
+              history={this.props.history}
               data={siv}
               family={this.props.data[0].family}
               displayName={this.props.data[0].data[3].displayName}
               unit={null}
               color={this.props.color}
-              range={{low: 0, high: 12}}
             />
 
             <h5 className="geoLocation">Current Location: {latitude}, {longitude}</h5>

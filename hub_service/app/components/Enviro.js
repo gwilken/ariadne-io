@@ -9,60 +9,32 @@ class Enviro extends React.Component {
 
   render() {
 
-    var temp = this.props.data[0].data[0].data.toFixed(2);
-    var humidity = this.props.data[0].data[1].data.toFixed(2);
-    var pressure = this.props.data[0].data[2].data.toFixed(2);
-    var windSpeed = this.props.data[0].data[3].data.toFixed(2);
+    var enviro =
+       this.props.data.filter((elem) => elem.displayName === 'Environmental')
+       .reduce((acc, val) => val.concat(acc))
+       .data
+       .map((item) => {
 
-  //  var tempF = temp * 9/5 + 32;
-  //  var tempDisplay = tempF.toFixed(2) + '\u00B0' + ' F' ;
-
-    if(windSpeed < 0) windSpeed = 0;
-
-    var windKnots = (windSpeed * 1.943844).toFixed(2);
+         return (
+           <RealtimeLine
+            history={this.props.history}
+            data={item.data.toFixed(2)}
+            family={this.props.data[0].family}
+            displayName={item.displayName}
+            unit={item.unit}
+            color={this.props.color}
+          />
+         )
+       });
 
   return (
     <div>
 
       <h2>Environmental</h2>
 
-      <div>
+      <div className="family-container">
 
-        <RealtimeLine
-          data={windKnots}
-          family={this.props.data[0].family}
-          displayName={this.props.data[0].data[3].displayName}
-          unit={this.props.data[0].data[3].unit}
-          color={this.props.color}
-          range={{low: 0, high: 32}}
-        />
-
-        <RealtimeLine
-          data={temp}
-          family={this.props.data[0].family}
-          displayName={this.props.data[0].data[0].displayName}
-          unit={this.props.data[0].data[0].unit}
-          color={this.props.color}
-          range={{low: 0, high: 50}}
-        />
-
-        <RealtimeLine
-          data={humidity}
-          family={this.props.data[0].family}
-          displayName={this.props.data[0].data[1].displayName}
-          unit={this.props.data[0].data[1].unit}
-          color={this.props.color}
-          range={{low: 0, high: 100}}
-        />
-
-        <RealtimeLine
-          data={pressure}
-          family={this.props.data[0].family}
-          displayName={this.props.data[0].data[2].displayName}
-          unit={this.props.data[0].data[2].unit}
-          color={this.props.color}
-          range={{low: 300, high: 1100}}
-        />
+        {enviro}
 
       </div>
     </div>

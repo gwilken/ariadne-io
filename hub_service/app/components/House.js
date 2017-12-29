@@ -1,5 +1,4 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
 import History from "./History";
 import RealtimeLine from "./RealtimeLine"
 
@@ -11,38 +10,59 @@ class House extends React.Component {
 
   render() {
 
-    var volts = this.props.data[0].data[0].data.toFixed(2);
-    var current = this.props.data[0].data[1].data.toFixed(0);
+   var house =
+      this.props.data.filter((elem) => elem.displayName === 'House')
+      .reduce((acc, val) => val.concat(acc))
+      .data
+      .map((item) => {
+
+        return (
+          <RealtimeLine
+           history={this.props.history}
+           data={item.data.toFixed(2)}
+           family={this.props.data[0].family}
+           displayName={item.displayName}
+           unit={item.unit}
+           color={this.props.color}
+         />
+        )
+
+      });
+
+    var beer =
+       this.props.data.filter((elem) => elem.displayName === 'Refrigerator')
+       .reduce((acc, val) => val.concat(acc))
+       .data
+       .map((item) => {
+
+         return (
+           <RealtimeLine
+            history={this.props.history}
+            data={item.data.toFixed(2)}
+            family={this.props.data[0].family}
+            displayName={item.displayName}
+            unit={item.unit}
+            color={this.props.color}
+            range={{low: 10, high: 14.5}}
+          />
+         )
+
+       });
+
 
     return (
 
       <div>
-
         <h2>House</h2>
 
         <div className="family-container">
 
-          <RealtimeLine
-            data={volts}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[0].displayName}
-            unit={this.props.data[0].data[0].unit}
-            color={this.props.color}
-            range={{low: 10, high: 14.5}}
-          />
-
-          <RealtimeLine
-            data={current}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[1].displayName}
-            unit={this.props.data[0].data[1].unit}
-            color={this.props.color}
-            range={{low: 0, high: 7500}}
-          />
+          {house}
+          {beer}
 
         </div>
-
       </div>
+
     )
   }
 }

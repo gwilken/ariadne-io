@@ -1,5 +1,5 @@
 import React from "react";
-import RealtimeBar from "./RealtimeBar";
+import RealtimeLine from "./RealtimeLine";
 import History from "./History";
 
 var voltsHistory = null;
@@ -13,8 +13,24 @@ class Solar extends React.Component {
 
   render() {
 
-    var volts = this.props.data[0].data[0].data.toFixed(2);
-    var current = this.props.data[0].data[1].data.toFixed(0);
+    var solar =
+       this.props.data.filter((elem) => elem.displayName === 'Solar')
+       .reduce((acc, val) => val.concat(acc))
+       .data
+       .map((item) => {
+
+         return (
+           <RealtimeLine
+            history={this.props.history}
+            data={item.data.toFixed(2)}
+            family={this.props.data[0].family}
+            displayName={item.displayName}
+            unit={item.unit}
+            color={this.props.color}
+          />
+         )
+
+       });
 
     return (
 
@@ -24,23 +40,7 @@ class Solar extends React.Component {
 
         <div className="family-container">
 
-          <RealtimeBar
-            data={volts}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[0].displayName}
-            unit={this.props.data[0].data[0].unit}
-            color={this.props.color}
-            range={{low: 10, high: 14.5}}
-          />
-
-          <RealtimeBar
-            data={current}
-            family={this.props.data[0].family}
-            displayName={this.props.data[0].data[1].displayName}
-            unit={this.props.data[0].data[1].unit}
-            color={this.props.color}
-            range={{low: 0, high: 7500}}
-          />
+          {solar}
 
         </div>
       </div>

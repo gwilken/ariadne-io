@@ -5,108 +5,55 @@ const mongo = require("../model/mongo");
 
 const router = new express.Router();
 
-router.get('/telemetry/:family/:name/:time', function(req, res) {
+router.get('/all/:time', function(req, res) {
+  var time = Date.now() - (parseInt(req.params.time) * 60000);
 
-  var time = Date.now() - (req.params.time * 60000);
-
-  mongo.collection.find( {
-    createdAt: { $gt: time }
-  }, {
-    _id: 0,
-    telemetry: { $elemMatch: { family: req.params.family, } },
+  mongo.collection.find({
+    "createdAt": { $gt: time}
   }).toArray(function(err, docs) {
-
-    if(err) {
-      console.log(err);
-      res.end();
-    } else {
-
-      var arr = [];
-      var sorted =[];
-      var average = 0;
-
-      try {
-        if(docs.length > 0) {
-          for(var i = 0; i < docs.length; i++) {
-            for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
-              if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-                var data = docs[i].telemetry[0].data[j].data;
-                if (data < 0) data = 0;
-                arr.push(data);
-              }
-            }
-          }
-        }
-
-        var data = arr.slice();
-        sorted = arr.sort((a, b) => { return a - b; } );
-        average = arr.reduce((sum, val) => { return sum + val }) / arr.length;
-
-      } catch(err) {
-        console.log(err);
-      }
-
-      var response = {
-        data: data,
-        high: sorted[docs.length - 1].toFixed(2),
-        low: sorted[0].toFixed(2),
-        average: average.toFixed(2)
-      }
-
-      res.json(response);
-      }
-  });
+    res.json(docs);
+  })
 })
 
-router.get('/quicklook/:family/:name/:num', function(req, res) {
+router.get('/telemetry/:family/:name/:time', function(req, res) {
+  var time = Date.now() - (parseInt(req.params.time) * 60000);
 
-  var num = parseInt(req.params.num);
+  mongo.collection.aggregate([
+    { $match: { "createdAt": { "$gt": time } } },
+    { $unwind: "$telemetry" },
+    { $match: { "telemetry.family": req.params.family } },
+    { $unwind: "$telemetry.data"},
+    { $match: { "telemetry.data.displayName": req.params.name } },
+    { $group: {
+      "_id": null,
+      "createdAt": { $push: "$createdAt" },
+      "data" : {$push: "$telemetry.data.data"},
+      "high": {$max: "$telemetry.data.data"},
+      "low": {$min : "$telemetry.data.data"},
+      "average": {$avg: "$telemetry.data.data"}
+    }}
+  ]).toArray(function(err, docs) {
+    res.json(docs);
+  })
+})
 
-  mongo.collection.find({ $query: {}, $orderby: { "createdAt": -1 } }, {
-    _id: 0,
-    telemetry: {
-      $elemMatch: {
-        family: req.params.family,
-      }
-    },
-  }).limit(num)
-      .toArray(function(err, docs) {
+router.get('/quicklook/:family/:name/:time', function(req, res) {
 
-          if(err) {
-            console.log(err);
-            res.end();
-          } else {
+  var time = Date.now() - (parseInt(req.params.time) * 60000);
 
-            var arr = [];
-
-            try {
-              if(docs.length > 0) {
-                for(var i = 0; i < docs.length; i++) {
-                  for(var j = 0; j < docs[i].telemetry[0].data.length; j++) {
-                    if(docs[i].telemetry[0].data[j].displayName === req.params.name) {
-                      var data = docs[i].telemetry[0].data[j].data;
-                      if (data < 0) data = 0;
-                      arr.push(data);
-                    }
-                  }
-                }
-              }
-
-              var data = arr.reverse().slice();
-
-            } catch(err) {
-              console.log(err);
-            }
-
-            var response = {
-              family: req.params.family,
-              name: req.params.name,
-              data: data,
-            }
-
-            res.json(response);
-            }
-        });
+  mongo.collection.aggregate([
+    { $match: { "createdAt": { "$gt": time } } },
+    { $unwind: "$telemetry" },
+    { $match: { "telemetry.family": req.params.family } },
+    { $unwind: "$telemetry.data"},
+    { $match: { "telemetry.data.displayName": req.params.name } },
+    { $group: {
+      "_id": null,
+      "data" : {$push: "$telemetry.data.data"}
+    }}
+  ]).toArray(function(err, docs) {
+    res.json(docs);
+  })
 })
 
 module.exports = router;

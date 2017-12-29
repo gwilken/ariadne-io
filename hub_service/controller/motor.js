@@ -2,6 +2,10 @@ const SerialPort = require("serialport");
 var displayData = Buffer.allocUnsafeSlow(36);
 var motorData = Buffer.allocUnsafeSlow(36);
 
+Number.prototype.mapRange = function (in_min, in_max, out_min, out_max) {
+  return (this - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 var motor = {
   family: "motor",
   displayName: "Electric Yacht 10kW Motor",
@@ -58,7 +62,7 @@ motorPort.on('data', function (data) {
     if(data[i] === 0 && data[i+1] === 1 && data[i+2] === 255) {
 
       data.copy(displayData, 0, i);
-      motor.data[0].data = displayData[6];
+      motor.data[0].data = displayData[6].mapRange(0,255,0,100);
       motor.data[1].data = ((displayData[8] << 8) + displayData[7]) / 10;  //Time To Discharge in xxx.x hours
     };
 
