@@ -58,7 +58,6 @@ class House extends React.Component {
         <div className="family-container">
 
           {house}
-        //  {beer}
 
         </div>
       </div>
