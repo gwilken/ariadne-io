@@ -1,10 +1,7 @@
 import React from "react";
 import Solar from "./Solar";
 import House from "./House";
-import Motor from "./Motor";
 import MotorBatteryGroup from "./MotorBatteryGroup";
-import Enviro from "./Enviro";
-import Gps from "./Gps";
 
 class Main extends React.Component {
 
@@ -56,9 +53,6 @@ class Main extends React.Component {
 
     var house,
         solar,
-        enviro,
-        gps,
-        motor,
         motorbatts,
         display;
 
@@ -82,15 +76,6 @@ class Main extends React.Component {
       )
     }
 
-    if(list.includes('motor')) {
-      var data = this.state.telemetry.filter((elem) => {return elem.family === 'motor'});
-      motor = (
-        <div className="component-container">
-          <Motor data={data} color="firebrick" history={this.getHistory}/>
-        </div>
-      )
-    }
-
     if(list.includes('motorbatt')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'motorbatt'});
       motorbatts = (
@@ -100,32 +85,11 @@ class Main extends React.Component {
       )
     }
 
-    if(list.includes('enviro')) {
-      var data = this.state.telemetry.filter((elem) => {return elem.family === 'enviro'});
-      enviro = (
-        <div className="component-container">
-          <Enviro data={data} color="darkviolet" history={this.getHistory}/>
-        </div>
-      )
-    }
-
-    if(list.includes('gps')) {
-      var data = this.state.telemetry.filter((elem) => {return elem.family === 'gps'});
-      gps = (
-        <div className="component-container">
-          <Gps data={data} color="lightseagreen" history={this.getHistory}/>
-        </div>
-      )
-    }
-
     if(this.state.history) {
       display = (
         <div className="mainContainer">
             {house}
             {solar}
-            {enviro}
-            {gps}
-            {motor}
             {motorbatts}
           </div>
         )
