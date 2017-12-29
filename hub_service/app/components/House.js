@@ -12,7 +12,7 @@ class House extends React.Component {
 
    var house =
       this.props.data.filter((elem) => elem.displayName === 'House')
-    //  .reduce((acc, val) => val.concat(acc), 0)
+      .reduce((acc, val) => val.concat(acc), 0)
       .data
       .map((item) => {
 

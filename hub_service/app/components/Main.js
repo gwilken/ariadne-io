@@ -57,15 +57,15 @@ class Main extends React.Component {
         display;
 
     var list = this.state.telemetry.map((elem) => elem.family)
-
-    if(list.includes('house')) {
-      var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
-      house = (
-        <div className="component-container">
-          <House data={data} color="royalblue" history={this.getHistory}/>
-        </div>
-      )
-    }
+    // 
+    // if(list.includes('house')) {
+    //   var data = this.state.telemetry.filter((elem) => {return elem.family === 'house'});
+    //   house = (
+    //     <div className="component-container">
+    //       <House data={data} color="royalblue" history={this.getHistory}/>
+    //     </div>
+    //   )
+    // }
 
     if(list.includes('solar')) {
       var data = this.state.telemetry.filter((elem) => {return elem.family === 'solar'});
@@ -88,7 +88,7 @@ class Main extends React.Component {
     if(this.state.history) {
       display = (
         <div className="mainContainer">
-            {house}
+          //  {house}
             {solar}
             {motorbatts}
           </div>
