@@ -28,6 +28,7 @@ class Main extends React.Component {
 
     ws.onmessage = function(event) {
         var telemetry = JSON.parse(event.data);
+        console.log(telemetry);
         this.setState({telemetry: telemetry});
     }.bind(this);
   }
