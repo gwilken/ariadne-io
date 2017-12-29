@@ -9,6 +9,7 @@ var telemetry = [];
 
 const sensorServer = net.createServer(function(socket) {
   socket.on("data", function(data) {
+    console.log(data);
     try {
       packet = JSON.parse(data);
 
