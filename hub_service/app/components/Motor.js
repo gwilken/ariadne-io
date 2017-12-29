@@ -11,7 +11,7 @@ class Motor extends React.Component {
 
     var motor =
        this.props.data.filter((elem) => elem.displayName === 'Electric Yacht 10kW Motor')
-       .reduce((acc, val) => val.concat(acc))
+       .reduce((acc, val) => val.concat(acc), 0)
        .data
        .map((item) => {
 
