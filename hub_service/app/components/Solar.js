@@ -15,7 +15,7 @@ class Solar extends React.Component {
 
     var solar =
        this.props.data.filter((elem) => elem.displayName === 'Solar')
-       .reduce((acc, val) => val.concat(acc), 0)
+       .reduce((acc, val) => val.concat(acc))
        .data
        .map((item) => {
 

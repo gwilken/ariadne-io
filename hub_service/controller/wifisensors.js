@@ -11,7 +11,6 @@ const sensorServer = net.createServer(function(socket) {
   socket.on("data", function(data) {
     try {
       packet = JSON.parse(data);
-      console.log(packet);
       var list = telemetry.map((elem) => { return elem.displayName; })
 
       if(list.indexOf(packet.displayName) === -1) {

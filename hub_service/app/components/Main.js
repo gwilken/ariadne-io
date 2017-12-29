@@ -41,10 +41,10 @@ class Main extends React.Component {
     return (
        this.state.history
        .map( (item) => item.telemetry )
-       .reduce( (acc, cur) => acc.concat(cur), 0)
+       .reduce( (acc, cur) => acc.concat(cur))
        .filter( (item) => item.family === family)
        .map ( (item) => item.data )
-       .reduce( (acc, cur) => acc.concat(cur), 0)
+       .reduce( (acc, cur) => acc.concat(cur))
        .filter( (item) => item.displayName === name)
        .map( (item) => item.data)
      );
