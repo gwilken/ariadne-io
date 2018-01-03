@@ -12,7 +12,7 @@ class House extends React.Component {
 
    var house =
       this.props.data.filter((elem) => elem.displayName === 'House')
-      .reduce((acc, val) => val.concat(acc))
+      .reduce((acc, val) => val.concat(acc), 0)
       .data
       .map((item) => {
 
@@ -31,7 +31,7 @@ class House extends React.Component {
 
     var beer =
        this.props.data.filter((elem) => elem.displayName === 'Refrigerator')
-       .reduce((acc, val) => val.concat(acc))
+       .reduce((acc, val) => val.concat(acc), 0)
        .data
        .map((item) => {
 
