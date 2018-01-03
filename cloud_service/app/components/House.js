@@ -12,7 +12,7 @@ class House extends React.Component {
 
    var house =
       this.props.data.filter((elem) => elem.displayName === 'House')
-      .reduce(((acc, val) => val.concat(acc)), 0)
+      .reduce((acc, val) => val.concat(acc))
       .data
       .map((item) => {
 
@@ -29,25 +29,25 @@ class House extends React.Component {
 
       });
 
-    var beer =
-       this.props.data.filter((elem) => elem.displayName === 'Refrigerator')
-       .reduce(((acc, val) => val.concat(acc)), 0)
-       .data
-       .map((item) => {
-
-         return (
-           <RealtimeLine
-            history={this.props.history}
-            data={item.data.toFixed(2)}
-            family={this.props.data[0].family}
-            displayName={item.displayName}
-            unit={item.unit}
-            color={this.props.color}
-            range={{low: 10, high: 14.5}}
-          />
-         )
-
-       });
+    // var beer =
+    //    this.props.data.filter((elem) => elem.displayName === 'Refrigerator')
+    //    .reduce(((acc, val) => val.concat(acc)), 0)
+    //    .data
+    //    .map((item) => {
+    //
+    //      return (
+    //        <RealtimeLine
+    //         history={this.props.history}
+    //         data={item.data.toFixed(2)}
+    //         family={this.props.data[0].family}
+    //         displayName={item.displayName}
+    //         unit={item.unit}
+    //         color={this.props.color}
+    //         range={{low: 10, high: 14.5}}
+    //       />
+    //      )
+    //
+    //    });
 
 
     return (
@@ -58,7 +58,6 @@ class House extends React.Component {
         <div className="family-container">
 
           {house}
-          {beer}
 
         </div>
       </div>
