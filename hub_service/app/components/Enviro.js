@@ -11,7 +11,7 @@ class Enviro extends React.Component {
 
     var enviro =
        this.props.data.filter((elem) => elem.displayName === 'Environmental')
-       .reduce((acc, val) => val.concat(acc))
+       .reduce((acc, val) => val.concat(acc), 0)
        .data
        .map((item) => {
 

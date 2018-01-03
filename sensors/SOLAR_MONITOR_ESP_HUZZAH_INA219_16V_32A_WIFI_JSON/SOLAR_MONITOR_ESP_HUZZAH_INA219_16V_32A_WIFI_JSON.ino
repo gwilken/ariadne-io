@@ -83,7 +83,7 @@ void loop() {
     
     JsonObject& current = data.createNestedObject();
     current["sensor"] = "current";
-    current["displayName"] = "Current Ouput";
+    current["displayName"] = "Current Output";
     current["data"] = curr;
     current["unit"] = "mA";
     
