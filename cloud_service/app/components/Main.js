@@ -129,7 +129,7 @@ class Main extends React.Component {
             {motorbatts}
           </div>
         )
-    } else display = (<h3>Fetching telemetry...</h3> );
+    } else display = (<h3>Connecting to telemetry...</h3> );
 
     return (
       <div>
