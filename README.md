@@ -5,7 +5,7 @@
 Making a 30' sailboat a little smarter using a Raspberry Pi, a bunch of ESP8266 modules, and some Javascript.
 
 The subject of our experiments in IoT: A 1975 Yankee 30 MKIII.
-![ariadne](/public/images/IMG_0294.jpg)
+![ariadne](/public/images/IMG_0295.jpg)
 
 ## The Components
 
