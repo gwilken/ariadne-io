@@ -16,7 +16,7 @@
     "chart.js": "^2.6.0",
     "express": "^4.14.0",
     "forever": "^0.15.3",
-    "mongodb": "^2.2.28",
+    "mongodb": "^3.1.13",
     "nmea-simple": "^2.2.0",
     "react": "^15.4.1",
     "react-chartjs-2": "^2.1.0",
