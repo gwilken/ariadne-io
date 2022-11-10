@@ -25,7 +25,7 @@
     "react-router": "^3.0.0",
     "request": "^2.81.0",
     "serialport": "^4.0.7",
-    "socket.io": "^2.0.3",
+    "socket.io": "^2.5.0",
     "ws": "^3.0.0"
   },
   "devDependencies": {
