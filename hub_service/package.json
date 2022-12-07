@@ -14,7 +14,7 @@
     "babel": "^6.23.0",
     "body-parser": "^1.15.2",
     "chart.js": "^2.6.0",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "forever": "^0.15.3",
     "mongodb": "^2.2.28",
     "nmea-simple": "^2.2.0",
